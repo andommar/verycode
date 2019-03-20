@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+    <!-- ===============  HEAD ============= -->
+    <head>
+        <title>Añadir paciente</title>
+        <meta charset="utf-8">
+        <!-- Mobile First -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- favicon -->
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon">  
+        <!-- Iconos --> 
+        <link rel="stylesheet" href="css/themify-icons.css">
+        <!-- BOOTSTRAP 4 -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <!-- Hojas de estilo -->
+        <link rel="stylesheet" type="text/css" href="css/global-style.css">
+        <link rel="stylesheet" type="text/css" href="css/anadir-paciente-style.css">
+        <!-- Gráficas -->
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/grafica1.css">
+        <link rel="stylesheet" href="css/formularios-style.css">
+    </head>
+  
+    <!-- ===============  BODY ============= -->
+    <body>  
+        <!-- Cuadrícula con el máximo ancho de la página -->
+        <div class="container-fluid" id="body-container">
+            <div class="row">
+                <!-- COLUMNA IZQUIERDA -->
+                <div class="col-lg-2" id="nav-left-col">
+                    <!-- BARRA DE NAVEGACIÓN LATERAL-->
+                    <nav id="nav-left">
+                        <!-- Logo -->
+                        <div>
+                            <a href="index.html"><img id="web-logo" class="img-fluid" src="img/logo-prueba2-bn.png" class="logo" alt="logo"></a>
+                        </div>
+                        <!-- Lista desplegable -->
+                        <ul class="list-unstyled components">
+
+                            <!-- Apartado "PÁGINA PRINCIPAL"-->
+                            <li class="espaciado-desplegable">
+                                <a href="index.html">
+                                    <span class="ti-home"></span> Página Principal
+                                </a>
+                            </li>
+
+                            <!-- Apartado "PACIENTES"-->
+                            <li class="active espaciado-desplegable apartados">
+                                <a href="#nav-pacientes" data-toggle="collapse" aria-expanded="false">
+                                    <span class="ti-wheelchair"></span> Pacientes
+                                </a>
+                                <ul class="collapse list-unstyled tamano-letra" id="nav-pacientes">
+                                    <li>
+                                        <a href="anadir-paciente.html">Añadir paciente</a>
+                                    </li>
+                                    <li>
+                                        <a href="ver-paciente.html">Ver paciente</a>
+                                    </li>
+                                    <li>
+                                        <a href="editar-paciente.html">Editar paciente</a>
+                                    </li>
+                                    <li>
+                                        <a href="pacientes.html">Todos los pacientes</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <!-- Apartado "TERAPEUTAS"-->
+                            <li class="espaciado-desplegable apartados">
+                                <a href="#nav-terapeutas" data-toggle="collapse" aria-expanded="false" class="collapsed">
+                                    <span class="ti-user"></span> Terapeutas
+                                </a>
+                                <ul class="list-unstyled collapse tamano-letra" id="nav-terapeutas" style="">
+                                        <li>
+                                                <a href="anadir-terapeuta.html">Añadir terapeuta</a>
+                                        </li>
+                                        <li>
+                                            <a href="ver-terapeuta.html">Ver terapeuta</a>
+                                        </li>
+                                        <li>
+                                            <a href="editar-paciente.html">Editar terapeuta</a>
+                                        </li>
+                                        <li>
+                                            <a href="terapeutas.html">Todos los terapeutas</a>
+                                        </li>
+                                </ul>
+                            </li>
+
+                            <!-- Apartado "CALENDARIO"-->
+                            <li class="espaciado-desplegable apartados">
+                                    <a href="#nav-calendario" data-toggle="collapse" aria-expanded="false" class="collapsed">
+                                        <span class="ti-pencil-alt"></span> Calendario
+                                    </a>
+                                    <ul class="list-unstyled collapse tamano-letra" id="nav-calendario" style="">
+                                            <li>
+                                                    <a href="anadir-calendario.html">Añadir cita</a>
+                                            </li>
+                                            <li>
+                                                <a href="editar-paciente.html">Editar citas</a>
+                                            </li>
+                                            <li>
+                                                <a href="calendario.html">Todas las citas</a>
+                                            </li>
+                                    </ul>
+                            </li>
+
+                            <!-- Apartado "GRÁFICAS"-->
+                            <li class="espaciado-desplegable apartados">
+                                <a href="#nav-graficas" data-toggle="collapse" aria-expanded="false" class="collapsed">
+                                    <span class="ti-pie-chart"></span> Gráficas
+                                </a>
+                                <ul class="list-unstyled collapse tamano-letra" id="nav-graficas" style="">
+                                    <li>
+                                        <a href="graficas-1.html">Evolución pacientes</a>
+                                    </li>
+                                    <li>
+                                        <a href="graficas-2.html">Estadísticas generales</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- FIN Lista desplegable -->
+                    </nav>
+
+                </div>
+
+                <!-- COLUMNA DERECHA -->
+                <div class="col-lg-10 col-der" >
+
+                    <!-- Barra de navegación superior -->
+                    <nav id="nav-top" class="navbar navbar-default">
+                        <ul class="nav" id="user">
+                            <li class="nav-item">
+                                <a data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <span class="ti-user"></span>
+                                </a>
+                                <div class="dropdown-menu proclinic-box-shadow2 profile animated flipInY">
+                                    <h5>John Willing</h5>
+                                    <a class="dropdown-item" href="#">
+                                        <span class="ti-settings"></span> Settings</a>
+                                    <a class="dropdown-item" href="#">
+                                        <span class="ti-help-alt"></span> Help</a>
+                                    <a class="dropdown-item" href="#">
+                                        <span class="ti-power-off"></span> Logout</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- Fila título página + Breadcrumb -->
+                    <div class="row" id="grupo-titulo-pagina">
+                        <!-- Título -->
+                        <div class="col-md-6" id="titulo">
+                            <h3 class="block-title">Añadir Paciente</h3>
+                        </div>
+                        <!-- Breadcrumb -->
+                        <div class="col-md-6">
+                            <ol class="breadcrumb" id="localizacion">						
+                                <li class="breadcrumb-item color-blanco">
+                                    <a href="index.html">
+                                        <span class="ti-home"></span>
+                                        &nbsp;&nbsp;Página principal
+                                    </a>
+                                </li>
+                                
+                                <li class="breadcrumb-item color-blanco">Paciente</li>
+                                <li class="breadcrumb-item color-blanco">Añadir Paciente</li>
+                               
+                            </ol>
+                        </div>
+                    </div> <!-- Fin fila -->
+
+                     <!-- Cuerpo página (lado derecho)-->
+                    <!-- FILA 1 | INPUTS -->
+                    <div id="cuerpo-pagina-2" class="row"> 
+                        <div class="col-lg-12">
+                            <div id="apartado-formulario">
+                                <h3>Mediciones</h3><hr>
+                                <form>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <img id="imagen-brazo" class="img-fluid" src="img/brazo/e.png" class="logo" alt="logo">
+                                        </div>
+                                        
+                                        <div class="form-group col-md-1">
+                                            <label for="brazo-a">A</label>
+                                            <input type="number" class="form-control" placeholder="" id="brazo-a">
+                                        </div>
+                                        <div class="form-group col-md-1">
+                                            <label for="brazo-b">B</label>
+                                            <input type="number" class="form-control" placeholder="" id="brazo-b">
+                                        </div>
+                                        <div class="form-group col-md-1">
+                                            <label for="brazo-c">C</label>
+                                            <input type="number" class="form-control" placeholder="" id="brazo-c">
+                                        </div>
+                                        <div class="form-group col-md-1">
+                                            <label for="brazo-d">D</label>
+                                            <input type="number" class="form-control" placeholder="" id="brazo-d">
+                                        </div>
+                                        <div class="form-group col-md-1">
+                                            <label for="brazo-e">E</label>
+                                            <input type="number" class="form-control" placeholder="" id="brazo-e">
+                                        </div>
+                                        <div class="form-group col-md-1">
+                                            <!--<label for="patient-name">F</label>
+                                            <input type="number" class="form-control" placeholder="" id="patient-name">-->
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <!--<label for="patient-name">Hola</label>
+                                            <input type="number" class="form-control" placeholder="" id="patient-name">-->
+                                        </div>
+
+                                        <div class="form-group col-md-4">
+                                            <img id="imagen-pierna" class="img-fluid" src="img/pierna/f.png" class="logo" alt="logo">
+                                        </div>
+                                        <div class="form-group col-md-1">
+                                            <label for="pierna-a">A</label>
+                                            <input type="number" class="form-control" placeholder="" id="pierna-a">
+                                        </div>
+                                        <div class="form-group col-md-1">
+                                            <label for="pierna-b">B</label>
+                                            <input type="number" class="form-control" placeholder="" id="pierna-b">
+                                        </div>
+                                        <div class="form-group col-md-1">
+                                            <label for="pierna-c">C</label>
+                                            <input type="number" class="form-control" placeholder="" id="pierna-c">
+                                        </div>
+                                        <div class="form-group col-md-1">
+                                            <label for="pierna-d">D</label>
+                                            <input type="number" class="form-control" placeholder="" id="pierna-d">
+                                        </div>
+                                        <div class="form-group col-md-1">
+                                            <label for="pierna-e">E</label>
+                                            <input type="number" class="form-control" placeholder="" id="pierna-e">
+                                        </div>
+                                        <div class="form-group col-md-1">
+                                            <label for="pierna-f">F</label>
+                                            <input type="number" class="form-control" placeholder="" id="pierna-f">
+                                        </div>
+                                        <div class="form-group col-md-2">
+                                            <!--<label for="patient-name">Hola</label>
+                                            <input type="number" class="form-control" placeholder="" id="patient-name">-->
+                                        </div>
+
+                                        <!--
+                                        <div class="form-group col-md-6">
+                                            <label for="patient-name">Patient Name</label>
+                                            <input type="text" class="form-control" placeholder="Patient name" id="patient-name">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="dob">Date Of Birth</label>
+                                            <input type="date" placeholder="Date of Birth" class="form-control" id="dob">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="age">Age</label>
+                                            <input type="text" placeholder="Age" class="form-control" id="age">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="phone">Phone</label>
+                                            <input type="text" placeholder="Phone" class="form-control" id="phone">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="email">Email</label>
+                                            <input type="email" placeholder="email" class="form-control" id="Email">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="gender">Gender</label>
+                                            <select class="form-control" id="gender">
+                                                <option>Male</option>
+                                                <option>Female</option>
+                                                <option>Other</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="exampleFormControlTextarea1">Address</label>
+                                            <textarea placeholder="Address" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        </div>
+                                        -->
+                                        <!--  
+                                        <div class="form-group col-md-12">
+                                            <label for="file">File</label>
+                                            <input type="file" class="form-control" id="file">
+                                        </div>
+                                                                         
+                                        <div class="form-check col-md-12 mb-2">
+                                            <div class="text-left">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" id="ex-check-2">
+                                                    <label class="custom-control-label" for="ex-check-2">Please Confirm</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6 mb-3">
+                                            <button type="submit" class="btn btn-primary btn-lg">Siguiente</button>
+                                        </div>
+                                    -->
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div><!-- Fin cuerpo página-->
+                </div> <!-- Fin columna derecha-->
+            </div> <!-- ROW -->
+
+
+        </div><!-- CONTAINER FLUID-->
+
+        <!-- SCRIPTS -->
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+        <script src="js/grafica1.js"></script>
+        <script>
+            $( "input[id='brazo-a']" ).focus(function() {
+                $("#imagen-brazo").attr("src","img/brazo/a.png");
+            });
+            $( "input[id='brazo-b']" ).focus(function() {
+                $("#imagen-brazo").attr("src","img/brazo/b.png");
+            });
+            $( "input[id='brazo-c']" ).focus(function() {
+                $("#imagen-brazo").attr("src","img/brazo/c.png");
+            });
+            $( "input[id='brazo-d']" ).focus(function() {
+                $("#imagen-brazo").attr("src","img/brazo/d.png");
+            });
+            $( "input[id='brazo-e']" ).focus(function() {
+                $("#imagen-brazo").attr("src","img/brazo/e.png");
+            });
+
+            $( "input[id='pierna-a']" ).focus(function() {
+                $("#imagen-pierna").attr("src","img/pierna/a.png");
+            });
+            $( "input[id='pierna-b']" ).focus(function() {
+                $("#imagen-pierna").attr("src","img/pierna/b.png");
+            });
+            $( "input[id='pierna-c']" ).focus(function() {
+                $("#imagen-pierna").attr("src","img/pierna/c.png");
+            });
+            $( "input[id='pierna-d']" ).focus(function() {
+                $("#imagen-pierna").attr("src","img/pierna/d.png");
+            });
+            $( "input[id='pierna-e']" ).focus(function() {
+                $("#imagen-pierna").attr("src","img/pierna/e.png");
+            });
+            $( "input[id='pierna-f']" ).focus(function() {
+                $("#imagen-pierna").attr("src","img/pierna/f.png");
+            });
+        </script>
+
+    </body>
+</html>
