@@ -11,6 +11,7 @@ if( $conn ) {
     $pass2 = $_POST["pass2"]; 
     $nombre = $_POST["nombre"];
     $apellido = $_POST["apellido"];
+    $apellido2 = $_POST["apellido2"];
     $tipo = $_POST["tipo"];
 
 
@@ -25,8 +26,8 @@ if( $conn ) {
 
     */
 
-    $sql = "insert into especialista values (?,?,?,?,?,?)";
-    $params = array($correo,$pass,$pass2,$nombre,$apellido,$tipo);
+    $sql = "insert into especialista values (?,?,?,?,?,?,?)";
+    $params = array($correo,$pass,$pass2,$nombre,$apellido,$apellido2,$tipo);
 
     $stmt = sqlsrv_query( $conn, $sql, $params);
     if( $stmt === false ) {
