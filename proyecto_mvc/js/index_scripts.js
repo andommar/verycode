@@ -34,7 +34,7 @@
       if(!error){
         
         $.ajax({
-          data: {usuario : usuario, pass : pass},
+          data: {usuario : usuario, contrasenya : contrasenya},
           type: "POST",
           url: "control/control_login.php",
         })

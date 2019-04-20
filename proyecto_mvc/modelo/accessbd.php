@@ -4,29 +4,34 @@ header("Content-Type: text/html;charset=utf-8");
 
 class TAccesbd
 {
-		private $servidor;
+		private $servidor = "oracle.ilerna.com, 1433";
+		private $connectionInfo = array( "Database"=>"DAW2_VERYCODE", "UID"=>"DAW2_VERYCODE", "PWD"=>"a1VERYCODE");
+		/*
 		private $usuari;
 		private $pass;
 		private $bd;
 		private $con;
 		private $res;
+		*/
     
         
-        function __construct($servidor, $usuari, $contrasenya, $bd){
+        function __construct(){
             
-            $serverName = "serverName\sqlexpress"; //serverName\instanceName
-            $connectionInfo = array( "Database"=>"dbName", "UID"=>"userName", "PWD"=>"password");
-            $conn = sqlsrv_connect( $serverName, $connectionInfo);
-            
-            if( $conn ) {
-                echo "Conexión establecida.<br />";
-            }else{
-                echo "Conexión no se pudo establecer.<br />";
-                die( print_r( sqlsrv_errors(), true));
-            }
 		}
 		
-		
+		public function conectado()
+		{
+			$res = false;
+			$conn = sqlsrv_connect( $this->serverName, $this->connectionInfo);
+			
+			if( $conn ) {
+				$res=true;
+			}else{
+				die( print_r( sqlsrv_errors(), true));
+			}
+
+			return $res;
+		}
 		
         
 
