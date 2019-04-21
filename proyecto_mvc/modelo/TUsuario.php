@@ -29,7 +29,7 @@ class TUsuario{
 		$abd = new TAccesbd ();
 
 		if($abd->conectado()){
-			echo '<h1>Conectado campeón</h1>';
+			header("Location: ../anadir-paciente.html");
 		}
 		else{
 			echo '<h1>No conectao luser</h1>';
