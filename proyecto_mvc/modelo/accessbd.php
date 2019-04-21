@@ -6,6 +6,8 @@ class TAccesbd
 {
 		private $servidor = "oracle.ilerna.com, 1433";
 		private $connectionInfo = array( "Database"=>"DAW2_VERYCODE", "UID"=>"DAW2_VERYCODE", "PWD"=>"a1VERYCODE");
+		private $conn;
+		private $res;
 		/*
 		private $usuari;
 		private $pass;
@@ -15,22 +17,64 @@ class TAccesbd
 		*/
     
         
-        function __construct(){
-            
+    function __construct(){	
+			if(isset($servidor) && $servidor !="" && isset($connectionInfo) && $connectionInfo !="");
+				{
+					$this->conn = sqlsrv_connect( $this->servidor, $this->connectionInfo);
+					echo "funciona";
+				}
 		}
-		
+
+		//Cierra conexión 
+		function __destruct()
+		{
+			if(isset($this->conn))
+			{
+				sqlsrv_close( $this->conn );
+			}
+		}
+
+		//Devuelve cierto si se ha establecido una conexión
 		public function conectado()
 		{
-			$res = false;
-			$conn = sqlsrv_connect( $this->servidor, $this->connectionInfo);
-			
-			if( $conn ) {
-				$res=true;
+			$this->res = false;
+
+			if( $this->conn ) {
+				$this->res=true;
 			}else{
 				die( print_r( sqlsrv_errors(), true));
 			}
 
-			return $res;
+			return ($this->res);
+		}
+
+		//Ejecuta instruccion sql 
+		public function ejecuta_sql ($sql)
+		{
+			$this->res=false;
+			if($this->conectado() && $sql !="" && isset($this->conn))
+			{
+				echo"Conectao en access";
+				$this->res = sqlsrv_query($this->conn,$sql);
+			}
+			return($this->res);
+		}
+
+		//Consulta el dato a base de una instruccion SQL
+		//Devuelve FALSE si no ha podido hacer la consulta, sino devuelve el dato
+		public function consultar_dato ($sql)
+		{
+			$dato=FALSE;
+			if(isset($sql) && $sql !="" && isset($this->conn))
+			{
+				$this->res=sqlsrv_query($this->conn,$sql);
+				if($this->res)
+				{
+					sqlsrv_fetch( $sql );
+					$dato = sqlsrv_get_field( $sql, 0);
+				}
+			}
+			return($dato);
 		}
 		
         

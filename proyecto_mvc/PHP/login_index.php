@@ -16,7 +16,7 @@ if ( ! empty( $_POST ) ) {
 
         if ($conn){
             
-            $sql ="SELECT correo FROM especialista WHERE id_especialista = 1";
+            $sql ="SELECT correo FROM especialista WHERE tipo = 'fisioterapeuta'";
             //$param = 'fisioterapeuta';
             $stmt = sqlsrv_query( $conn, $sql);
 
