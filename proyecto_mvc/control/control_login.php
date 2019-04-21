@@ -2,15 +2,18 @@
     header("Content-Type: text/html;charset=utf-8");
     include_once("../modelo/TUsuario.php");
 
-    $usuario = $_POST["usuario"];
+    $correo = $_POST["correo"];
     $contrasenya = $_POST["contrasenya"];		
 
+
+
+    
     echo '<h1>Control login</h1>';
-    acceder($usuario,$contrasenya);
+    acceder($correo,$contrasenya);
         
-    function acceder($usuario,$contrasenya){
+    function acceder($correo,$contrasenya){
         $l = new TUsuario();
-        $l->acceder($usuario,$contrasenya);
+        $l->acceder($correo,$contrasenya);
     }
 
 
