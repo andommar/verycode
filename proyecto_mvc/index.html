@@ -44,15 +44,15 @@
                     <h3 id="titulo">Iniciar Sesión</h3>
                     <hr>
                     <!--<form id="form-login"  action="control/control_vista.php" method = "post">-->
-                    <form id="form-login" method="post">
+                    <form id="form-login" method="post" action="control/control_login.php">
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="usuario">Nombre de usuario</label>
-                                <input type="text" class="form-control" placeholder="" id="usuario">
+                                <input type="text" class="form-control" placeholder="" name="usuario" id="usuario">
                             </div>
                             <div class="form-group col-md-12">
                                     <label for="contrasenya">Contraseña</label>
-                                    <input type="password" class="form-control" placeholder="" id="contrasenya">
+                                    <input type="password" class="form-control" placeholder="" name="contrasenya" id="contrasenya">
                             </div>
                             <div id="zona-boton" class="form-group col-md-12">
                                 <button class="btn" id="btn-submit" type="submit" value="submit">Entrar</button>

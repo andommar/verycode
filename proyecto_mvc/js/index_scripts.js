@@ -1,4 +1,4 @@
-
+/*
 //Click en botón submit login
   $(document).ready(function() {  
     
@@ -9,6 +9,7 @@
       var error = false;
       var usuario= $("#usuario").val().trim();
       var contrasenya= $("#contrasenya").val().trim();
+      
 
       if(usuario==null || usuario==''){
           $("body").overhang({
@@ -53,3 +54,4 @@
       
     });
   });
+  */

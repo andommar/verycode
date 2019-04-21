@@ -22,7 +22,7 @@ class TAccesbd
 		public function conectado()
 		{
 			$res = false;
-			$conn = sqlsrv_connect( $this->serverName, $this->connectionInfo);
+			$conn = sqlsrv_connect( $this->servidor, $this->connectionInfo);
 			
 			if( $conn ) {
 				$res=true;

@@ -1,13 +1,13 @@
 <?php
 	header("Content-Type: text/html;charset=utf-8");		
-	include_once ("accesbd.php");
+	include_once ("accessbd.php");
 	
 class TUsuario{
 
 
     private $servidor;
-	private $usuario;
-	private $pass;
+	//private $usuario;
+	//private $pass;
 	private $bd;
 	
 	function __construct()
@@ -29,11 +29,11 @@ class TUsuario{
 		$abd = new TAccesbd ();
 
 		if($abd->conectado()){
-			echo 'Conectado campeón';
+			echo '<h1>Conectado campeón</h1>';
 		}
-		else
-			echo 'No conectao luser';
-		
+		else{
+			echo '<h1>No conectao luser</h1>';
+		}
 		
     }
 }
