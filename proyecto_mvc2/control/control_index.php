@@ -5,12 +5,17 @@
    include_once("control.php");
 
     $correo = $_POST["correo"];
-    $contrasenya = $_POST["contrasenya"];		
+    $contrasenya = $_POST["contrasenya"];	
+    $tipo_usuario="";	
 
     $Ctrl= new TControl() ;                             
 
-    $res = $Ctrl->comprobar_usuario($correo,$contrasenya);                
+    $res = $Ctrl->comprobar_usuario($correo,$contrasenya,$tipo_usuario);                
 
+    if($res){
+        $_SESSION["tipo_usuario"]= $tipo_usuario;
+        header("Location: ../anadir-paciente.php");
+    }
 
 
     
