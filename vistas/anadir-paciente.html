@@ -1,4 +1,8 @@
-
+<!--<?php session_start();
+if(!(isset($_SESSION["tipo_usuario"]))){
+    header("Location: index.php");
+}
+?> -->
 <!DOCTYPE html>
 <html>
     <!-- ===============  HEAD ============= -->
@@ -145,7 +149,7 @@
                                 </a>
                                     <div id="desplegable" class="dropdown-menu " aria-labelledby="dropdownMenuLink">
                                     <h6 class="dropdown-header">Usuario</h6>
-                                    <a id="btn-salir" class="dropdown-item" > <span class="ti-power-off"></span>&nbsp;&nbsp;Salir</a>
+                                    <a id="btn-salir" href="logout.php" class="dropdown-item" > <span class="ti-power-off"></span>&nbsp;&nbsp;Salir</a>
                                     </div>
                                 </div>
                                 <!--<div class="dropdown-menu proclinic-box-shadow2 profile animated flipInY">
@@ -187,33 +191,122 @@
                     <!-- FILA 1 | INPUTS -->
                     <div id="cuerpo-pagina-2" class="row"> 
                         <div class="col-lg-12">
-                            <div id="apartado-formulario">
-                                <h3>Mediciones</h3><hr>
-                                <form>
-                                    <div class="form-group" id="weblogin">
-                                        <label for="Select-weblogin">Weblogin:</label>
-                                        &nbsp;
-                                                                    
-                                        <select class="form-control" id="Select-weblogin" name="Select-weblogin" required>
-                                            <option value="" selected="selected"></option>
-                                        </select>
-                                    </div>
-                                
-                                    &nbsp;&nbsp;
-                                
-                                    <div class="form-group" id="tienda">
-                                        <label for="Select-tienda">Tienda:</label>
-                                        &nbsp;
-                                        <select class="form-control" id="Select-tienda" name="Select-tienda">
-                                            <option value="" selected="selected"></option>
-                                        </select>
-                                        &nbsp;&nbsp;&nbsp;
-                                        <div class="form-group">
-                                            <button type="submit" id="btn-buscar" class="btn mb-2">Buscar&nbsp; <i class="fas fa-search"></i></button>
+                            <div id="apartado-usuario">
+                                <h3>Datos personales</h3><hr>
+                                <form class="margen-form">
+                                    <div class="form-row justify-content-center">
+                                        <div class="form-group ancho" id="nombre">
+                                            <label for="input-nombre">Nombre</label>
+                                            &nbsp;
+                                            <input type="text" class="form-control" id="input-nombre"><br>
+                                        </div>
+                                    
+                                        &nbsp;&nbsp;
+                                        
+                                        <div class="form-group ancho" id="apellido1">
+                                            <label for="input-apellido1">Primer apellido</label>
+                                            &nbsp;
+                                            <input type="text" class="form-control" id="input-apellido1"><br>
+                                        </div>
+                                        &nbsp;&nbsp;
+
+                                        <div class="form-group ancho" id="apellido2">
+                                            <label for="input-apellido2">Segundo apellido</label>
+                                            &nbsp;
+                                            <input type="text" class="form-control" id="input-apellido2"><br>
                                         </div>
                                     </div>
+                                    &nbsp;&nbsp;
+                                    <div class="form-row justify-content-center">
+                                        <div class="form-group ancho" id="correo">
+                                            <label for="input-correo">Correo</label>
+                                            &nbsp;
+                                            <input type="email" class="form-control" id="input-correo"><br>
+                                        </div>
+                                            
+                                        &nbsp;&nbsp;
+                                        <div class="form-group ancho" id="pass1">
+                                            <label for="input-pass1">Contraseña</label>
+                                            &nbsp;
+                                            <input type="password" class="form-control" id="input-pass1"><br>
+                                        </div>
+                                        
+                                        &nbsp;&nbsp;
+                                        
+                                        <div class="form-group ancho" id="pass2">
+                                            <label for="input-pass2">Confirmar contraseña</label>
+                                            &nbsp;
+                                            <input type="password" class="form-control" id="input-pass2"><br>
+                                        </div>
+                                    </div>
+                                    
                                 </form>
                             </div>
+
+                            <div id="apartado-historial">
+                                    <h3>Historial clínico</h3><hr>
+                                    <!-- doc_identificacion VARCHAR(30),
+                                    nacionalidad VARCHAR(150),
+                                        raza VARCHAR(150),	
+                                        fecha_nacimiento DATE,
+                                        sexo CHAR(1),
+                                        altura int,
+                                        peso int,
+                                        tipo_congenito VARCHAR(50),
+                                        subtipo_congenito VARCHAR(50),
+                                        accidente VARCHAR(150),
+                                        fecha_debut DATE,
+                                        familiar_linfedema CHAR(1),
+                                        motivo_secundario VARCHAR(50),
+                                        ant_vasculares CHAR(1),
+                                        ant_infeccion_venosa CHAR(1),
+                                        ant_sobrepeso CHAR(1),
+                                        ant_lipedema CHAR(1),
+                                        ant_permeabilidad_cap CHAR(1),
+                                        ant_ansiedad CHAR(1),
+                                        ant_diabetes CHAR(1),
+                                        ant_triquiasis CHAR(1),
+                                        ant_sindromes VARCHAR(150),
+                                    profesion VARCHAR(50),
+                                    /*---- AÑADIDO DE LA TABLA HABITOS----- */
+                                    grado_resp_profesion VARCHAR(2),
+                                        grado_stress_profesion VARCHAR(2),
+                                        /*------------------*/
+                                    medicamentos VARCHAR(50), /*AÑADIDO DE LA TABLA MEDICAMENTOS*/
+                                    -->
+                                    <form class="margen-form">
+                                        <div class="form-row justify-content-center">
+                                            <div class="form-group ancho" id="doc-identificacion">
+                                                <label for="input-doc-identificacion">Documento de identificación</label>
+                                                &nbsp;
+                                                <input type="text" class="form-control" id="input-doc-identificacion"><br>
+                                            </div>
+                                        
+                                            &nbsp;&nbsp;
+                                            
+                                            <div class="form-group ancho" id="nacionalidad">
+                                                <label for="input-nacionalidad">Nacionalidad</label>
+                                                &nbsp;
+                                                <input type="text" class="form-control" id="input-nacionalidad"><br>
+                                            </div>
+                                            &nbsp;&nbsp;
+    
+                                            <div class="form-group ancho" id="raza">
+                                                <label for="input-raza">Raza</label>
+                                                &nbsp;
+                                                <input type="text" class="form-control" id="input-raza"><br>
+                                            </div>
+                                        </div>
+                                        &nbsp;&nbsp;
+                                        
+                                        
+                                    </form>
+                                </div>
+
+
+
+
+
                         </div>
                     </div><!-- Fin cuerpo página-->
                 </div> <!-- Fin columna derecha-->
