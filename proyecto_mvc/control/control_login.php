@@ -1,21 +1,21 @@
 <?php
-    header("Content-Type: text/html;charset=utf-8");
-    include_once("../modelo/TUsuario.php");
+    session_start();                                    
+    header("Content-Type: text/html;charset=utf8"); 
+
+    include_once("control.php");
 
     $correo = $_POST["correo"];
-    $contrasenya = $_POST["contrasenya"];		
+    $contrasenya = $_POST["contrasenya"];	
+    $tipo_usuario="";	
 
+    $Ctrl= new TControl() ;                             
 
+    $res = $Ctrl->comprobar_usuario($correo,$contrasenya,$tipo_usuario);                
 
-    
-    echo '<h1>Control login</h1>';
-    acceder($correo,$contrasenya);
-        
-    function acceder($correo,$contrasenya){
-        $l = new TUsuario();
-        $l->acceder($correo,$contrasenya);
+    if($res){
+        $_SESSION["tipo_usuario"]= $tipo_usuario;
+        header("Location: ../anadir-paciente.php");
     }
-
 
 
 

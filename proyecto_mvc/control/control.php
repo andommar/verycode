@@ -6,9 +6,9 @@ include_once("../modelo/TUsuario.php");
 
 class TControl{
 
-    public function comprobar_usuario($correo,$contrasenya){
+    public function comprobar_usuario($correo,$contrasenya,&$tipo_usuario){
         $usr = new TUsuario();
-        $resultat = $usr->comprobar_usuario($correo,$contrasenya);
+        $resultat = $usr->comprobar_usuario($correo,$contrasenya,$tipo_usuario);
         return ($resultat);
     }
 

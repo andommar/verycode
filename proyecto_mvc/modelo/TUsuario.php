@@ -15,17 +15,39 @@ class TUsuario{
 		
     }
 
-    public function acceder($usuario, $contrasenya){
+    // public function acceder($usuario, $contrasenya){
 		
-		$abd = new TAccesbd ();
+	// 	$abd = new TAccesbd ();
 
-		if($abd->conectado()){
-			header("Location: ../anadir-paciente.html");
+	// 	if($abd->conectado()){
+	// 		header("Location: ../anadir-paciente.html");
+	// 	}
+	// 	else{
+	// 		echo '<h1>No conectao luser</h1>';
+	// 	}
+		
+	// }
+	public function comprobar_usuario($correo, $contrasenya,&$tipo_usuario){
+    
+		$res=false;
+		$abd = new TAccesbd ();
+  
+		if($abd->conectado())
+		{ 	
+		
+			$res=true;
+			$sql="SELECT tipo FROM especialista WHERE correo='$correo'";
+			$stmt = $abd->consultar_dato($sql);
+		}
+		if( $stmt === false ) {
+
+			$res=false;
+			//die( print_r( sqlsrv_errors(), true));
 		}
 		else{
-			echo '<h1>No conectao luser</h1>';
+			$tipo_usuario = $stmt;
 		}
-		
+	  return $res;
 	}
 	
 	public function registro_admin($correo,$pass,$pass2,$nombre,$apellido,$apellido2,$tipo)

@@ -1,5 +1,5 @@
 /*FORMULARIOS*/
-#apartado-formulario{
+#apartado-formulario, #apartado-usuario, #apartado-historial{
     background: #fff;
     margin-top: 20px;
     padding: 20px;
@@ -13,7 +13,17 @@
     margin-top: 20px;
     margin-bottom: 33px;
 }
-#apartado-formulario h3{
+#apartado-formulario h3, #apartado-usuario h3, #apartado-historial h3{
     color: #38aece;
     font-size: 19px;
+}
+
+.ancho{
+    width: 25%;
+    margin-right: 2em;
+}
+
+.margen-form{
+    margin-left: 0.4em;
+    margin-top: 2em;
 }

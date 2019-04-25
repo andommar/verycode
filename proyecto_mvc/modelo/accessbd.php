@@ -4,7 +4,8 @@ header("Content-Type: text/html;charset=utf-8");
 
 class TAccesbd
 {
-		private $servidor = "oracle.ilerna.com, 1433";
+	//oracle.ilerna.com, 1433
+		private $servidor = "192.168.3.26, 1433";
 		private $connectionInfo = array( "Database"=>"DAW2_VERYCODE", "UID"=>"DAW2_VERYCODE", "PWD"=>"a1VERYCODE");
 		private $conn;
 		private $res;
@@ -54,7 +55,7 @@ class TAccesbd
 			$this->res=false;
 			if($this->conectado() && $sql !="" && isset($this->conn))
 			{
-				echo"Conectao en access";
+				
 				$this->res = sqlsrv_query($this->conn,$sql);
 			}
 			return($this->res);
@@ -67,11 +68,20 @@ class TAccesbd
 			$dato=FALSE;
 			if(isset($sql) && $sql !="" && isset($this->conn))
 			{
+			
 				$this->res=sqlsrv_query($this->conn,$sql);
 				if($this->res)
 				{
-					sqlsrv_fetch( $sql );
-					$dato = sqlsrv_get_field( $sql, 0);
+					
+					if((sqlsrv_fetch($this->res)===FALSE)){
+					
+						//die(print_r(sqlsrv_errors(), true));
+					}
+					else{
+						
+							$dato = sqlsrv_get_field( $this->res, 0);
+					}
+					
 				}
 			}
 			return($dato);
