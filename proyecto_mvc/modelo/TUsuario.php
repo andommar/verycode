@@ -6,43 +6,12 @@ class TUsuario{
 
 
     private $servidor;
-<<<<<<< HEAD
-	private $usuario;
-	private $pass;
-=======
 	//private $usuario;
 	//private $pass;
->>>>>>> anna
 	private $bd;
 	
 	function __construct()
 	{
-<<<<<<< HEAD
-
-    }
-
-	/*
-	Conexión: Microsoft SQL Server
-	host: oracle.ilerna.com
-	puerto: 1433
-	Usuario: DAW2_VERYCODE
-	Pass: a1VERYCODE
-
-	*/
-
-    public function acceder($usuario, $contrasenya){
-		
-		$abd = new TAccesbd ();
-
-		if($abd->conectado()){
-			echo 'Conectado campeón';
-		}
-		else
-			echo 'No conectao luser';
-		
-		
-    }
-=======
 		
     }
 
@@ -100,7 +69,6 @@ class TUsuario{
 
 		return $res;
 	}
->>>>>>> anna
 }
 
 ?>
