@@ -4,8 +4,16 @@ header("Content-Type: text/html;charset=utf-8");
 
 class TAccesbd
 {
+<<<<<<< HEAD
 		private $servidor = "oracle.ilerna.com, 1433";
 		private $connectionInfo = array( "Database"=>"DAW2_VERYCODE", "UID"=>"DAW2_VERYCODE", "PWD"=>"a1VERYCODE");
+=======
+	//oracle.ilerna.com, 1433
+		private $servidor = "192.168.3.26, 1433";
+		private $connectionInfo = array( "Database"=>"DAW2_VERYCODE", "UID"=>"DAW2_VERYCODE", "PWD"=>"a1VERYCODE");
+		private $conn;
+		private $res;
+>>>>>>> anna
 		/*
 		private $usuari;
 		private $pass;
@@ -15,6 +23,7 @@ class TAccesbd
 		*/
     
         
+<<<<<<< HEAD
         function __construct(){
             
 		}
@@ -32,6 +41,76 @@ class TAccesbd
 
 			return $res;
 		}
+=======
+    function __construct(){	
+			if(isset($servidor) && $servidor !="" && isset($connectionInfo) && $connectionInfo !="");
+				{
+					$this->conn = sqlsrv_connect( $this->servidor, $this->connectionInfo);
+					echo "funciona";
+				}
+		}
+
+		//Cierra conexión 
+		function __destruct()
+		{
+			if(isset($this->conn))
+			{
+				sqlsrv_close( $this->conn );
+			}
+		}
+
+		//Devuelve cierto si se ha establecido una conexión
+		public function conectado()
+		{
+			$this->res = false;
+
+			if( $this->conn ) {
+				$this->res=true;
+			}else{
+				die( print_r( sqlsrv_errors(), true));
+			}
+
+			return ($this->res);
+		}
+
+		//Ejecuta instruccion sql 
+		public function ejecuta_sql ($sql)
+		{
+			$this->res=false;
+			if($this->conectado() && $sql !="" && isset($this->conn))
+			{
+				
+				$this->res = sqlsrv_query($this->conn,$sql);
+			}
+			return($this->res);
+		}
+
+		//Consulta el dato a base de una instruccion SQL
+		//Devuelve FALSE si no ha podido hacer la consulta, sino devuelve el dato
+		public function consultar_dato ($sql)
+		{
+			$dato=FALSE;
+			if(isset($sql) && $sql !="" && isset($this->conn))
+			{
+			
+				$this->res=sqlsrv_query($this->conn,$sql);
+				if($this->res)
+				{
+					
+					if((sqlsrv_fetch($this->res)===FALSE)){
+					
+						//die(print_r(sqlsrv_errors(), true));
+					}
+					else{
+						
+							$dato = sqlsrv_get_field( $this->res, 0);
+					}
+					
+				}
+			}
+			return($dato);
+		}
+>>>>>>> anna
 		
         
 
