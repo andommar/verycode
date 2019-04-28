@@ -69,12 +69,20 @@ $result = sqlsrv_query( $conn, $sql);
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <?php 
-                        while($row=)
-                        ?> 
-                        -->
-                    </tr>
+                    <?php 
+                        while($row=sqlsrv_fetch_array($result, SQLSRV_FETCH_ASSOC))
+                        {
+                    ?> 
+                            <tr>
+                                <td><?php echo $row['id_user']; ?></td>
+                                <td><?php echo $row['nombre']; ?></td>
+                                <td><?php echo $row['apellido1']." ".$row['apellido2']; ?></td>
+                                <td><input type="button" name="ver" value="ver" id="<?php echo $row['id_user']; ?>" class="ver-datos"></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+
                 </tbody>
             </table>
         </div>
