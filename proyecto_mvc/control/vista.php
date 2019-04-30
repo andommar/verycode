@@ -15,8 +15,6 @@ if(isset($_POST["opcion"]))
     {
         case "registro_admin":
 
-            
-
             $correo = $_POST["correo"];
             $pass = $_POST["pass"];
             $pass2 = $_POST["pass2"]; 
@@ -28,12 +26,37 @@ if(isset($_POST["opcion"]))
             $error=$c->registro_admin($correo, $pass, $pass2, $nombre, $apellido, $apellido2, $tipo);
             if($error==0)
             {
-                echo "Usuario registrado correctamente";
+                echo "Especialista registrado correctamente";
             }
             else
                 echo "Fallo registro";
 
         break;
+
+        case "registro_paciente":
+
+        $correo = $_POST["correo"];
+        $pass = $_POST["pass"];
+        $pass2 = $_POST["pass2"]; 
+        $nombre = $_POST["nombre"];
+        $apellido = $_POST["apellido"];
+        $apellido2 = $_POST["apellido2"];
+        $id_especialista = $_POST["id_especialista"];
+        
+
+        $error=$c->registro_user($correo,$pass,$pass2,$nombre,$apellido,$apellido2,$id_especialista)
+        if($error==0)
+        {
+            echo "Usuario registrado correctamente";
+        }
+        else
+            echo "Fallo registro";
+
+        break;
+
+
+
+
 
     }
 }
