@@ -44,7 +44,7 @@
                     <h3 id="titulo">Iniciar Sesión</h3>
                     <hr>
                     <!--<form id="form-login"  action="control/control_vista.php" method = "post">-->
-                    <form id="form-login" method="post" action="control/control_login.php">
+                    <form id="form-login" method="post">
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="correo">Correo</label>
@@ -66,6 +66,36 @@
         <script src="js/jquery-ui/external/jquery/jquery.js"></script>
         <script src="js/jquery-ui/jquery-ui.min.js"></script>
         <script type="text/javascript" src="js/overhang/dist/overhang.min.js"></script>  
+        <script>
+        $(document).ready(function() { 
+            $("#form-login").submit(function(event){
 
+                event.preventDefault();
+                var usuario= $("#correo").val().trim();
+                var contrasenya= $("#contrasenya").val().trim();
+
+                console.log("usuario: "+usuario);
+                console.log("contraseña: "+contrasenya);
+
+                //action="control/control_login.php"
+
+                $.ajax({
+                    data: {usuario : usuario, contrasenya : contrasenya},
+                    type: "POST",
+                    url: "control/control_login.php",
+                })        
+                .done(function( data, textStatus, jqXHR ) {
+                    console.log("ajax done");
+                })
+                .fail(function( jqXHR, textStatus, errorThrown ) {
+                    if ( console && console.log ) {
+                        console.log( "La solicitud ajax de acceso a usuarios.json ha fallado: " +  textStatus);
+                    }
+                });
+            });
+
+
+        });
+        </script>
     </body>
 </html>

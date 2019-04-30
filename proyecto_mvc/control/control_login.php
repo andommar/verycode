@@ -8,6 +8,8 @@
     $contrasenya = $_POST["contrasenya"];	
     $tipo_usuario="";	
 
+    echo("<h1>control login</h1>");
+
     $Ctrl= new TControl() ;                             
 
     $res = $Ctrl->comprobar_usuario($correo,$contrasenya,$tipo_usuario);                
