@@ -1,5 +1,6 @@
 <?php
-$serverName = "oracle.ilerna.com, 1433"; //serverName\instanceName, portNumber (por defecto es 1433)
+//oracle.ilerna.com, 1433
+$serverName = "192.168.3.26, 1433"; //serverName\instanceName, portNumber (por defecto es 1433)
 $connectionInfo = array( "Database"=>"DAW2_VERYCODE", "UID"=>"DAW2_VERYCODE", "PWD"=>"a1VERYCODE");
 $conn = sqlsrv_connect( $serverName, $connectionInfo);
 

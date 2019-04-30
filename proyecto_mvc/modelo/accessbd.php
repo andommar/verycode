@@ -4,16 +4,11 @@ header("Content-Type: text/html;charset=utf-8");
 
 class TAccesbd
 {
-<<<<<<< HEAD
-		private $servidor = "oracle.ilerna.com, 1433";
-		private $connectionInfo = array( "Database"=>"DAW2_VERYCODE", "UID"=>"DAW2_VERYCODE", "PWD"=>"a1VERYCODE");
-=======
 	//oracle.ilerna.com, 1433
 		private $servidor = "192.168.3.26, 1433";
 		private $connectionInfo = array( "Database"=>"DAW2_VERYCODE", "UID"=>"DAW2_VERYCODE", "PWD"=>"a1VERYCODE");
 		private $conn;
 		private $res;
->>>>>>> anna
 		/*
 		private $usuari;
 		private $pass;
@@ -23,25 +18,6 @@ class TAccesbd
 		*/
     
         
-<<<<<<< HEAD
-        function __construct(){
-            
-		}
-		
-		public function conectado()
-		{
-			$res = false;
-			$conn = sqlsrv_connect( $this->servidor, $this->connectionInfo);
-			
-			if( $conn ) {
-				$res=true;
-			}else{
-				die( print_r( sqlsrv_errors(), true));
-			}
-
-			return $res;
-		}
-=======
     function __construct(){	
 			if(isset($servidor) && $servidor !="" && isset($connectionInfo) && $connectionInfo !="");
 				{
@@ -110,7 +86,6 @@ class TAccesbd
 			}
 			return($dato);
 		}
->>>>>>> anna
 		
         
 
