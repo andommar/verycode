@@ -28,10 +28,10 @@ if(isset($_POST["opcion"]))
             $error=$c->registro_admin($correo, $pass, $pass2, $nombre, $apellido, $apellido2, $tipo);
             if($error==0)
             {
-                echo "Usuario registrado correctamente";
+                //echo "Usuario registrado correctamente";
             }
             else
-                echo "Fallo registro";
+                //echo "Fallo registro";
 
         break;
 

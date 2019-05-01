@@ -36,7 +36,7 @@ class TUsuario{
 		{ 	
 		
 			$res=true;
-			$sql="SELECT tipo FROM especialista WHERE correo='$correo'";
+			$sql="SELECT tipo FROM especialista WHERE correo='$correo' AND pass='$contrasenya' ";
 			$stmt = $abd->consultar_dato($sql);
 		}
 		if( $stmt === false ) {

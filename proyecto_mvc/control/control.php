@@ -5,8 +5,9 @@ header("Content-Type: text/html;charset=utf-8");
 include_once("../modelo/TUsuario.php");
 
 class TControl{
-
+    
     public function comprobar_usuario($correo,$contrasenya,&$tipo_usuario){
+        //echo("<h1>CACA DE VACA GIGANTE</h1>");
         $usr = new TUsuario();
         $resultat = $usr->comprobar_usuario($correo,$contrasenya,$tipo_usuario);
         return ($resultat);

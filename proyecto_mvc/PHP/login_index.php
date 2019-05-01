@@ -25,12 +25,12 @@ if ( ! empty( $_POST ) ) {
            } 
 
             $correo = sqlsrv_get_field( $stmt, 0);
-            echo "$correo: ";
+            //echo "$correo: ";
 
         
 
         }else{
-            echo "No se pudo establecer la conexión.<br />";
+            //echo "No se pudo establecer la conexión.<br />";
             die( print_r( sqlsrv_errors(), true));
         }
     

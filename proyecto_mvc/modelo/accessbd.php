@@ -4,8 +4,8 @@ header("Content-Type: text/html;charset=utf-8");
 
 class TAccesbd
 {
-	//oracle.ilerna.com, 1433
-		private $servidor = "192.168.3.26, 1433";
+	//192.168.3.26, 1433
+		private $servidor = "oracle.ilerna.com, 1433";
 		private $connectionInfo = array( "Database"=>"DAW2_VERYCODE", "UID"=>"DAW2_VERYCODE", "PWD"=>"a1VERYCODE");
 		private $conn;
 		private $res;
@@ -22,7 +22,7 @@ class TAccesbd
 			if(isset($servidor) && $servidor !="" && isset($connectionInfo) && $connectionInfo !="");
 				{
 					$this->conn = sqlsrv_connect( $this->servidor, $this->connectionInfo);
-					echo "funciona";
+					//echo "funciona";
 				}
 		}
 

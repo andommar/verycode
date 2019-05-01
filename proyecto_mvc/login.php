@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <!-- ===============  HEAD ============= -->
@@ -71,21 +72,40 @@
             $("#form-login").submit(function(event){
 
                 event.preventDefault();
-                var usuario= $("#correo").val().trim();
+                var correo= $("#correo").val().trim();
                 var contrasenya= $("#contrasenya").val().trim();
 
-                console.log("usuario: "+usuario);
+                console.log("correo: "+correo);
                 console.log("contraseña: "+contrasenya);
 
                 //action="control/control_login.php"
 
                 $.ajax({
-                    data: {usuario : usuario, contrasenya : contrasenya},
-                    type: "POST",
+                    method: "POST",
+                    data: {correo : correo, contrasenya : contrasenya},
                     url: "control/control_login.php",
+                    async: true
                 })        
-                .done(function( data, textStatus, jqXHR ) {
+                .done(function( msg ) {                             	
                     console.log("ajax done");
+                    var resultado = msg;
+                    if(resultado=="true"){
+                        //console.log("existe usuario");
+                        window.location.assign("anadir-paciente.php");
+                    }
+                    else{
+                        //console.log("no existe usuario");
+                        
+                        //mensaje popup de error
+                        $("body").overhang({
+                            type: "error",
+                            message: "ERROR. Correo o contraseña incorrectos",
+                            duration: 3,
+                            overlay: true,
+                            closeConfirm: true
+                        });
+                    }
+                    
                 })
                 .fail(function( jqXHR, textStatus, errorThrown ) {
                     if ( console && console.log ) {
@@ -99,3 +119,4 @@
         </script>
     </body>
 </html>
+
