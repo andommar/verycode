@@ -68,87 +68,69 @@
         <script src="js/jquery-ui/jquery-ui.min.js"></script>
         <script type="text/javascript" src="js/overhang/dist/overhang.min.js"></script>  
         <script>
-        $(document).ready(function() { 
-            $("#form-login").submit(function(event){
+            $(document).ready(function() { 
+                $("#form-login").submit(function(event){
 
-                event.preventDefault();
-                var correo= $("#correo").val().trim();
-                var contrasenya= $("#contrasenya").val().trim();
+                    event.preventDefault();
+                    var correo= $("#correo").val().trim();
+                    var contrasenya= $("#contrasenya").val().trim();
 
-                console.log("correo: "+correo);
-                console.log("contraseña: "+contrasenya);
+                    console.log("correo: "+correo);
+                    console.log("contraseña: "+contrasenya);
 
-                //action="control/control_login.php"
+                    //action="control/control_login.php"
 
-                $.ajax({
-                    method: "POST",
-                    data: {correo : correo, contrasenya : contrasenya},
-                    url: "control/control_login.php",
-                    async: true
-                })        
-                .done(function( msg ) {                             	
-                    console.log("ajax done");
-                    console.log(msg);
-                    var datos = $.parseJSON(msg);
-                    var usuario_correcto = datos.usuario_correcto;
-                    var tipo_usuario = datos.tipo_usuario;
-                    if(usuario_correcto){
-                        if(tipo_usuario=="especialista"){
-                            //mensaje popup de error
-                            $("body").overhang({
-                                type: "error",
-                                message: "ERROR. Como especialista no tienes acceso a esta plataforma.",
-                                duration: 6,
-                                overlay: true,
-                                closeConfirm: true
-                            });
+                    $.ajax({
+                        method: "POST",
+                        data: {correo : correo, contrasenya : contrasenya},
+                        url: "control/control_login.php",
+                        async: true
+                    })        
+                    .done(function( msg ) {                             	
+                        console.log("ajax done");
+                        console.log(msg);
+                        var datos = $.parseJSON(msg);
+                        var usuario_correcto = datos.usuario_correcto;
+                        var tipo_usuario = datos.tipo_usuario;
+                        if(usuario_correcto){
+                            if(tipo_usuario=="especialista"){
+                                //mensaje popup de error
+                                $("body").overhang({
+                                    type: "error",
+                                    message: "ERROR. Como especialista no tienes acceso a esta plataforma.",
+                                    duration: 6,
+                                    overlay: true,
+                                    closeConfirm: true
+                                });
+                            }
+                            else if(tipo_usuario=="fisioterapeuta"){
+                                window.location.assign("pagina-principal.php");
+                            }
+                            else if(tipo_usuario=="administrador"){
+                                window.location.assign("pagina-principal.php");
+                            }
                         }
-                        else if(tipo_usuario=="fisioterapeuta"){
-                            window.location.assign("anadir-paciente.php");
+                        else{
+                                //mensaje popup de error
+                                $("body").overhang({
+                                    type: "error",
+                                    message: "ERROR. Correo o contraseña incorrectos",
+                                    duration: 3,
+                                    overlay: true,
+                                    closeConfirm: true
+                                });
                         }
-                        else if(tipo_usuario=="administrador"){
-                            window.location.assign("anadir-paciente.php");
-                        }
-                    }
-                    else{
-                            //mensaje popup de error
-                            $("body").overhang({
-                                type: "error",
-                                message: "ERROR. Correo o contraseña incorrectos",
-                                duration: 3,
-                                overlay: true,
-                                closeConfirm: true
-                            });
-                    }
-                    //console.log("usuario correcto:"+datos.usuario_correcto);
-                    //var resultado = msg;
-                    // if(resultado=="true"){
-                    //     //console.log("existe usuario");
-                    //     window.location.assign("anadir-paciente.php");
-                    // }
-                    // else{
-                    //     //console.log("no existe usuario");
                         
-                    //     //mensaje popup de error
-                    //     $("body").overhang({
-                    //         type: "error",
-                    //         message: "ERROR. Correo o contraseña incorrectos",
-                    //         duration: 3,
-                    //         overlay: true,
-                    //         closeConfirm: true
-                    //     });
-                    // }
-                    
-                })
-                .fail(function( jqXHR, textStatus, errorThrown ) {
-                    if ( console && console.log ) {
-                        console.log( "La solicitud ajax de acceso a usuarios.json ha fallado: " +  textStatus);
-                    }
+                    })
+                    .fail(function( jqXHR, textStatus, errorThrown ) {
+                        if ( console && console.log ) {
+                            console.log( "La solicitud ajax de acceso a usuarios.json ha fallado: " +  textStatus);
+                        }
+                    });
                 });
+
+
             });
-
-
-        });
         </script>
     </body>
 </html>

@@ -5,7 +5,7 @@ if ( !(isset($_SESSION["tipo_usuario"])) ){
     header("Location: login.php"); 
 } 
 else{ 
-    header("Location: anadir-paciente.php"); 
+    header("Location: pagina-principal.php"); 
 } 
  
 ?>

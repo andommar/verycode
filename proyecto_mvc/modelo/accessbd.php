@@ -6,8 +6,14 @@ class TAccesbd
 {
 	//oracle.ilerna.com, 1433 -> CASA
 	//192.168.3.26, 1433 -> CLASE
+
+	//BASE DE DATOS VERY CODE
+	// private $servidor = "192.168.3.26, 1433";
+	// private $connectionInfo = array( "Database"=>"DAW2_VERYCODE", "UID"=>"DAW2_VERYCODE", "PWD"=>"a1VERYCODE");
+
+
 		private $servidor = "192.168.3.26, 1433";
-		private $connectionInfo = array( "Database"=>"DAW2_VERYCODE", "UID"=>"DAW2_VERYCODE", "PWD"=>"a1VERYCODE");
+		private $connectionInfo = array( "Database"=>"ONCOSALUT", "UID"=>"DAM2_VESTIGIUM", "PWD"=>"Vestigium2019");
 		private $conn;
 		private $res;
 		/*

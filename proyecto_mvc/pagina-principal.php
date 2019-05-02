@@ -7,7 +7,7 @@
 <html>
     <!-- ===============  HEAD ============= -->
     <head>
-        <title>Añadir paciente</title>
+        <title>LOGO</title>
         <meta charset="utf-8">
         <!-- Mobile First -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,14 +51,14 @@
                         <ul class="list-unstyled components">
 
                             <!-- Apartado "PÁGINA PRINCIPAL"-->
-                            <li class="espaciado-desplegable">
-                                <a href="index.html">
+                            <li class="active espaciado-desplegable">
+                                <a href="pagina-principal.php">
                                     <span class="ti-home"></span> Página Principal
                                 </a>
                             </li>
 
                             <!-- Apartado "PACIENTES"-->
-                            <li class="active espaciado-desplegable apartados">
+                            <li class="espaciado-desplegable apartados">
                                 <a href="#nav-pacientes" data-toggle="collapse" aria-expanded="false">
                                     <span class="ti-wheelchair"></span> Pacientes
                                 </a>
@@ -97,8 +97,8 @@
                                             <a href="terapeutas.html">Todos los terapeutas</a>
                                         </li>
                                 </ul>
-                            </li>
-                             -->
+                            </li> -->
+
                             <!-- Apartado "CALENDARIO"-->
                             <li class="espaciado-desplegable apartados">
                                     <a href="#nav-calendario" data-toggle="collapse" aria-expanded="false" class="collapsed">
@@ -168,7 +168,7 @@
                     <div class="row" id="grupo-titulo-pagina">
                         <!-- Título -->
                         <div class="col-md-6" id="titulo">
-                            <h3 class="block-title">Añadir Paciente</h3>
+                            <h3 class="block-title">Página Principal</h3>
                         </div>
                         <!-- Breadcrumb -->
                         <div class="col-md-6">
@@ -176,149 +176,75 @@
                                 <li class="breadcrumb-item color-blanco">
                                     <a href="pagina-principal.php">
                                         <span class="ti-home"></span>
-                                        &nbsp;&nbsp;Página principal
+                                        &nbsp;&nbsp;Página principal&nbsp;&nbsp;
                                     </a>
                                 </li>
-                                
-                                <li class="breadcrumb-item color-blanco">
-                                        Paciente
-                                </li>
-                                <li class="breadcrumb-item color-blanco">
-                                    <a href="anadir-paciente.php">
-                                        Añadir Paciente
-                                    </a>
-                                </li>
-                               
+                                <!--
+                                <li class="breadcrumb-item">Doctors</li>
+                                <li class="breadcrumb-item active">Add Doctor</li>
+                                -->
                             </ol>
                         </div>
                     </div> <!-- Fin fila -->
 
                      <!-- Cuerpo página (lado derecho)-->
-                    <!-- FILA 1 | INPUTS -->
-                    <div id="cuerpo-pagina-2" class="row"> 
-                        <div class="col-lg-12">
-                            <div id="apartado-usuario">
-                                <h3>Datos personales</h3><hr>
-                                <!--  TABLA usuario  -->
-                                <form class="margen-form">
-                                    <div class="form-row justify-content-center">
-                                        <div class="form-group ancho" id="input_nombre">
-                                            <label for="nombre">Nombre</label>
-                                            &nbsp;
-                                            <input type="text" class="form-control" id="nombre" name="nombre"><br>
-                                        </div>
-                                    
-                                        &nbsp;&nbsp;
-                                        
-                                        <div class="form-group ancho" id="input_apellido1">
-                                            <label for="apellido1">Primer apellido</label>
-                                            &nbsp;
-                                            <input type="text" class="form-control" id="apellido1"><br>
-                                        </div>
-                                        &nbsp;&nbsp;
-
-                                        <div class="form-group ancho" id="input_apellido2">
-                                            <label for="apellido2">Segundo apellido</label>
-                                            &nbsp;
-                                            <input type="text" class="form-control" name="apellido1" id="apellido2"><br>
-                                        </div>
-                                    </div>
-                                    &nbsp;&nbsp;
-                                    <div class="form-row justify-content-center">
-                                        <div class="form-group ancho" id="input_correo">
-                                            <label for="correo">Correo</label>
-                                            &nbsp;
-                                            <input type="email" class="form-control" name="correo" id="correo"><br>
-                                        </div>
-                                            
-                                        &nbsp;&nbsp;
-                                        <div class="form-group ancho" id="input_pass">
-                                            <label for="pass">Contraseña</label>
-                                            &nbsp;
-                                            <input type="password" class="form-control" name="pass" id="pass"><br>
-                                        </div>
-                                        
-                                        &nbsp;&nbsp;
-                                        
-                                        <div class="form-group ancho" id="pass2">
-                                            <label for="pass2">Confirmar contraseña</label>
-                                            &nbsp;
-                                            <input type="password" class="form-control" name="pass2" id="pass2"><br>
-                                        </div>
-                                    </div>
-                                    
-                                </form>
-                            </div>
-
-                            <div id="apartado-historial">
-                                    <h3>Historial clínico</h3><hr>
-                                    <!--  TABLA historial_clinico -->
-                                    <form class="margen-form">
-                                        <div class="form-row justify-content-center">
-                                            <div class="form-group ancho" id="input_doc_identificacion">
-                                                <label for="doc_identificacion">Documento de identificación</label>
-                                                &nbsp;
-                                                <input class="form-control" id="doc_identificacion"><br>
-                                            </div>
-                                        
-                                            &nbsp;&nbsp;
-                                            
-                                            <div class="form-group ancho" id="input_nacionalidad">
-                                                <label for="nacionalidad">Nacionalidad</label>
-                                                &nbsp;
-                                                <input type="text" class="form-control" id="nacionalidad"><br>
-                                            </div>
-                                            &nbsp;&nbsp;
-    
-                                            <div class="form-group ancho" id="raza">
-                                                <label for="input_raza">Raza</label>
-                                                &nbsp;
-                                                <input type="text" class="form-control" id="input_raza"><br>
-                                            </div>
-                                        </div>
-                                        <div class="form-row justify-content-center">
-                                            <div class="form-group ancho" id="input_fecha_nacimiento">
-                                                <label for="fecha_nacimiento">Fecha de nacimiento</label>
-                                                &nbsp;
-                                                <input type="date" class="form-control" id="fecha_nacimiento"><br>
-                                            </div>
-                                            <div class="form-group" id="tienda">
-                                                <label for="Select-tienda">Tienda:</label>
-                                                &nbsp;
-                                                <select class="form-control" id="Select-tienda" name="Select-tienda">
-                                                </select>
-                                                &nbsp;&nbsp;&nbsp;
-                                                <div class="form-group">
-                                                    <button type="submit" id="btn-buscar" class="btn mb-2">Buscar&nbsp; <i class="fas fa-search"></i></button>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group ancho" id="select_sexo">
-                                                <label for="sexo">Sexo</label>
-                                                &nbsp;
-                                                <select id="sexo">
-                                                    <option value="h">Hombre</option>
-                                                    <option value="m">Mujer</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group ancho" id="input_fecha_nacimiento">
-                                                <label for="fecha_nacimiento">Fecha de nacimiento</label>
-                                                &nbsp;
-                                                <input type="date" class="form-control" id="fecha_nacimiento"><br>
-                                            </div>
-                                        </div>
-                                        &nbsp;&nbsp;
-                                        
-                                        
-                                    </form>
+                    <!-- FILA 1 | ESTADÍSTICAS GENERALES-->
+                    <div id="cuerpo-pagina-1" class="row"> 
+                        <div class="col-lg-4">
+                            <div class="area-cuadro sombra-cuadro color-azul">
+                                <div class="widget-izq">
+                                    <span class="ti-user"></span>
                                 </div>
-
-
-
-
-
+                                <div class="widget-der">
+                                    <h4 class="wiget-titulo">Pacientes</h4>
+                                    <span class="numero">348</span>
+                                    <p class="flecha-inc mb-0"><span class="ti-angle-up"></span> +20% Aumento</p>
+                                </div>
+                            </div>
                         </div>
-                    </div><!-- Fin cuerpo página-->
+                        <div class="col-lg-4">
+                            <div class="area-cuadro sombra-cuadro color-azul">
+                                <div class="widget-izq">
+                                    <span class="ti-user"></span>
+                                </div>
+                                <div class="widget-der">
+                                    <h4 class="wiget-titulo">Pacientes</h4>
+                                    <span class="numero">348</span>
+                                    <p class="flecha-inc mb-0"><span class="ti-angle-up"></span> +20% Aumento</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="area-cuadro sombra-cuadro color-azul">
+                                <div class="widget-izq">
+                                    <span class="ti-user"></span>
+                                </div>
+                                <div class="widget-der">
+                                    <h4 class="wiget-titulo">Pacientes</h4>
+                                    <span class="numero">348</span>
+                                    <p class="flecha-inc mb-0"><span class="ti-angle-up"></span> +20% Aumento</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FILA 2 | GRÁFICAS -->
+                    <div id="cuerpo-pagina-2" class="row"> 
+                        <div class="col-lg-4 align-middle">
+                            <div class="area-cuadro sombra-cuadro color-azul">
+                                <canvas id ="lineChart" height="200" width="400"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="area-cuadro sombra-cuadro color-azul">
+                                <canvas id ="lineChart" height="200" width="400"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="area-cuadro sombra-cuadro color-azul">
+                                <canvas id ="lineChart" height="200" width="400"></canvas>
+                            </div>
+                        </div>
+                    </div>
                 </div> <!-- Fin columna derecha-->
             </div> <!-- ROW -->
 
@@ -326,9 +252,8 @@
         </div><!-- CONTAINER FLUID-->
 
         <!-- SCRIPTS -->
-        <script>
-           
-        </script>
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+        <script src="js/grafica1.js"></script>
 
     </body>
 </html>
