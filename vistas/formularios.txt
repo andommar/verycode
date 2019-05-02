@@ -1,0 +1,10 @@
+        <label>Correo:</label>
+        <input type="text" name="correo"/>
+        <label>Pass:</label>
+        <input type="text" name="pass"/>
+        <label>Pass2:</label>
+        <input type="text" name="pass2"/>
+        <label>Apellido1:</label>
+        <input type="text" name="apellido1"/>
+        <label>Apellido2:</label>
+        <input type="text" name="apellido2"/>
