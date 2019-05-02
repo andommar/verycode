@@ -4,8 +4,9 @@ header("Content-Type: text/html;charset=utf-8");
 
 class TAccesbd
 {
-	//192.168.3.26, 1433
-		private $servidor = "oracle.ilerna.com, 1433";
+	//oracle.ilerna.com, 1433 -> CASA
+	//192.168.3.26, 1433 -> CLASE
+		private $servidor = "192.168.3.26, 1433";
 		private $connectionInfo = array( "Database"=>"DAW2_VERYCODE", "UID"=>"DAW2_VERYCODE", "PWD"=>"a1VERYCODE");
 		private $conn;
 		private $res;

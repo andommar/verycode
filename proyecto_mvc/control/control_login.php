@@ -10,15 +10,16 @@
     $res=false;
     $Ctrl= new TControl() ;                             
 
-    $res = $Ctrl->comprobar_usuario($correo,$contrasenya,$tipo_usuario);                
-
-    echo json_encode($res); //devolvemos el resultado de si existe o no el usuario
-   
-
+    $res = $Ctrl->comprobar_usuario($correo,$contrasenya,$tipo_usuario);      
     if($res){
-        $_SESSION["tipo_usuario"]= $tipo_usuario; 
+        //Guardamos la variable de sesión sólo si se trata del admin o del fisio
+        if($tipo_usuario!='especialista' && $tipo_usuario!=""){
+            $_SESSION["tipo_usuario"]= $tipo_usuario; 
+        }
     }
-      
+    $datos = array("usuario_correcto"=>$res,"tipo_usuario"=>$tipo_usuario);
+    echo json_encode($datos);
+    //echo json_encode($res); //devolvemos el resultado de si existe o no el usuario
         
 
    

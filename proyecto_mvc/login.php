@@ -88,23 +88,56 @@
                 })        
                 .done(function( msg ) {                             	
                     console.log("ajax done");
-                    var resultado = msg;
-                    if(resultado=="true"){
-                        //console.log("existe usuario");
-                        window.location.assign("anadir-paciente.php");
+                    console.log(msg);
+                    var datos = $.parseJSON(msg);
+                    var usuario_correcto = datos.usuario_correcto;
+                    var tipo_usuario = datos.tipo_usuario;
+                    if(usuario_correcto){
+                        if(tipo_usuario=="especialista"){
+                            //mensaje popup de error
+                            $("body").overhang({
+                                type: "error",
+                                message: "ERROR. Como especialista no tienes acceso a esta plataforma.",
+                                duration: 6,
+                                overlay: true,
+                                closeConfirm: true
+                            });
+                        }
+                        else if(tipo_usuario=="fisioterapeuta"){
+                            window.location.assign("anadir-paciente.php");
+                        }
+                        else if(tipo_usuario=="administrador"){
+                            window.location.assign("anadir-paciente.php");
+                        }
                     }
                     else{
-                        //console.log("no existe usuario");
-                        
-                        //mensaje popup de error
-                        $("body").overhang({
-                            type: "error",
-                            message: "ERROR. Correo o contraseña incorrectos",
-                            duration: 3,
-                            overlay: true,
-                            closeConfirm: true
-                        });
+                            //mensaje popup de error
+                            $("body").overhang({
+                                type: "error",
+                                message: "ERROR. Correo o contraseña incorrectos",
+                                duration: 3,
+                                overlay: true,
+                                closeConfirm: true
+                            });
                     }
+                    //console.log("usuario correcto:"+datos.usuario_correcto);
+                    //var resultado = msg;
+                    // if(resultado=="true"){
+                    //     //console.log("existe usuario");
+                    //     window.location.assign("anadir-paciente.php");
+                    // }
+                    // else{
+                    //     //console.log("no existe usuario");
+                        
+                    //     //mensaje popup de error
+                    //     $("body").overhang({
+                    //         type: "error",
+                    //         message: "ERROR. Correo o contraseña incorrectos",
+                    //         duration: 3,
+                    //         overlay: true,
+                    //         closeConfirm: true
+                    //     });
+                    // }
                     
                 })
                 .fail(function( jqXHR, textStatus, errorThrown ) {

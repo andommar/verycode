@@ -193,50 +193,51 @@ if(!(isset($_SESSION["tipo_usuario"]))){
                         <div class="col-lg-12">
                             <div id="apartado-usuario">
                                 <h3>Datos personales</h3><hr>
+                                <!--  TABLA usuario  -->
                                 <form class="margen-form">
                                     <div class="form-row justify-content-center">
-                                        <div class="form-group ancho" id="nombre">
-                                            <label for="input-nombre">Nombre</label>
+                                        <div class="form-group ancho" id="input_nombre">
+                                            <label for="nombre">Nombre</label>
                                             &nbsp;
-                                            <input type="text" class="form-control" id="input-nombre"><br>
+                                            <input type="text" class="form-control" id="nombre" name="nombre"><br>
                                         </div>
                                     
                                         &nbsp;&nbsp;
                                         
-                                        <div class="form-group ancho" id="apellido1">
-                                            <label for="input-apellido1">Primer apellido</label>
+                                        <div class="form-group ancho" id="input_apellido1">
+                                            <label for="apellido1">Primer apellido</label>
                                             &nbsp;
-                                            <input type="text" class="form-control" id="input-apellido1"><br>
+                                            <input type="text" class="form-control" id="apellido1"><br>
                                         </div>
                                         &nbsp;&nbsp;
 
-                                        <div class="form-group ancho" id="apellido2">
-                                            <label for="input-apellido2">Segundo apellido</label>
+                                        <div class="form-group ancho" id="input_apellido2">
+                                            <label for="apellido2">Segundo apellido</label>
                                             &nbsp;
-                                            <input type="text" class="form-control" id="input-apellido2"><br>
+                                            <input type="text" class="form-control" name="apellido1" id="apellido2"><br>
                                         </div>
                                     </div>
                                     &nbsp;&nbsp;
                                     <div class="form-row justify-content-center">
-                                        <div class="form-group ancho" id="correo">
-                                            <label for="input-correo">Correo</label>
+                                        <div class="form-group ancho" id="input_correo">
+                                            <label for="correo">Correo</label>
                                             &nbsp;
-                                            <input type="email" class="form-control" id="input-correo"><br>
+                                            <input type="email" class="form-control" name="correo" id="correo"><br>
                                         </div>
                                             
                                         &nbsp;&nbsp;
-                                        <div class="form-group ancho" id="pass1">
-                                            <label for="input-pass1">Contraseña</label>
+                                        <div class="form-group ancho" id="input_pass">
+                                            <label for="pass">Contraseña</label>
                                             &nbsp;
-                                            <input type="password" class="form-control" id="input-pass1"><br>
+                                            <input type="password" class="form-control" name="pass" id="pass"><br>
                                         </div>
                                         
                                         &nbsp;&nbsp;
                                         
                                         <div class="form-group ancho" id="pass2">
-                                            <label for="input-pass2">Confirmar contraseña</label>
+                                            <label for="pass2">Confirmar contraseña</label>
                                             &nbsp;
-                                            <input type="password" class="form-control" id="input-pass2"><br>
+                                            <input type="password" class="form-control" name="pass2" id="pass2"><br>
                                         </div>
                                     </div>
                                     
@@ -245,56 +246,59 @@ if(!(isset($_SESSION["tipo_usuario"]))){
 
                             <div id="apartado-historial">
                                     <h3>Historial clínico</h3><hr>
-                                    <!-- doc_identificacion VARCHAR(30),
-                                    nacionalidad VARCHAR(150),
-                                        raza VARCHAR(150),	
-                                        fecha_nacimiento DATE,
-                                        sexo CHAR(1),
-                                        altura int,
-                                        peso int,
-                                        tipo_congenito VARCHAR(50),
-                                        subtipo_congenito VARCHAR(50),
-                                        accidente VARCHAR(150),
-                                        fecha_debut DATE,
-                                        familiar_linfedema CHAR(1),
-                                        motivo_secundario VARCHAR(50),
-                                        ant_vasculares CHAR(1),
-                                        ant_infeccion_venosa CHAR(1),
-                                        ant_sobrepeso CHAR(1),
-                                        ant_lipedema CHAR(1),
-                                        ant_permeabilidad_cap CHAR(1),
-                                        ant_ansiedad CHAR(1),
-                                        ant_diabetes CHAR(1),
-                                        ant_triquiasis CHAR(1),
-                                        ant_sindromes VARCHAR(150),
-                                    profesion VARCHAR(50),
-                                    /*---- AÑADIDO DE LA TABLA HABITOS----- */
-                                    grado_resp_profesion VARCHAR(2),
-                                        grado_stress_profesion VARCHAR(2),
-                                        /*------------------*/
-                                    medicamentos VARCHAR(50), /*AÑADIDO DE LA TABLA MEDICAMENTOS*/
-                                    -->
+                                    <!--  TABLA historial_clinico -->
                                     <form class="margen-form">
                                         <div class="form-row justify-content-center">
-                                            <div class="form-group ancho" id="doc-identificacion">
-                                                <label for="input-doc-identificacion">Documento de identificación</label>
+                                            <div class="form-group ancho" id="input_doc_identificacion">
+                                                <label for="doc_identificacion">Documento de identificación</label>
                                                 &nbsp;
-                                                <input type="text" class="form-control" id="input-doc-identificacion"><br>
+                                                <input class="form-control" id="doc_identificacion"><br>
                                             </div>
                                         
                                             &nbsp;&nbsp;
                                             
-                                            <div class="form-group ancho" id="nacionalidad">
-                                                <label for="input-nacionalidad">Nacionalidad</label>
+                                            <div class="form-group ancho" id="input_nacionalidad">
+                                                <label for="nacionalidad">Nacionalidad</label>
                                                 &nbsp;
-                                                <input type="text" class="form-control" id="input-nacionalidad"><br>
+                                                <input type="text" class="form-control" id="nacionalidad"><br>
                                             </div>
                                             &nbsp;&nbsp;
     
                                             <div class="form-group ancho" id="raza">
-                                                <label for="input-raza">Raza</label>
+                                                <label for="input_raza">Raza</label>
                                                 &nbsp;
-                                                <input type="text" class="form-control" id="input-raza"><br>
+                                                <input type="text" class="form-control" id="input_raza"><br>
+                                            </div>
+                                        </div>
+                                        <div class="form-row justify-content-center">
+                                            <div class="form-group ancho" id="input_fecha_nacimiento">
+                                                <label for="fecha_nacimiento">Fecha de nacimiento</label>
+                                                &nbsp;
+                                                <input type="date" class="form-control" id="fecha_nacimiento"><br>
+                                            </div>
+                                            <div class="form-group" id="tienda">
+                                                <label for="Select-tienda">Tienda:</label>
+                                                &nbsp;
+                                                <select class="form-control" id="Select-tienda" name="Select-tienda">
+                                                </select>
+                                                &nbsp;&nbsp;&nbsp;
+                                                <div class="form-group">
+                                                    <button type="submit" id="btn-buscar" class="btn mb-2">Buscar&nbsp; <i class="fas fa-search"></i></button>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group ancho" id="select_sexo">
+                                                <label for="sexo">Sexo</label>
+                                                &nbsp;
+                                                <select id="sexo">
+                                                    <option value="h">Hombre</option>
+                                                    <option value="m">Mujer</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group ancho" id="input_fecha_nacimiento">
+                                                <label for="fecha_nacimiento">Fecha de nacimiento</label>
+                                                &nbsp;
+                                                <input type="date" class="form-control" id="fecha_nacimiento"><br>
                                             </div>
                                         </div>
                                         &nbsp;&nbsp;
