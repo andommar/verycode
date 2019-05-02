@@ -228,20 +228,16 @@
                         </div>
                     </div>
                     <!-- FILA 2 | GRÁFICAS -->
+                    <!-- FILA 2 | GRÁFICAS -->
                     <div id="cuerpo-pagina-2" class="row"> 
-                        <div class="col-lg-4 align-middle">
+                        <div class="col-lg-6 align-middle">
                             <div class="area-cuadro sombra-cuadro color-azul">
                                 <canvas id ="lineChart" height="200" width="400"></canvas>
                             </div>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-6">
                             <div class="area-cuadro sombra-cuadro color-azul">
-                                <canvas id ="lineChart" height="200" width="400"></canvas>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="area-cuadro sombra-cuadro color-azul">
-                                <canvas id ="lineChart" height="200" width="400"></canvas>
+                                <canvas id ="lineChart2" height="200" width="400"></canvas>
                             </div>
                         </div>
                     </div>
