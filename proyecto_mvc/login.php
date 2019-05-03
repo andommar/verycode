@@ -107,7 +107,7 @@
                                 window.location.assign("pagina-principal.php");
                             }
                             else if(tipo_usuario=="administrador"){
-                                window.location.assign("pagina-principal.php");
+                                window.location.assign("pagina-principal-admin.php");
                             }
                         }
                         else{

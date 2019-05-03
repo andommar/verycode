@@ -52,7 +52,7 @@
 
                             <!-- Apartado "PÁGINA PRINCIPAL"-->
                             <li class="espaciado-desplegable">
-                                <a href="index.html">
+                                <a href="pagina-principal.php">
                                     <span class="ti-home"></span> Página Principal
                                 </a>
                             </li>

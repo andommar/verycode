@@ -1,6 +1,13 @@
-<?php session_start();
+<?php 
+    session_start();
+    
     if(!(isset($_SESSION["tipo_usuario"]))){
         header("Location: index.php");
+    }
+    else{
+        if($_SESSION["tipo_usuario"]=='administrador'){
+            header("Location: pagina-principal-admin.php");
+        }
     }
 ?> 
 <!DOCTYPE html>
@@ -168,7 +175,7 @@
                     <div class="row" id="grupo-titulo-pagina">
                         <!-- Título -->
                         <div class="col-md-6" id="titulo">
-                            <h3 class="block-title">Página Principal</h3>
+                            <h3 class="block-title">Página Principal · Especialista</h3>
                         </div>
                         <!-- Breadcrumb -->
                         <div class="col-md-6">
