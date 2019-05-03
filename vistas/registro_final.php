@@ -6,6 +6,7 @@ $conn = sqlsrv_connect( $serverName, $connectionInfo);
 
 if($con)
 {
+        //https://www.youtube.com/watch?v=Bkl-MJW8VXc --PHP Ajax jQuery
         $id_user = $_POST["id_user"];
         $nacionalidad = $_POST["nacionalidad"];
         $raza = $_POST["raza"]; 
@@ -32,11 +33,6 @@ if($con)
         $grado_resp_profesion = $_POST["grado_resp_profesion"];
         $grado_stress_profesion = $_POST["grado_stress_profesion"];
         $medicamentos = $_POST["medicamentos"];
-
-
-
-        
-
 
 }
 
