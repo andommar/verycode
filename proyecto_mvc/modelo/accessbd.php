@@ -93,6 +93,25 @@ class TAccesbd
 			}
 			return($dato);
 		}
+		public function listado_asociativo($sql){
+				
+			$datos=false;
+				if(isset($sql) && $sql !="" && isset($this->conn))
+				{
+					$this->res=sqlsrv_query($this->conn,$sql);
+					if($this->res)
+					{
+						$datos = array();
+						while( $row = sqlsrv_fetch_array( $this->res, SQLSRV_FETCH_ASSOC) ) {
+							array_push($datos,(array) $row);
+						}
+						sqlsrv_free_stmt( $this->res);
+					}
+					
+				}
+				
+				return($datos);	
+		}
 		
         
 

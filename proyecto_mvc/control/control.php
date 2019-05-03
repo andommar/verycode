@@ -9,19 +9,24 @@ class TControl{
     public function comprobar_usuario($correo,$contrasenya,&$tipo_usuario){
         //echo("<h1>CACA DE VACA GIGANTE</h1>");
         $usr = new TUsuario();
-        $resultat = $usr->comprobar_usuario($correo,$contrasenya,$tipo_usuario);
-        return ($resultat);
+        $resultado = $usr->comprobar_usuario($correo,$contrasenya,$tipo_usuario);
+        return ($resultado);
     }
 
+    //no usada aún
     public function registro_admin($correo,$pass,$pass2,$nombre,$apellido,$apellido2,$tipo)
     {
         
         $usr = new TUsuario();
-        $resultat = $usr->registro_admin($correo,$pass,$pass2,$nombre,$apellido,$apellido2,$tipo);
-        return ($resultat);
+        $resultado = $usr->registro_admin($correo,$pass,$pass2,$nombre,$apellido,$apellido2,$tipo);
+        return ($resultado);
     }
 
-
+    public function listado_fisios(){
+        $usr = new TUsuario();
+        $resultado = $usr->listado_fisios();
+        return ($resultado);
+    }    
 
 
 }

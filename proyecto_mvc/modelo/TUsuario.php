@@ -50,6 +50,34 @@ class TUsuario{
 	  return $res;
 	}
 	
+	//Rellena el home del admin con la lista de fisios (tabla)
+	
+	public function listado_fisios(){
+
+		
+			$res=false;
+			$abd = new TAccesbd ();
+		
+			if($abd->conectado())
+			{ 	
+			
+				$res=true;
+				$sql = "SELECT id_especialista, tipo, nombre, apellido1, apellido2, correo, pass FROM especialista where tipo='fisioterapeuta' ";
+				$stmt = $abd->listado_asociativo($sql);
+			}
+			if( $stmt === false ) {
+
+				$res=false;
+			}
+			else{
+				$res = $stmt;
+			}
+			return $res;
+
+			
+	}
+
+
 	public function registro_admin($correo,$pass,$pass2,$nombre,$apellido,$apellido2,$tipo)
 	{
 		$res=0;

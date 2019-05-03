@@ -17,3 +17,22 @@
     color: #38aece;
     font-size: 19px;
 }
+#fisios-table{
+    text-align: center;
+} 
+#fisios-table thead tr th {
+    color: #3e5569;
+    border: 0px;
+}
+#fisios-table tbody tr td{
+    vertical-align: middle;
+    color: #3e5569;
+    border: 1px solid #dee2e6;
+}
+#fisios-table tbody tr:nth-child(2n) {
+    background: #fafafa;
+}
+#fisios-table tbody tr:hover {
+    background: #00adcc7a;
+    transition: all 0.3s;
+}

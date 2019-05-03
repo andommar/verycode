@@ -23,7 +23,8 @@
         <link rel="icon" href="img/favicon.ico" type="image/x-icon">  
         <!-- Iconos --> 
         <link rel="stylesheet" href="css/themify-icons.css">
-        <!-- BOOTSTRAP 4 -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+		<!-- BOOTSTRAP 4 -->
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <!-- jQuery library -->
@@ -39,6 +40,45 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/grafica1.css">
         <link rel="stylesheet" href="css/formularios-style.css">
+        <script>
+            //================== Cuando la página esté cargada,cargamos los usuarios de tipo fisioterapeuta ===================
+            //$(document).ready(function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "control/control_home_admin.php",
+                    })        
+                    .done(function( data, textStatus, jqXHR ) {
+                        
+                        if ( console && console.log ) {
+                            console.log( "La solicitud de acceso se ha completado correctamente." );
+                        }
+                        var datos = $.parseJSON(data);
+                        var fila='';
+                        datos.forEach(function(element) {
+                            fila+= '<tr><td>'+element.id_especialista+'</td><td>'+element.tipo+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn mb-2 btn-editar-cliente" value="editarCliente" onclick="editarFisio('+element.id_especialista+')"><i class="fas fa-edit"></i></button></td></tr>';
+
+					    });
+                        $('#fisios-table tbody').html(fila);
+
+
+
+
+
+                        //console.log("datos: "+datos);
+
+                    })
+                    .fail(function( jqXHR, textStatus, errorThrown ) {
+                        if ( console && console.log ) {
+                            console.log( "La solicitud de acceso ha fallado: " +  textStatus);
+                        }
+                    });
+
+            //});//DOCUMENT READY
+
+        
+        
+        
+        </script>
     </head>
   
     <!-- ===============  BODY ============= -->
@@ -161,12 +201,52 @@
                     </div> <!-- Fin fila -->
 
                      <!-- Cuerpo página (lado derecho)-->
-                    <!-- FILA 1 | ESTADÍSTICAS GENERALES-->
+                    <!-- FILA 1 -->
                     <div id="cuerpo-pagina-1" class="row"> 
                         <div class="col-lg-12">
-                            <div id="apartado-usuarios" style="height: 500px;" class="">
-                                <h3>Listado de usuarios</h3>
+                            <div id="apartado-usuarios" class="">
+                                <h3>Listado de fisioterapeutas</h3>
                                 <hr>
+                                <!-- TABLA FISIOTERAPEUTAS -->
+                                <!-- 
+
+                                    id_especialista int IDENTITY(1,1),
+                                    correo VARCHAR(100) NOT NULL UNIQUE,	
+                                    pass VARCHAR(50) NOT NULL ,
+                                    pass2 VARCHAR(50) NOT NULL,
+                                    nombre VARCHAR(30) NOT NULL,
+                                    apellido1 VARCHAR(50) NOT NULL ,
+                                    apellido2 VARCHAR(50) NOT NULL,
+                                    tipo VARCHAR(25) NOT NULL CHECK(tipo IN('administrador','especialista','fisioterapeuta')),
+
+                                -->
+                                <table class="table" id="fisios-table">
+								<thead>
+									<tr>
+                                        <th>Id</th>
+                                        <th>tipo</th>
+                                        <th>Nombre</th>
+                                        <th>Apellido 1</th>
+                                        <th>Apellido 2</th>
+                                        <th>Correo</th>
+                                        <th>Contraseña</th>
+                                        <th>Opciones</th>
+                                    </tr>
+                                </thead>
+                                    <!-- Se rellena con la consulta AJAX de JS a la BD -->
+                               <tbody>     
+                                    <tr>
+                                        <td id="id_especialista"></td>
+                                        <td id="tipo"></td>
+                                        <td id="nombre"></td>
+                                        <td id="apellido1"></td>
+                                        <td id="apellido2"></td>
+                                        <td id="correo"></td>
+                                        <td id="pass"></td>
+									</tr>
+									
+								</tbody>
+							</table>
                             </div>
                         </div>
                         
@@ -179,8 +259,7 @@
         </div><!-- CONTAINER FLUID-->
 
         <!-- SCRIPTS -->
-        <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
-        <script src="js/grafica1.js"></script>
+        
 
     </body>
 </html>
