@@ -6,12 +6,6 @@
         $conn = sqlsrv_connect( $serverName, $connectionInfo);
         
                
-     
-
-
-     
-      
-
         if($conn)
         {
                 
@@ -23,62 +17,31 @@
                 $pass=$_POST["pass"];
                 $pass2=$_POST["pass2"];
 
-                $sql = "INSERT INTO especialista VALUES ('$correo','$pass','$pass2','$nombre','$apellido','$apellido2','$tipo')";
-                $stmt = sqlsrv_query( $this->conn, $sql);
+                $sql = "INSERT INTO usuario VALUES ('$correo','$pass','$pass2','$nombre','$apellido','$apellido2',1)";
+                $stmt = sqlsrv_query( $conn, $sql);
                 if( $stmt === false ) {
                         die( print_r( sqlsrv_errors(), true));
                 }
 
+                
+                $sql2 = "SELECT id_user FROM usuario WHERE correo = '$correo'";
+                $stmt2 = sqlsrv_query($conn, $sql2);
+                if( $stmt2 === false ) {
+                        die( print_r( sqlsrv_errors(), true));
+                }
+
+
+                if( sqlsrv_fetch( $stmt2 ) === false) {
+                        die( print_r( sqlsrv_errors(), true));
+                        }
+                        
+                        // Obtener los campos de la fila. Los índices de campo empiezan desde 0 y se deben obtener en orden.
+                        // Recuperar los nombres de campo por su nombre no está soportado por sqlsrv_get_field.
+                $id_usuario = sqlsrv_get_field( $stmt, 0);
+                echo "$id_usuario";
+
 
    
         }
-
-
-
-
-
-
-        //                 // https://www.youtube.com/watch?v=Bkl-MJW8VXc --PHP Ajax jQuery
-        //         // $id_user = $_POST["id_user"];
-        //         // $nacionalidad = $_POST["nacionalidad"];
-        //         // $raza = $_POST["raza"]; 
-        //         // $fecha_nacimiento = $_POST["fecha_nacimiento"];
-        //         // $sexo = $_POST["sexo"];
-        //         // $altura = $_POST["altura"];
-        //         // $peso = $_POST["peso"];
-        //         // $tipo_congenito= $_POST["tipo_congenito"];
-        //         // $subtipo_congenito=$_POST["subtipo_congenito"];
-        //         // $accidente = $_POST["accidente"];
-        //         // $fecha = $_POST["fecha_debut"];
-        //         // $familiar_linfedema = $_POST["familiar_linfedema"];
-        //         // $motivo_secundario = $_POST["motivo_secundario"];
-        //         // $ant_vasculares= $_POST["ant_vasculares"];
-        //         // $ant_infeccion_venosa=$_POST["ant_infeccion_venosa"];
-        //         // $ant_sobrepeso =$_POST["ant_sobrepeso"];
-        //         // $ant_lipedema = $_POST["ant_lipedema"];
-        //         // $ant_permeabilidad_cap = $_POST["ant_permeabilidad_cap"];
-        //         // $ant_ansiedad = $_POST["ant_ansiedad"];
-        //         // $ant_diabetes = $_POST["ant_diabetes"];
-        //         // $ant_triquiasis= $_POST["ant_triquiasis"];
-        //         // $ant_sindromes=$_POST["ant_sindromes"];
-        //         // $profesion=$_POST["profesion"];
-        //         // $grado_resp_profesion = $_POST["grado_resp_profesion"];
-        //         // $grado_stress_profesion = $_POST["grado_stress_profesion"];
-        //         // $medicamentos = $_POST["medicamentos"];
-
-
-        // }
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
