@@ -4,3 +4,43 @@
 #imagen-pierna{
     width: 49%;
 }
+#col-botones{
+    
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 3px;
+}
+.estilo-botones{
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    
+}
+.margen{
+    margin-right: 15px;
+}
+#btn-datos-personales{
+    background-color:#007bff;
+}
+#btn-historial-clinico{
+background-color:#6610f2;
+}
+#btn-cirugias{
+background-color:#e83e8c;
+}
+#btn-infecciones{
+background-color:#dc3545;
+}
+#btn-habitos{
+background-color:#fd7e14;
+}
+#btn-historial-trat-linf{
+background-color:#ffc107;
+
+}
+#btn-valoracion-linfedema{
+background-color:#28a745;
+}
+#btn-medicion{
+background-color:#20c997;
+}

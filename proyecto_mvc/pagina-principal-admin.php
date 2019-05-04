@@ -46,6 +46,7 @@
                     $.ajax({
                         type: "GET",
                         url: "control/control_home_admin.php",
+                        
                     })        
                     .done(function( data, textStatus, jqXHR ) {
                         
@@ -59,11 +60,6 @@
 
 					    });
                         $('#fisios-table tbody').html(fila);
-
-
-
-
-
                         //console.log("datos: "+datos);
 
                     })

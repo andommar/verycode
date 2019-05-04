@@ -67,7 +67,7 @@
                                         <a href="anadir-paciente.php">Añadir paciente</a>
                                     </li>
                                     <li>
-                                        <a href="ver-paciente.html">Ver paciente</a>
+                                        <a href="ver-paciente.html">Añadir medición</a>
                                     </li>
                                     <li>
                                         <a href="editar-paciente.html">Editar paciente</a>
@@ -196,6 +196,16 @@
                      <!-- Cuerpo página (lado derecho)-->
                     <!-- FILA 1 | INPUTS -->
                     <div id="cuerpo-pagina-2" class="row"> 
+                    <div class="col-lg-12" id="col-botones">
+                        <button class="btn estilo-botones margen" type="button" id="btn-datos-personales" value="">Datos personales</button>
+                        <button class="btn estilo-botones margen" type="button" id="btn-historial-clinico" value="">Historial Clínico</button>
+                        <button class="btn estilo-botones margen" type="button" id="btn-cirugias" value="">Cirugías</button>
+                        <button class="btn estilo-botones margen" type="button" id="btn-infecciones" value="">Infecciones</button>
+                        <button class="btn estilo-botones margen" type="button" id="btn-habitos" value="">Hábitos</button>
+                        <button class="btn estilo-botones margen" type="button" id="btn-historial-trat-linf" value="">Historial Tratamiento Linfedema</button>
+                        <button class="btn estilo-botones margen" type="button" id="btn-valoracion-linfedema" value="">Valoración Linfedema</button>
+                        <button class="btn estilo-botones" type="button" id="btn-medicion" value="">Medición inicial</button>
+                    </div>
                         <div class="col-lg-12">
                             <div id="apartado-usuario">
                                 <h3>Datos personales</h3><hr>
