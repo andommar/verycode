@@ -27,6 +27,22 @@ class TUsuario{
 	// 	}
 		
 	// }
+	public function obtener_id_especialista($correo, &$id_especialista){
+
+		$abd = new TAccesbd ();
+  
+		if($abd->conectado())
+		{ 	
+		
+			$res=true;
+			$sql="SELECT id_especialista FROM especialista WHERE correo='$correo'";
+			$stmt = $abd->consultar_dato($sql);
+		}
+		if( $stmt != false ) {
+
+			$id_especialista = $stmt;
+		}
+	}
 	public function comprobar_usuario($correo, $contrasenya,&$tipo_usuario){
     
 		$res=false;

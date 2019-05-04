@@ -6,10 +6,13 @@ include_once("../modelo/TUsuario.php");
 
 class TControl{
     
-    public function comprobar_usuario($correo,$contrasenya,&$tipo_usuario){
+    public function comprobar_usuario($correo,$contrasenya,&$tipo_usuario, &$id_especialista){
         //echo("<h1>CACA DE VACA GIGANTE</h1>");
         $usr = new TUsuario();
+        $id_especialista=0;
         $resultado = $usr->comprobar_usuario($correo,$contrasenya,$tipo_usuario);
+        $usr->obtener_id_especialista($correo, $id_especialista);
+        
         return ($resultado);
     }
 

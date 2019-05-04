@@ -208,7 +208,7 @@
                     </div>
                         <div class="col-lg-12">
                             <div id="apartado-usuario">
-                                <h3>Datos personales</h3><hr>
+                                <h3>Datos personales</h3>&nbsp;<h3>ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></h3><hr>
                                 <!--  TABLA usuario  -->
                                 <form class="margen-form">
                                     <div class="form-row justify-content-center">
