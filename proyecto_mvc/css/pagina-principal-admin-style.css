@@ -20,6 +20,18 @@
 #fisios-table{
     text-align: center;
 } 
+#botones-admin{
+    border-collapse: separate;
+    border-spacing: 15px;
+}
+#botones-admin thead tr th {
+    color: #ffffff;
+    border: 1px solid #dee2e6;
+    background-color: #39b4b4;
+    border-radius: 7px;
+    font-weight: 400;
+}
+
 #fisios-table thead tr th {
     color: #3e5569;
     border: 0px;

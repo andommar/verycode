@@ -204,6 +204,14 @@
                     <!-- FILA 1 -->
                     <div id="cuerpo-pagina-1" class="row"> 
                         <div class="col-lg-12">
+                            <table cellpadding="15" id="botones-admin">
+                                <thead>
+                                    <th>Gestionar usuarios</th>
+                                    <th>Gestionar pacientes</th>
+                                </thead>
+                            </table> 
+                        </div>
+                        <div class="col-lg-12">
                             <div id="apartado-usuarios" class="">
                                 <h3>Listado de fisioterapeutas</h3>
                                 <hr>
