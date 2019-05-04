@@ -1,59 +1,37 @@
 <?php
 
-
-
-
         
         $serverName = "oracle.ilerna.com, 1433"; //serverName\instanceName, portNumber (por defecto es 1433)
         $connectionInfo = array( "Database"=>"ONCOSALUT", "UID"=>"DAM2_VESTIGIUM", "PWD"=>"Vestigium2019"); //DAW2_VERYCODE, DAW2_VERYCODE, a1VERYCODE
         $conn = sqlsrv_connect( $serverName, $connectionInfo);
         
-        $nombre = "";
-        $apellido = "";
-        $apellido2 = "";
-        $correo = "";
-        $tipo ="";
-        $pass="";
-        $pass2="";
-        $opcion="";
-        
-        $opcion= $_POST["opcion"];
-        
-        switch($opcion){
-                case "form1":
-                        $nombre = $_POST["nombre"];
-                        $apellido = $_POST["apellido"];
-                        $apellido2 = $_POST["apellido2"];
-                        $correo = $_POST["correo"];
-                        $tipo =$_POST["tipo"];
-                        $pass=$_POST["pass"];
-                        $pass2=$_POST["pass2"];
-
-                        break;
-                
-
-        }
+               
+     
 
 
      
       
 
-        // if($this->conn)
-        // {
+        if($conn)
+        {
                 
-        //         $nombre = $_POST["nombre"];
-        //         $apellido = $_POST["apellido"];
-        //         $apellido2 = $_POST["apellido2"];
-        //         $correo = $_POST["correo"];
-        //         $tipo =$_POST["tipo"];
-        //         $pass=$_POST["pass"];
-        //         $pass2=$_POST["pass2"];
+                $nombre = $_POST["nombre"];
+                $apellido = $_POST["apellido"];
+                $apellido2 = $_POST["apellido2"];
+                $correo = $_POST["correo"];
+                $tipo =$_POST["tipo"];
+                $pass=$_POST["pass"];
+                $pass2=$_POST["pass2"];
 
-        //         $sql = "INSERT INTO especialista VALUES ('$correo','$pass','$pass2','$nombre','$apellido','$apellido2','$tipo')";
-        //         $stmt = sqlsrv_query( $this->conn, $sql);
-        //         if( $stmt === false ) {
-        //                 die( print_r( sqlsrv_errors(), true));
-        //         }
+                $sql = "INSERT INTO especialista VALUES ('$correo','$pass','$pass2','$nombre','$apellido','$apellido2','$tipo')";
+                $stmt = sqlsrv_query( $this->conn, $sql);
+                if( $stmt === false ) {
+                        die( print_r( sqlsrv_errors(), true));
+                }
+
+
+   
+        }
 
 
 
@@ -90,6 +68,7 @@
 
 
         // }
+
 
 
 
