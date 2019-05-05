@@ -618,23 +618,55 @@
                     var raza = $('#raza').val();
                     var fecha_nacimiento = $('#fecha_nacimiento').val();
                     var sexo = $('#sexo').val();
-                    var altura = $('#altura').val();
+                    var altura = $('#altura').val(); 
                     var peso = $('#peso').val();
                     var tipo_congenito = $('#tipo_congenito').val();
                     var subtipo_congenito = $('#subtipo_congenito').val();
-                    var accidente = $('#accidente').val();
+                    if(subtipo_congenito=="Otro" || subtipo_congenito=="Accidente"){
+                        subtipo_congenito= $('#subtipo_congenito_otro').val();
+                    }
                     var fecha_debut = $('#fecha_debut').val();
                     var familiar_linfedema = $('#familiar_linfedema').val();
                     var motivo_secundario = $('#motivo_secundario').val();
-                    var ant_vasculares = $('#ant_vasculares').val();
-                    var ant_infeccion_venosa = $('#ant_infeccion_venosa').val();
-                    var ant_sobrepeso = $('#ant_sobrepeso').val();
-                    var ant_lipedema = $('#ant_lipedema').val();
-                    var ant_permeabilidad_cap = $('#ant_permeabilidad_cap').val();
-                    var ant_ansiedad = $('#ant_ansiedad').val();
-                    var ant_diabetes = $('#ant_diabetes').val();
-                    var ant_triquiasis = $('#ant_triquiasis').val();
-                    var ant_sindromes = $('#ant_sindromes').val();
+                    if(motivo_secundario=="Otro"){
+                        motivo_secundario=$('#motivo_secundario_otro').val();
+                    }
+                    var ant_vasculares = 'N';
+                    var ant_infeccion_venosa = 'N';
+                    var ant_sobrepeso = 'N';
+                    var ant_lipedema = 'N';
+                    var ant_permeabilidad_cap = 'N';
+                    var ant_ansiedad = 'N';
+                    var ant_diabetes = 'N';
+                    var ant_triquiasis = 'N';
+                    var ant_sindromes = 'N';
+                    if($('#ant_vasculares').prop('checked')){
+                        ant_vasculares = 'S';
+                    }
+                    if($('#ant_infeccion_venosa').prop('checked')){
+                        ant_infeccion_venosa='S';
+                    }
+                    if($('#ant_sobrepeso').prop('checked')){
+                            ant_sobrepeso='S';
+                    }
+                    if($('#ant_lipedema').prop('checked')){
+                            ant_lipedema='S';
+                    }
+                    if($('#ant_permeabilidad_cap').prop('checked')){
+                            ant_permeabilidad_cap='S';
+                    }
+                    if($('#ant_ansiedad').prop('checked')){
+                            ant_ansiedad='S';
+                    }
+                    if($('#ant_diabetes').prop('checked')){
+                            ant_diabetes='S';
+                    }
+                    if($('#ant_triquiasis').prop('checked')){
+                            ant_triquiasis='S';
+                    }
+                    if($('#ant_sindromes').prop('checked')){
+                            ant_sindromes='S';
+                    }
                     var profesion = $('#profesion').val();
                     var grado_resp_profesion = $('#grado_resp_profesion').val();
                     var grado_stress_profesion = $('#grado_stress_profesion').val();
@@ -644,11 +676,11 @@
                         type:'POST',
                         url: 'control/vista.php',
                         data: {id_user: id_user, doc_identificacion: doc_identificacion, nacionalidad: nacionalidad, raza: raza, fecha_nacimiento: fecha_nacimiento, 
-                            sexo: sexo, altura: altura, peso: peso, tipo_congenito: tipo_congenito, subtipo_congenito: subtipo_congenito, accidente: accidente, 
+                            sexo: sexo, altura: altura, peso: peso, tipo_congenito: tipo_congenito, subtipo_congenito: subtipo_congenito, 
                             fecha_debut: fecha_debut, familiar_linfedema: familiar_linfedema, motivo_secundario: motivo_secundario, ant_vasculares: ant_vasculares,
                             ant_infeccion_venosa: ant_infeccion_venosa, ant_sobrepeso: ant_sobrepeso, ant_lipedema: ant_lipedema, ant_permeabilidad_cap: ant_permeabilidad_cap,
-                            ant_ansiedad: ant_ansiedad, ant_diabetes:ant_diabetes, ant_triquiasis: ant_triaquiasis, ant_sindromes: ant_sindromes, profesion: profesion,
-                            grado_resp_profesion: grado_resp_profesion, grado_stress_profesion: grado_stress_profession, opcion: opcion},
+                            ant_ansiedad: ant_ansiedad, ant_diabetes:ant_diabetes, ant_triquiasis: ant_triquiasis, ant_sindromes: ant_sindromes, profesion: profesion,
+                            grado_resp_profesion: grado_resp_profesion, grado_stress_profesion: grado_stress_profesion, opcion: opcion},
                         success:function(data){
                             console.log(data);
                         }

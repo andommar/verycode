@@ -67,12 +67,11 @@ if(isset($_POST["opcion"]))
             $peso =$_POST["peso"];
             $tipo_congenito =$_POST["tipo_congenito"];
             $subtipo_congenito =$_POST["subtipo_congenito"];
-            $accidente =$_POST["accidente"];
-            $fecha_debut =$_POST["echa_debut"];
+            $fecha_debut =$_POST["fecha_debut"];
             $familiar_linfedema =$_POST["familiar_linfedema"];
             $motivo_secundario =$_POST["motivo_secundario"];
             $ant_vasculares =$_POST["ant_vasculares"];
-            $ant_infeccion_venosa =$_POST["nt_infeccion_venosa"];
+            $ant_infeccion_venosa =$_POST["ant_infeccion_venosa"];
             $ant_sobrepeso =$_POST["ant_sobrepeso"];
             $ant_lipedema =$_POST["ant_lipedema"];
             $ant_permeabilidad_cap =$_POST["ant_permeabilidad_cap"];
@@ -84,7 +83,7 @@ if(isset($_POST["opcion"]))
             $grado_resp_profesion =$_POST["grado_resp_profesion"];
             $grado_stress_profesion =$_POST["grado_stress_profesion"];      
 
-            $error=$c->registro_historial_clinico($id_user,$doc_identificacion, $nacionalidad, $raza, $fecha_nacimiento, $sexo, $altura, $peso, $tipo_congenito, $subtipo_congenito, $accidente,
+            $error=$c->registro_historial_clinico($id_user,$doc_identificacion, $nacionalidad, $raza, $fecha_nacimiento, $sexo, $altura, $peso, $tipo_congenito, $subtipo_congenito,
             $fecha_debut, $familiar_linfedema, $motivo_secundario, $ant_vasculares, $ant_infeccion_venosa, $ant_sobrepeso, $ant_lipedema, $ant_permeabilidad_cap, $ant_ansiedad,
             $ant_diabetes, $ant_triquiasis, $ant_sindromes, $profesion, $grado_resp_profesion, $grado_stress_profesion);
             if($error==0)
