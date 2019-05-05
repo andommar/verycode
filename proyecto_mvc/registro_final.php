@@ -17,28 +17,21 @@
                 $pass=$_POST["pass"];
                 $pass2=$_POST["pass2"];
 
-                $sql = "INSERT INTO usuario VALUES ('$correo','$pass','$pass2','$nombre','$apellido','$apellido2',1)";
+                $sql = "INSERT INTO usuario VALUES ('$correo','$pass','$pass2','$nombre','$apellido','$apellido2',1);SELECT SCOPE_IDENTITY()";
                 $stmt = sqlsrv_query( $conn, $sql);
                 if( $stmt === false ) {
                         die( print_r( sqlsrv_errors(), true));
                 }
 
                 
-                $sql2 = "SELECT id_user FROM usuario WHERE correo = '$correo'";
-                $stmt2 = sqlsrv_query($conn, $sql2);
-                if( $stmt2 === false ) {
-                        die( print_r( sqlsrv_errors(), true));
-                }
+                //DEVOLVER VALORES DESPUÉS DE UN INSERT
+                //https://www.php.net/manual/es/function.sqlsrv-next-result.php
 
-
-                if( sqlsrv_fetch( $stmt2 ) === false) {
-                        die( print_r( sqlsrv_errors(), true));
-                        }
-                        
-                        // Obtener los campos de la fila. Los índices de campo empiezan desde 0 y se deben obtener en orden.
-                        // Recuperar los nombres de campo por su nombre no está soportado por sqlsrv_get_field.
-                $id_usuario = sqlsrv_get_field( $stmt, 0);
-                echo "$id_usuario";
+                
+                sqlsrv_next_result($stmt); //Va al siguiente resultado y lo muestra (es un boolean si devuelve true o false si encuentra resultado)
+                sqlsrv_fetch($stmt); //Obtiene el resultado encontrado
+                echo sqlsrv_get_field($stmt, 0);  //Coge el campo correspondiente (0 es la primera columna)
+                //echo "$id_usuario";
 
 
    

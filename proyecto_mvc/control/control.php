@@ -13,12 +13,20 @@ class TControl{
     }
 
     public function registro_admin($correo,$pass,$pass2,$nombre,$apellido,$apellido2,$tipo)
-    {
-        
+    { 
         $usr = new TUsuario();
         $resultat = $usr->registro_admin($correo,$pass,$pass2,$nombre,$apellido,$apellido2,$tipo);
         return ($resultat);
     }
+
+    public function registro_paciente($correo,$pass,$pass2,$nombre,$apellido,$apellido2,$id_especialista)
+    { 
+        $usr = new TUsuario();
+        $resultat = $usr->registro_paciente($correo,$pass,$pass2,$nombre,$apellido,$apellido2,$id_especialista);
+        return ($resultat);
+    }
+
+
 
 
 

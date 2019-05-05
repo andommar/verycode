@@ -7,6 +7,7 @@ include_once("control.php");
 
 if(isset($_POST["opcion"]))
 {
+    echo "entro";
     $opcion=$_POST["opcion"];
 
     $c= new TControl();
@@ -35,22 +36,24 @@ if(isset($_POST["opcion"]))
 
         case "registro_paciente":
 
-        $correo = $_POST["correo"];
-        $pass = $_POST["pass"];
-        $pass2 = $_POST["pass2"]; 
-        $nombre = $_POST["nombre"];
-        $apellido = $_POST["apellido"];
-        $apellido2 = $_POST["apellido2"];
-        $id_especialista = $_POST["id_especialista"];
-        
+            echo "legga";
 
-        $error=$c->registro_user($correo,$pass,$pass2,$nombre,$apellido,$apellido2,$id_especialista)
-        if($error==0)
-        {
-            echo "Usuario registrado correctamente";
-        }
-        else
-            echo "Fallo registro";
+            $correo = $_POST["correo"];
+            $pass = $_POST["pass"];
+            $pass2 = $_POST["pass2"]; 
+            $nombre = $_POST["nombre"];
+            $apellido1 = $_POST["apellido1"];
+            $apellido2 = $_POST["apellido2"];
+            $id_especialista = $_POST["id_especialista"];
+            
+
+            $error=$c->registro_paciente($correo,$pass,$pass2,$nombre,$apellido1,$apellido2,$id_especialista);
+            if($error==0)
+            {
+                echo "Usuario registrado correctamente";
+            }
+            else
+                echo "Fallo registro";
 
         break;
 

@@ -69,6 +69,29 @@ class TUsuario{
 
 		return $res;
 	}
+
+	public function registro_paciente($correo,$pass,$pass2,$nombre,$apellido,$apellido2,$id_especialista)
+	{
+		$res=0;
+		$abd = new TAccesbd ();
+
+		
+		if($abd->conectado())
+		{
+			$sql="insert into usuario values ('$correo','$pass','$pass2','$nombre','$apellido','$apellido2','$id_especialista')";
+			$stmt = $abd->ejecuta_sql($sql);
+		}
+		if( $stmt === false ) {
+			$res=-1;
+			die( print_r( sqlsrv_errors(), true));
+		}
+
+
+		return $res;
+	}
+
+
+
 }
 
 ?>

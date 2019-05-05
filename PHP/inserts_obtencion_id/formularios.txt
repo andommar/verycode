@@ -1,0 +1,17 @@
+        <form action="control/vista.php" method="post">
+                <label>Correo:</label>
+                <input type="text" name="correo"/>
+                <label>Pass:</label>
+                <input type="text" name="pass"/>
+                <label>Pass2:</label>
+                <input type="text" name="pass2"/>
+                <label>Nombre:</label>
+                <input type="text" name="nombre" id="nombre"/>
+                <label>Apellido1:</label>
+                <input type="text" name="apellido1"/>
+                <label>Apellido2:</label>
+                <input type="text" name="apellido2"/>
+                <input type="submit" id="btn2" value="boton2"/>
+                <input type="hidden" id="opcion-form" value="registro_paciente">
+        </form>
+
