@@ -468,6 +468,16 @@
                                             <input type="number" min="1" max="10" class="form-control" name="grado_stress_profesion" id="grado_stress_profesion"><br>
                                         </div>
                                     </div> <!--Fin fila 9-->
+                                    <div class="titulos">
+                                        <label>MEDICAMENTOS</label>
+                                    </div>
+                                    <div class="form-row espaciado-empty">
+                                        <div class="form-group ancho" id="input_medicamentos">
+                                            <label for="medicamentos">Medicamentos</label>
+                                            &nbsp;
+                                            <input type="text" class="form-control" id="medicamentos"><br>
+                                        </div>
+                                    </div><!--Fin fila 10-->
                                     <div class="columna-btn">
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-submit-2" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
                                     </div>
