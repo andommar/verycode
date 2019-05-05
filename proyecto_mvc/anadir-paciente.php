@@ -257,6 +257,7 @@
                                     </div>  <!--Fin fila 2-->
                                     <div class="columna-btn">
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-submit-1" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
+                                        <input type="hidden" id="opcion-form" value="registro_paciente">
                                     </div>
                                 </form>
                             </div>
@@ -468,18 +469,9 @@
                                             <input type="number" min="1" max="10" class="form-control" name="grado_stress_profesion" id="grado_stress_profesion"><br>
                                         </div>
                                     </div> <!--Fin fila 9-->
-                                    <div class="titulos">
-                                        <label>MEDICAMENTOS</label>
-                                    </div>
-                                    <div class="form-row espaciado-empty">
-                                        <div class="form-group ancho" id="input_medicamentos">
-                                            <label for="medicamentos">Medicamentos</label>
-                                            &nbsp;
-                                            <input type="text" class="form-control" id="medicamentos"><br>
-                                        </div>
-                                    </div><!--Fin fila 10-->
                                     <div class="columna-btn">
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-submit-2" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
+                                        <input type="hidden" id="opcion-form2" value="registro_historial_clinico">
                                     </div>
                                 </form>
                             </div>
@@ -493,7 +485,10 @@
 
         <!-- SCRIPTS -->
         <script>
+            var id_user = "";
+            var id_especialista = "";
             $(document).ready(function(){
+                
                 //Según lo que seleccione en el origen del linfedema (primario) le mostramos un select diferente en secundario
                 //Eso, una vez seleccione la primera opción
                 $("#tipo_congenito").change(function(){
@@ -586,14 +581,91 @@
                 });
 
                 $("#form-1").submit(function(event){
-                    event.preventDefault();
+                        event.preventDefault();
+                
+                        var nombre =$('#nombre').val();
+                        var apellido1=$('#apellido1').val();
+                        var apellido2=$('#apellido2').val();
+                        var correo =$('#correo').val();
+                        var pass =$('#pass').val();
+                        var pass2=$('#pass2').val();
+                        id_especialista=$('#btn-submit-1').val(); 
+                        var opcion= $("#opcion-form").val();
+
+                        $.ajax({
+                        type:'POST',
+                        url: 'control/vista.php',
+                        data: {nombre: nombre, apellido1: apellido1, apellido2: apellido2, correo: correo,id_especialista: id_especialista, pass: pass, pass2: pass2, opcion: opcion},
+                        success:function(data){
+                            id_user=data;
+                            console.log(data);
+                        }
+                        })
                     $("#apartado-historial").css("display","block");
                     $("#apartado-usuario").css("display","none");
                     $("#btn-datos-personales").css("background-color","rgb(109, 109, 109)");
                     $("#btn-historial-clinico").css("background-color","#7037f4");
+                    
 
 
                 });
+
+
+                $("#form-2").submit(function(event){
+
+                    var doc_identificacion=$('#doc_identificacion').val();
+                    var nacionalidad = $('#nacionalidad').val();
+                    var raza = $('#raza').val();
+                    var fecha_nacimiento = $('#fecha_nacimiento').val();
+                    var sexo = $('#sexo').val();
+                    var altura = $('#altura').val();
+                    var peso = $('#peso').val();
+                    var tipo_congenito = $('#tipo_congenito').val();
+                    var subtipo_congenito = $('#subtipo_congenito').val();
+                    var accidente = $('#accidente').val();
+                    var fecha_debut = $('#fecha_debut').val();
+                    var familiar_linfedema = $('#familiar_linfedema').val();
+                    var motivo_secundario = $('#motivo_secundario').val();
+                    var ant_vasculares = $('#ant_vasculares').val();
+                    var ant_infeccion_venosa = $('#ant_infeccion_venosa').val();
+                    var ant_sobrepeso = $('#ant_sobrepeso').val();
+                    var ant_lipedema = $('#ant_lipedema').val();
+                    var ant_permeabilidad_cap = $('#ant_permeabilidad_cap').val();
+                    var ant_ansiedad = $('#ant_ansiedad').val();
+                    var ant_diabetes = $('#ant_diabetes').val();
+                    var ant_triquiasis = $('#ant_triquiasis').val();
+                    var ant_sindromes = $('#ant_sindromes').val();
+                    var profesion = $('#profesion').val();
+                    var grado_resp_profesion = $('#grado_resp_profesion').val();
+                    var grado_stress_profesion = $('#grado_stress_profesion').val();
+                    var opcion= $("#opcion-form2").val();
+
+                    $.ajax({
+                        type:'POST',
+                        url: 'control/vista.php',
+                        data: {id_user: id_user, doc_identificacion: doc_identificacion, nacionalidad: nacionalidad, raza: raza, fecha_nacimiento: fecha_nacimiento, 
+                            sexo: sexo, altura: altura, peso: peso, tipo_congenito: tipo_congenito, subtipo_congenito: subtipo_congenito, accidente: accidente, 
+                            fecha_debut: fecha_debut, familiar_linfedema: familiar_linfedema, motivo_secundario: motivo_secundario, ant_vasculares: ant_vasculares,
+                            ant_infeccion_venosa: ant_infeccion_venosa, ant_sobrepeso: ant_sobrepeso, ant_lipedema: ant_lipedema, ant_permeabilidad_cap: ant_permeabilidad_cap,
+                            ant_ansiedad: ant_ansiedad, ant_diabetes:ant_diabetes, ant_triquiasis: ant_triaquiasis, ant_sindromes: ant_sindromes, profesion: profesion,
+                            grado_resp_profesion: grado_resp_profesion, grado_stress_profesion: grado_stress_profession, opcion: opcion},
+                        success:function(data){
+                            console.log(data);
+                        }
+                        })
+
+
+
+
+
+
+
+});
+
+
+
+
+
 
 
             });//document ready

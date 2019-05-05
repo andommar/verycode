@@ -93,6 +93,53 @@ class TUsuario{
 			
 	}
 
+	public function registro_historial_clinico($id_user,$doc_identificacion, $nacionalidad, $raza, $fecha_nacimiento, $sexo, $altura, $peso, $tipo_congenito, $subtipo_congenito, $accidente,
+	$fecha_debut, $familiar_linfedema, $motivo_secundario, $ant_vasculares, $ant_infeccion_venosa, $ant_sobrepeso, $ant_lipedema, $ant_permeabilidad_cap, $ant_ansiedad,
+	$ant_diabetes, $ant_triquiasis, $ant_sindromes, $profesion, $grado_resp_profesion, $grado_stress_profesion)
+	{
+		$res=0;
+		$abd = new TAccesbd();
+
+		if($abd->conectado())
+		{
+			$sql="insert into historial_clinico values ('$doc_identificacion',' $nacionalidad',' $raza',' $fecha_nacimiento',' $sexo',' $altura',' $peso',' $tipo_congenito',' $subtipo_congenito',' $accidente','
+			$fecha_debut',' $familiar_linfedema',' $motivo_secundario',' $ant_vasculares',' $ant_infeccion_venosa',' $ant_sobrepeso',' $ant_lipedema',' $ant_permeabilidad_cap',' $ant_ansiedad','
+			$ant_diabetes',' $ant_triquiasis',' $ant_sindromes',' $profesion',' $grado_resp_profesion',' $grado_stress_profesion')";
+			$stmt = $abd->ejecuta_sql($sql);
+		}
+
+		if( $stmt === false ) {
+			$res=-1;
+			die( print_r( sqlsrv_errors(), true));
+		}
+		return $res;
+
+
+	}
+
+
+
+
+	public function registro_paciente($correo,$pass,$pass2,$nombre,$apellido1,$apellido2,$id_especialista)
+	{
+		$res=0;
+		$abd = new TAccesbd ();
+
+		
+		if($abd->conectado())
+		{
+			$sql="insert into usuario values ('$correo','$pass','$pass2','$nombre','$apellido1','$apellido2','$id_especialista')";
+			$stmt = $abd->ejecuta_sql($sql);
+		}
+		if( $stmt === false ) {
+			$res=-1;
+			die( print_r( sqlsrv_errors(), true));
+		}
+
+
+		return $res;
+	}
+
 
 	public function registro_admin($correo,$pass,$pass2,$nombre,$apellido,$apellido2,$tipo)
 	{
