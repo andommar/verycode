@@ -672,8 +672,20 @@
                     var grado_stress_profesion = $('#grado_stress_profesion').val();
                     var opcion= $("#opcion-form2").val();
 
+
+                    event.preventDefault();
+                   
+
+                    // $.ajax({
+                    //     method: "POST",
+                    //     data: {correo : correo, contrasenya : contrasenya},
+                    //     url: "control/control_login.php",
+                    //     async: true
+                    // })        
+
+
                     $.ajax({
-                        type:'POST',
+                        method: "POST",
                         url: 'control/vista.php',
                         data: {id_user: id_user, doc_identificacion: doc_identificacion, nacionalidad: nacionalidad, raza: raza, fecha_nacimiento: fecha_nacimiento, 
                             sexo: sexo, altura: altura, peso: peso, tipo_congenito: tipo_congenito, subtipo_congenito: subtipo_congenito, 
@@ -681,14 +693,19 @@
                             ant_infeccion_venosa: ant_infeccion_venosa, ant_sobrepeso: ant_sobrepeso, ant_lipedema: ant_lipedema, ant_permeabilidad_cap: ant_permeabilidad_cap,
                             ant_ansiedad: ant_ansiedad, ant_diabetes:ant_diabetes, ant_triquiasis: ant_triquiasis, ant_sindromes: ant_sindromes, profesion: profesion,
                             grado_resp_profesion: grado_resp_profesion, grado_stress_profesion: grado_stress_profesion, opcion: opcion},
-                        success:function(data){
-                            console.log(data);
-                        },
-                        error: function(xhr, status, error) {
-                        var err = eval("(" + xhr.responseText + ")");
-                        alert(err.Message);
-                        }
+                        
 
+                    })
+                    .done(function( msg ) {                             	
+                        console.log("ajax done");
+                        console.log(msg);
+                       
+                        
+                    })
+                    .fail(function( jqXHR, textStatus, errorThrown ) {
+                        if ( console && console.log ) {
+                            console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                        }
                     });
 
 
