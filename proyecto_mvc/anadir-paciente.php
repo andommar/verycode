@@ -611,7 +611,7 @@
                 });
 
 
-                $("#form-2").submit(function(event){
+                $("#form-2").submit(function(event){    
 
                     var doc_identificacion=$('#doc_identificacion').val();
                     var nacionalidad = $('#nacionalidad').val();
@@ -639,7 +639,7 @@
                     var ant_ansiedad = 'N';
                     var ant_diabetes = 'N';
                     var ant_triquiasis = 'N';
-                    var ant_sindromes = 'N';
+                    var ant_sindromes = $('#ant_sindromes').val();
                     if($('#ant_vasculares').prop('checked')){
                         ant_vasculares = 'S';
                     }
@@ -664,9 +664,9 @@
                     if($('#ant_triquiasis').prop('checked')){
                             ant_triquiasis='S';
                     }
-                    if($('#ant_sindromes').prop('checked')){
-                            ant_sindromes='S';
-                    }
+                    // if($('#ant_sindromes').prop('checked')){
+                    //         ant_sindromes='S';
+                    // }
                     var profesion = $('#profesion').val();
                     var grado_resp_profesion = $('#grado_resp_profesion').val();
                     var grado_stress_profesion = $('#grado_stress_profesion').val();
@@ -683,8 +683,13 @@
                             grado_resp_profesion: grado_resp_profesion, grado_stress_profesion: grado_stress_profesion, opcion: opcion},
                         success:function(data){
                             console.log(data);
+                        },
+                        error: function(xhr, status, error) {
+                        var err = eval("(" + xhr.responseText + ")");
+                        alert(err.Message);
                         }
-                        })
+
+                    });
 
 
 
@@ -692,7 +697,7 @@
 
 
 
-});
+                });
 
 
 
