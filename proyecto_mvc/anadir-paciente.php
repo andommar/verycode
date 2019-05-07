@@ -551,6 +551,7 @@
             var id_especialista = "";
             
 
+ //  =============================== MOSTRAR Y ESCONDER FORMULARIOS  =========================================== 
 
             function mostrarFormulario(boton){
             
@@ -562,7 +563,7 @@
                         if(boton=='datos-personales'){
                             $("body").overhang({
                                         type: "error",
-                                        message: "ERROR, ya has registrado al paciente.",
+                                        message: "ERROR, ya has registrado los datos personales del paciente.",
                                         duration: 6,
                                         overlay: true,
                                         closeConfirm: true
@@ -627,9 +628,14 @@
                 });
             }
 
+
             $(document).ready(function(){
+
+                //  =============================== VALIDACIÓN CAMPOS Y RECOGIDA DE DATOS  =========================================== 
+
                 //Según lo que seleccione en el origen del linfedema (primario) le mostramos un select diferente en secundario
                 //Eso, una vez seleccione la primera opción
+                
                 $("#tipo_congenito").change(function(){
                     
                     var tipo_congenito = this.value; //valor option del select
@@ -708,11 +714,16 @@
                     }
                 });
 
+    //  =============================== AJAX DE LOS FORMULARIOS =========================================== 
+                
                 //  =============================== USUARIO ===========================================  
 
                 $("#form-1").submit(function(event){
                         event.preventDefault();
                 
+                        
+                        var datos_correctos = true;
+
                         var nombre =$('#nombre').val();
                         var apellido1=$('#apellido1').val();
                         var apellido2=$('#apellido2').val();
@@ -722,32 +733,33 @@
                         id_especialista=$('#btn-submit-1').val(); 
                         var opcion= $("#opcion-form").val();
 
-                        $.ajax({
-                        type:'POST',
-                        url: 'control/vista.php',
-                        data: {nombre: nombre, apellido1: apellido1, apellido2: apellido2, correo: correo,id_especialista: id_especialista, pass: pass, pass2: pass2, opcion: opcion}
-                        })
-                        .done(function( msg ) {
-                            id_user=msg;
-                            console.log(msg);                             	
-                            console.log("ajax done"); 
+                        datos_correctos = validarDatosPersonales(nombre,apellido1,apellido2,correo,pass,pass2);
 
-                            //Pasamos al siguiente formulario (HISTORIAL CLÍNICO)
-                            $("#apartado-historial").css("display","block");
-                            $("#apartado-usuario").css("display","none");
-                            $("#btn-datos-personales").css("background-color","rgb(109, 109, 109)");
-                            $("#btn-historial-clinico").css("background-color","#7037f4");
-                        })
-                        .fail(function( jqXHR, textStatus, errorThrown ) {
-                            if ( console && console.log ) {
-                                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                                console.log("ajax fail");
-                            }
-                        });
-                   
-                    
+                        if(datos_correctos){
+                            $.ajax({
+                            type:'POST',
+                            url: 'control/vista.php',
+                            data: {nombre: nombre, apellido1: apellido1, apellido2: apellido2, correo: correo,id_especialista: id_especialista, pass: pass, pass2: pass2, opcion: opcion}
+                            })
+                            .done(function( msg ) {
+                                id_user=msg;
+                                console.log(msg);                             	
+                                console.log("ajax done"); 
 
-
+                                //Pasamos al siguiente formulario (HISTORIAL CLÍNICO)
+                                $("#apartado-historial").css("display","block");
+                                $("#apartado-usuario").css("display","none");
+                                $("#btn-datos-personales").css("background-color","rgb(109, 109, 109)");
+                                $("#btn-historial-clinico").css("background-color","#7037f4");
+                            })
+                            .fail(function( jqXHR, textStatus, errorThrown ) {
+                                if ( console && console.log ) {
+                                    console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                                    console.log("ajax fail");
+                                }
+                            });
+                        }
+                       
                 });
 
                 //  =============================== HISTORIAL CLÍNICO  ===========================================  
@@ -847,7 +859,36 @@
 
                 });
 
+                function validarDatosPersonales(nombre,apellido1,apellido2,correo,pass,pass2){
+                    var datos_correctos = true;
+                    var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
 
+                    //Validar CORREO
+                    if(!pattern.test(correo)){
+                        $("body").overhang({
+                            type: "error",
+                            message: "ERROR. El formato de correo no es correcto, introduce una extensión como '.com', por ejemplo.",
+                            duration: 3,
+                            overlay: true,
+                            closeConfirm: true
+                        });
+                        datos_correctos = false;
+                    }
+                    //validar contraseñas (deben ser idénticas)
+                    if(pass!=pass2){
+                        $("body").overhang({
+                            type: "error",
+                            message: "ERROR. Las contraseñas deben ser idénticas",
+                            duration: 3,
+                            overlay: true,
+                            closeConfirm: true
+                        });
+                        datos_correctos = false;
+                    }
+                    
+
+                    return datos_correctos;
+                }
 
 
 
