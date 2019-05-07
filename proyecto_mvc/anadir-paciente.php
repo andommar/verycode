@@ -299,15 +299,15 @@
                                             &nbsp;
                                             <div>
                                                 <select id="sexo" class="form-control form-control-md">
-                                                    <option value="h">Hombre</option>
-                                                    <option value="m">Mujer</option>
+                                                    <option value="hombre">Hombre</option>
+                                                    <option value="mujer">Mujer</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group ancho" id="input_altura">
                                             <label for="altura">Altura (cm)</label>
                                             &nbsp;
-                                            <input size="3" type="number" step=".01" class="form-control" id="altura" min="1" max="3">
+                                            <input size="3" type="number" step=".01" class="form-control" id="altura" min="1" max="250">
                                         </div>
                                     </div> <!--Fin fila 2-->
                                     <div class="form-row espaciado-empty">
@@ -362,8 +362,8 @@
                                             &nbsp;
                                             <div>
                                                 <select id="familiar_linfedema" class="form-control form-control-md">
-                                                    <option>S</option>
-                                                    <option>N</option>
+                                                    <option value="S">Si</option>
+                                                    <option value="N">No</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -627,6 +627,7 @@
                     }
                     var fecha_debut = $('#fecha_debut').val();
                     var familiar_linfedema = $('#familiar_linfedema').val();
+                    console.log(familiar_linfedema);
                     var motivo_secundario = $('#motivo_secundario').val();
                     if(motivo_secundario=="Otro"){
                         motivo_secundario=$('#motivo_secundario_otro').val();
@@ -687,17 +688,20 @@
                     $.ajax({
                         method: "POST",
                         url: 'control/vista.php',
-                        data: {id_user: id_user, doc_identificacion: doc_identificacion, nacionalidad: nacionalidad, raza: raza, fecha_nacimiento: fecha_nacimiento, 
+                        data: {id_user: id_user, doc_identificacion: doc_identificacion, opcion: opcion,
+                            nacionalidad: nacionalidad, raza: raza, fecha_nacimiento: fecha_nacimiento, 
                             sexo: sexo, altura: altura, peso: peso, tipo_congenito: tipo_congenito, subtipo_congenito: subtipo_congenito, 
                             fecha_debut: fecha_debut, familiar_linfedema: familiar_linfedema, motivo_secundario: motivo_secundario, ant_vasculares: ant_vasculares,
-                            ant_infeccion_venosa: ant_infeccion_venosa, ant_sobrepeso: ant_sobrepeso, ant_lipedema: ant_lipedema, ant_permeabilidad_cap: ant_permeabilidad_cap,
-                            ant_ansiedad: ant_ansiedad, ant_diabetes:ant_diabetes, ant_triquiasis: ant_triquiasis, ant_sindromes: ant_sindromes, profesion: profesion,
-                            grado_resp_profesion: grado_resp_profesion, grado_stress_profesion: grado_stress_profesion, opcion: opcion},
+                            ant_infeccion_venosa: ant_infeccion_venosa, ant_sobrepeso: ant_sobrepeso, ant_lipedema: ant_lipedema, ant_permeabilidad_cap: ant_permeabilidad_cap, ant_ansiedad: ant_ansiedad,
+                            // ant_diabetes:ant_diabetes, ant_triquiasis: ant_triquiasis, ant_sindromes: ant_sindromes, profesion: profesion,
+                            // grado_resp_profesion: grado_resp_profesion, grado_stress_profesion: grado_stress_profesion 
+                        },
                         
 
                     })
                     .done(function( msg ) {                             	
                         console.log("ajax done");
+                        console.log(id_user);
                         console.log(msg);
                        
                         
