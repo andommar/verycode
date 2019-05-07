@@ -27,6 +27,22 @@ class TUsuario{
 	// 	}
 		
 	// }
+	public function obtener_id_especialista($correo, &$id_especialista){
+
+		$abd = new TAccesbd ();
+  
+		if($abd->conectado())
+		{ 	
+		
+			$res=true;
+			$sql="SELECT id_especialista FROM especialista WHERE correo='$correo'";
+			$stmt = $abd->consultar_dato($sql);
+		}
+		if( $stmt != false ) {
+
+			$id_especialista = $stmt;
+		}
+	}
 	public function comprobar_usuario($correo, $contrasenya,&$tipo_usuario){
     
 		$res=false;
@@ -75,6 +91,63 @@ class TUsuario{
 			return $res;
 
 			
+	}
+
+	public function registro_historial_clinico($id_user,$doc_identificacion,
+	$nacionalidad, $raza, $fecha_nacimiento,
+	$sexo, $altura, $peso, $tipo_congenito, $subtipo_congenito,
+  $fecha_debut, $familiar_linfedema)
+    // $motivo_secundario, $ant_vasculares, $ant_infeccion_venosa, $ant_sobrepeso, $ant_lipedema, $ant_permeabilidad_cap, $ant_ansiedad
+	// $ant_diabetes, $ant_triquiasis, $ant_sindromes, $profesion, $grado_resp_profesion, $grado_stress_profesion
+	{
+		$res=0;
+		$abd = new TAccesbd();
+
+		if($abd->conectado())
+		{
+			$sql="insert into historial_clinico values (51,'$doc_identificacion',' $nacionalidad',' $raza',' $fecha_nacimiento',' $sexo',$altura, $peso,' $tipo_congenito',' $subtipo_congenito', 
+			'$fecha_debut',' $familiar_linfedema',NULL, NULL, NULL, NULL, NULL, NULL, 'S', NULL, NULL, NULL, NULL, NULL, NULL)";
+
+			// $fecha_debut',' $familiar_linfedema',
+			// ' $motivo_secundario',' $ant_vasculares',' $ant_infeccion_venosa',' $ant_sobrepeso',' $ant_lipedema',' $ant_permeabilidad_cap',' $ant_ansiedad','
+			// // $ant_diabetes',' $ant_triquiasis',' $ant_sindromes',' $profesion',$grado_resp_profesion,$grado_stress_profesion
+			// )";
+			
+			//NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)";
+			
+			$stmt = $abd->ejecuta_sql($sql);
+		}
+
+		if( $stmt === false ) {
+			$res=-1;
+			die( print_r( sqlsrv_errors(), true));
+		}
+		return $res;
+
+
+	}
+
+
+
+
+	public function registro_paciente($correo,$pass,$pass2,$nombre,$apellido1,$apellido2,$id_especialista)
+	{
+		$res=0;
+		$abd = new TAccesbd ();
+
+		
+		if($abd->conectado())
+		{
+			$sql="insert into usuario values ('$correo','$pass','$pass2','$nombre','$apellido1','$apellido2','$id_especialista')";
+			$stmt = $abd->ejecuta_sql($sql);
+		}
+		if( $stmt === false ) {
+			$res=-1;
+			die( print_r( sqlsrv_errors(), true));
+		}
+
+
+		return $res;
 	}
 
 
