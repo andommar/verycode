@@ -41,18 +41,17 @@ class TControl{
     public function registro_historial_clinico($id_user,$doc_identificacion,
 	$nacionalidad, $raza, $fecha_nacimiento,
 	$sexo, $altura, $peso, $tipo_congenito, $subtipo_congenito,
-    $fecha_debut, $familiar_linfedema)
-    // $motivo_secundario, $ant_vasculares, $ant_infeccion_venosa, $ant_sobrepeso, $ant_lipedema, $ant_permeabilidad_cap, $ant_ansiedad
-	// $ant_diabetes, $ant_triquiasis, $ant_sindromes, $profesion, $grado_resp_profesion, $grado_stress_profesion
-    
+    $fecha_debut, $familiar_linfedema,
+    $motivo_secundario, $ant_vasculares, $ant_infeccion_venosa, $ant_sobrepeso, $ant_lipedema, $ant_permeabilidad_cap, $ant_ansiedad,
+	$ant_diabetes, $ant_triquiasis, $ant_sindromes, $profesion, $grado_resp_profesion, $grado_stress_profesion)
     {
         $usr = new TUsuario();
         $resultat = $usr->registro_historial_clinico($id_user,$doc_identificacion,
         $nacionalidad, $raza, $fecha_nacimiento,
         $sexo, $altura, $peso, $tipo_congenito, $subtipo_congenito,
-        $fecha_debut, $familiar_linfedema);
-        // $motivo_secundario, $ant_vasculares, $ant_infeccion_venosa, $ant_sobrepeso, $ant_lipedema, $ant_permeabilidad_cap, $ant_ansiedad
-        // $ant_diabetes, $ant_triquiasis, $ant_sindromes, $profesion, $grado_resp_profesion, $grado_stress_profesion
+        $fecha_debut, $familiar_linfedema,
+        $motivo_secundario, $ant_vasculares, $ant_infeccion_venosa, $ant_sobrepeso, $ant_lipedema, $ant_permeabilidad_cap, $ant_ansiedad,
+        $ant_diabetes, $ant_triquiasis, $ant_sindromes, $profesion, $grado_resp_profesion, $grado_stress_profesion);
         return ($resultat);
     }
 

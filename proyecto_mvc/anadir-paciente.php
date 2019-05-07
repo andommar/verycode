@@ -675,6 +675,7 @@
 
 
                     event.preventDefault();
+                    console.log(familiar_linfedema);
                    
 
                     // $.ajax({
@@ -693,8 +694,8 @@
                             sexo: sexo, altura: altura, peso: peso, tipo_congenito: tipo_congenito, subtipo_congenito: subtipo_congenito, 
                             fecha_debut: fecha_debut, familiar_linfedema: familiar_linfedema, motivo_secundario: motivo_secundario, ant_vasculares: ant_vasculares,
                             ant_infeccion_venosa: ant_infeccion_venosa, ant_sobrepeso: ant_sobrepeso, ant_lipedema: ant_lipedema, ant_permeabilidad_cap: ant_permeabilidad_cap, ant_ansiedad: ant_ansiedad,
-                            // ant_diabetes:ant_diabetes, ant_triquiasis: ant_triquiasis, ant_sindromes: ant_sindromes, profesion: profesion,
-                            // grado_resp_profesion: grado_resp_profesion, grado_stress_profesion: grado_stress_profesion 
+                            ant_diabetes:ant_diabetes, ant_triquiasis: ant_triquiasis, ant_sindromes: ant_sindromes, profesion: profesion,
+                            grado_resp_profesion: grado_resp_profesion, grado_stress_profesion: grado_stress_profesion 
                         },
                         
 
