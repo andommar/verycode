@@ -1,7 +1,7 @@
-#apartado-historial{
-    display: none;
+#apartado-historial, #apartado-cirugias, #apartado-medicamentos{
+    display: none; 
 }
-#apartado-formulario, #apartado-usuario, #apartado-historial{
+#apartado-formulario, #apartado-usuario, #apartado-historial, #apartado-cirugias, #apartado-medicamentos{
     background: #fff;
     margin-top: 20px;
     padding: 20px;
@@ -14,6 +14,9 @@
     margin-top: 20px;
     margin-bottom: 33px;
 }
+#apartado-medicamentos #input_patologias{
+    width: 62%;
+}
 .mouse-pointer{
     cursor: pointer;
 }
@@ -23,9 +26,8 @@
     font-size: 10px;
     margin-left: 2.7em;
     margin-bottom: 1em;
-    color: #7037f4;
 }
-#apartado-formulario h3, #apartado-usuario h3, #apartado-historial h3{
+#apartado-formulario h3, #apartado-usuario h3, #apartado-historial h3, #apartado-cirugias h3, #apartado-medicamentos h3{
     font-size: 19px;
     font-weight: 600;
 }
@@ -57,7 +59,7 @@
     width: 49%;
 }
 .margen{
-    margin-right: 13px;
+    margin-right: 4px;
 }
 #col-botones{
     
@@ -66,7 +68,7 @@
     padding-bottom: 3px;
 }
 .estilo-botones{
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bold;
     color: white;
     background-color: rgb(109, 109, 109);
@@ -84,33 +86,36 @@
 #apartado-historial h3{
     color:#6610f2;
 }
-/*color botones
-#btn-datos-personales{
-    background-color:#007bff;
+#apartado-cirugias h3{
+    color: #e83e8c;
 }
-#btn-historial-clinico{
-    background-color:#6610f2;
+#apartado-medicamentos h3{
+    color: #dc3545;
 }
-#btn-cirugias{
-    background-color:#e83e8c;
-}
-#btn-infecciones{
+/* color botones
+
+#btn-medicamentos{
     background-color:#dc3545;
 }
-#btn-habitos{
+#btn-infecciones{
     background-color:#fd7e14;
 }
-#btn-historial-trat-linf{
+#btn-habitos{
     background-color:#ffc107;
+}
+#btn-historial-trat-linf{
+    background-color:#28a745;
 
 }
 #btn-valoracion-linfedema{
-    background-color:#28a745;
-}
-#btn-medicion{
     background-color:#20c997;  
 }
-*/
+#btn-medicion{
+    background-color:#007bff;
+    
+} */
+
+
 .estilo-boton-submit{
     color: white;
 }
@@ -128,6 +133,18 @@
 }
 #btn-submit-2:hover{
     background-color:#6211e4;
+}
+#btn-submit-3, #btn-anadir-1{
+    background-color:#e83e8c;
+}
+#btn-submit-3:hover, #btn-anadir-1:hover{
+    background-color:#ea388a;
+}
+#btn-submit-4, #btn-anadir-2{
+    background-color:#dc3545;
+}
+#btn-submit-4:hover, #btn-anadir-2:hover{
+    background-color:#d32d3e;
 }
 .columna-btn{
     text-align: right;

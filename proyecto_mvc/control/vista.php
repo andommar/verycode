@@ -4,6 +4,7 @@ header("Content-Type: text/html;charset=utf-8");
 include_once("control.php");
 //include_once("../control/control_login.php");
 
+// ini_set('mssql.charset','utf-8');
 
 if(isset($_POST["opcion"]))
 {

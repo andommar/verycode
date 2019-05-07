@@ -31,6 +31,9 @@
         <!-- Gráficas -->
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/grafica1.css">
+         <!-- NOTIFICACIONES OVERHANG.JS  1 -->
+        <link rel="stylesheet" type="text/css" href="js/overhang/dist/overhang.min.css" />
+        <link rel="stylesheet" href="js/jquery-ui/jquery-ui.min.css">
     </head>
   
     <!-- ===============  BODY ============= -->
@@ -151,15 +154,6 @@
                                     <a id="btn-salir" href="logout.php" class="dropdown-item" > <span class="ti-power-off"></span>&nbsp;&nbsp;Salir</a>
                                     </div>
                                 </div>
-                                <!--<div class="dropdown-menu proclinic-box-shadow2 profile animated flipInY">
-                                    <h5>John Willing</h5>
-                                    <a class="dropdown-item" href="#">
-                                        <span class="ti-settings"></span> Settings</a>
-                                    <a class="dropdown-item" href="#">
-                                        <span class="ti-help-alt"></span> Help</a>
-                                    <a class="dropdown-item" href="#">
-                                        <span class="ti-power-off"></span> Logout</a>
-                                </div>-->
                            
                         </ul>
                     </nav>
@@ -196,25 +190,28 @@
                     <!-- FILA 1 | INPUTS -->
                     <div id="cuerpo-pagina-2" class="row"> 
                     <div class="col-lg-12" id="col-botones">
-                        <button class="btn estilo-botones margen" type="button" id="btn-datos-personales" value="">Datos personales</button>
-                        <button class="btn estilo-botones margen" type="button" id="btn-historial-clinico" value="">Historial Clínico</button>
-                        <button class="btn estilo-botones margen" type="button" id="btn-cirugias" value="">Cirugías</button>
-                        <button class="btn estilo-botones margen" type="button" id="btn-infecciones" value="">Infecciones</button>
-                        <button class="btn estilo-botones margen" type="button" id="btn-habitos" value="">Hábitos</button>
-                        <button class="btn estilo-botones margen" type="button" id="btn-historial-trat-linf" value="">Historial Tratamiento Linfedema</button>
-                        <button class="btn estilo-botones margen" type="button" id="btn-valoracion-linfedema" value="">Valoración Linfedema</button>
-                        <button class="btn estilo-botones" type="button" id="btn-medicion" value="">Medición inicial</button>
+                        <button class="btn estilo-botones margen" type="button" id="btn-datos-personales" value="" onclick="mostrarFormulario('datos-personales')">Datos personales</button>
+                        <button class="btn estilo-botones margen" type="button" id="btn-historial-clinico" value="" onclick="mostrarFormulario('historial-clinico')">Historial Clínico</button>
+                        <button class="btn estilo-botones margen" type="button" id="btn-cirugias" value="" onclick="mostrarFormulario('cirugias')">Cirugías</button>
+                        <button class="btn estilo-botones margen" type="button" id="btn-medicamentos" value="" onclick="mostrarFormulario('medicamentos')">Medicamentos</button>
+                        <button class="btn estilo-botones margen" type="button" id="btn-infecciones" value="" onclick="mostrarFormulario('infecciones')">Infecciones</button>
+                        <button class="btn estilo-botones margen" type="button" id="btn-habitos" value="" onclick="mostrarFormulario('habitos')">Hábitos</button>
+                        <button class="btn estilo-botones margen" type="button" id="btn-historial-trat-linf" value="" onclick="mostrarFormulario('historial-trat-linf')">Historial Tratamiento Linfedema</button>
+                        <button class="btn estilo-botones margen" type="button" id="btn-valoracion-linfedema" value="" onclick="mostrarFormulario('valoracion-linfedema')">Valoración Linfedema</button>
+                        <button class="btn estilo-botones" type="button" id="btn-medicion" value="" onclick="mostrarFormulario('medicion')">Medición inicial</button>
                     </div>
                         <div class="col-lg-12">
                             <div id="apartado-usuario">
                                 <h3>Datos personales&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
-                                <!--  TABLA usuario  -->
+                                
+                    <!-- =============================== USUARIO ===========================================  -->
+
                                 <form id="form-1" class="margen-form">
                                     <div class="form-row justify-content-center">
                                         <div class="form-group ancho" id="input_nombre">
                                             <label for="nombre">Nombre</label>
                                             &nbsp;
-                                            <input type="text" class="form-control" id="nombre" name="nombre"><br>
+                                            <input type="text" class="form-control" id="nombre" name="nombre" required><br>
                                         </div>
                                     
                                         &nbsp;&nbsp;
@@ -222,14 +219,14 @@
                                         <div class="form-group ancho" id="input_apellido1">
                                             <label for="apellido1">Primer apellido</label>
                                             &nbsp;
-                                            <input type="text" class="form-control" id="apellido1"><br>
+                                            <input type="text" class="form-control" id="apellido1" required><br>
                                         </div>
                                         &nbsp;&nbsp;
 
                                         <div class="form-group ancho" id="input_apellido2">
                                             <label for="apellido2">Segundo apellido</label>
                                             &nbsp;
-                                            <input type="text" class="form-control" name="apellido1" id="apellido2"><br>
+                                            <input type="text" class="form-control" name="apellido1" id="apellido2" required><br>
                                         </div>
                                     </div>  <!--Fin fila 1-->
                                     &nbsp;&nbsp;
@@ -237,14 +234,14 @@
                                         <div class="form-group ancho" id="input_correo">
                                             <label for="correo">Correo</label>
                                             &nbsp;
-                                            <input type="email" class="form-control" name="correo" id="correo"><br>
+                                            <input type="email" class="form-control" name="correo" id="correo" required><br>
                                         </div>
                                             
                                         &nbsp;&nbsp;
                                         <div class="form-group ancho" id="input_pass">
                                             <label for="pass">Contraseña</label>
                                             &nbsp;
-                                            <input type="password" class="form-control" name="pass" id="pass"><br>
+                                            <input type="password" class="form-control" name="pass" id="pass" required><br>
                                         </div>
                                         
                                         &nbsp;&nbsp;
@@ -252,7 +249,7 @@
                                         <div class="form-group ancho" id="input_pass2">
                                             <label for="pass2">Confirmar contraseña</label>
                                             &nbsp;
-                                            <input type="password" class="form-control" name="pass2" id="pass2"><br>
+                                            <input type="password" class="form-control" name="pass2" id="pass2" required><br>
                                         </div>
                                     </div>  <!--Fin fila 2-->
                                     <div class="columna-btn">
@@ -261,6 +258,7 @@
                                     </div>
                                 </form>
                             </div>
+            <!-- =============================== HISTORIAL CLINICO ===========================================  -->
 
                             <div id="apartado-historial">
                                 <h3>Historial clínico</h3><hr>
@@ -273,26 +271,26 @@
                                         <div class="form-group ancho" id="input_doc_identificacion">
                                             <label for="doc_identificacion">Documento de identificación</label>
                                             &nbsp;
-                                            <input class="form-control" id="doc_identificacion"><br>
+                                            <input class="form-control" id="doc_identificacion" required><br>
                                         </div>
                                         
                                         <div class="form-group ancho" id="input_nacionalidad">
                                             <label for="nacionalidad">Nacionalidad</label>
                                             &nbsp;
-                                            <input type="text" class="form-control" name="nacionalidad" id="nacionalidad"><br>
+                                            <input type="text" class="form-control" name="nacionalidad" id="nacionalidad" required><br>
                                         </div>
 
                                         <div class="form-group ancho" id="input_raza">
                                             <label for="raza">Raza</label>
                                             &nbsp;
-                                            <input type="text" class="form-control" name="raza" id="raza"><br>
+                                            <input type="text" class="form-control" name="raza" id="raza" required><br>
                                         </div>
                                     </div> <!--Fin fila 1-->
                                     <div class="form-row justify-content-center">
                                         <div class="form-group ancho" id="input_fecha_nacimiento">
                                             <label for="fecha_nacimiento">Fecha de nacimiento</label>
                                             &nbsp;
-                                            <input type="date" class="form-control" name="fecha_nacimiento" id="fecha_nacimiento"><br>
+                                            <input type="date" class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" required><br>
                                         </div>
                                         <div class="form-group ancho" id="select_sexo">
                                             <label for="sexo">Sexo</label>
@@ -307,14 +305,14 @@
                                         <div class="form-group ancho" id="input_altura">
                                             <label for="altura">Altura (cm)</label>
                                             &nbsp;
-                                            <input size="3" type="number" step=".01" class="form-control" id="altura" min="1" max="250">
+                                            <input size="3" type="number" step=".01" class="form-control" id="altura" min="1" max="250" required>
                                         </div>
                                     </div> <!--Fin fila 2-->
                                     <div class="form-row espaciado-empty">
                                         <div class="form-group ancho" id="input_peso">
                                             <label for="peso">Peso (kg)</label>
                                             &nbsp;
-                                            <input type="number" step=".01" min="5" max="500" class="form-control" id="peso"><br>
+                                            <input type="number" step=".01" min="5" max="500" class="form-control" id="peso" required><br>
                                         </div>
                                     
                                     </div>
@@ -444,7 +442,7 @@
                                     <div class="form-row justify-content-center espaciado-otro">
                                         <div class="form-group col-sm-12 mt-2" id="input_ant_sindromes">
                                             <label class="col-form-label" for="ant_sindromes">Síndromes</label>
-                                            <input type="text" class="form-control" name="ant_sindromes" id="ant_sindromes">
+                                            <input type="text" class="form-control" name="ant_sindromes" id="ant_sindromes" required>
                                         </div>
                                     </div><!-- Fin fila 8 -->
                                     <div class="titulos">
@@ -454,27 +452,87 @@
                                         <div class="form-group ancho" id="input_profesion">
                                             <label for="profesion">Profesión</label>
                                             &nbsp;
-                                            <input type="text" class="form-control" id="profesion"><br>
+                                            <input type="text" class="form-control" id="profesion" required><br>
                                         </div>
                                         
                                         <div class="form-group ancho" id="input_grado_resp_profesion">
                                             <label for="grado_resp_profesion">Grado de Responsabilidad</label>
                                             &nbsp;
-                                            <input type="number" min="1" max="10" class="form-control" name="grado_resp_profesion" id="grado_resp_profesion"><br>
+                                            <input type="number" min="1" max="10" class="form-control" name="grado_resp_profesion" id="grado_resp_profesion" required><br>
                                         </div>
 
                                         <div class="form-group ancho" id="input_grado_stress_profesion">
                                             <label for="grado_stress_profesion">Grado de Estrés</label>
                                             &nbsp;
-                                            <input type="number" min="1" max="10" class="form-control" name="grado_stress_profesion" id="grado_stress_profesion"><br>
+                                            <input type="number" min="1" max="10" class="form-control" name="grado_stress_profesion" id="grado_stress_profesion" required><br>
                                         </div>
                                     </div> <!--Fin fila 9-->
                                     <div class="columna-btn">
-                                        <button class="btn estilo-boton-submit" type="submit" id="btn-submit-2" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
+                                        <button class="btn estilo-boton-submit" type="submit" id="btn-submit-2" value='<?php echo($_SESSION["id_especialista"])?>'>Guardar</button>
                                         <input type="hidden" id="opcion-form2" value="registro_historial_clinico">
                                     </div>
                                 </form>
-                            </div>
+                            </div><!-- fin HISTORIAL CLINICO -->
+
+ <!-- =============================== CIRUGIAS  ===========================================  -->
+
+                            <div id="apartado-cirugias">
+                                <h3>Cirugías&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
+                                <!--  TABLA cirugias  -->
+                                <form id="form-3" class="margen-form">
+                                    <div class="form-row espaciado-empty">
+                                        <div class="form-group ancho" id="input_nombre_cirugia">
+                                            <label for="nombre_cirugia">Nombre</label>
+                                            &nbsp;
+                                            <input type="text" class="form-control" id="nombre_cirugia" name="nombre_cirugia"><br>
+                                        </div>
+                                        <div class="form-group ancho" id="input_fecha">
+                                            <label for="fecha">Fecha</label>
+                                            &nbsp;
+                                            <input type="date" class="form-control" name="fecha" id="fecha"><br>
+                                        </div>
+                                    </div><!-- Fin fila 1 -->
+                                    <div class="form-row justify-content-center espaciado-otro">
+                                        <div class="form-group col-sm-12 mt-2" id="input_comentarios">
+                                            <label class="col-form-label" for="comentarios">Comentarios</label>
+                                            <input type="text" class="form-control" name="comentarios" id="comentarios">
+                                        </div>
+                                    </div><!-- Fin fila 2 -->
+                                    <div class="columna-btn">
+                                        <button class="btn estilo-boton-submit" type="submit" id="btn-anadir-1" value='<?php echo($_SESSION["id_especialista"])?>'>Añadir cirugía</button>
+                                        <button class="btn estilo-boton-submit" type="submit" id="btn-submit-3" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
+                                    </div>
+                                </form>
+                            </div> <!-- fin CIRUGIAS -->
+
+                            <div id="apartado-medicamentos">
+                                <h3>Medicamentos&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
+        
+        <!-- =============================== MEDICAMENTOS ===========================================  -->
+
+                                <form id="form-4" class="margen-form">
+                                    <div class="form-row espaciado-empty">
+                                        <div class="form-group ancho" id="input_medicamento">
+                                            <label for="medicamento">Nombre del medicamento</label>
+                                            &nbsp;
+                                            <input type="text" class="form-control" id="medicamento" name="medicamento"><br>
+                                        </div>
+                                        <div class="form-group ancho" id="input_patologias">
+                                            <label for="patologias">Patología/s (separar por comas en caso de haber más de una)</label>
+                                            &nbsp;
+                                            <input type="text" class="form-control" id="patologias" name="patologias"><br>
+                                        </div>
+                                    </div><!-- Fin fila 1 -->
+                                    <div class="columna-btn">
+                                        <button class="btn estilo-boton-submit" type="submit" id="btn-anadir-2" value='<?php echo($_SESSION["id_especialista"])?>'>Añadir medicamento</button>
+                                        <button class="btn estilo-boton-submit" type="submit" id="btn-submit-4" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
+                                    </div>
+                                </form>
+                            </div><!-- fin MEDICAMENTOS -->
+
+
+
+
                         </div>
                     </div><!-- Fin cuerpo página-->
                 </div> <!-- Fin columna derecha-->
@@ -484,11 +542,92 @@
         </div><!-- CONTAINER FLUID-->
 
         <!-- SCRIPTS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="js/jquery-ui/external/jquery/jquery.js"></script>
+        <script src="js/jquery-ui/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js/overhang/dist/overhang.min.js"></script> 
         <script>
             var id_user = "";
             var id_especialista = "";
+            
+
+
+            function mostrarFormulario(boton){
+            
+                $(document).ready(function(){
+
+                    //Ha registrado al usuario
+                    if(id_user!=""){
+
+                        if(boton=='datos-personales'){
+                            $("body").overhang({
+                                        type: "error",
+                                        message: "ERROR, ya has registrado al paciente.",
+                                        duration: 6,
+                                        overlay: true,
+                                        closeConfirm: true
+                            });
+                        }
+                        else{
+                                 //Escondemos todos los formularios y marcamos en gris los botones
+                            $("#apartado-usuario").css("display","none");
+                            $("#btn-datos-personales").css("background-color","rgb(109, 109, 109)");
+                            $("#apartado-historial").css("display","none");
+                            $("#btn-historial-clinico").css("background-color","rgb(109, 109, 109)");
+                            $("#apartado-cirugias").css("display","none");
+                            $("#btn-cirugias").css("background-color","rgb(109, 109, 109)");
+                            $("#apartado-medicamentos").css("display","none");
+                            $("#btn-medicamentos").css("background-color","rgb(109, 109, 109)");
+
+                            //mostramos el formulario clicado
+                            switch(boton){
+                                            case 'historial-clinico':
+
+                                                $("#apartado-historial").css("display","block");
+                                                $("#btn-historial-clinico").css("background-color","#7037f4");
+
+                                            break;
+                                            case 'cirugias':
+
+                                                $("#apartado-cirugias").css("display","block");
+                                                $("#btn-cirugias").css("background-color","#e83e8c");
+                                            
+
+                                            break;
+                                            case 'medicamentos':
+                                                $("#apartado-medicamentos").css("display","block");
+                                                $("#btn-medicamentos").css("background-color","#dc3545");
+                                            
+                                                break;
+                                            case 'infecciones':
+                                            break;
+                                            case 'habitos':
+                                            break;
+                                            case 'historial-trat-linf':
+                                            break;
+                                            case 'valoracion-linfedema':
+                                            break;
+                                            case 'medicion':
+                                            break;
+                            }
+                        }
+                       
+                    }
+                    //No ha registrado al usuario
+                    else{
+                        //mensaje popup de error
+                        $("body").overhang({
+                                        type: "error",
+                                        message: "ERROR, para rellenar más formularios debes registrar los datos personales del paciente primero.",
+                                        duration: 6,
+                                        overlay: true,
+                                        closeConfirm: true
+                        });
+                    }
+                });
+            }
+
             $(document).ready(function(){
-                
                 //Según lo que seleccione en el origen del linfedema (primario) le mostramos un select diferente en secundario
                 //Eso, una vez seleccione la primera opción
                 $("#tipo_congenito").change(function(){
@@ -498,17 +637,6 @@
                     if(tipo_congenito=="Secundario"){
                         
                         $("#subtipo_congenito").html("");
-
-                        // <select>
-                        //     <optgroup label="Swedish Cars">
-                        //         <option value="volvo">Volvo</option>
-                        //         <option value="saab">Saab</option>
-                        //     </optgroup>
-                        //     <optgroup label="German Cars">
-                        //         <option value="mercedes">Mercedes</option>
-                        //         <option value="audi">Audi</option>
-                        //     </optgroup>
-                        // </select>
 
                         var $cancer = $("<optgroup label='Cáncer'>");
                         $('#subtipo_congenito').append($cancer);
@@ -580,6 +708,8 @@
                     }
                 });
 
+                //  =============================== USUARIO ===========================================  
+
                 $("#form-1").submit(function(event){
                         event.preventDefault();
                 
@@ -595,21 +725,32 @@
                         $.ajax({
                         type:'POST',
                         url: 'control/vista.php',
-                        data: {nombre: nombre, apellido1: apellido1, apellido2: apellido2, correo: correo,id_especialista: id_especialista, pass: pass, pass2: pass2, opcion: opcion},
-                        success:function(data){
-                            id_user=data;
-                            console.log(data);
-                        }
+                        data: {nombre: nombre, apellido1: apellido1, apellido2: apellido2, correo: correo,id_especialista: id_especialista, pass: pass, pass2: pass2, opcion: opcion}
                         })
-                    $("#apartado-historial").css("display","block");
-                    $("#apartado-usuario").css("display","none");
-                    $("#btn-datos-personales").css("background-color","rgb(109, 109, 109)");
-                    $("#btn-historial-clinico").css("background-color","#7037f4");
+                        .done(function( msg ) {
+                            id_user=msg;
+                            console.log(msg);                             	
+                            console.log("ajax done"); 
+
+                            //Pasamos al siguiente formulario (HISTORIAL CLÍNICO)
+                            $("#apartado-historial").css("display","block");
+                            $("#apartado-usuario").css("display","none");
+                            $("#btn-datos-personales").css("background-color","rgb(109, 109, 109)");
+                            $("#btn-historial-clinico").css("background-color","#7037f4");
+                        })
+                        .fail(function( jqXHR, textStatus, errorThrown ) {
+                            if ( console && console.log ) {
+                                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                                console.log("ajax fail");
+                            }
+                        });
+                   
                     
 
 
                 });
 
+                //  =============================== HISTORIAL CLÍNICO  ===========================================  
 
                 $("#form-2").submit(function(event){    
 
@@ -676,15 +817,6 @@
 
                     event.preventDefault();
                     console.log(familiar_linfedema);
-                   
-
-                    // $.ajax({
-                    //     method: "POST",
-                    //     data: {correo : correo, contrasenya : contrasenya},
-                    //     url: "control/control_login.php",
-                    //     async: true
-                    // })        
-
 
                     $.ajax({
                         method: "POST",
@@ -712,12 +844,6 @@
                             console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
                         }
                     });
-
-
-
-
-
-
 
                 });
 
