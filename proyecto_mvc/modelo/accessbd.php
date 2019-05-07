@@ -1,7 +1,7 @@
 <?php
 //Classe d'accés a base de dades.
 header("Content-Type: text/html;charset=utf-8");
-
+ini_set('mssql.charset','utf-8');
 class TAccesbd
 {
 	//oracle.ilerna.com, 1433 -> CASA
