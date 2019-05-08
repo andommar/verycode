@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <!-- ===============  HEAD ============= -->
@@ -44,7 +45,7 @@
                     <h3 id="titulo">Iniciar Sesión</h3>
                     <hr>
                     <!--<form id="form-login"  action="control/control_vista.php" method = "post">-->
-                    <form id="form-login" method="post" action="control/control_login.php">
+                    <form id="form-login" method="post">
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <label for="correo">Correo</label>
@@ -66,6 +67,71 @@
         <script src="js/jquery-ui/external/jquery/jquery.js"></script>
         <script src="js/jquery-ui/jquery-ui.min.js"></script>
         <script type="text/javascript" src="js/overhang/dist/overhang.min.js"></script>  
+        <script>
+            $(document).ready(function() { 
+                $("#form-login").submit(function(event){
 
+                    event.preventDefault();
+                    var correo= $("#correo").val().trim();
+                    var contrasenya= $("#contrasenya").val().trim();
+
+                    console.log("correo: "+correo);
+                    console.log("contraseña: "+contrasenya);
+
+                    //action="control/control_login.php"
+
+                    $.ajax({
+                        method: "POST",
+                        data: {correo : correo, contrasenya : contrasenya},
+                        url: "control/control_login.php",
+                        async: true
+                    })        
+                    .done(function( msg ) {                             	
+                        console.log("ajax done");
+                        console.log(msg);
+                        var datos = $.parseJSON(msg);
+                        var usuario_correcto = datos.usuario_correcto;
+                        var tipo_usuario = datos.tipo_usuario;
+                        if(usuario_correcto){
+                            if(tipo_usuario=="especialista"){
+                                //mensaje popup de error
+                                $("body").overhang({
+                                    type: "error",
+                                    message: "ERROR. Como especialista no tienes acceso a esta plataforma.",
+                                    duration: 6,
+                                    overlay: true,
+                                    closeConfirm: true
+                                });
+                            }
+                            else if(tipo_usuario=="fisioterapeuta"){
+                                window.location.assign("pagina-principal.php");
+                            }
+                            else if(tipo_usuario=="administrador"){
+                                window.location.assign("pagina-principal-admin.php");
+                            }
+                        }
+                        else{
+                                //mensaje popup de error
+                                $("body").overhang({
+                                    type: "error",
+                                    message: "ERROR. Correo o contraseña incorrectos",
+                                    duration: 3,
+                                    overlay: true,
+                                    closeConfirm: true
+                                });
+                        }
+                        
+                    })
+                    .fail(function( jqXHR, textStatus, errorThrown ) {
+                        if ( console && console.log ) {
+                            console.log( "La solicitud ajax de acceso a usuarios.json ha fallado: " +  textStatus);
+                        }
+                    });
+                });
+
+
+            });
+        </script>
     </body>
 </html>
+

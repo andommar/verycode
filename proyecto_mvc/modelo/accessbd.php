@@ -1,13 +1,19 @@
 <?php
 //Classe d'accés a base de dades.
 header("Content-Type: text/html;charset=utf-8");
-
+ini_set('mssql.charset','utf-8');
 class TAccesbd
 {
-	//oracle.ilerna.com, 1433 // 192.168.3.26, 1433
+	//oracle.ilerna.com, 1433 -> CASA
+	//192.168.3.26, 1433 -> CLASE
+
+	//BASE DE DATOS VERY CODE
+	// private $servidor = "192.168.3.26, 1433";
+	// private $connectionInfo = array( "Database"=>"DAW2_VERYCODE", "UID"=>"DAW2_VERYCODE", "PWD"=>"a1VERYCODE");
+
+
 		private $servidor = "oracle.ilerna.com, 1433";
-		private $connectionInfo = array( "Database"=>"ONCOSALUT", "UID"=>"DAM2_VESTIGIUM", "PWD"=>"Vestigium2019");
-		//private $connectionInfo = array( "Database"=>"DAW2_VERYCODE", "UID"=>"DAW2_VERYCODE", "PWD"=>"a1VERYCODE");
+		private $connectionInfo = array( "Database"=>"ONCOSALUT", "UID"=>"DAM2_VESTIGIUM", "PWD"=>"Vestigium2019", "CharacterSet"=>"UTF-8");
 		private $conn;
 		private $res;
 		/*
@@ -23,7 +29,7 @@ class TAccesbd
 			if(isset($servidor) && $servidor !="" && isset($connectionInfo) && $connectionInfo !="");
 				{
 					$this->conn = sqlsrv_connect( $this->servidor, $this->connectionInfo);
-					echo "funciona";
+					//echo "funciona";
 				}
 		}
 
@@ -86,6 +92,25 @@ class TAccesbd
 				}
 			}
 			return($dato);
+		}
+		public function listado_asociativo($sql){
+				
+			$datos=false;
+				if(isset($sql) && $sql !="" && isset($this->conn))
+				{
+					$this->res=sqlsrv_query($this->conn,$sql);
+					if($this->res)
+					{
+						$datos = array();
+						while( $row = sqlsrv_fetch_array( $this->res, SQLSRV_FETCH_ASSOC) ) {
+							array_push($datos,(array) $row);
+						}
+						sqlsrv_free_stmt( $this->res);
+					}
+					
+				}
+				
+				return($datos);	
 		}
 		
         
