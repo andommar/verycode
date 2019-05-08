@@ -505,10 +505,12 @@
                                 </form>
                             </div> <!-- fin CIRUGIAS -->
 
+                            <!-- =============================== MEDICAMENTOS ===========================================  -->
+
                             <div id="apartado-medicamentos">
                                 <h3>Medicamentos&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
         
-        <!-- =============================== MEDICAMENTOS ===========================================  -->
+
 
                                 <form id="form-4" class="margen-form">
                                     <div class="form-row espaciado-empty">
@@ -829,7 +831,6 @@
 
 
                     event.preventDefault();
-                    console.log(familiar_linfedema);
 
                     $.ajax({
                         method: "POST",
@@ -847,8 +848,6 @@
                     })
                     .done(function( msg ) {                             	
                         console.log("ajax done");
-                        console.log(id_user);
-                        console.log(msg);
                        
                         
                     })
@@ -859,6 +858,43 @@
                     });
 
                 });
+
+                //  =============================== CIRUGIAS  ===========================================
+
+
+                $("#form-3").submit(function(event){
+                        event.preventDefault();
+
+
+                    var doc_identificacion=$('#nombre_cirugia').val();
+                    var nacionalidad = $('#fecha').val();
+                    var raza = $('#comentarios').val();
+                
+                        $.ajax({
+                        type:'POST',
+                        url: 'control/vista.php',
+                        data: {}
+                        })
+                        .done(function( msg ) {
+                            id_user=msg;
+                            console.log(msg);                             	
+                            console.log("Cirugia registrada"); 
+
+                        })
+                        .fail(function( jqXHR, textStatus, errorThrown ) {
+                            if ( console && console.log ) {
+                                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                                console.log("ajax fail");
+                            }
+                        });
+                    
+                });
+
+
+
+
+
+                //  =============================== ////////////////// ===========================================
 
                 function validarDatosPersonales(nombre,apellido1,apellido2,correo,pass,pass2){
                     var datos_correctos = true;
