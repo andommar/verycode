@@ -106,7 +106,7 @@ class TUsuario{
 
 		if($abd->conectado())
 		{
-			$sql="insert into historial_clinico values (51,'$doc_identificacion','$nacionalidad','$raza','$fecha_nacimiento','$sexo',$altura, $peso,'$tipo_congenito','$subtipo_congenito', 
+			$sql="insert into historial_clinico values ($id_user,'$doc_identificacion','$nacionalidad','$raza','$fecha_nacimiento','$sexo',$altura, $peso,'$tipo_congenito','$subtipo_congenito', 
 			'$fecha_debut','$familiar_linfedema','$motivo_secundario','$ant_vasculares','$ant_infeccion_venosa','$ant_sobrepeso','$ant_lipedema','$ant_permeabilidad_cap','$ant_ansiedad',
 			'$ant_diabetes','$ant_triquiasis','$ant_sindromes','$profesion',$grado_resp_profesion,$grado_stress_profesion)";
 
@@ -131,8 +131,8 @@ class TUsuario{
 
 
 
-
-	public function registro_paciente($correo,$pass,$pass2,$nombre,$apellido1,$apellido2,$id_especialista)
+	//ESTA FUNCIÓN A PARTE DE REGISTRAR PACIENTE, DEVUELVE EL ID DESPUÉS DE REGISTRARLO
+	public function registro_paciente($correo,$pass,$pass2,$nombre,$apellido1,$apellido2,$id_especialista,&$id_user)
 	{
 		$res=0;
 		$abd = new TAccesbd ();
@@ -140,13 +140,17 @@ class TUsuario{
 		
 		if($abd->conectado())
 		{
-			$sql="insert into usuario values ('$correo','$pass','$pass2','$nombre','$apellido1','$apellido2','$id_especialista')";
+			$sql="insert into usuario values ('$correo','$pass','$pass2','$nombre','$apellido1','$apellido2','$id_especialista');SELECT SCOPE_IDENTITY()";
 			$stmt = $abd->ejecuta_sql($sql);
 		}
 		if( $stmt === false ) {
 			$res=-1;
 			die( print_r( sqlsrv_errors(), true));
 		}
+
+		sqlsrv_next_result($stmt); //Va al siguiente resultado y lo muestra (es un boolean si devuelve true o false si encuentra resultado)
+		sqlsrv_fetch($stmt); //Obtiene el resultado encontrado
+		$id_user= sqlsrv_get_field($stmt, 0);  //Coge el campo correspondiente (0 es la primera columna)
 
 
 		return $res;

@@ -38,6 +38,7 @@ if(isset($_POST["opcion"]))
 
         case "registro_paciente":
 
+            $id_usuario=0;
             $correo = $_POST["correo"];
             $pass = $_POST["pass"];
             $pass2 = $_POST["pass2"]; 
@@ -46,10 +47,11 @@ if(isset($_POST["opcion"]))
             $apellido2 = $_POST["apellido2"];
             $id_especialista = $_POST["id_especialista"];
             
-            $error=$c->registro_paciente($correo,$pass,$pass2,$nombre,$apellido1,$apellido2,$id_especialista);
+            
+            $error=$c->registro_paciente($correo,$pass,$pass2,$nombre,$apellido1,$apellido2,$id_especialista,$id_usuario);
             if($error==0)
             {
-                echo "Usuario registrado correctamente";
+                echo $id_usuario;
             }
             else
                 echo "Fallo registro";

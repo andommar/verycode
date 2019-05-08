@@ -547,7 +547,7 @@
         <script src="js/jquery-ui/jquery-ui.min.js"></script>
         <script type="text/javascript" src="js/overhang/dist/overhang.min.js"></script> 
         <script>
-            var id_user = "";
+            var id_user =0;
             var id_especialista = "";
             
 
@@ -780,6 +780,7 @@
                     }
                     var fecha_debut = $('#fecha_debut').val();
                     var familiar_linfedema = $('#familiar_linfedema').val();
+                    console.log(id_user);
                     console.log(familiar_linfedema);
                     var motivo_secundario = $('#motivo_secundario').val();
                     if(motivo_secundario=="Otro"){
