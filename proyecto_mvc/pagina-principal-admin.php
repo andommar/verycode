@@ -1,3 +1,15 @@
+<?php 
+    session_start();
+
+    if(!(isset($_SESSION["tipo_usuario"]))){
+        header("Location: index.php");
+    }
+    else{
+        if($_SESSION["tipo_usuario"]=='fisioterapeuta'){
+            header("Location: pagina-principal.php");
+        }
+    }
+?> 
 <!DOCTYPE html>
 <html>
     <!-- ===============  HEAD ============= -->
@@ -11,7 +23,8 @@
         <link rel="icon" href="img/favicon.ico" type="image/x-icon">  
         <!-- Iconos --> 
         <link rel="stylesheet" href="css/themify-icons.css">
-        <!-- BOOTSTRAP 4 -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+		<!-- BOOTSTRAP 4 -->
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <!-- jQuery library -->
@@ -22,9 +35,46 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <!-- Hojas de estilo -->
         <link rel="stylesheet" type="text/css" href="css/global-style.css">
+        <link rel="stylesheet" type="text/css" href="css/pagina-principal-admin-style.css">
         <!-- Gráficas -->
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/grafica1.css">
+        <link rel="stylesheet" href="css/formularios-style.css">
+        <script>
+            //================== Cuando la página esté cargada,cargamos los usuarios de tipo fisioterapeuta ===================
+            //$(document).ready(function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "control/control_home_admin.php",
+                        
+                    })        
+                    .done(function( data, textStatus, jqXHR ) {
+                        
+                        if ( console && console.log ) {
+                            console.log( "La solicitud de acceso se ha completado correctamente." );
+                        }
+                        var datos = $.parseJSON(data);
+                        var fila='';
+                        datos.forEach(function(element) {
+                            fila+= '<tr><td>'+element.id_especialista+'</td><td>'+element.tipo+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn mb-2 btn-editar-cliente" value="editarCliente" onclick="editarFisio('+element.id_especialista+')"><i class="fas fa-edit"></i></button></td></tr>';
+
+					    });
+                        $('#fisios-table tbody').html(fila);
+                        //console.log("datos: "+datos);
+
+                    })
+                    .fail(function( jqXHR, textStatus, errorThrown ) {
+                        if ( console && console.log ) {
+                            console.log( "La solicitud de acceso ha fallado: " +  textStatus);
+                        }
+                    });
+
+            //});//DOCUMENT READY
+
+        
+        
+        
+        </script>
     </head>
   
     <!-- ===============  BODY ============= -->
@@ -38,14 +88,14 @@
                     <nav id="nav-left">
                         <!-- Logo -->
                         <div>
-                            <a href="index.html"><img id="web-logo" class="img-fluid" src="img/logo-prueba2-bn.png" class="logo" alt="logo"></a>
+                            <a href="pagina-principal.php"><img id="web-logo" class="img-fluid" src="img/logo-prueba2-bn.png" class="logo" alt="logo"></a>
                         </div>
                         <!-- Lista desplegable -->
                         <ul class="list-unstyled components">
 
                             <!-- Apartado "PÁGINA PRINCIPAL"-->
                             <li class="active espaciado-desplegable">
-                                <a href="index.html">
+                                <a href="pagina-principal.php">
                                     <span class="ti-home"></span> Página Principal
                                 </a>
                             </li>
@@ -57,7 +107,7 @@
                                 </a>
                                 <ul class="collapse list-unstyled tamano-letra" id="nav-pacientes">
                                     <li>
-                                        <a href="anadir-paciente.html">Añadir paciente</a>
+                                        <a href="anadir-paciente.php">Añadir paciente</a>
                                     </li>
                                     <li>
                                         <a href="ver-paciente.html">Ver paciente</a>
@@ -68,27 +118,6 @@
                                     <li>
                                         <a href="pacientes.html">Todos los pacientes</a>
                                     </li>
-                                </ul>
-                            </li>
-
-                            <!-- Apartado "TERAPEUTAS"-->
-                            <li class="espaciado-desplegable apartados">
-                                <a href="#nav-terapeutas" data-toggle="collapse" aria-expanded="false" class="collapsed">
-                                    <span class="ti-user"></span> Terapeutas
-                                </a>
-                                <ul class="list-unstyled collapse tamano-letra" id="nav-terapeutas" style="">
-                                        <li>
-                                                <a href="anadir-terapeuta.html">Añadir terapeuta</a>
-                                        </li>
-                                        <li>
-                                            <a href="ver-terapeuta.html">Ver terapeuta</a>
-                                        </li>
-                                        <li>
-                                            <a href="editar-paciente.html">Editar terapeuta</a>
-                                        </li>
-                                        <li>
-                                            <a href="terapeutas.html">Todos los terapeutas</a>
-                                        </li>
                                 </ul>
                             </li>
 
@@ -128,116 +157,105 @@
                         <!-- FIN Lista desplegable -->
                     </nav>
 
-
-
                 </div>
 
                 <!-- COLUMNA DERECHA -->
                 <div class="col-lg-10 col-der" >
 
-                    <!-- Barra de navegación superior -->
+                    <!-- Barra de navegación superior =============================================================================== -->
                     <nav id="nav-top" class="navbar navbar-default">
                         <ul class="nav" id="user">
-                            <li class="nav-item">
-                                <a data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                              <div class="dropdown show">
+                                <a class="dropdown-toggle" id="icono-usuario" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                     <span class="ti-user"></span>
                                 </a>
-                                <div class="dropdown-menu proclinic-box-shadow2 profile animated flipInY">
-                                    <h5>John Willing</h5>
-                                    <a class="dropdown-item" href="#">
-                                        <span class="ti-settings"></span> Settings</a>
-                                    <a class="dropdown-item" href="#">
-                                        <span class="ti-help-alt"></span> Help</a>
-                                    <a class="dropdown-item" href="#">
-                                        <span class="ti-power-off"></span> Logout</a>
+                                    <div id="desplegable" class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+                                    <h6 class="dropdown-header">Usuario</h6>
+                                    <a id="btn-salir" href="logout.php" class="dropdown-item" > <span class="ti-power-off"></span>&nbsp;&nbsp;Salir</a>
+                                    </div>
                                 </div>
-                            </li>
+                           
                         </ul>
                     </nav>
                     <!-- Fila título página + Breadcrumb -->
                     <div class="row" id="grupo-titulo-pagina">
                         <!-- Título -->
                         <div class="col-md-6" id="titulo">
-                            <h3 class="block-title">Página Principal</h3>
+                            <h3 class="block-title">Página Principal · Administrador</h3>
                         </div>
                         <!-- Breadcrumb -->
                         <div class="col-md-6">
                             <ol class="breadcrumb" id="localizacion">						
                                 <li class="breadcrumb-item color-blanco">
-                                    <a href="index.html">
+                                    <a href="pagina-principal.php">
                                         <span class="ti-home"></span>
                                         &nbsp;&nbsp;Página principal&nbsp;&nbsp;
                                     </a>
                                 </li>
-                                <!--
-                                <li class="breadcrumb-item">Doctors</li>
-                                <li class="breadcrumb-item active">Add Doctor</li>
-                                -->
                             </ol>
                         </div>
                     </div> <!-- Fin fila -->
 
                      <!-- Cuerpo página (lado derecho)-->
-
-                     <!-- FILA 1 | ESTADÍSTICAS GENERALES-->
+                    <!-- FILA 1 -->
                     <div id="cuerpo-pagina-1" class="row"> 
-                        <div class="col-lg-4">
-                            <div class="area-cuadro sombra-cuadro color-azul">
-                                <div class="widget-izq">
-                                    <span class="ti-user"></span>
-                                </div>
-                                <div class="widget-der">
-                                    <h4 class="wiget-titulo">Pacientes</h4>
-                                    <span class="numero">348</span>
-                                    <p class="flecha-inc mb-0"><span class="ti-angle-up"></span> +20% Aumento</p>
-                                </div>
-                            </div>
+                        <div class="col-lg-12">
+                            <table cellpadding="15" id="botones-admin">
+                                <thead>
+                                    <th>Gestionar usuarios</th>
+                                    <th>Gestionar pacientes</th>
+                                </thead>
+                            </table> 
                         </div>
-                        <div class="col-lg-4">
-                            <div class="area-cuadro sombra-cuadro color-azul">
-                                <div class="widget-izq">
-                                    <span class="ti-user"></span>
-                                </div>
-                                <div class="widget-der">
-                                    <h4 class="wiget-titulo">Pacientes</h4>
-                                    <span class="numero">348</span>
-                                    <p class="flecha-inc mb-0"><span class="ti-angle-up"></span> +20% Aumento</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="area-cuadro sombra-cuadro color-azul">
-                                <div class="widget-izq">
-                                    <span class="ti-user"></span>
-                                </div>
-                                <div class="widget-der">
-                                    <h4 class="wiget-titulo">Pacientes</h4>
-                                    <span class="numero">348</span>
-                                    <p class="flecha-inc mb-0"><span class="ti-angle-up"></span> +20% Aumento</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- FILA 2 | GRÁFICAS -->
-                    <div id="cuerpo-pagina-2" class="row"> 
-                        <div class="col-lg-4 align-middle">
-                            <div class="area-cuadro sombra-cuadro color-azul">
-                                <canvas id ="lineChart" height="200" width="400"></canvas>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="area-cuadro sombra-cuadro color-azul">
-                                <canvas id ="lineChart" height="200" width="400"></canvas>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="area-cuadro sombra-cuadro color-azul">
-                                <canvas id ="lineChart" height="200" width="400"></canvas>
-                            </div>
-                        </div>
-                    </div>
+                        <div class="col-lg-12">
+                            <div id="apartado-usuarios" class="">
+                                <h3>Listado de fisioterapeutas</h3>
+                                <hr>
+                                <!-- TABLA FISIOTERAPEUTAS -->
+                                <!-- 
 
-  
+                                    id_especialista int IDENTITY(1,1),
+                                    correo VARCHAR(100) NOT NULL UNIQUE,	
+                                    pass VARCHAR(50) NOT NULL ,
+                                    pass2 VARCHAR(50) NOT NULL,
+                                    nombre VARCHAR(30) NOT NULL,
+                                    apellido1 VARCHAR(50) NOT NULL ,
+                                    apellido2 VARCHAR(50) NOT NULL,
+                                    tipo VARCHAR(25) NOT NULL CHECK(tipo IN('administrador','especialista','fisioterapeuta')),
+
+                                -->
+                                <table class="table" id="fisios-table">
+								<thead>
+									<tr>
+                                        <th>Id</th>
+                                        <th>tipo</th>
+                                        <th>Nombre</th>
+                                        <th>Apellido 1</th>
+                                        <th>Apellido 2</th>
+                                        <th>Correo</th>
+                                        <th>Contraseña</th>
+                                        <th>Opciones</th>
+                                    </tr>
+                                </thead>
+                                    <!-- Se rellena con la consulta AJAX de JS a la BD -->
+                               <tbody>     
+                                    <tr>
+                                        <td id="id_especialista"></td>
+                                        <td id="tipo"></td>
+                                        <td id="nombre"></td>
+                                        <td id="apellido1"></td>
+                                        <td id="apellido2"></td>
+                                        <td id="correo"></td>
+                                        <td id="pass"></td>
+									</tr>
+									
+								</tbody>
+							</table>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
                 </div> <!-- Fin columna derecha-->
             </div> <!-- ROW -->
 
@@ -245,9 +263,7 @@
         </div><!-- CONTAINER FLUID-->
 
         <!-- SCRIPTS -->
-        <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
-        <script src="js/grafica1.js"></script>
-
+        
 
     </body>
 </html>

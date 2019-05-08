@@ -1,3 +1,8 @@
+<?php session_start();
+    if(!(isset($_SESSION["tipo_usuario"]))){
+        header("Location: index.php");
+    }
+?> 
 <!DOCTYPE html>
 <html>
     <!-- ===============  HEAD ============= -->
