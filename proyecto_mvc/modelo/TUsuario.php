@@ -94,11 +94,8 @@ class TUsuario{
 			
 	}
 
-	public function registro_historial_clinico($id_user,$doc_identificacion,
-	$nacionalidad, $raza, $fecha_nacimiento,
-	$sexo, $altura, $peso, $tipo_congenito, $subtipo_congenito,
-  $fecha_debut, $familiar_linfedema,
-  $motivo_secundario, $ant_vasculares, $ant_infeccion_venosa, $ant_sobrepeso, $ant_lipedema, $ant_permeabilidad_cap, $ant_ansiedad,
+	public function registro_historial_clinico($id_user,$doc_identificacion,$nacionalidad, $raza, $fecha_nacimiento,$sexo, $altura, $peso, $tipo_congenito, $subtipo_congenito,
+  $fecha_debut, $familiar_linfedema, $motivo_secundario, $ant_vasculares, $ant_infeccion_venosa, $ant_sobrepeso, $ant_lipedema, $ant_permeabilidad_cap, $ant_ansiedad,
 	$ant_diabetes, $ant_triquiasis, $ant_sindromes, $profesion, $grado_resp_profesion, $grado_stress_profesion)
 	{
 		$res=0;
@@ -127,6 +124,26 @@ class TUsuario{
 		return $res;
 
 
+	}
+
+	public function registro_cirugias($id_user,$nombre,$fecha,$comentarios)
+	{
+		$res=0;
+		$abd = new TAccesbd ();
+
+		
+		if($abd->conectado())
+		{
+			$sql="insert into cirugia values ('$id_user','$nombre','$fecha','$comentarios')";
+			$stmt = $abd->ejecuta_sql($sql);
+		}
+		if( $stmt === false ) {
+			$res=-1;
+			die( print_r( sqlsrv_errors(), true));
+		}
+
+
+		return $res;
 	}
 
 

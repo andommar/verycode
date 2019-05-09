@@ -501,6 +501,7 @@
                                     <div class="columna-btn">
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-anadir-1" value='<?php echo($_SESSION["id_especialista"])?>'>Añadir cirugía</button>
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-submit-3" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
+                                        <input type="hidden" id="opcion-form3" value="registro_cirugias">
                                     </div>
                                 </form>
                             </div> <!-- fin CIRUGIAS -->
@@ -866,17 +867,17 @@
                         event.preventDefault();
 
 
-                    var doc_identificacion=$('#nombre_cirugia').val();
-                    var nacionalidad = $('#fecha').val();
-                    var raza = $('#comentarios').val();
+                    var nombre_cirugia=$('#nombre_cirugia').val();
+                    var fecha = $('#fecha').val();
+                    var comentarios = $('#comentarios').val();
+                    var opcion= $("#opcion-form3").val();
                 
                         $.ajax({
                         type:'POST',
                         url: 'control/vista.php',
-                        data: {}
+                        data: {id_user:id_user, nombre_cirugia:nombre_cirugia, fecha: fecha, comentarios: comentarios, opcion:opcion},
                         })
                         .done(function( msg ) {
-                            id_user=msg;
                             console.log(msg);                             	
                             console.log("Cirugia registrada"); 
 

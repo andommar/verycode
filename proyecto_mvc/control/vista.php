@@ -102,6 +102,24 @@ if(isset($_POST["opcion"]))
 
         break;
 
+
+        case "registro_cirugias":
+
+            $id_user=$_POST["id_user"];
+            $nombre = $_POST["nombre_cirugia"];
+            $fecha = $_POST["fecha"];
+            $comentarios = $_POST["comentarios"];           
+            
+            $error=$c->registro_cirugias($id_user,$nombre,$fecha,$comentarios);
+            if($error==0)
+            {
+                echo "Cirugias registradas";
+            }
+            else
+                echo "Fallo registro";
+
+        break;
+
     }
 }
 
