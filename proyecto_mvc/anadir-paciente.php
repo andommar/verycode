@@ -891,6 +891,94 @@
                     
                 });
 
+                //  =============================== MEDICAMENTOS  ===========================================
+
+
+                $("#form-4").submit(function(event){
+                        event.preventDefault();
+
+
+                    var medicamento=$('#medicamento').val();
+                    var patologias = $('#patologias').val();
+
+                
+                        $.ajax({
+                        type:'POST',
+                        url: 'control/vista.php',
+                        data: {id_user:id_user, medicamento:medicamento, patologias:patologias, opcion:opcion},
+                        })
+                        .done(function( msg ) {
+                            console.log(msg);                             	
+                            console.log("Ajax: Medicamento registrado"); 
+
+                        })
+                        .fail(function( jqXHR, textStatus, errorThrown ) {
+                            if ( console && console.log ) {
+                                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                                console.log("ajax fail");
+                            }
+                        });
+                    
+                });
+
+                $("#form-5").submit(function(event){
+                        event.preventDefault();
+
+
+                    var nombre_infeccion=$('#nombre_infeccion').val();
+                    var fecha = $('#fecha').val();
+                    var descripcion = $('#descripcion').val();
+
+                
+                        $.ajax({
+                        type:'POST',
+                        url: 'control/vista.php',
+                        data: {id_user:id_user, nombre_infeccion: nombre_infeccion, fecha:fecha, descripcion:descripcion, opcion:opcion},
+                        })
+                        .done(function( msg ) {
+                            console.log(msg);                             	
+                            console.log("Ajax: Infección registrada"); 
+
+                        })
+                        .fail(function( jqXHR, textStatus, errorThrown ) {
+                            if ( console && console.log ) {
+                                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                                console.log("ajax fail");
+                            }
+                        });
+                    
+                });
+
+                $("#form-6").submit(function(event){
+                        event.preventDefault();
+
+
+                    var fumador=$('#nombre_infeccion').val();
+                    var cig_dia = $('#fecha').val();
+                    var descripcion = $('#descripcion').val();
+
+                
+                        $.ajax({
+                        type:'POST',
+                        url: 'control/vista.php',
+                        data: {id_user:id_user, nombre_infeccion: nombre_infeccion, fecha:fecha, descripcion:descripcion, opcion:opcion},
+                        })
+                        .done(function( msg ) {
+                            console.log(msg);                             	
+                            console.log("Ajax: Infección registrada"); 
+
+                        })
+                        .fail(function( jqXHR, textStatus, errorThrown ) {
+                            if ( console && console.log ) {
+                                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                                console.log("ajax fail");
+                            }
+                        });
+                    
+                });
+
+
+
 
 
 

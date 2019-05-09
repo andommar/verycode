@@ -58,6 +58,20 @@ class TControl{
 
     }
 
+    public function registro_medicamento($id_user,$medicamento,$patologias)
+    {
+        $usr = new TUsuario();
+        $resultat=$usr->registro_medicamento($id_user,$medicamento,$patologias);
+        return ($resultat);
+    }
+
+    public function registro_infeccion($id_user,$nombre_infeccion,$fecha,$descripcion)
+    {
+        $usr = new TUsuario();
+        $resultat=$usr->registro_infeccion($id_user,$nombre_infeccion,$fecha,$descripcion);
+        return ($resultat);
+    }
+
 
 }
 

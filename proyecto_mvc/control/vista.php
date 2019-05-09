@@ -120,6 +120,39 @@ if(isset($_POST["opcion"]))
 
         break;
 
+        case "registro_medicamento":
+
+            $id_user=$_POST["id_user"];
+            $medicamento = $_POST["medicamento"];
+            $patologias = $_POST["patologias"];          
+            
+            $error=$c->registro_medicamento($id_user,$medicamento,$patologias);
+            if($error==0)
+            {
+                echo "Medicamento registrado";
+            }
+            else
+                echo "Fallo registro";
+
+        break;
+
+        case "registro_infeccion":
+
+            $id_user=$_POST["id_user"];
+            $nombre_infeccion = $_POST["nombre_infeccion"];
+            $fecha = $_POST["fecha"];   
+            $descripcion = $_POST["descripcion"];       
+            
+            $error=$c->registro_infeccion($id_user,$nombre_infeccion,$fecha,$descripcion);
+            if($error==0)
+            {
+                echo "Infeccion registrada";
+            }
+            else
+                echo "Fallo registro";
+
+        break;
+
     }
 }
 
