@@ -39,7 +39,6 @@
         <!-- Gráficas -->
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/grafica1.css">
-        <link rel="stylesheet" href="css/formularios-style.css">
         <script>
             //================== Cuando la página esté cargada,cargamos los usuarios de tipo fisioterapeuta ===================
             //$(document).ready(function () {
@@ -202,7 +201,7 @@
                         <div class="col-lg-12">
                             <table cellpadding="15" id="botones-admin">
                                 <thead>
-                                    <th>Gestionar usuarios</th>
+                                    <th>Gestionar especialistas</th>
                                     <th>Gestionar pacientes</th>
                                 </thead>
                             </table> 
