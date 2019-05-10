@@ -63,7 +63,7 @@
                         var filas_especialistas='';
                         var filas_pacientes='';
                         datos[0].forEach(function(element) {
-                            filas_especialistas+= '<tr><td>'+element.id_especialista+'</td><td>'+element.tipo+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn azul" value="editarEspecialista" onclick="editarEspecialista('+element.id_especialista+')"><span class="ti-pencil-alt"></span></button><button type="button" class="btn mt-1 rojo" value="borrarEspecialista" onclick="borrarEspecialista('+element.id_especialista+')"><span class="ti-trash"></span></button></td></tr>';
+                            filas_especialistas+= '<tr><td>'+element.id_especialista+'</td><td>'+element.tipo+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn azul" value="editarEspecialista" onclick="editarEspecialista('+element.id_especialista+')"><span class="ti-pencil-alt"></span></button><button data-toggle="modal" data-target="#modal-borrar" type="button" class="btn mt-1 rojo" value="borrarEspecialista" onclick="borrarEspecialista('+element.id_especialista+','+element.tipo+')"><span class="ti-trash"></span></button></td></tr>';
 
 					    });
                         $('#fisios-table tbody').html(filas_especialistas);
@@ -214,6 +214,33 @@
                             </div> 
                         </div>
                         <div class="col-lg-12">
+
+                        <div class="modal" id="modal-borrar">
+                            <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                            
+                              
+                                <div class="modal-header">
+                                <h4 class="modal-title">Aviso</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+
+                               
+                                <div id="texto-modal" class="modal-body">
+                                
+                                </div>
+                            
+                                
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button> <!--configurar onclick segun tipo e id con js-->
+                                </div>
+                                
+                            </div>
+                            </div>
+                        </div>
+
+
                             <div id="apartado-especialistas">
                                 <h3>Listado de especialistas</h3>
                                 <hr>
