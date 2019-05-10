@@ -25,9 +25,14 @@ class TControl{
         return ($resultado);
     }
 
-    public function listado_fisios(){
+    public function listado_especialistas(){
         $usr = new TUsuario();
-        $resultado = $usr->listado_fisios();
+        $resultado = $usr->listado_especialistas();
+        return ($resultado);
+    }
+    public function listado_pacientes(){
+        $usr = new TUsuario();
+        $resultado = $usr->listado_pacientes();
         return ($resultado);
     }
     

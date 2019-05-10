@@ -69,7 +69,7 @@ class TUsuario{
 	
 	//Rellena el home del admin con la lista de fisios (tabla)
 	
-	public function listado_fisios(){
+	public function listado_especialistas(){
 
 		
 			$res=false;
@@ -79,7 +79,7 @@ class TUsuario{
 			{ 	
 			
 				$res=true;
-				$sql = "SELECT id_especialista, tipo, nombre, apellido1, apellido2, correo, pass FROM especialista where tipo='fisioterapeuta' ";
+				$sql = "SELECT id_especialista, tipo, nombre, apellido1, apellido2, correo, pass FROM especialista where tipo<>'especialista' ";
 				$stmt = $abd->listado_asociativo($sql);
 			}
 			if( $stmt === false ) {
@@ -93,6 +93,31 @@ class TUsuario{
 
 			
 	}
+
+	public function listado_pacientes(){
+
+		
+		$res=false;
+		$abd = new TAccesbd ();
+	
+		if($abd->conectado())
+		{ 	
+		
+			$res=true;
+			$sql = "select id_user, id_especialista,nombre, apellido1, apellido2, correo, pass from usuario";
+			$stmt = $abd->listado_asociativo($sql);
+		}
+		if( $stmt === false ) {
+
+			$res=false;
+		}
+		else{
+			$res = $stmt;
+		}
+		return $res;
+
+		
+}
 
 	public function registro_historial_clinico($id_user,$doc_identificacion,$nacionalidad, $raza, $fecha_nacimiento,$sexo, $altura, $peso, $tipo_congenito, $subtipo_congenito,
   $fecha_debut, $familiar_linfedema, $motivo_secundario, $ant_vasculares, $ant_infeccion_venosa, $ant_sobrepeso, $ant_lipedema, $ant_permeabilidad_cap, $ant_ansiedad,
