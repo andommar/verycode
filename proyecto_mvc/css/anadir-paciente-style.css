@@ -66,6 +66,8 @@
     text-align: center;
     padding-top: 1em;
     padding-bottom: 3px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 .estilo-botones{
     font-size: 11px;

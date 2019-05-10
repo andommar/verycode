@@ -41,7 +41,11 @@
         <link rel="stylesheet" href="css/grafica1.css">
         <script>
             //================== Cuando la página esté cargada,cargamos los usuarios de tipo fisioterapeuta ===================
-            //$(document).ready(function () {
+            
+            //No ponemos document ready porque queremos que se cargue antes de que esté cargada la página
+            
+            //RELLENAR TABLAS DE ESPECIALISTAS y PACIENTES
+
                     $.ajax({
                         type: "GET",
                         url: "control/control_home_admin.php",
@@ -53,12 +57,21 @@
                             console.log( "La solicitud de acceso se ha completado correctamente." );
                         }
                         var datos = $.parseJSON(data);
-                        var fila='';
-                        datos.forEach(function(element) {
-                            fila+= '<tr><td>'+element.id_especialista+'</td><td>'+element.tipo+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn mb-2 btn-editar-cliente" value="editarCliente" onclick="editarFisio('+element.id_especialista+')"><i class="fas fa-edit"></i></button></td></tr>';
+                        console.log(datos);
+                        console.log(datos[0]); //tabla especialistas
+                        console.log(datos[1]); //tabla pacientes
+                        var filas_especialistas='';
+                        var filas_pacientes='';
+                        datos[0].forEach(function(element) {
+                            filas_especialistas+= '<tr><td>'+element.id_especialista+'</td><td>'+element.tipo+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn azul" value="editarEspecialista" onclick="editarEspecialista('+element.id_especialista+')"><span class="ti-pencil-alt"></span></button><button type="button" class="btn mt-1 rojo" value="borrarEspecialista" onclick="borrarEspecialista('+element.id_especialista+')"><span class="ti-trash"></span></button></td></tr>';
 
 					    });
-                        $('#fisios-table tbody').html(fila);
+                        $('#fisios-table tbody').html(filas_especialistas);
+                        datos[1].forEach(function(element) {
+                            filas_pacientes+= '<tr><td>'+element.id_user+'</td><td>'+element.id_especialista+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn azul" value="editarPaciente" onclick="editarPaciente('+element.id_user+')"><span class="ti-pencil-alt"></span></button><button type="button" class="btn mt-1 rojo" value="borrarPaciente" onclick="borrarPaciente('+element.id_user+')"><span class="ti-trash"></span></button></td></tr>';
+
+					    });
+                        $('#pacientes-table tbody').html(filas_pacientes);
                         //console.log("datos: "+datos);
 
                     })
@@ -67,11 +80,6 @@
                             console.log( "La solicitud de acceso ha fallado: " +  textStatus);
                         }
                     });
-
-            //});//DOCUMENT READY
-
-        
-        
         
         </script>
     </head>
@@ -198,17 +206,16 @@
                      <!-- Cuerpo página (lado derecho)-->
                     <!-- FILA 1 -->
                     <div id="cuerpo-pagina-1" class="row"> 
-                        <div class="col-lg-12">
-                            <table cellpadding="15" id="botones-admin">
-                                <thead>
-                                    <th>Gestionar especialistas</th>
-                                    <th>Gestionar pacientes</th>
-                                </thead>
-                            </table> 
+                        <div class="col-lg-12 text-center" id="apartado-botones-admin">
+                            <div id="botones-admin">
+                                    <button id="btn-gestionar-especialistas" type="button" class="button btn">Gestionar especialistas</button>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button id="btn-gestionar-pacientes" type="button" class="button btn ">Gestionar pacientes</button>
+                            </div> 
                         </div>
                         <div class="col-lg-12">
-                            <div id="apartado-usuarios" class="">
-                                <h3>Listado de fisioterapeutas</h3>
+                            <div id="apartado-especialistas">
+                                <h3>Listado de especialistas</h3>
                                 <hr>
                                 <!-- TABLA FISIOTERAPEUTAS -->
                                 <!-- 
@@ -224,33 +231,51 @@
 
                                 -->
                                 <table class="table" id="fisios-table">
-								<thead>
-									<tr>
-                                        <th>Id</th>
-                                        <th>tipo</th>
-                                        <th>Nombre</th>
-                                        <th>Apellido 1</th>
-                                        <th>Apellido 2</th>
-                                        <th>Correo</th>
-                                        <th>Contraseña</th>
-                                        <th>Opciones</th>
-                                    </tr>
-                                </thead>
-                                    <!-- Se rellena con la consulta AJAX de JS a la BD -->
-                               <tbody>     
-                                    <tr>
-                                        <td id="id_especialista"></td>
-                                        <td id="tipo"></td>
-                                        <td id="nombre"></td>
-                                        <td id="apellido1"></td>
-                                        <td id="apellido2"></td>
-                                        <td id="correo"></td>
-                                        <td id="pass"></td>
-									</tr>
-									
-								</tbody>
-							</table>
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>tipo</th>
+                                            <th>Nombre</th>
+                                            <th>Apellido 1</th>
+                                            <th>Apellido 2</th>
+                                            <th>Correo</th>
+                                            <th>Contraseña</th>
+                                            <th>Opciones</th>
+                                        </tr>
+                                    </thead>
+                                        <!-- Se rellena con la consulta AJAX de JS a la BD -->
+                                    <tbody>     
+                                       
+                                    </tbody>
+							    </table>
                             </div>
+
+
+                            <div id="apartado-pacientes" class="">
+                                <h3>Listado de pacientes</h3>
+                                <hr>
+                                <table class="table" id="pacientes-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Id usuario</th>
+                                            <th>Id fisio</th>
+                                            <th>Nombre</th>
+                                            <th>Apellido 1</th>
+                                            <th>Apellido 2</th>
+                                            <th>Correo</th>
+                                            <th>Contraseña</th>
+                                            <th>Opciones</th>
+                                        </tr>
+                                    </thead>
+                                        <!-- Se rellena con la consulta AJAX de JS a la BD -->
+                                    <tbody>     
+                                       
+                                    </tbody>
+							    </table>
+                            </div>
+
+
+
                         </div>
                         
                         
@@ -262,7 +287,26 @@
         </div><!-- CONTAINER FLUID-->
 
         <!-- SCRIPTS -->
+        <script>
+        $( document ).ready(function() {
+            $( "#btn-gestionar-especialistas" ).click(function() {
+                $( "#apartado-pacientes" ).css("display","none");
+                $( "#btn-gestionar-pacientes" ).css("background-color","rgb(109, 109, 109)");
+                $( "#apartado-especialistas" ).css("display","block");
+                $( "#btn-gestionar-especialistas" ).css("background-color","#3da3bc"); 
+                
+            });
+
+            $( "#btn-gestionar-pacientes" ).click(function() {
+                $( "#apartado-especialistas" ).css("display","none");
+                $( "#btn-gestionar-especialistas" ).css("background-color","rgb(109, 109, 109)"); 
+                $( "#apartado-pacientes" ).css("display","block");
+                $( "#btn-gestionar-pacientes" ).css("background-color","#3da3bc");
+                
+            });
+        });
         
+        </script>
 
     </body>
 </html>
