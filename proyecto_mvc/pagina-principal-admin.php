@@ -39,49 +39,6 @@
         <!-- Gráficas -->
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/grafica1.css">
-        <script>
-            //================== Cuando la página esté cargada,cargamos los usuarios de tipo fisioterapeuta ===================
-            
-            //No ponemos document ready porque queremos que se cargue antes de que esté cargada la página
-            
-            //RELLENAR TABLAS DE ESPECIALISTAS y PACIENTES
-
-                    $.ajax({
-                        type: "GET",
-                        url: "control/control_home_admin.php",
-                        
-                    })        
-                    .done(function( data, textStatus, jqXHR ) {
-                        
-                        if ( console && console.log ) {
-                            console.log( "La solicitud de acceso se ha completado correctamente." );
-                        }
-                        var datos = $.parseJSON(data);
-                        console.log(datos);
-                        console.log(datos[0]); //tabla especialistas
-                        console.log(datos[1]); //tabla pacientes
-                        var filas_especialistas='';
-                        var filas_pacientes='';
-                        datos[0].forEach(function(element) {
-                            filas_especialistas+= '<tr><td>'+element.id_especialista+'</td><td>'+element.tipo+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn azul" value="editarEspecialista" onclick="editarEspecialista('+element.id_especialista+')"><span class="ti-pencil-alt"></span></button><button data-toggle="modal" data-target="#modal-borrar" type="button" class="btn mt-1 rojo" value="borrarEspecialista" onclick="borrarEspecialista('+element.id_especialista+','+element.tipo+')"><span class="ti-trash"></span></button></td></tr>';
-
-					    });
-                        $('#fisios-table tbody').html(filas_especialistas);
-                        datos[1].forEach(function(element) {
-                            filas_pacientes+= '<tr><td>'+element.id_user+'</td><td>'+element.id_especialista+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn azul" value="editarPaciente" onclick="editarPaciente('+element.id_user+')"><span class="ti-pencil-alt"></span></button><button type="button" class="btn mt-1 rojo" value="borrarPaciente" onclick="borrarPaciente('+element.id_user+')"><span class="ti-trash"></span></button></td></tr>';
-
-					    });
-                        $('#pacientes-table tbody').html(filas_pacientes);
-                        //console.log("datos: "+datos);
-
-                    })
-                    .fail(function( jqXHR, textStatus, errorThrown ) {
-                        if ( console && console.log ) {
-                            console.log( "La solicitud de acceso ha fallado: " +  textStatus);
-                        }
-                    });
-        
-        </script>
     </head>
   
     <!-- ===============  BODY ============= -->
@@ -215,48 +172,29 @@
                         </div>
                         <div class="col-lg-12">
 
+                        <!-- VENTANA CONFIRMACIÓN BORRAR ESPECIALISTAS -->
+
                         <div class="modal" id="modal-borrar">
                             <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                            
-                              
-                                <div class="modal-header">
-                                <h4 class="modal-title">Aviso</h4>
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 id="titulo-modal" class="modal-title"></h4>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div id="texto-modal" class="modal-body"></div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="boton-cancelar">Cancelar</button>
+                                        <button type="button" class="btn btn-success" data-dismiss="modal" id="boton-aceptar">Aceptar</button> 
+                                    </div>
                                 </div>
-
-                               
-                                <div id="texto-modal" class="modal-body">
-                                
-                                </div>
-                            
-                                
-                                <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-success" data-dismiss="modal">Aceptar</button> <!--configurar onclick segun tipo e id con js-->
-                                </div>
-                                
-                            </div>
                             </div>
                         </div>
 
+                        <!-- TABLA ESPECIALISTAS -->
 
                             <div id="apartado-especialistas">
                                 <h3>Listado de especialistas</h3>
                                 <hr>
-                                <!-- TABLA FISIOTERAPEUTAS -->
-                                <!-- 
-
-                                    id_especialista int IDENTITY(1,1),
-                                    correo VARCHAR(100) NOT NULL UNIQUE,	
-                                    pass VARCHAR(50) NOT NULL ,
-                                    pass2 VARCHAR(50) NOT NULL,
-                                    nombre VARCHAR(30) NOT NULL,
-                                    apellido1 VARCHAR(50) NOT NULL ,
-                                    apellido2 VARCHAR(50) NOT NULL,
-                                    tipo VARCHAR(25) NOT NULL CHECK(tipo IN('administrador','especialista','fisioterapeuta')),
-
-                                -->
                                 <table class="table" id="fisios-table">
                                     <thead>
                                         <tr>
@@ -277,6 +215,7 @@
 							    </table>
                             </div>
 
+                            <!-- TABLA PACIENTES -->
 
                             <div id="apartado-pacientes" class="">
                                 <h3>Listado de pacientes</h3>
@@ -315,23 +254,130 @@
 
         <!-- SCRIPTS -->
         <script>
-        $( document ).ready(function() {
-            $( "#btn-gestionar-especialistas" ).click(function() {
-                $( "#apartado-pacientes" ).css("display","none");
-                $( "#btn-gestionar-pacientes" ).css("background-color","rgb(109, 109, 109)");
-                $( "#apartado-especialistas" ).css("display","block");
-                $( "#btn-gestionar-especialistas" ).css("background-color","#3da3bc"); 
+            var id_especialista="";
+            var id_usuario="";
+            var tipo_especialista="";
+
+            $( document ).ready(function() {
+                $( "#btn-gestionar-especialistas" ).click(function() {
+                    $( "#apartado-pacientes" ).css("display","none");
+                    $( "#btn-gestionar-pacientes" ).css("background-color","rgb(109, 109, 109)");
+                    $( "#apartado-especialistas" ).css("display","block");
+                    $( "#btn-gestionar-especialistas" ).css("background-color","#3da3bc"); 
+                    
+                });
+
+                $( "#btn-gestionar-pacientes" ).click(function() {
+                    $( "#apartado-especialistas" ).css("display","none");
+                    $( "#btn-gestionar-especialistas" ).css("background-color","rgb(109, 109, 109)"); 
+                    $( "#apartado-pacientes" ).css("display","block");
+                    $( "#btn-gestionar-pacientes" ).css("background-color","#3da3bc");
+                    
+                });
+
+
                 
             });
 
-            $( "#btn-gestionar-pacientes" ).click(function() {
-                $( "#apartado-especialistas" ).css("display","none");
-                $( "#btn-gestionar-especialistas" ).css("background-color","rgb(109, 109, 109)"); 
-                $( "#apartado-pacientes" ).css("display","block");
-                $( "#btn-gestionar-pacientes" ).css("background-color","#3da3bc");
+          //================== Cuando la página esté cargada,cargamos los usuarios de tipo fisioterapeuta ===================
+            
+            //No ponemos document ready porque queremos que se cargue antes de que esté cargada la página
+            
+            //RELLENAR TABLAS DE ESPECIALISTAS y PACIENTES
+
+            $.ajax({
+                        type: "GET",
+                        url: "control/control_home_admin.php",
+                        
+                    })        
+                    .done(function( data, textStatus, jqXHR ) {
+                        
+                        if ( console && console.log ) {
+                            console.log( "La solicitud de acceso se ha completado correctamente." );
+                        }
+                        var datos = $.parseJSON(data);
+                        console.log(datos);
+                        console.log(datos[0]); //tabla especialistas
+                        console.log(datos[1]); //tabla pacientes
+                        var filas_especialistas='';
+                        var filas_pacientes='';
+                        datos[0].forEach(function(element) {
+                            filas_especialistas+= '<tr><td>'+element.id_especialista+'</td><td>'+element.tipo+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn azul" value="editarEspecialista" onclick="editarEspecialista(\'' + element.id_especialista + '\')"><span class="ti-pencil-alt"></span></button><button type="button" class="btn mt-1 rojo" value="borrarEspecialista" onclick="borrarEspecialista(\'' + element.id_especialista + '\',\'' + element.tipo + '\')"><span class="ti-trash"></span></button></td></tr>';
+
+					    });
+                        $('#fisios-table tbody').html(filas_especialistas);
+                        datos[1].forEach(function(element) {
+                            filas_pacientes+= '<tr><td>'+element.id_user+'</td><td>'+element.id_especialista+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn azul" value="editarPaciente" onclick="editarPaciente(\'' + element.id_user + '\')"><span class="ti-pencil-alt"></span></button><button type="button" class="btn mt-1 rojo" value="borrarPaciente" onclick="borrarPaciente(\'' + element.id_user + '\')"><span class="ti-trash"></span></button></td></tr>';
+
+					    });
+                        $('#pacientes-table tbody').html(filas_pacientes);
+                        //console.log("datos: "+datos);
+
+                    })
+                    .fail(function( jqXHR, textStatus, errorThrown ) {
+                        if ( console && console.log ) {
+                            console.log( "La solicitud de acceso ha fallado: " +  textStatus);
+                        }
+                    });
+
+            function borrarEspecialista(id_espec, tipo_espec){
                 
+                event.preventDefault();
+
+                var frase = "";
+                var titulo="";
+                if(tipo_especialista=='fisioterapeuta'){
+                    titulo="¿Estás seguro de que deseas borrar este fisioterapeuta?";
+                    frase = "Ten en cuenta que eso conlleva que todos sus pacientes (si los tiene) se queden sin especialista." ;
+                    
+                }
+                else{//administrador
+                    if(id_espec == <?php echo $_SESSION["id_especialista"]?>){//el admin quiere borrarse a sí mismo
+                        titulo="¿Estás seguro de que deseas borrarte?";
+                        frase="Ten en cuenta que la sesión se cerrará tras aceptar y serás borrado de la base de datos.";
+                    }
+                    else{
+                        titulo="¿Estás seguro de que deseas borrar este administrador?";
+                        frase="Ten en cuenta que este usuario se borrará de la base de datos";
+                    }
+                    
+                    
+                }
+                id_especialista=id_espec;
+                tipo_especialista=tipo_espec;
+
+                $("#titulo-modal").html(titulo);
+                $("#texto-modal").html(frase);
+                $("#modal-borrar").modal();
+
+                
+            }
+            function editarEspecialista(id_user){
+                $("#modal-borrar").modal();
+            }
+            $( "#boton-aceptar" ).click(function() {//Hará ajax de borrar
+
+                $.ajax({
+                    method: "POST",
+                    url: 'control/vista.php',
+                    data: {id_especialista:id_especialista, tipo_especialista:tipo_especialista},
+                    
+
+                })
+                .done(function( msg ) {                             	
+                    console.log("ajax done");
+                
+                    
+                })
+                .fail(function( jqXHR, textStatus, errorThrown ) {
+                    if ( console && console.log ) {
+                        console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                    }
+                });
+                console.log("id especialista: "+id_especialista);
+                console.log("tipo especialista: "+tipo_especialista);
             });
-        });
+
         
         </script>
 

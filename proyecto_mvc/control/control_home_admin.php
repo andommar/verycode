@@ -1,8 +1,5 @@
 <?php 
     
-        // $juegos= "hola ke ase";
-        // echo json_encode($juegos);
-        
         session_start();                                    
         header("Content-Type: text/html;charset=utf8"); 
         include_once("control.php");
