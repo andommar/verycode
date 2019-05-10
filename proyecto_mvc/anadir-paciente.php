@@ -1101,6 +1101,43 @@
                     
                 });
 
+                //  =============================== MEDICIONES  ===========================================
+
+                $("#form-9").submit(function(event){
+                        event.preventDefault();
+
+
+                    var fecha_val_mediciones=$('#fecha_val_mediciones').val();
+                    var extremidad = $('#extremidad').val();
+                    var lado = $('#lado').val();
+                    var p1 = $('#p1').val();
+                    var p2 = $('#p2').val();
+                    var p3 = $('#p3').val();
+                    var p4 = $('#p4').val();
+                    var p5 = $('#p5').val();
+                    var p6 = $('#p6').val();
+                    var opcion= $("#opcion-form8").val();
+
+                
+                        $.ajax({
+                        type:'POST',
+                        url: 'control/vista.php',
+                        data: {id_user:id_user, fecha_val_mediciones:fecha_val_mediciones, extremidad:extremidad, lado:lado, p1:p1, p2:p2, p3:p3, p4:p4, p5:p5, p6:p6 opcion: opcion},
+                        })
+                        .done(function( msg ) {
+                            console.log(msg);                             	
+                            console.log("Ajax: Mediciones registradas"); 
+
+                        })
+                        .fail(function( jqXHR, textStatus, errorThrown ) {
+                            if ( console && console.log ) {
+                                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                                console.log("ajax fail");
+                            }
+                        });
+                    
+                });
+
 
 
 
