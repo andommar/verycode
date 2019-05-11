@@ -309,7 +309,7 @@ if(isset($_POST["opcion"]))
             else
                 echo "Fallo registro";
 
-    break;  
+        break;  
 
 
 
