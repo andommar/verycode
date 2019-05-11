@@ -59,8 +59,8 @@
                                 </a>
                             </li>
 
-                            <!-- Apartado "PACIENTES"-->
-                            <li class="active espaciado-desplegable apartados">
+                             <!-- Apartado "PACIENTES"-->
+                             <li class="active espaciado-desplegable apartados">
                                 <a href="#nav-pacientes" data-toggle="collapse" aria-expanded="false">
                                     <span class="ti-wheelchair"></span> Pacientes
                                 </a>
@@ -69,7 +69,7 @@
                                         <a href="anadir-paciente.php">Añadir paciente</a>
                                     </li>
                                     <li>
-                                        <a href="ver-paciente.html">Añadir medición</a>
+                                        <a href="ver-paciente.html">Ver paciente</a>
                                     </li>
                                     <li>
                                         <a href="editar-paciente.html">Editar paciente</a>
@@ -80,44 +80,26 @@
                                 </ul>
                             </li>
 
-                            <!-- Apartado "TERAPEUTAS"-->
-                            <!-- <li class="espaciado-desplegable apartados">
-                                <a href="#nav-terapeutas" data-toggle="collapse" aria-expanded="false" class="collapsed">
-                                    <span class="ti-user"></span> Terapeutas
+                           <!-- Apartado "mediciones"-->
+                           <li class="espaciado-desplegable apartados">
+                                <a href="#nav-mediciones" data-toggle="collapse" aria-expanded="false" class="collapsed">
+                                <span class="ti-ruler-alt"></span>  Mediciones
                                 </a>
-                                <ul class="list-unstyled collapse tamano-letra" id="nav-terapeutas" style="">
+                                <ul class="list-unstyled collapse tamano-letra" id="nav-mediciones" style="">
                                         <li>
-                                                <a href="anadir-terapeuta.html">Añadir terapeuta</a>
+                                                <a href="anadir-medicion.html">Añadir medición</a>
                                         </li>
                                         <li>
-                                            <a href="ver-terapeuta.html">Ver terapeuta</a>
+                                            <a href="ver-mediciones.html">Ver mediciones</a>
                                         </li>
                                         <li>
-                                            <a href="editar-paciente.html">Editar terapeuta</a>
+                                            <a href="editar-mediciones.html">Editar mediciones</a>
                                         </li>
                                         <li>
-                                            <a href="terapeutas.html">Todos los terapeutas</a>
+                                            <a href="mediciones.html">Todas las mediciones</a>
                                         </li>
                                 </ul>
-                            </li>
-                             -->
-                            <!-- Apartado "CALENDARIO"-->
-                            <li class="espaciado-desplegable apartados">
-                                    <a href="#nav-calendario" data-toggle="collapse" aria-expanded="false" class="collapsed">
-                                        <span class="ti-pencil-alt"></span> Calendario
-                                    </a>
-                                    <ul class="list-unstyled collapse tamano-letra" id="nav-calendario" style="">
-                                            <li>
-                                                    <a href="anadir-calendario.html">Añadir cita</a>
-                                            </li>
-                                            <li>
-                                                <a href="editar-paciente.html">Editar citas</a>
-                                            </li>
-                                            <li>
-                                                <a href="calendario.html">Todas las citas</a>
-                                            </li>
-                                    </ul>
-                            </li>
+                            </li> 
 
                             <!-- Apartado "GRÁFICAS"-->
                             <li class="espaciado-desplegable apartados">
@@ -922,221 +904,221 @@
                     
                 });
 
-                //  =============================== INFECCIÓN  ===========================================
+                // //  =============================== INFECCIÓN  ===========================================
 
-                $("#form-5").submit(function(event){
-                        event.preventDefault();
-
-
-                    var nombre_infeccion=$('#nombre_infeccion').val();
-                    var fecha = $('#fecha').val();
-                    var descripcion = $('#descripcion').val();
-                    var opcion= $("#opcion-form5").val();
-
-                
-                        $.ajax({
-                        type:'POST',
-                        url: 'control/vista.php',
-                        data: {id_user:id_user, nombre_infeccion: nombre_infeccion, fecha:fecha, descripcion:descripcion, opcion:opcion},
-                        })
-                        .done(function( msg ) {
-                            console.log(msg);                             	
-                            console.log("Ajax: Infección registrada"); 
-
-                        })
-                        .fail(function( jqXHR, textStatus, errorThrown ) {
-                            if ( console && console.log ) {
-                                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                                console.log("ajax fail");
-                            }
-                        });
-                    
-                });
-
-                //  =============================== HÁBITOS  ===========================================
+                // $("#form-5").submit(function(event){
+                //         event.preventDefault();
 
 
-                $("#form-6").submit(function(event){
-                        event.preventDefault();
-
-
-                    var fumador=$('#fumador').val();
-                    var cig_dia = $('#cig_dia').val();
-                    var cig_mes = $('#cig_mes').val();
-                    var cig_anyo = $('#cig_anyo').val();
-                    var fumador_social = $('#fumador_social').val();
-                    var freq_alcohol = $('#freq_alcohol').val();
-                    var tipo_alcohol = $('#cig_anyo').val();
-                    var freq_deporte = $('#cig_anyo').val();
-                    var tipo_deporte = $('#tipo_deporte').val();
-                    var t_sesion = $('#t_sesion').val();
-                    var alimentacion = $('#alimentacion').val();
-                    var suenyo_reparador = $('#suenyo_reparador').val();
-                    var h_suenyo = $('#h_suenyo').val();
-                    var astenico = $('#astenico').val();
-                    var erg_sentado = $('#erg_sentado').val();
-                    var erg_bidepes_pasiva = $('#erg_bidepes_pasiva').val();
-                    var erg_bidepes_activa = $('#erg_bidepes_activa').val();
-                    var erg_otro = $('#erg_otro').val();
-                    var opcion= $("#opcion-form6").val();
+                //     var nombre_infeccion=$('#nombre_infeccion').val();
+                //     var fecha = $('#fecha').val();
+                //     var descripcion = $('#descripcion').val();
+                //     var opcion= $("#opcion-form5").val();
 
                 
-                        $.ajax({
-                        type:'POST',
-                        url: 'control/vista.php',
-                        data: {id_user:id_user, fumador: fumador, cig_dia: cig_dia, cig_mes: cig_mes, cig_anyo: cig_anyo, 
-                        fumador_social: fumador_social, freq_alcohol: freq_alcohol, tipo_alcohol: tipo_alcohol, freq_deporte: freq_deporte,
-                        tipo_deporte: tipo_deporte, t_sesion: t_sesion, alimentacion: alimentacion, suenyo_reparador: suenyo_reparador,
-                        h_suenyo: h_suenyo, astenico: astenico, erg_sentado: erg_sentado, erg_bipedes_pasiva: erg_bidepes_pasiva, erg_bidepes_activa: erg_bidepes_activa,
-                        erg_otro: erg_otro, opcion: opcion},
-                        })
-                        .done(function( msg ) {
-                            console.log(msg);                             	
-                            console.log("Ajax: Hábitos registrados registrada"); 
+                //         $.ajax({
+                //         type:'POST',
+                //         url: 'control/vista.php',
+                //         data: {id_user:id_user, nombre_infeccion: nombre_infeccion, fecha:fecha, descripcion:descripcion, opcion:opcion},
+                //         })
+                //         .done(function( msg ) {
+                //             console.log(msg);                             	
+                //             console.log("Ajax: Infección registrada"); 
 
-                        })
-                        .fail(function( jqXHR, textStatus, errorThrown ) {
-                            if ( console && console.log ) {
-                                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                                console.log("ajax fail");
-                            }
-                        });
+                //         })
+                //         .fail(function( jqXHR, textStatus, errorThrown ) {
+                //             if ( console && console.log ) {
+                //                 console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                //                 console.log("ajax fail");
+                //             }
+                //         });
                     
-                });
+                // });
+
+                // //  =============================== HÁBITOS  ===========================================
 
 
-                //  =============================== HISTORIAL TRATAMIETO LINFEDEMA  ===========================================
-
-                $("#form-7").submit(function(event){
-                        event.preventDefault();
+                // $("#form-6").submit(function(event){
+                //         event.preventDefault();
 
 
-                    var fecha_ult_tratamiento=$('#fecha_ult_tratamiento').val();
-                    var satisfecho_result = $('#satisfecho_result').val();
-                    var fallo_terapia = $('#fallo_terapia').val();
-                    var tipo_drenaje_linfa = $('#tipo_drenaje_linfa').val();
-                    var vendaje = $('#vendaje').val();
-                    var nota = $('#nota').val();
-                    var contencion_dia = $('#contencion_dia').val();
-                    var contencion_tipo = $('#contencion_tipo').val();
-                    var contencion_sensacion = $('#contencion_sensacion').val();
-                    var contencion_dolor = $('#contencion_dolor').val();
-                    var contencion_escala = $('#contencion_escala').val();
-                    var contencion_pesadez = $('#contencion_pesadez').val();
-                    var opcion= $("#opcion-form7").val();
+                //     var fumador=$('#fumador').val();
+                //     var cig_dia = $('#cig_dia').val();
+                //     var cig_mes = $('#cig_mes').val();
+                //     var cig_anyo = $('#cig_anyo').val();
+                //     var fumador_social = $('#fumador_social').val();
+                //     var freq_alcohol = $('#freq_alcohol').val();
+                //     var tipo_alcohol = $('#cig_anyo').val();
+                //     var freq_deporte = $('#cig_anyo').val();
+                //     var tipo_deporte = $('#tipo_deporte').val();
+                //     var t_sesion = $('#t_sesion').val();
+                //     var alimentacion = $('#alimentacion').val();
+                //     var suenyo_reparador = $('#suenyo_reparador').val();
+                //     var h_suenyo = $('#h_suenyo').val();
+                //     var astenico = $('#astenico').val();
+                //     var erg_sentado = $('#erg_sentado').val();
+                //     var erg_bidepes_pasiva = $('#erg_bidepes_pasiva').val();
+                //     var erg_bidepes_activa = $('#erg_bidepes_activa').val();
+                //     var erg_otro = $('#erg_otro').val();
+                //     var opcion= $("#opcion-form6").val();
 
                 
-                        $.ajax({
-                        type:'POST',
-                        url: 'control/vista.php',
-                        data: {id_user:id_user, fecha_ult_tratamiento: fecha_ult_tratamiento,satisfecho_result: satisfecho_result, fallo_terapia:fallo_terapia, tipo_drenaje_linfa:tipo_drenaje_linfa,
-                        vendaje:vendaje, nota: nota, contencion_dia: contencion_dia, contencion_tipo: contencion_tipo, contencion_sensacion: contencion_sensacion, contencion_dolor: contencion_dolor,
-                        contencion_escala: contencion_escala, contencion_pesadez: contencion_pesadez, opcion: opcion},
-                        })
-                        .done(function( msg ) {
-                            console.log(msg);                             	
-                            console.log("Ajax: Tratamiento linfedema registrado"); 
+                //         $.ajax({
+                //         type:'POST',
+                //         url: 'control/vista.php',
+                //         data: {id_user:id_user, fumador: fumador, cig_dia: cig_dia, cig_mes: cig_mes, cig_anyo: cig_anyo, 
+                //         fumador_social: fumador_social, freq_alcohol: freq_alcohol, tipo_alcohol: tipo_alcohol, freq_deporte: freq_deporte,
+                //         tipo_deporte: tipo_deporte, t_sesion: t_sesion, alimentacion: alimentacion, suenyo_reparador: suenyo_reparador,
+                //         h_suenyo: h_suenyo, astenico: astenico, erg_sentado: erg_sentado, erg_bipedes_pasiva: erg_bidepes_pasiva, erg_bidepes_activa: erg_bidepes_activa,
+                //         erg_otro: erg_otro, opcion: opcion},
+                //         })
+                //         .done(function( msg ) {
+                //             console.log(msg);                             	
+                //             console.log("Ajax: Hábitos registrados registrada"); 
 
-                        })
-                        .fail(function( jqXHR, textStatus, errorThrown ) {
-                            if ( console && console.log ) {
-                                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                                console.log("ajax fail");
-                            }
-                        });
+                //         })
+                //         .fail(function( jqXHR, textStatus, errorThrown ) {
+                //             if ( console && console.log ) {
+                //                 console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                //                 console.log("ajax fail");
+                //             }
+                //         });
                     
-                });
+                // });
 
 
-                //  =============================== VALORACIÓN LINFEDEMA  ===========================================
+                // //  =============================== HISTORIAL TRATAMIETO LINFEDEMA  ===========================================
 
-                $("#form-8").submit(function(event){
-                        event.preventDefault();
+                // $("#form-7").submit(function(event){
+                //         event.preventDefault();
 
 
-                    var fecha_val_linfedema=$('#fecha_val_linfedema').val();
-                    var localizacion = $('#localizacion').val();
-                    var consistencia_edema = $('#consistencia_edema').val();
-                    var color = $('#color').val();
-                    var valoracion_piel = $('#valoracion_piel').val();
-                    var stemmer = $('#stemmer').val();
-                    var fovea = $('#fovea').val();
-                    var pesadez = $('#pesadez').val();
-                    var rubor = $('#rubor').val();
-                    var foto_pierna_ant_d = $('#foto_pierna_ant_d').val();
-                    var foto_pierna_post_d = $('#foto_pierna_post_d').val();
-                    var foto_pierna_lat_d1 = $('#foto_pierna_lat_d1').val();
-                    var foto_pierna_lat_d2 = $('#foto_pierna_lat_d2').val();
-                    var foto_pierna_ant_i = $('#foto_pierna_ant_i').val();
-                    var foto_pierna_post_i = $('#foto_pierna_post_i').val();
-                    var foto_pierna_lat_i1 = $('#foto_pierna_lat_i1').val();
-                    var foto_pierna_lat_i2 = $('#foto_pierna_lat_i2').val();
-                    var foto_brazo_cruz_d = $('#foto_brazo_cruz_d').val();
-                    var foto_brazo_frontal_d = $('#foto_brazo_frontal_d').val();
-                    var foto_brazo_cruz_i = $('#foto_brazo_cruz_i').val();
-                    var foto_brazo_frontal_i = $('#foto_brazo_frontal_i').val();
-                    var opcion= $("#opcion-form8").val();
+                //     var fecha_ult_tratamiento=$('#fecha_ult_tratamiento').val();
+                //     var satisfecho_result = $('#satisfecho_result').val();
+                //     var fallo_terapia = $('#fallo_terapia').val();
+                //     var tipo_drenaje_linfa = $('#tipo_drenaje_linfa').val();
+                //     var vendaje = $('#vendaje').val();
+                //     var nota = $('#nota').val();
+                //     var contencion_dia = $('#contencion_dia').val();
+                //     var contencion_tipo = $('#contencion_tipo').val();
+                //     var contencion_sensacion = $('#contencion_sensacion').val();
+                //     var contencion_dolor = $('#contencion_dolor').val();
+                //     var contencion_escala = $('#contencion_escala').val();
+                //     var contencion_pesadez = $('#contencion_pesadez').val();
+                //     var opcion= $("#opcion-form7").val();
 
                 
-                        $.ajax({
-                        type:'POST',
-                        url: 'control/vista.php',
-                        data: {id_user:id_user, fecha_val_linfedema: fecha_val_linfedema,localizacion:localizacion,consistencia_edema:consistencia_edema,color:color,
-                        valoracion_piel:valoracion_piel,stemmer:stemmer,fovea:fovea,pesadez:pesadez,rubor: rubor, foto_pierna_ant_d: foto_pierna_ant_d,foto_pierna_post_d: foto_pierna_post_d,
-                        foto_pierna_lat_d1: foto_pierna_lat_d1, foto_pierna_lat_d2: foto_pierna_lat_d2, foto_pierna_ant_i: foto_pierna_ant_i, foto_pierna_post_i: foto_pierna_post_i,
-                        foto_pierna_lat_i1: foto_pierna_lat_i1, foto_pierna_lat_i2:foto_pierna_lat_i2, foto_brazo_cruz_d: foto_brazo_cruz_d, foto_brazo_frontal_d:foto_brazo_frontal_d,
-                        foto_brazo_cruz_i: foto_brazo_cruz_i,  foto_brazo_frontal_i:foto_brazo_frontal_i, opcion: opcion},
-                        })
-                        .done(function( msg ) {
-                            console.log(msg);                             	
-                            console.log("Ajax: Valoración linfedema registrado"); 
+                //         $.ajax({
+                //         type:'POST',
+                //         url: 'control/vista.php',
+                //         data: {id_user:id_user, fecha_ult_tratamiento: fecha_ult_tratamiento,satisfecho_result: satisfecho_result, fallo_terapia:fallo_terapia, tipo_drenaje_linfa:tipo_drenaje_linfa,
+                //         vendaje:vendaje, nota: nota, contencion_dia: contencion_dia, contencion_tipo: contencion_tipo, contencion_sensacion: contencion_sensacion, contencion_dolor: contencion_dolor,
+                //         contencion_escala: contencion_escala, contencion_pesadez: contencion_pesadez, opcion: opcion},
+                //         })
+                //         .done(function( msg ) {
+                //             console.log(msg);                             	
+                //             console.log("Ajax: Tratamiento linfedema registrado"); 
 
-                        })
-                        .fail(function( jqXHR, textStatus, errorThrown ) {
-                            if ( console && console.log ) {
-                                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                                console.log("ajax fail");
-                            }
-                        });
+                //         })
+                //         .fail(function( jqXHR, textStatus, errorThrown ) {
+                //             if ( console && console.log ) {
+                //                 console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                //                 console.log("ajax fail");
+                //             }
+                //         });
                     
-                });
-
-                //  =============================== MEDICIONES  ===========================================
-
-                $("#form-9").submit(function(event){
-                        event.preventDefault();
+                // });
 
 
-                    var fecha_val_mediciones=$('#fecha_val_mediciones').val();
-                    var extremidad = $('#extremidad').val();
-                    var lado = $('#lado').val();
-                    var p1 = $('#p1').val();
-                    var p2 = $('#p2').val();
-                    var p3 = $('#p3').val();
-                    var p4 = $('#p4').val();
-                    var p5 = $('#p5').val();
-                    var p6 = $('#p6').val();
-                    var opcion= $("#opcion-form8").val();
+                // //  =============================== VALORACIÓN LINFEDEMA  ===========================================
+
+                // $("#form-8").submit(function(event){
+                //         event.preventDefault();
+
+
+                //     var fecha_val_linfedema=$('#fecha_val_linfedema').val();
+                //     var localizacion = $('#localizacion').val();
+                //     var consistencia_edema = $('#consistencia_edema').val();
+                //     var color = $('#color').val();
+                //     var valoracion_piel = $('#valoracion_piel').val();
+                //     var stemmer = $('#stemmer').val();
+                //     var fovea = $('#fovea').val();
+                //     var pesadez = $('#pesadez').val();
+                //     var rubor = $('#rubor').val();
+                //     var foto_pierna_ant_d = $('#foto_pierna_ant_d').val();
+                //     var foto_pierna_post_d = $('#foto_pierna_post_d').val();
+                //     var foto_pierna_lat_d1 = $('#foto_pierna_lat_d1').val();
+                //     var foto_pierna_lat_d2 = $('#foto_pierna_lat_d2').val();
+                //     var foto_pierna_ant_i = $('#foto_pierna_ant_i').val();
+                //     var foto_pierna_post_i = $('#foto_pierna_post_i').val();
+                //     var foto_pierna_lat_i1 = $('#foto_pierna_lat_i1').val();
+                //     var foto_pierna_lat_i2 = $('#foto_pierna_lat_i2').val();
+                //     var foto_brazo_cruz_d = $('#foto_brazo_cruz_d').val();
+                //     var foto_brazo_frontal_d = $('#foto_brazo_frontal_d').val();
+                //     var foto_brazo_cruz_i = $('#foto_brazo_cruz_i').val();
+                //     var foto_brazo_frontal_i = $('#foto_brazo_frontal_i').val();
+                //     var opcion= $("#opcion-form8").val();
 
                 
-                        $.ajax({
-                        type:'POST',
-                        url: 'control/vista.php',
-                        data: {id_user:id_user, fecha_val_mediciones:fecha_val_mediciones, extremidad:extremidad, lado:lado, p1:p1, p2:p2, p3:p3, p4:p4, p5:p5, p6:p6 opcion: opcion},
-                        })
-                        .done(function( msg ) {
-                            console.log(msg);                             	
-                            console.log("Ajax: Mediciones registradas"); 
+                //         $.ajax({
+                //         type:'POST',
+                //         url: 'control/vista.php',
+                //         data: {id_user:id_user, fecha_val_linfedema: fecha_val_linfedema,localizacion:localizacion,consistencia_edema:consistencia_edema,color:color,
+                //         valoracion_piel:valoracion_piel,stemmer:stemmer,fovea:fovea,pesadez:pesadez,rubor: rubor, foto_pierna_ant_d: foto_pierna_ant_d,foto_pierna_post_d: foto_pierna_post_d,
+                //         foto_pierna_lat_d1: foto_pierna_lat_d1, foto_pierna_lat_d2: foto_pierna_lat_d2, foto_pierna_ant_i: foto_pierna_ant_i, foto_pierna_post_i: foto_pierna_post_i,
+                //         foto_pierna_lat_i1: foto_pierna_lat_i1, foto_pierna_lat_i2:foto_pierna_lat_i2, foto_brazo_cruz_d: foto_brazo_cruz_d, foto_brazo_frontal_d:foto_brazo_frontal_d,
+                //         foto_brazo_cruz_i: foto_brazo_cruz_i,  foto_brazo_frontal_i:foto_brazo_frontal_i, opcion: opcion},
+                //         })
+                //         .done(function( msg ) {
+                //             console.log(msg);                             	
+                //             console.log("Ajax: Valoración linfedema registrado"); 
 
-                        })
-                        .fail(function( jqXHR, textStatus, errorThrown ) {
-                            if ( console && console.log ) {
-                                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                                console.log("ajax fail");
-                            }
-                        });
+                //         })
+                //         .fail(function( jqXHR, textStatus, errorThrown ) {
+                //             if ( console && console.log ) {
+                //                 console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                //                 console.log("ajax fail");
+                //             }
+                //         });
                     
-                });
+                // });
+
+                // //  =============================== MEDICIONES  ===========================================
+
+                // $("#form-9").submit(function(event){
+                //         event.preventDefault();
+
+
+                //     var fecha_val_mediciones=$('#fecha_val_mediciones').val();
+                //     var extremidad = $('#extremidad').val();
+                //     var lado = $('#lado').val();
+                //     var p1 = $('#p1').val();
+                //     var p2 = $('#p2').val();
+                //     var p3 = $('#p3').val();
+                //     var p4 = $('#p4').val();
+                //     var p5 = $('#p5').val();
+                //     var p6 = $('#p6').val();
+                //     var opcion= $("#opcion-form8").val();
+
+                
+                //         $.ajax({
+                //         type:'POST',
+                //         url: 'control/vista.php',
+                //         data: {id_user:id_user, fecha_val_mediciones:fecha_val_mediciones, extremidad:extremidad, lado:lado, p1:p1, p2:p2, p3:p3, p4:p4, p5:p5, p6:p6 opcion: opcion},
+                //         })
+                //         .done(function( msg ) {
+                //             console.log(msg);                             	
+                //             console.log("Ajax: Mediciones registradas"); 
+
+                //         })
+                //         .fail(function( jqXHR, textStatus, errorThrown ) {
+                //             if ( console && console.log ) {
+                //                 console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                //                 console.log("ajax fail");
+                //             }
+                //         });
+                    
+                // });
 
 
 

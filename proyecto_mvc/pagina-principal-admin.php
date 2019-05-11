@@ -85,23 +85,26 @@
                                 </ul>
                             </li>
 
-                            <!-- Apartado "CALENDARIO"-->
-                            <li class="espaciado-desplegable apartados">
-                                    <a href="#nav-calendario" data-toggle="collapse" aria-expanded="false" class="collapsed">
-                                        <span class="ti-pencil-alt"></span> Calendario
-                                    </a>
-                                    <ul class="list-unstyled collapse tamano-letra" id="nav-calendario" style="">
-                                            <li>
-                                                    <a href="anadir-calendario.html">Añadir cita</a>
-                                            </li>
-                                            <li>
-                                                <a href="editar-paciente.html">Editar citas</a>
-                                            </li>
-                                            <li>
-                                                <a href="calendario.html">Todas las citas</a>
-                                            </li>
-                                    </ul>
-                            </li>
+                           <!-- Apartado "mediciones"-->
+                           <li class="espaciado-desplegable apartados">
+                                <a href="#nav-mediciones" data-toggle="collapse" aria-expanded="false" class="collapsed">
+                                <span class="ti-ruler-alt"></span> Mediciones
+                                </a>
+                                <ul class="list-unstyled collapse tamano-letra" id="nav-mediciones" style="">
+                                        <li>
+                                                <a href="anadir-medicion.html">Añadir medición</a>
+                                        </li>
+                                        <li>
+                                            <a href="ver-mediciones.html">Ver mediciones</a>
+                                        </li>
+                                        <li>
+                                            <a href="editar-mediciones.html">Editar mediciones</a>
+                                        </li>
+                                        <li>
+                                            <a href="mediciones.html">Todas las mediciones</a>
+                                        </li>
+                                </ul>
+                            </li> 
 
                             <!-- Apartado "GRÁFICAS"-->
                             <li class="espaciado-desplegable apartados">
@@ -323,10 +326,13 @@
             function borrarEspecialista(id_espec, tipo_espec){
                 
                 event.preventDefault();
+                $("#titulo-modal").html("");
+                $("#texto-modal").html("");
+
 
                 var frase = "";
                 var titulo="";
-                if(tipo_especialista=='fisioterapeuta'){
+                if(tipo_espec=="fisioterapeuta"){
                     titulo="¿Estás seguro de que deseas borrar este fisioterapeuta?";
                     frase = "Ten en cuenta que eso conlleva que todos sus pacientes (si los tiene) se queden sin especialista." ;
                     
@@ -369,7 +375,25 @@
                 })
                 .done(function( msg ) {                             	
                     console.log("ajax done");
-                
+
+                    if(msg=="true"){
+                        $("body").overhang({
+                                    type: "success",
+                                    message: "Especialista eliminado correctamente",
+                                    duration: 6,
+                                    overlay: true,
+                                    closeConfirm: true
+                        });
+                    }
+                    else if(msg=="false"){
+                        $("body").overhang({
+                                    type: "error",
+                                    message: "ERROR, algo ha fallado",
+                                    duration: 6,
+                                    overlay: true,
+                                    closeConfirm: true
+                        });
+                    }
                     
                 })
                 .fail(function( jqXHR, textStatus, errorThrown ) {

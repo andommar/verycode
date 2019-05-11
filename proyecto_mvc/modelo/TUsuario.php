@@ -268,7 +268,6 @@ class TUsuario{
 
 				if( $stmt === false ) {
 					$res=-1;
-					die( print_r( sqlsrv_errors(), true));
 				}
 
 			}
@@ -278,27 +277,31 @@ class TUsuario{
 
 				if( $stmt === false ) {
 					$res=-1;
-
+					// die( print_r( sqlsrv_errors(), true));
 				}
 				else{
 					$num_pacientes = $stmt;
+					$stmt2="";
+					if($num_pacientes>0){//Tiene pacientes
+						$sql2="update usuario set id_especialista=null where id_especialista = $id_especialista";
+						$stmt2 = $abd->ejecuta_sql($sql2);
+					}
+					if($stmt2 === false){
+						$res=-1;
+					}
+					else{//si tiene pacientes o si no tiene
+						$sql3="delete from especialista where id_especialista = $id_especialista";
+						$stmt3 = $abd->ejecuta_sql($sql3);
+					}
 					
-					$sql2="delete from especialista where id_especialista = $id_especialista";
-					$stmt2 = $abd->ejecuta_sql($sql);
 
-					if( $stmt === false ) {
-
-					}
-					else{
-
-					}
-
+					
 				}
 
 
-			}
+			}//fisioterapeuta
 			
-		}
+		}//conectado
 	
 
 
