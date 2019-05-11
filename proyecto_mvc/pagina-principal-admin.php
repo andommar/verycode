@@ -183,8 +183,8 @@
                                     </div>
                                     <div id="texto-modal" class="modal-body"></div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="boton-cancelar">Cancelar</button>
-                                        <button type="button" class="btn btn-success" data-dismiss="modal" id="boton-aceptar">Aceptar</button> 
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="cancelar-borrar-especialista">Cancelar</button>
+                                        <button type="button" class="btn btn-success" data-dismiss="modal" id="aceptar-borrar-especialista">Aceptar</button> 
                                     </div>
                                 </div>
                             </div>
@@ -352,15 +352,18 @@
 
                 
             }
-            function editarEspecialista(id_user){
-                $("#modal-borrar").modal();
-            }
-            $( "#boton-aceptar" ).click(function() {//Hará ajax de borrar
+            // function editarEspecialista(id_user){
+            //     $("#modal-borrar").modal();
+            // }
+
+            $( "#aceptar-borrar-especialista" ).click(function() {//Hará ajax de borrar
+
+                var opcion = "borrar_especialista";
 
                 $.ajax({
                     method: "POST",
                     url: 'control/vista.php',
-                    data: {id_especialista:id_especialista, tipo_especialista:tipo_especialista},
+                    data: {id_especialista:id_especialista, tipo_especialista:tipo_especialista, opcion:opcion},
                     
 
                 })
@@ -374,8 +377,8 @@
                         console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
                     }
                 });
-                console.log("id especialista: "+id_especialista);
-                console.log("tipo especialista: "+tipo_especialista);
+                // console.log("id especialista: "+id_especialista);
+                // console.log("tipo especialista: "+tipo_especialista);
             });
 
         

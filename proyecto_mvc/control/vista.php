@@ -14,6 +14,25 @@ if(isset($_POST["opcion"]))
 
     switch($opcion)
     {
+        case "borrar_especialista":
+        
+            // BORRAR ESPECIALISTA
+            // ____________________
+            
+            
+            // -Borrar admin | (si es el mismo -> logout automático y le envía a la página de login)
+            // delete from especialista where id_especialista = 10
+            
+            // -Borrar fisio | 
+            
+            // (primero tenemos que buscar si ese especialista tiene pacientes)
+            // ->select count(*) from usuario where id_especialista = 7
+            //     if resultat > 0
+            //         -> update usuario set id_especialista=null where id_especialista = 7
+                
+            // ->delete from especialista where id_especialista = 7
+        
+        break;
         case "registro_admin":
 
             
