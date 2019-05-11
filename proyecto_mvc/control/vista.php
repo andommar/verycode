@@ -22,10 +22,10 @@ if(isset($_POST["opcion"]))
             $error=$c->borrar_especialista($id_especialista, $tipo_especialista);
             if($error==0)
             {
-                //echo "Especialista borrado";
+                echo "true";
             }
             else
-                //echo "Fallo";
+                echo "false";
 
             // BORRAR ESPECIALISTA
             // ____________________
@@ -57,10 +57,10 @@ if(isset($_POST["opcion"]))
             $tipo = $_POST["tipo"];
 
             $error=$c->registro_admin($correo, $pass, $pass2, $nombre, $apellido, $apellido2, $tipo);
-            if($error==0)
-            {
-                //echo "Usuario registrado correctamente";
-            }
+            // if($error==0)
+            // {
+            //     //echo "Usuario registrado correctamente";
+            // }
             // else
             //     //echo "Fallo registro";
 
@@ -81,10 +81,10 @@ if(isset($_POST["opcion"]))
             $error=$c->registro_paciente($correo,$pass,$pass2,$nombre,$apellido1,$apellido2,$id_especialista,$id_usuario);
             if($error==0)
             {
-                echo ("true");
+                echo $id_usuario;
             }
             else
-                echo ("false");
+                echo "Fallo registro";
 
         break;
 
