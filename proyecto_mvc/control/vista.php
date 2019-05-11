@@ -132,6 +132,7 @@ if(isset($_POST["opcion"]))
 
         break;
 
+        
 
         case "registro_cirugias":
 
@@ -218,6 +219,99 @@ if(isset($_POST["opcion"]))
                 echo "Fallo registro";
 
         break;
+
+        case "registro_tratamiento_linfedema":
+
+            $id_user=$_POST["id_user"];
+            $fecha_ult_tratamiento = $_POST["fecha_ult_tratamiento"];
+            $satisfecho_result = $_POST["satisfecho_result"];
+            $fallo_terapia = $_POST["fallo_terapia"];
+            $tipo_drenaje_linfa = $_POST["tipo_drenaje_linfa"];
+            $vendaje = $_POST["vendaje"];
+            $nota = $_POST["nota"];
+            $contencion_dia = $_POST["contencion_dia"];
+            $contencion_tipo = $_POST["contencion_tipo"];
+            $contencion_sensacion = $_POST["contencion_sensacion"];
+            $contencion_dolor = $_POST["contencion_dolor"];
+            $contencion_escala = $_POST["contencion_escala"];
+            $contencion_pesadez = $_POST["contencion_pesadez"];
+
+            $error=$c->registro_tratamiento_linfedema($id_user,$fecha_ult_tratamiento,$satisfecho_result,$fallo_terapia,$tipo_drenaje_linfa,
+            $vendaje,$nota,$contencion_dia,$contencion_tipo,$contencion_sensacion,$contencion_dolor,$contencion_escala,$contencion_pesadez);
+            if($error==0)
+            {
+                echo "Tratamiento linfedema registrado";
+            }
+            else
+                echo "Fallo registro";
+
+        break;
+
+        case "registro_valoracion_linfedema":
+
+            $id_user=$_POST["id_user"];
+            $fecha_val_linfedema = $_POST["fecha_val_linfedema"];
+            $localizacion = $_POST["localizacion"];
+            $consistencia_edema = $_POST["consistencia_edema"];
+            $color = $_POST["color"];
+            $valoracion_piel = $_POST["valoracion_piel"];
+            $stemmer = $_POST["stemmer"];
+            $fovea = $_POST["fovea"];
+            $pesadez = $_POST["pesadez"];
+            $rubor = $_POST["rubor"];
+            $foto_pierna_ant_d = $_POST["foto_pierna_ant_d"];
+            $foto_pierna_post_d = $_POST["foto_pierna_post_d"];
+            $foto_pierna_lat_d1 = $_POST["foto_pierna_lat_d1"];
+            $foto_pierna_lat_d2 = $_POST["foto_pierna_lat_d2"];
+            $foto_pierna_ant_i = $_POST["foto_pierna_ant_i"];
+            $foto_pierna_post_i = $_POST["foto_pierna_post_i"];
+            $foto_pierna_lat_i1 = $_POST["foto_pierna_lat_i1"];
+            $foto_pierna_lat_i2 = $_POST["foto_pierna_lat_i2"];
+            $foto_brazo_cruz_d = $_POST["foto_brazo_cruz_d"];
+            $foto_brazo_frontal_d = $_POST["foto_brazo_frontal_d"];
+            $foto_brazo_cruz_i = $_POST["foto_brazo_cruz_i"];
+            $foto_brazo_frontal_i = $_POST["foto_brazo_frontal_i"];
+
+            
+            $error=$c->registro_tratamiento_linfedema($id_user,$fecha_val_linfedema,$localizacion,$consistencia_edema,$color,
+            $valoracion_piel,$stemmer,$fovea,$pesadez,$rubor,$foto_pierna_ant_d,$foto_pierna_post_d,$foto_pierna_lat_d1,$foto_pierna_lat_d2,$foto_pierna_ant_i,$foto_pierna_post_i,
+            $foto_pierna_lat_i1,$foto_pierna_lat_i2,$foto_brazo_cruz_d,$foto_brazo_frontal_d, $foto_brazo_cruz_i,$foto_brazo_frontal_i);
+            if($error==0)
+            {
+                echo "Valoración linfedema registrado";
+            }
+            else
+                echo "Fallo registro";
+
+        break;
+
+        case "registro_mediciones":
+
+            $id_user=$_POST["id_user"];
+            $fecha_val_mediciones = $_POST["fecha_val_mediciones"];
+            $extremidad = $_POST["extremidad"];
+            $lado = $_POST["lado"];
+            $p1 = $_POST["p1"];
+            $p2 = $_POST["p2"];
+            $p3 = $_POST["p3"];
+            $p4 = $_POST["p4"];
+            $p5 = $_POST["p5"];
+            $p6 = $_POST["p6"];
+
+            $fecha = $_POST["fecha"];   
+            $descripcion = $_POST["descripcion"];       
+            
+            $error=$c->registro_mediciones($id_user,$fecha_val_mediciones,$extremidad,$lado,$p1,$p2,$p3,$p4,$p5,$p6);
+            if($error==0)
+            {
+                echo "Mediciones registrada";
+            }
+            else
+                echo "Fallo registro";
+
+        break;  
+
+
 
     }
 }
