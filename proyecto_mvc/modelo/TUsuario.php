@@ -14,7 +14,7 @@ class TUsuario{
 	function __construct()
 	{
 		
-    }
+  }
 
 
 	public function obtener_id_especialista($correo, &$id_especialista){
@@ -107,6 +107,8 @@ class TUsuario{
 
 		
 }
+
+//  =============================== REGISTROS  ===========================================
 
 	public function registro_historial_clinico($id_user,$doc_identificacion,$nacionalidad, $raza, $fecha_nacimiento,$sexo, $altura, $peso, $tipo_congenito, $subtipo_congenito,
   $fecha_debut, $familiar_linfedema, $motivo_secundario, $ant_vasculares, $ant_infeccion_venosa, $ant_sobrepeso, $ant_lipedema, $ant_permeabilidad_cap, $ant_ansiedad,
@@ -230,6 +232,29 @@ class TUsuario{
 		return $res;
 	}
 
+
+	public function registro_admin($correo,$pass,$pass2,$nombre,$apellido,$apellido2,$tipo)
+	{
+		$res=0;
+		$abd = new TAccesbd ();
+
+		
+		if($abd->conectado())
+		{
+			$sql="insert into especialista values ('$correo','$pass','$pass2','$nombre','$apellido','$apellido2','$tipo')";
+			$stmt = $abd->ejecuta_sql($sql);
+		}
+		if( $stmt === false ) {
+			$res=-1;
+			die( print_r( sqlsrv_errors(), true));
+		}
+
+
+		return $res;
+	}
+
+	//  =============================== ELIMINACIÓN /  MODIFICACIÓN  ===========================================
+
 	public function borrar_especialista($id_especialista, $tipo_especialista){
 			
 		$res=0;
@@ -281,25 +306,7 @@ class TUsuario{
 
 	}
 
-	public function registro_admin($correo,$pass,$pass2,$nombre,$apellido,$apellido2,$tipo)
-	{
-		$res=0;
-		$abd = new TAccesbd ();
 
-		
-		if($abd->conectado())
-		{
-			$sql="insert into especialista values ('$correo','$pass','$pass2','$nombre','$apellido','$apellido2','$tipo')";
-			$stmt = $abd->ejecuta_sql($sql);
-		}
-		if( $stmt === false ) {
-			$res=-1;
-			die( print_r( sqlsrv_errors(), true));
-		}
-
-
-		return $res;
-	}
 }
 
 ?>
