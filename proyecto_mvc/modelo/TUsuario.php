@@ -16,18 +16,7 @@ class TUsuario{
 		
     }
 
-    // public function acceder($usuario, $contrasenya){
-		
-	// 	$abd = new TAccesbd ();
 
-	// 	if($abd->conectado()){
-	// 		header("Location: ../anadir-paciente.html");
-	// 	}
-	// 	else{
-	// 		echo '<h1>No conectao luser</h1>';
-	// 	}
-		
-	// }
 	public function obtener_id_especialista($correo, &$id_especialista){
 
 		$abd = new TAccesbd ();
@@ -241,6 +230,32 @@ class TUsuario{
 		return $res;
 	}
 
+	public function borrar_especialista($id_especialista, $tipo_especialista){
+			
+		$res=0;
+		$abd = new TAccesbd ();
+		if($abd->conectado())
+		{
+			if($tipo_especialista=="administrador"){
+				//delete from especialista where id_especialista = 10
+				$sql="delete from especialista where id_especialista = $id_especialista";
+			}
+			else{//fisioterapeuta
+				
+			}
+
+			$sql="insert into especialista values ('$correo','$pass','$pass2','$nombre','$apellido','$apellido2','$tipo')";
+			$stmt = $abd->ejecuta_sql($sql);
+		}
+		if( $stmt === false ) {
+			$res=-1;
+			die( print_r( sqlsrv_errors(), true));
+		}
+
+
+		return $res;
+
+	}
 
 	public function registro_admin($correo,$pass,$pass2,$nombre,$apellido,$apellido2,$tipo)
 	{

@@ -15,7 +15,18 @@ if(isset($_POST["opcion"]))
     switch($opcion)
     {
         case "borrar_especialista":
-        
+
+            $id_especialista = $_POST["id_especialista"];
+            $tipo_especialista = $_POST["tipo_especialista"];
+
+            $error=$c->borrar_especialista($id_especialista, $tipo_especialista);
+            if($error==0)
+            {
+                //echo "Especialista borrado";
+            }
+            else
+                //echo "Fallo";
+
             // BORRAR ESPECIALISTA
             // ____________________
             

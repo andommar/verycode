@@ -5,9 +5,15 @@ header("Content-Type: text/html;charset=utf-8");
 include_once("../modelo/TUsuario.php");
 
 class TControl{
-    
+
+    public function borrar_especialista($id_especialista, $tipo_especialista){
+        
+        $usr = new TUsuario();
+        $resultado = $usr->borrar_especialista($id_especialista, $tipo_especialista);
+        return ($resultado);
+    }
+
     public function comprobar_usuario($correo,$contrasenya,&$tipo_usuario, &$id_especialista){
-        //echo("<h1>CACA DE VACA GIGANTE</h1>");
         $usr = new TUsuario();
         $id_especialista=0;
         $resultado = $usr->comprobar_usuario($correo,$contrasenya,$tipo_usuario);
@@ -16,7 +22,6 @@ class TControl{
         return ($resultado);
     }
 
-    //no usada aún
     public function registro_admin($correo,$pass,$pass2,$nombre,$apellido,$apellido2,$tipo)
     {
         
