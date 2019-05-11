@@ -183,6 +183,42 @@ if(isset($_POST["opcion"]))
 
         break;
 
+        case "registro_habitos":
+
+            $id_user=$_POST["id_user"];
+            $fumador = $_POST["fumador"];
+            $cig_dia = $_POST["cig_dia"];
+            $cig_mes = $_POST["fumador"];
+            $cig_dia = $_POST["cig_dia"];
+            $cig_anyo = $_POST["descripcion"];   
+            $fumador_social = $_POST["fumador"];
+            $freq_alcohol = $_POST["cig_dia"];
+            $tipo_alcohol = $_POST["descripcion"];   
+            $freq_deporte = $_POST["descripcion"];
+            $tipo_deporte = $_POST["tipo_deporte"];
+            $t_sesion = $_POST["t_sesion"];
+            $alimentacion = $_POST["alimentacion"];   
+            $suenyo_reparador = $_POST["suenyo_reparador"];
+            $h_suenyo = $_POST["h_suenyo"];
+            $astenico = $_POST["astenico"];   
+            $erg_sentado = $_POST["erg_sentado"];
+            $erg_bidepes_pasiva = $_POST["erg_bidepes_pasiva"];
+            $erg_bidepes_activa = $_POST["erg_bidepes_activa"];   
+            $erg_otro = $_POST["erg_otro"];
+
+            $error=$c->registro_habitos($id_user,$fumador,$cig_dia,$cig_mes,$cig_anyo,$fumador_social,$freq_alcohol,$tipo_alcohol,
+            $freq_deporte,$tipo_deporte,$t_sesion,$alimentacion,$suenyo_reparador,$h_suenyo,$astenico,$erg_sentado,$erg_bidepes_pasiva,$erg_bidepes_activa,
+            $erg_otro);
+
+            if($error==0)
+            {
+                echo "Habitos registrados";
+            }
+            else
+                echo "Fallo registro";
+
+        break;
+
     }
 }
 
