@@ -59,8 +59,8 @@
                                 </a>
                             </li>
 
-                            <!-- Apartado "PACIENTES"-->
-                            <li class="active espaciado-desplegable apartados">
+                             <!-- Apartado "PACIENTES"-->
+                             <li class="active espaciado-desplegable apartados">
                                 <a href="#nav-pacientes" data-toggle="collapse" aria-expanded="false">
                                     <span class="ti-wheelchair"></span> Pacientes
                                 </a>
@@ -69,7 +69,7 @@
                                         <a href="anadir-paciente.php">Añadir paciente</a>
                                     </li>
                                     <li>
-                                        <a href="ver-paciente.html">Añadir medición</a>
+                                        <a href="ver-paciente.html">Ver paciente</a>
                                     </li>
                                     <li>
                                         <a href="editar-paciente.html">Editar paciente</a>
@@ -80,44 +80,26 @@
                                 </ul>
                             </li>
 
-                            <!-- Apartado "TERAPEUTAS"-->
-                            <!-- <li class="espaciado-desplegable apartados">
-                                <a href="#nav-terapeutas" data-toggle="collapse" aria-expanded="false" class="collapsed">
-                                    <span class="ti-user"></span> Terapeutas
+                           <!-- Apartado "mediciones"-->
+                           <li class="espaciado-desplegable apartados">
+                                <a href="#nav-mediciones" data-toggle="collapse" aria-expanded="false" class="collapsed">
+                                <span class="ti-ruler-alt"></span>  Mediciones
                                 </a>
-                                <ul class="list-unstyled collapse tamano-letra" id="nav-terapeutas" style="">
+                                <ul class="list-unstyled collapse tamano-letra" id="nav-mediciones" style="">
                                         <li>
-                                                <a href="anadir-terapeuta.html">Añadir terapeuta</a>
+                                                <a href="anadir-medicion.html">Añadir medición</a>
                                         </li>
                                         <li>
-                                            <a href="ver-terapeuta.html">Ver terapeuta</a>
+                                            <a href="ver-mediciones.html">Ver mediciones</a>
                                         </li>
                                         <li>
-                                            <a href="editar-paciente.html">Editar terapeuta</a>
+                                            <a href="editar-mediciones.html">Editar mediciones</a>
                                         </li>
                                         <li>
-                                            <a href="terapeutas.html">Todos los terapeutas</a>
+                                            <a href="mediciones.html">Todas las mediciones</a>
                                         </li>
                                 </ul>
-                            </li>
-                             -->
-                            <!-- Apartado "CALENDARIO"-->
-                            <li class="espaciado-desplegable apartados">
-                                    <a href="#nav-calendario" data-toggle="collapse" aria-expanded="false" class="collapsed">
-                                        <span class="ti-pencil-alt"></span> Calendario
-                                    </a>
-                                    <ul class="list-unstyled collapse tamano-letra" id="nav-calendario" style="">
-                                            <li>
-                                                    <a href="anadir-calendario.html">Añadir cita</a>
-                                            </li>
-                                            <li>
-                                                <a href="editar-paciente.html">Editar citas</a>
-                                            </li>
-                                            <li>
-                                                <a href="calendario.html">Todas las citas</a>
-                                            </li>
-                                    </ul>
-                            </li>
+                            </li> 
 
                             <!-- Apartado "GRÁFICAS"-->
                             <li class="espaciado-desplegable apartados">

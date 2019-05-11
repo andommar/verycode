@@ -88,7 +88,7 @@
                            <!-- Apartado "mediciones"-->
                            <li class="espaciado-desplegable apartados">
                                 <a href="#nav-mediciones" data-toggle="collapse" aria-expanded="false" class="collapsed">
-                                    <span class="ti-user"></span> Mediciones
+                                <span class="ti-ruler-alt"></span>  Mediciones
                                 </a>
                                 <ul class="list-unstyled collapse tamano-letra" id="nav-mediciones" style="">
                                         <li>
