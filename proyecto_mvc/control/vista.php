@@ -61,8 +61,8 @@ if(isset($_POST["opcion"]))
             {
                 //echo "Usuario registrado correctamente";
             }
-            else
-                //echo "Fallo registro";
+            // else
+            //     //echo "Fallo registro";
 
         break;
 
@@ -81,10 +81,10 @@ if(isset($_POST["opcion"]))
             $error=$c->registro_paciente($correo,$pass,$pass2,$nombre,$apellido1,$apellido2,$id_especialista,$id_usuario);
             if($error==0)
             {
-                echo $id_usuario;
+                echo ("true");
             }
             else
-                echo "Fallo registro";
+                echo ("false");
 
         break;
 

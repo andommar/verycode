@@ -239,13 +239,12 @@ class TUsuario{
 			if($tipo_especialista=="administrador"){
 				//delete from especialista where id_especialista = 10
 				$sql="delete from especialista where id_especialista = $id_especialista";
+				$stmt = $abd->ejecuta_sql($sql);
 			}
-			else{//fisioterapeuta
-				
-			}
-
-			$sql="insert into especialista values ('$correo','$pass','$pass2','$nombre','$apellido','$apellido2','$tipo')";
-			$stmt = $abd->ejecuta_sql($sql);
+			// else{//fisioterapeuta
+			// 	//$stmt = $abd->consultar_dato($sql);
+			// }
+			
 		}
 		if( $stmt === false ) {
 			$res=-1;
