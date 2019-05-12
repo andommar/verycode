@@ -713,7 +713,7 @@
                                         <div class="form-group ancho col-sm-5" id="input_alimentacion_otro">
                                             <label for="alimentacion_otro">Si seleccionaste "Otras"</label>
                                             &nbsp;
-                                            <input type="text" maxlength="50" class="form-control" name="alimentacion_otro" id="alimentacion_otro"><br>
+                                            <input type="text" maxlength="50" class="form-control" name="alimentacion_otro" id="alimentacion_otro" disabled="disabled"><br>
                                         </div>
                                     </div><!-- Fin fila 5 -->
                                     <div class="titulos color6">
@@ -1004,6 +1004,16 @@
                         $('#tipo_deporte').prop('disabled', false);
                         $('#t_sesion').prop('disabled', false);
                         $('#t_sesion_medidas').prop('disabled', false);
+                    }
+                });
+                $("#alimentacion").change(function(){
+                    var alimentacion = this.value; //valor option del select
+                    if(alimentacion=="otro"){
+                        $('#alimentacion_otro').prop('disabled', false);
+                      
+                    }
+                    else{
+                        $('#alimentacion_otro').prop('disabled', true);
                     }
                 });
 
@@ -1351,7 +1361,8 @@
 
 
                 $("#form-6").submit(function(event){
-                        event.preventDefault();
+                    
+                    event.preventDefault();
 
                 // HE CAMBIADO "freq" por frec!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     var fumador=$('#fumador').val();
@@ -1375,26 +1386,26 @@
                     var opcion= $("#opcion-form6").val();
 
                 
-                        $.ajax({
-                        type:'POST',
-                        url: 'control/vista.php',
-                        data: {id_user:id_user, fumador: fumador, cig_dia: cig_dia, cig_mes: cig_mes, cig_anyo: cig_anyo, 
-                        fumador_social: fumador_social, frec_alcohol: frec_alcohol, tipo_alcohol: tipo_alcohol, frec_deporte: frec_deporte,
-                        tipo_deporte: tipo_deporte, t_sesion: t_sesion, alimentacion: alimentacion, suenyo_reparador: suenyo_reparador,
-                        h_suenyo: h_suenyo, astenico: astenico, erg_sentado: erg_sentado, erg_bipedes_pasiva: erg_bidepes_pasiva, erg_bidepes_activa: erg_bidepes_activa,
-                        erg_otro: erg_otro, opcion: opcion},
-                        })
-                        .done(function( msg ) {
-                            console.log(msg);                             	
-                            console.log("Ajax: Hábitos registrados registrada"); 
+                    // $.ajax({
+                    // type:'POST',
+                    // url: 'control/vista.php',
+                    // data: {id_user:id_user, fumador: fumador, cig_dia: cig_dia, cig_mes: cig_mes, cig_anyo: cig_anyo, 
+                    // fumador_social: fumador_social, frec_alcohol: frec_alcohol, tipo_alcohol: tipo_alcohol, frec_deporte: frec_deporte,
+                    // tipo_deporte: tipo_deporte, t_sesion: t_sesion, alimentacion: alimentacion, suenyo_reparador: suenyo_reparador,
+                    // h_suenyo: h_suenyo, astenico: astenico, erg_sentado: erg_sentado, erg_bipedes_pasiva: erg_bidepes_pasiva, erg_bidepes_activa: erg_bidepes_activa,
+                    // erg_otro: erg_otro, opcion: opcion},
+                    // })
+                    // .done(function( msg ) {
+                    //     console.log(msg);                             	
+                    //     console.log("Ajax: Hábitos registrados registrada"); 
 
-                        })
-                        .fail(function( jqXHR, textStatus, errorThrown ) {
-                            if ( console && console.log ) {
-                                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                                console.log("ajax fail");
-                            }
-                        });
+                    // })
+                    // .fail(function( jqXHR, textStatus, errorThrown ) {
+                    //     if ( console && console.log ) {
+                    //         console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                    //         console.log("ajax fail");
+                    //     }
+                    // });
                     
                 });
 
