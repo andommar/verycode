@@ -8,6 +8,7 @@ include_once("control.php");
 
 if(isset($_POST["opcion"]))
 {
+
     $opcion=$_POST["opcion"];
 
     $c= new TControl();
@@ -330,4 +331,25 @@ if(isset($_POST["opcion"]))
     }
 }
 
+if(isset($_GET["opcion"]))
+{
+    $opcion=$_GET["opcion"];
+
+    $c= new TControl();
+
+    switch($opcion)
+    {
+        case "listado_usuarios":
+
+            $id_especialista = $_GET["id_especialista"];
+            $error=$c->listado_usuarios($id_especialista);
+            if($error!=false){
+                //$res = array($res1, $res2);
+                echo json_encode($error);
+               // $datos = array("usuario_correcto"=>$res,"tipo_usuario"=>$tipo_usuario);
+            }
+        
+        break;
+    }
+}
 ?>

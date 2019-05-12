@@ -74,13 +74,7 @@
                                         <a href="anadir-paciente.php">Añadir paciente</a>
                                     </li>
                                     <li>
-                                        <a href="ver-paciente.html">Ver paciente</a>
-                                    </li>
-                                    <li>
-                                        <a href="editar-paciente.html">Editar paciente</a>
-                                    </li>
-                                    <li>
-                                        <a href="pacientes.html">Todos los pacientes</a>
+                                        <a href="pacientes.php">Todos los pacientes</a>
                                     </li>
                                 </ul>
                             </li>
@@ -92,16 +86,10 @@
                                 </a>
                                 <ul class="list-unstyled collapse tamano-letra" id="nav-mediciones" style="">
                                         <li>
-                                                <a href="anadir-medicion.html">Añadir medición</a>
+                                                <a href="anadir-medicion.php">Añadir medición</a>
                                         </li>
                                         <li>
-                                            <a href="ver-mediciones.html">Ver mediciones</a>
-                                        </li>
-                                        <li>
-                                            <a href="editar-mediciones.html">Editar mediciones</a>
-                                        </li>
-                                        <li>
-                                            <a href="mediciones.html">Todas las mediciones</a>
+                                            <a href="mediciones.php">Todas las mediciones</a>
                                         </li>
                                 </ul>
                             </li> 
