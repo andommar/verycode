@@ -216,19 +216,34 @@ class TUsuario{
 		
 		if($abd->conectado())
 		{
-			$sql="insert into usuario values ('$correo','$pass','$pass2','$nombre','$apellido1','$apellido2','$id_especialista');SELECT SCOPE_IDENTITY()";
-			$stmt = $abd->ejecuta_sql($sql);
+			//Comprobar si se repite el correo antes
+			$sql="select count(*) from usuario where correo='"+$correo+"'";
+			$stmt = $abd->consultar_dato($sql);
+
+			if( $stmt === false ) {
+				$res=-1;
+			}
+			else{ //hace el count correctamente
+				if($stmt>0){//Ya existe el correo
+					$res=-2;
+				}
+				else{
+					//Si no se repite, insertamos el usuario
+					$sql2="insert into usuario values ('$correo','$pass','$pass2','$nombre','$apellido1','$apellido2','$id_especialista');SELECT SCOPE_IDENTITY()";
+					$stmt2 = $abd->ejecuta_sql($sql2);
+					if( $stmt2 === false ) {
+						$res=-1;
+						die( print_r( sqlsrv_errors(), true));
+					}
+					else{
+						sqlsrv_next_result($stmt2); //Va al siguiente resultado y lo muestra (es un boolean si devuelve true o false si encuentra resultado)
+						sqlsrv_fetch($stmt2); //Obtiene el resultado encontrado
+						$id_user= sqlsrv_get_field($stmt2, 0);  //Coge el campo correspondiente (0 es la primera columna)
+					}
+				}
+			}
+			
 		}
-		if( $stmt === false ) {
-			$res=-1;
-			die( print_r( sqlsrv_errors(), true));
-		}
-
-		sqlsrv_next_result($stmt); //Va al siguiente resultado y lo muestra (es un boolean si devuelve true o false si encuentra resultado)
-		sqlsrv_fetch($stmt); //Obtiene el resultado encontrado
-		$id_user= sqlsrv_get_field($stmt, 0);  //Coge el campo correspondiente (0 es la primera columna)
-
-
 		return $res;
 	}
 

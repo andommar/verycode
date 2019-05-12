@@ -711,6 +711,8 @@
                 
                         
                         var datos_correctos = true;
+                        var datos_correctos_queries = true;
+
 
                         var nombre =$('#nombre').val();
                         var apellido1=$('#apellido1').val();
@@ -730,21 +732,37 @@
                             data: {nombre: nombre, apellido1: apellido1, apellido2: apellido2, correo: correo,id_especialista: id_especialista, pass: pass, pass2: pass2, opcion: opcion}
                             })
                             .done(function( msg ) {
-                                id_user=msg;
+
+                                var resultado = $.parseJSON(msg);
                                 // console.log(msg);                             	
                                 console.log("ajax done"); 
-                                if(msg=="false"){
+                                if(resultado[1]=="false"){
                                     $.notify("Error en la consulta SQL", "error");
+                                    datos_correctos_queries = false;
+                                }
+                                else if(resultado[1]=="correo"){
+                                    $("body").overhang({
+                                        type: "error",
+                                        message: "ERROR. Este correo ya está en uso",
+                                        duration: 3,
+                                        overlay: true,
+                                        closeConfirm: true
+                                    });
+                                    datos_correctos_queries = false;
                                 }
                                 else{
+                                    id_user=resultado[0];
                                     $.notify("Datos personales guardados correctamente", "success");
                                 }
 
-                                //Pasamos al siguiente formulario (HISTORIAL CLÍNICO)
-                                $("#apartado-historial").css("display","block");
-                                $("#apartado-usuario").css("display","none");
-                                $("#btn-datos-personales").css("background-color","rgb(109, 109, 109)");
-                                $("#btn-historial-clinico").css("background-color","#7037f4");
+                                if(datos_correctos_queries){
+                                    //Pasamos al siguiente formulario (HISTORIAL CLÍNICO)
+                                    $("#apartado-historial").css("display","block");
+                                    $("#apartado-usuario").css("display","none");
+                                    $("#btn-datos-personales").css("background-color","rgb(109, 109, 109)");
+                                    $("#btn-historial-clinico").css("background-color","#7037f4");
+                                }
+                                
                             })
                             .fail(function( jqXHR, textStatus, errorThrown ) {
                                 if ( console && console.log ) {
@@ -844,7 +862,8 @@
                             grado_resp_profesion: grado_resp_profesion, grado_stress_profesion: grado_stress_profesion 
                         },
                         })
-                        .done(function( msg ) {                             	
+                        .done(function( msg ) {   
+                                                 	
                             console.log("ajax done");
                             if(msg=="false"){
                                     $.notify("Error en la consulta SQL", "error");

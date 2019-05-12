@@ -81,10 +81,18 @@ if(isset($_POST["opcion"]))
             $error=$c->registro_paciente($correo,$pass,$pass2,$nombre,$apellido1,$apellido2,$id_especialista,$id_usuario);
             if($error==0)
             {
-                echo $id_usuario;
+                // echo $id_usuario;
+                $resultado = array($id_usuario,"");
+            }
+            else if($error==-2){
+                // echo "correo"
+                $resultado = array("","correo");
             }
             else
-                echo "false";
+                // echo "false";
+                $resultado = array("","false");
+            
+           json_encode($resultado);
 
         break;
 
