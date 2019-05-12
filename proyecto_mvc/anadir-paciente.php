@@ -613,9 +613,9 @@
                                             &nbsp;
                                             <div>
                                                 <select id="frec_alcohol" class="form-control form-control-md">
-                                                    <option value="dia">Día</option>
-                                                    <option value="mes">Mes</option>
-                                                    <option value="anyo">Año</option>
+                                                    <option value="frecuentemente">Frecuentemente</option>
+                                                    <option value="ocasionalmente">Ocasionalmente</option>
+                                                    <option value="socialmente">Socialmente</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -626,14 +626,13 @@
                                         </div>
                                         <div class="form-group ancho col-sm-2" id="input_tipo_alcohol">
                                             <label for="tipo_alcohol">Tipo de alcohol</label>
-                                            &nbsp;
                                             <input type="text" maxlength="50" class="form-control" name="tipo_alcohol" id="tipo_alcohol"><br>
                                         </div>
                                     </div><!-- Fin fila 2 -->
                                     <div class="titulos color6">
                                         <label>DEPORTE</label>
                                     </div>
-                                    <div class="form-row espaciado-empty">
+                                    <div class="form-row espaciado-empty mb-2">
                                         <div class="form-group ancho col-sm-2" id="select_hace_deporte">
                                             <label for="hace_deporte">Practica deporte</label>
                                             &nbsp;
@@ -649,31 +648,37 @@
                                             &nbsp;
                                             <div>
                                                 <select id="frec_deporte" class="form-control form-control-md">
-                                                    <option value="dia">Día</option>
-                                                    <option value="mes">Mes</option>
-                                                    <option value="anyo">Año</option>
+                                                    <option value="todos">Todos los días</option>
+                                                    <option value="5sem">5 a la semana</option>
+                                                    <option value="3sem">3 a la semana</option>
+                                                    <option value="1sem">1 a la semana</option>
+                                                    <option value="15dias">Cada 15 días</option>
+                                                    <option value="1mes">1 al mes</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group ancho col-sm-2" id="input_deporte">
-                                            <label for="deporte">Cantidad</label>
-                                            &nbsp;
-                                            <input type="number" class="form-control" name="deporte" id="deporte"><br>
-                                        </div>
-                                        <div class="form-group ancho col-sm-2" id="input_tipo_deporte">
+                                        <div class="form-group ancho col-sm-2" id="select_tipo_deporte">
                                             <label for="tipo_deporte">Tipo de deporte</label>
                                             &nbsp;
-                                            <input type="text" maxlength="50" class="form-control" name="tipo_deporte" id="tipo_deporte"><br>
+                                            <div>
+                                                <select id="tipo_deporte" class="form-control form-control-md">
+                                                    <option value="aerobico">Aeróbico</option>
+                                                    <option value="anaerobico">Anaeróbico</option>
+                                                    <option value="impacto">Impacto</option>
+                                                    <option value="alta-intensidad">Alta intensidad</option>
+                                                    <option value="aero-anaero">Aeróbico+anaeróbico</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                        
                                     </div><!-- Fin fila 3 ** -->
                                     <div class="form-row espaciado-empty">
-                                        <div class="form-group ancho col-sm-3" id="input_t_sesion">
-                                            <label for="t_sesion">Tiempo de la sesión</label>
+                                        <div class="form-group ancho col-sm-2" id="input_t_sesion">
+                                            <label for="t_sesion">Tiempo sesión</label>
                                             &nbsp;
                                             <input type="number" class="form-control" name="t_sesion" id="t_sesion"><br>
                                         </div>
-                                        <div class="form-group ancho col-sm-3" id="select_t_sesion_medidas">
+                                       
+                                        <div class="form-group ancho col-sm-2" id="select_t_sesion_medidas">
                                             <label for="t_sesion_medidas">Medida de tiempo</label>
                                             &nbsp;
                                             <div>
@@ -684,8 +689,88 @@
                                             </div>
                                         </div>
                                     </div><!-- Fin fila 4 -->
-
-
+                                    <div class="titulos color6">
+                                        <label>ALIMENTACIÓN</label>
+                                    </div>
+                                    <div class="form-row espaciado-empty">
+                                        <div class="form-group ancho col-sm-3" id="select_alimentacion">
+                                            <label for="alimentacion">Tipo de alimentación</label>
+                                            &nbsp;
+                                            <div>
+                                                <select id="alimentacion" class="form-control form-control-md">
+                                                    <option value="equilibrada">Equilibrada</option>
+                                                    <option value="hipocalorica">Hipocalórica</option>
+                                                    <option value="hipercalorica">Hipercalórica</option>
+                                                    <option value="cetogenica">Cetogénica</option>
+                                                    <option value="proteica">Proteica</option>
+                                                    <option value="vegetariana">Vegetariana</option>
+                                                    <option value="vegana">Vegana</option>
+                                                    <option value="fast-food">Fast food</option>
+                                                    <option value="otro">Otras</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ancho col-sm-5" id="input_alimentacion_otro">
+                                            <label for="alimentacion_otro">Si seleccionaste "Otras"</label>
+                                            &nbsp;
+                                            <input type="text" maxlength="50" class="form-control" name="alimentacion_otro" id="alimentacion_otro"><br>
+                                        </div>
+                                    </div><!-- Fin fila 5 -->
+                                    <div class="titulos color6">
+                                        <label>DESCANSO</label>
+                                    </div>
+                                    <div class="form-row espaciado-empty">
+                                        <div class="form-group ancho col-sm-2" id="select_suenyo_reparador">
+                                            <label for="suenyo_reparador">Sueño reparador</label>
+                                            &nbsp;
+                                            <div>
+                                                <select id="suenyo_reparador" class="form-control form-control-md">
+                                                    <option value="si">Sí</option>
+                                                    <option value="no">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ancho col-sm-2" id="input_h_suenyo">
+                                            <label for="h_suenyo">Horas de sueño</label>
+                                            &nbsp;
+                                            <input type="number" class="form-control" name="h_suenyo" id="h_suenyo" required><br>
+                                        </div>
+                                        <div class="form-group ancho col-sm-2" id="select_astenico">
+                                            <label for="astenico">Asténico de día</label>
+                                            &nbsp;
+                                            <div>
+                                                <select id="astenico" class="form-control form-control-md">
+                                                    <option value="si">Sí</option>
+                                                    <option value="no">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div><!-- Fin fila 5 -->
+                                    <div class="titulos color6">
+                                        <label>ERGONOMÍA</label>
+                                    </div>
+                                    <div class="form-row espaciado-empty">
+                                        <div class="form-group ancho col-sm-2" id="input_erg_sentado">
+                                            <label for="erg_sentado">Sentado (%)</label>
+                                            &nbsp;
+                                            <input type="number" class="form-control" name="erg_sentado" id="erg_sentado"><br>
+                                        </div>
+                                        <div class="form-group ancho col-sm-3" id="input_erg_bidepes_pasiva">
+                                            <label for="erg_bidepes_pasiva">Bidepestación Pasiva (%)</label>
+                                            &nbsp;
+                                            <input type="number" class="form-control" name="erg_bidepes_pasiva" id="erg_bidepes_pasiva"><br>
+                                        </div>
+                                        <div class="form-group ancho col-sm-3" id="input_erg_bidepes_activa">
+                                            <label for="erg_bidepes_activa">Bidepestación Activa (%)</label>
+                                            &nbsp;
+                                            <input type="number" class="form-control" name="erg_bidepes_activa" id="erg_bidepes_activa"><br>
+                                        </div>
+                                        <div class="form-group ancho col-sm-2" id="input_erg_otro">
+                                            <label for="erg_otro">Otro (%)</label>
+                                            &nbsp;
+                                            <input type="number" class="form-control" name="erg_otro" id="erg_otro"><br>
+                                        </div>
+                                    </div><!-- Fin fila 6 -->
                                     <div class="columna-btn">
                                         <button class="btn estilo-boton-submit" type="button" id="btn-submit-6" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
                                         
@@ -910,14 +995,12 @@
                     var hace_deporte = this.value; //valor option del select
                     if(hace_deporte=="no"){
                         $('#frec_deporte').prop('disabled', true);
-                        $('#deporte').prop('disabled', true);
                         $('#tipo_deporte').prop('disabled', true);
                         $('#t_sesion').prop('disabled', true);
                         $('#t_sesion_medidas').prop('disabled', true);
                     }
                     else{
                         $('#frec_deporte').prop('disabled', false);
-                        $('#deporte').prop('disabled', false);
                         $('#tipo_deporte').prop('disabled', false);
                         $('#t_sesion').prop('disabled', false);
                         $('#t_sesion_medidas').prop('disabled', false);
