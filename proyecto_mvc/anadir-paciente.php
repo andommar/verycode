@@ -606,7 +606,7 @@
                                         <div class="form-group ancho col-sm-2" id="input_alcohol">
                                             <label for="alcohol">Cantidad</label>
                                             &nbsp;
-                                            <input type="number" class="form-control" name="alcohol" id="alcohol"><br>
+                                            <input type="number" min="1" class="form-control" name="alcohol" id="alcohol"><br>
                                         </div>
                                         <div class="form-group ancho col-sm-2" id="input_tipo_alcohol">
                                             <label for="tipo_alcohol">Tipo de alcohol</label>
@@ -654,12 +654,12 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    </div><!-- Fin fila 3 ** -->
+                                    </div><!-- Fin fila 3 -->
                                     <div class="form-row espaciado-empty">
                                         <div class="form-group ancho col-sm-2" id="input_t_sesion">
                                             <label for="t_sesion">Tiempo sesión</label>
                                             &nbsp;
-                                            <input type="number" class="form-control" name="t_sesion" id="t_sesion"><br>
+                                            <input type="number" min="1" class="form-control" name="t_sesion" id="t_sesion"><br>
                                         </div>
                                        
                                         <div class="form-group ancho col-sm-2" id="select_t_sesion_medidas">
@@ -717,7 +717,7 @@
                                         <div class="form-group ancho col-sm-2" id="input_h_suenyo">
                                             <label for="h_suenyo">Horas de sueño</label>
                                             &nbsp;
-                                            <input type="number" class="form-control" name="h_suenyo" id="h_suenyo" required><br>
+                                            <input type="number" min="1" max="15" class="form-control" name="h_suenyo" id="h_suenyo" required><br>
                                         </div>
                                         <div class="form-group ancho col-sm-2" id="select_astenico">
                                             <label for="astenico">Asténico de día</label>
@@ -737,22 +737,22 @@
                                         <div class="form-group ancho col-sm-2" id="input_erg_sentado">
                                             <label for="erg_sentado">Sentado (%)</label>
                                             &nbsp;
-                                            <input type="number" class="form-control" name="erg_sentado" id="erg_sentado"><br>
+                                            <input type="number" min="0" class="form-control" name="erg_sentado" id="erg_sentado"><br>
                                         </div>
                                         <div class="form-group ancho col-sm-3" id="input_erg_bidepes_pasiva">
                                             <label for="erg_bidepes_pasiva">Bidepestación Pasiva (%)</label>
                                             &nbsp;
-                                            <input type="number" class="form-control" name="erg_bidepes_pasiva" id="erg_bidepes_pasiva"><br>
+                                            <input type="number" min="0" class="form-control" name="erg_bidepes_pasiva" id="erg_bidepes_pasiva"><br>
                                         </div>
                                         <div class="form-group ancho col-sm-3" id="input_erg_bidepes_activa">
                                             <label for="erg_bidepes_activa">Bidepestación Activa (%)</label>
                                             &nbsp;
-                                            <input type="number" class="form-control" name="erg_bidepes_activa" id="erg_bidepes_activa"><br>
+                                            <input type="number" min="0" class="form-control" name="erg_bidepes_activa" id="erg_bidepes_activa"><br>
                                         </div>
                                         <div class="form-group ancho col-sm-2" id="input_erg_otro">
                                             <label for="erg_otro">Otro (%)</label>
                                             &nbsp;
-                                            <input type="number" class="form-control" name="erg_otro" id="erg_otro"><br>
+                                            <input type="number" min="0" class="form-control" name="erg_otro" id="erg_otro"><br>
                                         </div>
                                     </div><!-- Fin fila 6 -->
                                     <div class="columna-btn">
@@ -761,6 +761,29 @@
                                     </div>
                                 </form>
                             </div> <!-- fin HÁBITOS -->
+
+                        <!-- =============================== HISTORIAL TRATAMIENTO LINFEDEMA ** ===========================================  -->
+
+                            <div id="apartado-hist-trat-linf">
+                                <h3>Historial de Tratamiento del Linfedema&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
+                                <!--  TABLA hábitos  -->
+                                <form id="form-7" class="margen-form">
+                                    <div class="titulos color7">
+                                        <label>ÚLTIMO TRATAMIENTO</label>
+                                    </div>
+                                    <div class="form-row espaciado-empty">
+                                        <div class="form-group ancho" id="input_fecha_ult_tratamiento">
+                                            <label for="fecha_ult_tratamiento">Fecha</label>
+                                            &nbsp;
+                                            <input type="date" class="form-control" name="fecha_ult_tratamiento" id="fecha_ult_tratamiento" required><br>
+                                        </div>
+                                    </div><!-- Fin fila 1 -->
+                                    <div class="columna-btn">
+                                        <button class="btn estilo-boton-submit" type="submit" id="btn-submit-7" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
+                                        
+                                    </div>
+                                </form>
+                            </div> <!-- fin Hist Trat Linfedema -->
 
 
 

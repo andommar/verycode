@@ -537,6 +537,8 @@
                     console.log(medicamentos_inf);
                     console.log(fecha_inf);
                     console.log(opcion);
+
+                   
                 
                         // $.ajax({
                         // type:'POST',
@@ -566,7 +568,11 @@
                 $("#form-6").submit(function(event){
                     
                     event.preventDefault();
-                // HE CAMBIADO "freq" por frec!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                // HE CAMBIADO "freq" por frec!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! y pongo en comillas cigarros=""; frec_cigarros=""; fumador_social ="";
+                //frec_alcohol=""; alcohol=""; tipo_alcohol=""; porque pueden quedar vacios si el usuario no fuma o no bebe, al insertar los pondremos en null
+                    var datos_correctos = true;
+                    var mensaje_error="";
+
                     var fumador=$('#fumador').val();
                     var cigarros=$('#cigarros').val();
                     var frec_cigarros=$('#frec_cigarros').val();
@@ -610,26 +616,45 @@
                     var erg_otro = $('#erg_otro').val();
                     var opcion= "registro_habitos";
 
-                    
-                    // $.ajax({
-                    // type:'POST',
-                    // url: 'control/vista.php',
-                    // data: {id_user:id_user, fumador:fumador,cigarros:cigarros,frec_cigarros:frec_cigarros,fumador_social:fumador_social,toma_alcohol:toma_alcohol, frec_alcohol:frec_alcohol, 
-                    // alcohol:alcohol, tipo_alcohol:tipo_alcohol, hace_deporte:hace_deporte, frec_deporte:frec_deporte, tipo_deporte:tipo_deporte, t_sesion:t_sesion,
-                    // t_sesion_medidas:t_sesion_medidas, alimentacion:alimentacion, suenyo_reparador:suenyo_reparador, h_suenyo:h_suenyo, astenico:astenico, 
-                    // erg_sentado:erg_sentado, erg_bidepes_pasiva:erg_bidepes_pasiva, erg_bidepes_activa:erg_bidepes_activa, erg_otro:erg_otro, opcion:opcion}
-                    // })
-                    // .done(function( msg ) {
-                    //     console.log(msg);                             	
-                    //     console.log("Ajax: Hábitos registrados registrada"); 
+                    if(isEmptyOrSpaces(tipo_acohol) && toma_alcohol=="si"){
+                        mensaje_error="ERROR. Si el paciente toma alcohol debes especificar el tipo";
+                        datos_correctos = false;
+                    }
+                    if(isEmptyOrSpaces(alimentacion)){
+                        mensaje_error="ERROR. Si la alimentación es otra debes especificar cuál.";
+                        datos_correctos = false;
+                    }
+                    if(!datos_correctos){
+                        $("body").overhang({
+                            type: "error",
+                            message: mensaje_error,
+                            duration: 3,
+                            overlay: true,
+                            closeConfirm: true
+                        });
+                    }
+                    else{
+                             // $.ajax({
+                            // type:'POST',
+                            // url: 'control/vista.php',
+                            // data: {id_user:id_user, fumador:fumador,cigarros:cigarros,frec_cigarros:frec_cigarros,fumador_social:fumador_social,toma_alcohol:toma_alcohol, frec_alcohol:frec_alcohol, 
+                            // alcohol:alcohol, tipo_alcohol:tipo_alcohol, hace_deporte:hace_deporte, frec_deporte:frec_deporte, tipo_deporte:tipo_deporte, t_sesion:t_sesion,
+                            // t_sesion_medidas:t_sesion_medidas, alimentacion:alimentacion, suenyo_reparador:suenyo_reparador, h_suenyo:h_suenyo, astenico:astenico, 
+                            // erg_sentado:erg_sentado, erg_bidepes_pasiva:erg_bidepes_pasiva, erg_bidepes_activa:erg_bidepes_activa, erg_otro:erg_otro, opcion:opcion}
+                            // })
+                            // .done(function( msg ) {
+                            //     console.log(msg);                             	
+                            //     console.log("Ajax: Hábitos registrados "); 
 
-                    // })
-                    // .fail(function( jqXHR, textStatus, errorThrown ) {
-                    //     if ( console && console.log ) {
-                    //         console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                    //         console.log("ajax fail");
-                    //     }
-                    // });
+                            // })
+                            // .fail(function( jqXHR, textStatus, errorThrown ) {
+                            //     if ( console && console.log ) {
+                            //         console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                            //         console.log("ajax fail");
+                            //     }
+                            // });
+                    }
+                   
                     
                 });
 
