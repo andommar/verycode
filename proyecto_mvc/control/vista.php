@@ -84,7 +84,7 @@ if(isset($_POST["opcion"]))
                 echo $id_usuario;
             }
             else
-                echo "Fallo registro";
+                echo "false";
 
         break;
 
@@ -125,10 +125,10 @@ if(isset($_POST["opcion"]))
 
             if($error==0)
             {
-                echo "Historial clinico registrado";
+                echo "true";
             }
             else
-                echo "Fallo registro";
+                echo "false";
 
         break;
 

@@ -171,7 +171,7 @@ class TUsuario{
 		
 		if($abd->conectado())
 		{
-			$sql="insert into medicamento values ('$id_user','$medicamento','$patologias')";
+			$sql="insert into medicamento values ($id_user,'$medicamento','$patologias')";
 			$stmt = $abd->ejecuta_sql($sql);
 		}
 		if( $stmt === false ) {
@@ -191,7 +191,7 @@ class TUsuario{
 		
 		if($abd->conectado())
 		{
-			$sql="insert into infeccion values ('$id_user','$medicamento','$patologias')";
+			$sql="insert into infeccion values ($id_user,'$medicamento','$patologias')";
 			$stmt = $abd->ejecuta_sql($sql);
 		}
 		if( $stmt === false ) {

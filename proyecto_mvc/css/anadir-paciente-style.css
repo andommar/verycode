@@ -1,5 +1,5 @@
 #apartado-historial, #apartado-cirugias, #apartado-medicamentos{
-    display: none; 
+    /* display: none;  */
 }
 #apartado-formulario, #apartado-usuario, #apartado-historial, #apartado-cirugias, #apartado-medicamentos{
     background: #fff;

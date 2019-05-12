@@ -34,6 +34,7 @@
          <!-- NOTIFICACIONES OVERHANG.JS  1 -->
         <link rel="stylesheet" type="text/css" href="js/overhang/dist/overhang.min.css" />
         <link rel="stylesheet" href="js/jquery-ui/jquery-ui.min.css">
+        
     </head>
   
     <!-- ===============  BODY ============= -->
@@ -193,7 +194,7 @@
                                         <div class="form-group ancho" id="input_nombre">
                                             <label for="nombre">Nombre</label>
                                             &nbsp;
-                                            <input type="text" class="form-control" id="nombre" name="nombre" required><br>
+                                            <input type="text" class="form-control" id="nombre" name="nombre" required maxlength="30"><br>
                                         </div>
                                     
                                         &nbsp;&nbsp;
@@ -201,14 +202,14 @@
                                         <div class="form-group ancho" id="input_apellido1">
                                             <label for="apellido1">Primer apellido</label>
                                             &nbsp;
-                                            <input type="text" class="form-control" id="apellido1" required><br>
+                                            <input type="text" class="form-control" id="apellido1" required maxlength="50"><br>
                                         </div>
                                         &nbsp;&nbsp;
 
                                         <div class="form-group ancho" id="input_apellido2">
                                             <label for="apellido2">Segundo apellido</label>
                                             &nbsp;
-                                            <input type="text" class="form-control" name="apellido1" id="apellido2" required><br>
+                                            <input type="text" class="form-control" name="apellido1" id="apellido2" required maxlength="50"><br>
                                         </div>
                                     </div>  <!--Fin fila 1-->
                                     &nbsp;&nbsp;
@@ -216,14 +217,14 @@
                                         <div class="form-group ancho" id="input_correo">
                                             <label for="correo">Correo</label>
                                             &nbsp;
-                                            <input type="email" class="form-control" name="correo" id="correo" required><br>
+                                            <input type="email" class="form-control" name="correo" id="correo" required maxlength="100"><br>
                                         </div>
                                             
                                         &nbsp;&nbsp;
                                         <div class="form-group ancho" id="input_pass">
                                             <label for="pass">Contraseña</label>
                                             &nbsp;
-                                            <input type="password" class="form-control" name="pass" id="pass" required><br>
+                                            <input type="password" class="form-control" name="pass" id="pass" required maxlength="50"><br>
                                         </div>
                                         
                                         &nbsp;&nbsp;
@@ -231,12 +232,12 @@
                                         <div class="form-group ancho" id="input_pass2">
                                             <label for="pass2">Confirmar contraseña</label>
                                             &nbsp;
-                                            <input type="password" class="form-control" name="pass2" id="pass2" required><br>
+                                            <input type="password" class="form-control" name="pass2" id="pass2" required maxlength="50"><br>
                                         </div>
                                     </div>  <!--Fin fila 2-->
                                     <div class="columna-btn">
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-submit-1" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
-                                        <input type="hidden" id="opcion-form" value="registro_paciente">
+                                       
                                     </div>
                                 </form>
                             </div>
@@ -253,26 +254,26 @@
                                         <div class="form-group ancho" id="input_doc_identificacion">
                                             <label for="doc_identificacion">Documento de identificación</label>
                                             &nbsp;
-                                            <input class="form-control" id="doc_identificacion" required><br>
+                                            <input class="form-control" id="doc_identificacion" required maxlength="30"><br>
                                         </div>
                                         
                                         <div class="form-group ancho" id="input_nacionalidad">
                                             <label for="nacionalidad">Nacionalidad</label>
                                             &nbsp;
-                                            <input type="text" class="form-control" name="nacionalidad" id="nacionalidad" required><br>
+                                            <input type="text" class="form-control" name="nacionalidad" id="nacionalidad" required maxlength="150"><br>
                                         </div>
 
                                         <div class="form-group ancho" id="input_raza">
                                             <label for="raza">Raza</label>
                                             &nbsp;
-                                            <input type="text" class="form-control" name="raza" id="raza" required><br>
+                                            <input type="text" class="form-control" name="raza" id="raza" required maxlength="150"><br>
                                         </div>
                                     </div> <!--Fin fila 1-->
                                     <div class="form-row justify-content-center">
                                         <div class="form-group ancho" id="input_fecha_nacimiento">
                                             <label for="fecha_nacimiento">Fecha de nacimiento</label>
                                             &nbsp;
-                                            <input type="date" class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" required><br>
+                                            <input type="date" min="1919-01-01" class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" required><br>
                                         </div>
                                         <div class="form-group ancho" id="select_sexo">
                                             <label for="sexo">Sexo</label>
@@ -328,14 +329,14 @@
                                     <div class="form-row justify-content-center espaciado-otro">
                                         <div class="form-group col-sm-12" id="input_subtipo_congenito_otro">
                                             <label class="col-form-label" for="subtipo_congenito_otro">Si seleccionaste "Otro" o "Accidente" en el campo anterior, especifica tu respuesta</label>
-                                            <input type="text" class="form-control" name="subtipo_congenito_otro" id="subtipo_congenito_otro" disabled="disabled">
+                                            <input type="text" class="form-control" name="subtipo_congenito_otro" id="subtipo_congenito_otro" disabled="disabled" maxlength="50">
                                         </div>
                                     </div><!-- Fin fila 4 -->
                                     <div class="form-row justify-content-center">
                                         <div class="form-group ancho" id="input_fecha_debut">
                                             <label for="fecha_debut">Fecha de debut</label>
                                             &nbsp;
-                                            <input type="date" class="form-control" name="fecha_debut" id="fecha_debut"><br>
+                                            <input type="date" class="form-control" name="fecha_debut" id="fecha_debut" required><br>
                                         </div>
                                         <div class="form-group ancho" id="select_familiar_linfedema">
                                             <label for="familiar_linfedema">Familiar con linfedema</label>
@@ -373,7 +374,7 @@
                                     <div class="form-row justify-content-center espaciado-otro">
                                         <div class="form-group col-sm-12" id="input_motivo_secundario_otro">
                                             <label class="col-form-label" for="motivo_secundario_otro">Si seleccionaste "Otro" en el campo anterior, especifica tu respuesta</label>
-                                            <input type="text" class="form-control" name="motivo_secundario_otro" id="motivo_secundario_otro" disabled="disabled">
+                                            <input type="text" class="form-control" name="motivo_secundario_otro" id="motivo_secundario_otro" disabled="disabled" maxlength="50">
                                         </div>
                                     </div><!-- Fin fila 6 -->
                                     <div class="titulos">
@@ -424,7 +425,7 @@
                                     <div class="form-row justify-content-center espaciado-otro">
                                         <div class="form-group col-sm-12 mt-2" id="input_ant_sindromes">
                                             <label class="col-form-label" for="ant_sindromes">Síndromes</label>
-                                            <input type="text" class="form-control" name="ant_sindromes" id="ant_sindromes" required>
+                                            <input type="text" class="form-control" name="ant_sindromes" id="ant_sindromes" required maxlength="150">
                                         </div>
                                     </div><!-- Fin fila 8 -->
                                     <div class="titulos">
@@ -434,7 +435,7 @@
                                         <div class="form-group ancho" id="input_profesion">
                                             <label for="profesion">Profesión</label>
                                             &nbsp;
-                                            <input type="text" class="form-control" id="profesion" required><br>
+                                            <input type="text" class="form-control" id="profesion" required maxlength="50"><br>
                                         </div>
                                         
                                         <div class="form-group ancho" id="input_grado_resp_profesion">
@@ -451,7 +452,7 @@
                                     </div> <!--Fin fila 9-->
                                     <div class="columna-btn">
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-submit-2" value='<?php echo($_SESSION["id_especialista"])?>'>Guardar</button>
-                                        <input type="hidden" id="opcion-form2" value="registro_historial_clinico">
+                                       
                                     </div>
                                 </form>
                             </div><!-- fin HISTORIAL CLINICO -->
@@ -483,7 +484,7 @@
                                     <div class="columna-btn">
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-anadir-1" value='<?php echo($_SESSION["id_especialista"])?>'>Añadir cirugía</button>
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-submit-3" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
-                                        <input type="hidden" id="opcion-form3" value="registro_cirugias">
+                                        
                                     </div>
                                 </form>
                             </div> <!-- fin CIRUGIAS -->
@@ -511,6 +512,7 @@
                                     <div class="columna-btn">
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-anadir-2" value='<?php echo($_SESSION["id_especialista"])?>'>Añadir medicamento</button>
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-submit-4" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
+                                        
                                     </div>
                                 </form>
                             </div><!-- fin MEDICAMENTOS -->
@@ -531,6 +533,7 @@
         <script src="js/jquery-ui/external/jquery/jquery.js"></script>
         <script src="js/jquery-ui/jquery-ui.min.js"></script>
         <script type="text/javascript" src="js/overhang/dist/overhang.min.js"></script> 
+        <script type="text/javascript" src="js/notify/notify.min.js"></script>
         <script>
             var id_user =0;
             var id_especialista = "";
@@ -716,7 +719,7 @@
                         var pass =$('#pass').val();
                         var pass2=$('#pass2').val();
                         id_especialista=$('#btn-submit-1').val(); 
-                        var opcion= $("#opcion-form").val();
+                        var opcion="registro_paciente";
 
                         datos_correctos = validarDatosPersonales(nombre,apellido1,apellido2,correo,pass,pass2);
 
@@ -728,8 +731,14 @@
                             })
                             .done(function( msg ) {
                                 id_user=msg;
-                                console.log(msg);                             	
+                                // console.log(msg);                             	
                                 console.log("ajax done"); 
+                                if(msg=="false"){
+                                    $.notify("Error en la consulta SQL", "error");
+                                }
+                                else{
+                                    $.notify("Datos personales guardados correctamente", "success");
+                                }
 
                                 //Pasamos al siguiente formulario (HISTORIAL CLÍNICO)
                                 $("#apartado-historial").css("display","block");
@@ -751,6 +760,13 @@
 
                 $("#form-2").submit(function(event){    
 
+                    event.preventDefault();
+
+                    $('#subtipo_congenito_otro').css("border","1px solid #ced4da");
+                    $('#motivo_secundario_otro').css("border","1px solid #ced4da");
+
+                    var datos_correctos = true; 
+
                     var doc_identificacion=$('#doc_identificacion').val();
                     var nacionalidad = $('#nacionalidad').val();
                     var raza = $('#raza').val();
@@ -765,57 +781,58 @@
                     }
                     var fecha_debut = $('#fecha_debut').val();
                     var familiar_linfedema = $('#familiar_linfedema').val();
-                    console.log(id_user);
-                    console.log(familiar_linfedema);
                     var motivo_secundario = $('#motivo_secundario').val();
+                    
                     if(motivo_secundario=="Otro"){
                         motivo_secundario=$('#motivo_secundario_otro').val();
                     }
-                    var ant_vasculares = 'N';
-                    var ant_infeccion_venosa = 'N';
-                    var ant_sobrepeso = 'N';
-                    var ant_lipedema = 'N';
-                    var ant_permeabilidad_cap = 'N';
-                    var ant_ansiedad = 'N';
-                    var ant_diabetes = 'N';
-                    var ant_triquiasis = 'N';
+                    var ant_vasculares = 'NO';
+                    var ant_infeccion_venosa = 'NO';
+                    var ant_sobrepeso = 'NO';
+                    var ant_lipedema = 'NO';
+                    var ant_permeabilidad_cap = 'NO';
+                    var ant_ansiedad = 'NO';
+                    var ant_diabetes = 'NO';
+                    var ant_triquiasis = 'NO';
                     var ant_sindromes = $('#ant_sindromes').val();
                     if($('#ant_vasculares').prop('checked')){
-                        ant_vasculares = 'S';
+                        ant_vasculares = 'SI';
                     }
                     if($('#ant_infeccion_venosa').prop('checked')){
-                        ant_infeccion_venosa='S';
+                        ant_infeccion_venosa='SI';
                     }
                     if($('#ant_sobrepeso').prop('checked')){
-                            ant_sobrepeso='S';
+                            ant_sobrepeso='SI';
                     }
                     if($('#ant_lipedema').prop('checked')){
-                            ant_lipedema='S';
+                            ant_lipedema='SI';
                     }
                     if($('#ant_permeabilidad_cap').prop('checked')){
-                            ant_permeabilidad_cap='S';
+                            ant_permeabilidad_cap='SI';
                     }
                     if($('#ant_ansiedad').prop('checked')){
-                            ant_ansiedad='S';
+                            ant_ansiedad='SI';
                     }
                     if($('#ant_diabetes').prop('checked')){
-                            ant_diabetes='S';
+                            ant_diabetes='SI';
                     }
                     if($('#ant_triquiasis').prop('checked')){
-                            ant_triquiasis='S';
+                            ant_triquiasis='SI';
                     }
-                    // if($('#ant_sindromes').prop('checked')){
-                    //         ant_sindromes='S';
-                    // }
+                    
                     var profesion = $('#profesion').val();
                     var grado_resp_profesion = $('#grado_resp_profesion').val();
                     var grado_stress_profesion = $('#grado_stress_profesion').val();
-                    var opcion= $("#opcion-form2").val();
+                    var opcion= "registro_historial_clinico";
 
-
-                    event.preventDefault();
-
-                    $.ajax({
+                    datos_correctos = validarHistorialClinico(doc_identificacion,nacionalidad,raza,
+                                        fecha_nacimiento,sexo,altura, peso, tipo_congenito, subtipo_congenito,fecha_debut,
+                                        familiar_linfedema,motivo_secundario,ant_vasculares,ant_infeccion_venosa, 
+                                        ant_sobrepeso, ant_lipedema, ant_permeabilidad_cap, ant_ansiedad,ant_diabetes, 
+                                        ant_triquiasis, ant_sindromes, profesion,grado_resp_profesion,grado_stress_profesion);
+                    
+                    if(datos_correctos){
+                        $.ajax({
                         method: "POST",
                         url: 'control/vista.php',
                         data: {id_user: id_user, doc_identificacion: doc_identificacion, opcion: opcion,
@@ -826,85 +843,99 @@
                             ant_diabetes:ant_diabetes, ant_triquiasis: ant_triquiasis, ant_sindromes: ant_sindromes, profesion: profesion,
                             grado_resp_profesion: grado_resp_profesion, grado_stress_profesion: grado_stress_profesion 
                         },
-                        
-
-                    })
-                    .done(function( msg ) {                             	
-                        console.log("ajax done");
-                       
-                        
-                    })
-                    .fail(function( jqXHR, textStatus, errorThrown ) {
-                        if ( console && console.log ) {
-                            console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                        }
-                    });
+                        })
+                        .done(function( msg ) {                             	
+                            console.log("ajax done");
+                            if(msg=="false"){
+                                    $.notify("Error en la consulta SQL", "error");
+                                }
+                            else{
+                                $.notify("Historial clínico guardado correctamente", "success");
+                            }
+                            
+                        })
+                        .fail(function( jqXHR, textStatus, errorThrown ) {
+                            if ( console && console.log ) {
+                                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                            }
+                        });
+                    }
+                    
 
                 });
+
+
+
 
                 //  =============================== CIRUGIAS  ===========================================
 
 
-                $("#form-3").submit(function(event){
-                        event.preventDefault();
+                // $("#form-3").submit(function(event){
+                //         event.preventDefault();
 
 
-                    var nombre_cirugia=$('#nombre_cirugia').val();
-                    var fecha = $('#fecha').val();
-                    var comentarios = $('#comentarios').val();
-                    var opcion= $("#opcion-form3").val();
+                //     var nombre_cirugia=$('#nombre_cirugia').val();
+                //     var fecha = $('#fecha').val();
+                //     var comentarios = $('#comentarios').val();
+                //     var opcion= "registro_cirugias";
                 
-                        $.ajax({
-                        type:'POST',
-                        url: 'control/vista.php',
-                        data: {id_user:id_user, nombre_cirugia:nombre_cirugia, fecha: fecha, comentarios: comentarios, opcion:opcion},
-                        })
-                        .done(function( msg ) {
-                            console.log(msg);                             	
-                            console.log("Cirugia registrada"); 
+                //         $.ajax({
+                //         type:'POST',
+                //         url: 'control/vista.php',
+                //         data: {id_user:id_user, nombre_cirugia:nombre_cirugia, fecha: fecha, comentarios: comentarios, opcion:opcion},
+                //         })
+                //         .done(function( msg ) {
+                //             console.log(msg);                             	
+                //             console.log("Cirugia registrada"); 
 
-                        })
-                        .fail(function( jqXHR, textStatus, errorThrown ) {
-                            if ( console && console.log ) {
-                                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                                console.log("ajax fail");
-                            }
-                        });
+                //         })
+                //         .fail(function( jqXHR, textStatus, errorThrown ) {
+                //             if ( console && console.log ) {
+                //                 console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                //                 console.log("ajax fail");
+                //             }
+                //         });
                     
-                });
+                // });
+
+
+
 
                 //  =============================== MEDICAMENTOS  ===========================================
 
 
-                $("#form-4").submit(function(event){
-                        event.preventDefault();
+                // $("#form-4").submit(function(event){
+                //         event.preventDefault();
 
 
-                    var medicamento=$('#medicamento').val();
-                    var patologias = $('#patologias').val();
-                    var opcion= $("#opcion-form4").val();
+                //     var medicamento=$('#medicamento').val();
+                //     var patologias = $('#patologias').val();
+                //     var opcion= "registro_medicamento";
 
                 
-                        $.ajax({
-                        type:'POST',
-                        url: 'control/vista.php',
-                        data: {id_user:id_user, medicamento:medicamento, patologias:patologias, opcion:opcion},
-                        })
-                        .done(function( msg ) {
-                            console.log(msg);                             	
-                            console.log("Ajax: Medicamento registrado"); 
+                //         $.ajax({
+                //         type:'POST',
+                //         url: 'control/vista.php',
+                //         data: {id_user:id_user, medicamento:medicamento, patologias:patologias, opcion:opcion},
+                //         })
+                //         .done(function( msg ) {
+                //             console.log(msg);                             	
+                //             console.log("Ajax: Medicamento registrado"); 
 
-                        })
-                        .fail(function( jqXHR, textStatus, errorThrown ) {
-                            if ( console && console.log ) {
-                                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                                console.log("ajax fail");
-                            }
-                        });
+                //         })
+                //         .fail(function( jqXHR, textStatus, errorThrown ) {
+                //             if ( console && console.log ) {
+                //                 console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                //                 console.log("ajax fail");
+                //             }
+                //         });
                     
-                });
+                // });
 
-                // //  =============================== INFECCIÓN  ===========================================
+
+
+
+                //  =============================== INFECCIÓN  ===========================================
 
                 // $("#form-5").submit(function(event){
                 //         event.preventDefault();
@@ -935,7 +966,10 @@
                     
                 // });
 
-                // //  =============================== HÁBITOS  ===========================================
+
+
+
+                //  =============================== HÁBITOS  ===========================================
 
 
                 // $("#form-6").submit(function(event){
@@ -987,7 +1021,9 @@
                 // });
 
 
-                // //  =============================== HISTORIAL TRATAMIETO LINFEDEMA  ===========================================
+
+
+                //  =============================== HISTORIAL TRATAMIENTO LINFEDEMA  ===========================================
 
                 // $("#form-7").submit(function(event){
                 //         event.preventDefault();
@@ -1028,6 +1064,8 @@
                 //         });
                     
                 // });
+
+
 
 
                 // //  =============================== VALORACIÓN LINFEDEMA  ===========================================
@@ -1083,7 +1121,9 @@
                     
                 // });
 
-                // //  =============================== MEDICIONES  ===========================================
+
+
+                //  =============================== MEDICIONES  ===========================================
 
                 // $("#form-9").submit(function(event){
                 //         event.preventDefault();
@@ -1132,34 +1172,135 @@
                 function validarDatosPersonales(nombre,apellido1,apellido2,correo,pass,pass2){
                     var datos_correctos = true;
                     var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
-
-                    //Validar CORREO
-                    if(!pattern.test(correo)){
-                        $("body").overhang({
-                            type: "error",
-                            message: "ERROR. El formato de correo no es correcto, introduce una extensión como '.com', por ejemplo.",
-                            duration: 3,
-                            overlay: true,
-                            closeConfirm: true
-                        });
+                    var mensaje_error="";
+                    
+                  
+                    if(isEmptyOrSpaces(pass) || isEmptyOrSpaces(pass2)){
+                        mensaje_error="ERROR. Las contraseñas no pueden estar vacías.";
                         datos_correctos = false;
                     }
                     //validar contraseñas (deben ser idénticas)
                     if(pass!=pass2){
+                        mensaje_error="ERROR. Las contraseñas deben ser idénticas";
+                        datos_correctos = false;
+                    } 
+                    //Validar CORREO
+                    if(!pattern.test(correo)){
+                        mensaje_error="ERROR. El formato de correo no es correcto, introduce una extensión como '.com', por ejemplo.";
+                        datos_correctos = false;
+                    } 
+                    if(isEmptyOrSpaces(apellido1) || isEmptyOrSpaces(apellido2)){
+                        mensaje_error="ERROR. Los apellidos no pueden estar vacíos.";
+                        datos_correctos = false;
+                    } 
+                    if(isEmptyOrSpaces(nombre)){
+                        mensaje_error="ERROR. El nombre no puede estar vacío.";
+                        datos_correctos = false;
+                    }
+                    if(!datos_correctos){
                         $("body").overhang({
                             type: "error",
-                            message: "ERROR. Las contraseñas deben ser idénticas",
+                            message: mensaje_error,
                             duration: 3,
                             overlay: true,
                             closeConfirm: true
                         });
-                        datos_correctos = false;
                     }
                     
 
                     return datos_correctos;
                 }
+                function isEmptyOrSpaces(str){
+                    return str === null || str.match(/^ *$/) !== null;
+                }
+                function validarHistorialClinico(doc_identificacion,nacionalidad,raza,
+                        fecha_nacimiento,sexo,altura, peso, tipo_congenito, subtipo_congenito,fecha_debut,
+                        familiar_linfedema,motivo_secundario,ant_vasculares,ant_infeccion_venosa, 
+                        ant_sobrepeso, ant_lipedema, ant_permeabilidad_cap, ant_ansiedad,ant_diabetes, 
+                        ant_triquiasis, ant_sindromes, profesion,grado_resp_profesion,grado_stress_profesion){
+                    
+                    var mensaje_error = "";
+                    var datos_correctos = true;
+                    if($('#subtipo_congenito').val()=="Otro" || $('#subtipo_congenito').val()=="Accidente"){
+                        if(subtipo_congenito==undefined || subtipo_congenito=="" || isEmptyOrSpaces(subtipo_congenito)){
+                            
+                            mensaje_error="ERROR. Al seleccionar Otro/Accidente en 'subtipo' debes especificarlo en el campo siguiente";
+                            $('#subtipo_congenito_otro').css("border","2px solid #dc3545");
+                            datos_correctos = false;
+                        }
+                    }
+                    if($('#motivo_secundario').val()=="Otro"){
+                        if(motivo_secundario==undefined || motivo_secundario=="" || isEmptyOrSpaces(motivo_secundario)){
+                            
+                            mensaje_error="ERROR. Al seleccionar Otro en 'motivo secundario' especificarlo en el campo siguiente";
+                            $('#motivo_secundario_otro').css("border","2px solid #dc3545");
+                            datos_correctos = false;
+                        }
+                    }
+                    if(!isNaN(doc_identificacion)){//es solo numeros
+                        
+                        mensaje_error= "ERROR. El documento de identificación debe contener letras y números.";
+                        datos_correctos = false;
+                    }
+                    if(isEmptyOrSpaces(doc_identificacion)){
+                        mensaje_error="ERROR. El doc. de identificación no puede estar vacío.";
+                    }
+                    if(isEmptyOrSpaces(nacionalidad)){
+                        mensaje_error="ERROR. La nacionalidad no puede estar vacía.";
+                    }
+                    if(isEmptyOrSpaces(raza)){
+                        mensaje_error="ERROR. La raza no puede estar vacía.";
+                    }
+                    if(isEmptyOrSpaces(fecha_nacimiento) || fecha_nacimiento==undefined){
+                        mensaje_error="ERROR. No has seleccionado la fecha de nacimiento.";
+                    }
+                    if(isEmptyOrSpaces(ant_sindromes)){
+                        mensaje_error="ERROR. No has rellenado el campo de síndromes.";
+                    }
+                    if(isEmptyOrSpaces(profesion)){
+                        mensaje_error="ERROR. No has rellenado el campo de profesión.";
+                    }
 
+                    if(!datos_correctos){
+                        $("body").overhang({
+                                type: "error",
+                                message: mensaje_error,
+                                duration: 3,
+                                overlay: true,
+                                closeConfirm: true
+                            });
+                    }
+                    return datos_correctos;
+
+                }
+
+                // function validarCirugias{
+                //     var datos_correctos = true;
+                // }
+
+                // function validarMedicamentos{
+                //     var datos_correctos = true;
+                // }
+
+                // function validarInfecciones{
+                //     var datos_correctos = true;
+                // }
+
+                // function validarHabitos{
+                //     var datos_correctos = true;
+                // }
+
+                // function validarHistorialLinfedema{
+                //     var datos_correctos = true;
+                // }
+
+                // function validarLinfedema{
+                //     var datos_correctos = true;
+                // }
+
+                // function validarMediciones{
+                //     var datos_correctos = true;
+                // }
 
 
 
