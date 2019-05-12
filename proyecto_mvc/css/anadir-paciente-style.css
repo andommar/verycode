@@ -1,7 +1,7 @@
-#apartado-historial, #apartado-cirugias, #apartado-medicamentos{
+#apartado-historial, #apartado-cirugias, #apartado-medicamentos,#apartado-infecciones, #apartado-habitos{
     /* display: none;  */
 }
-#apartado-formulario, #apartado-usuario, #apartado-historial, #apartado-cirugias, #apartado-medicamentos{
+#apartado-formulario, #apartado-usuario, #apartado-historial, #apartado-cirugias, #apartado-medicamentos, #apartado-infecciones, #apartado-habitos{
     background: #fff;
     margin-top: 20px;
     padding: 20px;
@@ -27,7 +27,7 @@
     margin-left: 2.7em;
     margin-bottom: 1em;
 }
-#apartado-formulario h3, #apartado-usuario h3, #apartado-historial h3, #apartado-cirugias h3, #apartado-medicamentos h3{
+#apartado-formulario h3, #apartado-usuario h3, #apartado-historial h3, #apartado-cirugias h3, #apartado-medicamentos h3, #apartado-infecciones h3, #apartado-habitos h3{
     font-size: 19px;
     font-weight: 600;
 }
@@ -82,6 +82,34 @@
 #btn-datos-personales{
     background-color:#3da3bc;
 }
+.color1{
+    color: #3da3bc;
+}
+.color2{
+    color:#6610f2;
+}
+.color3{
+    color: #e83e8c;
+}
+.color4{
+    color: #dc3545;
+}
+.color5{
+    color:#fd7e14;
+}
+.color6{
+    color: #ffc107;
+}
+.color7{
+    color:#28a745;
+}
+.color8{
+    color:#20c997;
+}
+.color9{
+    color:#007bff;
+}
+
 #apartado-usuario h3{
     color: #3da3bc;
 }
@@ -94,15 +122,19 @@
 #apartado-medicamentos h3{
     color: #dc3545;
 }
-/* color botones
-
-#btn-medicamentos{
+#apartado-infecciones h3{
+    color:#fd7e14;
+}
+#apartado-habitos h3{
+    color: #ffc107;
+}
+/* #btn-medicamentos{
     background-color:#dc3545;
 }
 #btn-infecciones{
     background-color:#fd7e14;
-}
-#btn-habitos{
+} */
+/* #btn-habitos{
     background-color:#ffc107;
 }
 #btn-historial-trat-linf{
@@ -148,6 +180,20 @@
 #btn-submit-4:hover, #btn-anadir-2:hover{
     background-color:#d32d3e;
 }
+#btn-submit-5, #btn-anadir-3{
+    background-color:#fd7e14;
+}
+#btn-submit-5:hover, #btn-anadir-3:hover{
+    background-color:#ee7614;
+}
+#btn-submit-6{
+    background-color:#ffc107;
+}
+#btn-submit-6:hover{
+    background-color:#f5b907;
+}
+
+/* background-color:#fd7e14; */
 .columna-btn{
     text-align: right;
     margin: 0em 6em 2em 0em;

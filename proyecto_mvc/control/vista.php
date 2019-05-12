@@ -92,7 +92,7 @@ if(isset($_POST["opcion"]))
                 // echo "false";
                 $resultado = array("","false");
             
-           json_encode($resultado);
+           echo json_encode($resultado);
 
         break;
 
@@ -152,10 +152,13 @@ if(isset($_POST["opcion"]))
             $error=$c->registro_cirugias($id_user,$nombre,$fecha,$comentarios);
             if($error==0)
             {
-                echo "Cirugias registradas";
+                echo "true";
+            }
+            else if($error==-2){
+                echo "cirugia";
             }
             else
-                echo "Fallo registro";
+                echo "false";
 
         break;
 
@@ -168,10 +171,13 @@ if(isset($_POST["opcion"]))
             $error=$c->registro_medicamento($id_user,$medicamento,$patologias);
             if($error==0)
             {
-                echo "Medicamento registrado";
+                echo "true";
+            }
+            else if($error==-2){
+                echo "medicamento";
             }
             else
-                echo "Fallo registro";
+                echo "false";
 
         break;
 
