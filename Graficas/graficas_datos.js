@@ -9,6 +9,8 @@ $(document).ready(function(){
         success:function(data){
             console.log(data);
 
+            var datos = JSON.parse(data);
+
 
             var mediciones =
             {
@@ -16,29 +18,37 @@ $(document).ready(function(){
                 derecho: []
             };
 
-            var len = data.length;
+            var len = datos.length;
 
             for(var i = 0; i<len; i++)
             {
-                console.log(data.lado);
-                if(data[i].lado=="izquierdo")
+                if(datos[i].lado=="izquierdo")
                 {
-                    //mediciones.izquierdo.push(data[i].p1);
+                    mediciones.izquierdo.push(datos[i].p1);
+                    mediciones.izquierdo.push(datos[i].p2);
+                    mediciones.izquierdo.push(datos[i].p3);
+                    mediciones.izquierdo.push(datos[i].p4);
+                    mediciones.izquierdo.push(datos[i].p5);
                     console.log("holap");
+                    console.log(datos[i].p1);
                 }
-                else if(data[i].lado="derecho")
+                else if(datos[i].lado="derecho")
                 {
-                    //mediciones.derecho.push(data[i].p1);
+                    mediciones.derecho.push(datos[i].p1);
+                    mediciones.derecho.push(datos[i].p2);
+                    mediciones.derecho.push(datos[i].p3);
+                    mediciones.derecho.push(datos[i].p4);
+                    mediciones.derecho.push(datos[i].p5);
                 }
             }
 
             console.log(mediciones.izquierdo);
             console.log(mediciones.derecho);
 
-            var grafica_datos=$("lineChart");
+            var grafica_datos=document.getElementById("lineChart");
 
-            var data ={
-                labels:["p1","p2","p3","p4","p5","p6"],
+            var datos_graph ={
+                labels:["p1","p2","p3","p4","p5"],
                 datasets:[
                     {
                         label: "Mediciones lado izquierdo",
@@ -75,7 +85,7 @@ $(document).ready(function(){
 
               var chart = new Chart( grafica_datos, {
                 type : "line",
-                data : data,
+                data : datos_graph,
                 options : options
               } );
 

@@ -8,7 +8,7 @@ if( $conn ) {
 
 
 
-    $sql = "select id_user,fecha,extremidad,lado,p1,p2,p3,p4,p5,p6 from mediciones";
+    $sql = "select id_user,fecha,extremidad,lado,p1,p2,p3,p4,p5 from mediciones";
 
     $stmt = sqlsrv_query( $conn, $sql);
     if( $stmt === false ) {
@@ -17,11 +17,11 @@ if( $conn ) {
 
     $data = array();
     while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
-       $data[] = $row;
+        array_push($data,(array) $row);
     }
 
 
     sqlsrv_free_stmt( $stmt);
-    print json_encode($data);
+    echo json_encode($data);
 }
 ?>
