@@ -247,7 +247,7 @@
                                 <h3>Historial clínico</h3><hr>
                                 <!--  TABLA historial_clinico -->
                                 <form id="form-2" class="margen-form">
-                                    <div class="titulos">
+                                    <div class="titulos color2">
                                         <label>DATOS PRINCIPALES</label>
                                     </div>
                                     <div class="form-row justify-content-center">
@@ -299,7 +299,7 @@
                                         </div>
                                     
                                     </div>
-                                    <div class="titulos">
+                                    <div class="titulos color2">
                                         <label>ORIGEN DEL LINFEDEMA</label>
                                     </div>
                                     <div class="form-row espaciado-empty">
@@ -343,8 +343,8 @@
                                             &nbsp;
                                             <div>
                                                 <select id="familiar_linfedema" class="form-control form-control-md">
-                                                    <option value="SI">Si</option>
-                                                    <option value="NO">No</option>
+                                                    <option value="si">Si</option>
+                                                    <option value="no">No</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -377,7 +377,7 @@
                                             <input type="text" class="form-control" name="motivo_secundario_otro" id="motivo_secundario_otro" disabled="disabled" maxlength="50">
                                         </div>
                                     </div><!-- Fin fila 6 -->
-                                    <div class="titulos">
+                                    <div class="titulos color2">
                                         <label>ANTECEDENTES</label>
                                     </div>
                                     <div class="form-row espaciado-empty tamano-letra">
@@ -428,7 +428,7 @@
                                             <input type="text" class="form-control" name="ant_sindromes" id="ant_sindromes" required maxlength="150">
                                         </div>
                                     </div><!-- Fin fila 8 -->
-                                    <div class="titulos">
+                                    <div class="titulos color2">
                                         <label>VIDA LABORAL</label>
                                     </div>
                                     <div class="form-row justify-content-center">
@@ -469,10 +469,10 @@
                                             &nbsp;
                                             <input type="text" maxlength="50" class="form-control" id="nombre_cirugia" name="nombre_cirugia" required><br>
                                         </div>
-                                        <div class="form-group ancho" id="input_fecha">
+                                        <div class="form-group ancho" id="input_fecha_cirugias">
                                             <label for="fecha">Fecha</label>
                                             &nbsp;
-                                            <input type="date" class="form-control" name="fecha" id="fecha" required><br>
+                                            <input type="date" class="form-control" name="fecha" id="fecha_cirugia" required><br>
                                         </div>
                                     </div><!-- Fin fila 1 -->
                                     <div class="form-row justify-content-center espaciado-otro">
@@ -493,9 +493,6 @@
 
                             <div id="apartado-medicamentos">
                                 <h3>Medicamentos&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
-        
-
-
                                 <form id="form-4" class="margen-form">
                                     <div class="form-row espaciado-empty">
                                         <div class="form-group ancho" id="input_medicamento">
@@ -516,6 +513,185 @@
                                     </div>
                                 </form>
                             </div><!-- fin MEDICAMENTOS -->
+
+                             <!-- =============================== INFECCIONES ===========================================  -->
+
+                             <div id="apartado-infecciones">
+                                <h3>Infecciones&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
+                                <!--  TABLA infecciones  -->
+                                <form id="form-5" class="margen-form">
+                                    <div class="form-row espaciado-empty">
+                                        <div class="form-group ancho" id="input_tipo_inf">
+                                            <label for="tipo_inf">Tipo de infección</label>
+                                            &nbsp;
+                                            <input type="text" maxlength="50" class="form-control" id="tipo_inf" name="tipo_inf" required><br>
+                                        </div>
+                                        <div class="form-group ancho" id="input_fecha_inf">
+                                            <label for="fecha_inf">Fecha</label>
+                                            &nbsp;
+                                            <input type="date" class="form-control" name="fecha_inf" id="fecha_inf" required><br>
+                                        </div>
+                                    </div><!-- Fin fila 1 -->
+                                    <div class="form-row justify-content-center espaciado-otro">
+                                        <div class="form-group col-sm-12 mt-2" id="input_medicamentos_inf">
+                                            <label class="col-form-label" for="medicamentos_inf">Medicamento/s</label>
+                                            <textarea type="text" rows="3" maxlength="200" class="form-control" name="medicamentos_inf" id="medicamentos_inf"></textarea>
+                                        </div>
+                                    </div><!-- Fin fila 2 -->
+                                    <div class="columna-btn">
+                                        <button class="btn estilo-boton-submit" type="submit" id="btn-anadir-3" value='<?php echo($_SESSION["id_especialista"])?>'>Añadir infección</button>
+                                        <button class="btn estilo-boton-submit" type="button" id="btn-submit-5" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
+                                        
+                                    </div>
+                                </form>
+                            </div> <!-- fin INFECCIONES -->
+
+                             <!-- =============================== HÁBITOS ===========================================  -->
+
+                             <div id="apartado-habitos">
+                                <h3>Hábitos&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
+                                <!--  TABLA hábitos  -->
+                                <form id="form-6" class="margen-form">
+                                    <div class="titulos color6">
+                                        <label>FUMADOR</label>
+                                    </div>
+                                    <div class="form-row espaciado-empty">
+                                        <div class="form-group ancho col-sm-2" id="select_fumador">
+                                            <label for="fumador">Fumador</label>
+                                            &nbsp;
+                                            <div>
+                                                <select id="fumador" class="form-control form-control-md">
+                                                    <option value="si">Sí</option>
+                                                    <option value="no">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ancho col-sm-2" id="select_frec_cigarros">
+                                            <label for="frec_cigarros">Frecuencia</label>
+                                            &nbsp;
+                                            <div>
+                                                <select id="frec_cigarros" class="form-control form-control-md">
+                                                    <option value="dia">Día</option>
+                                                    <option value="mes">Mes</option>
+                                                    <option value="anyo">Año</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ancho col-sm-2" id="input_cigarros">
+                                            <label for="cigarros">Cantidad</label>
+                                            &nbsp;
+                                            <input type="number" class="form-control" name="cigarros" id="cigarros"><br>
+                                        </div>
+                                        
+                                        <div class="form-group ancho col-sm-2" id="select_fumador_social">
+                                            <label for="fumador_social">Fumador social</label>
+                                            &nbsp;
+                                            <div>
+                                                <select id="fumador_social" class="form-control form-control-md">
+                                                    <option value="si">Sí</option>
+                                                    <option value="no">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div><!-- Fin fila 1 -->
+                                    <div class="titulos color6">
+                                        <label>ALCOHOL</label>
+                                    </div>
+                                    <div class="form-row espaciado-empty">
+                                        <div class="form-group ancho col-sm-2" id="select_toma_alcohol">
+                                            <label for="toma_alcohol">Toma alcohol</label>
+                                            &nbsp;
+                                            <div>
+                                                <select id="toma_alcohol" class="form-control form-control-md">
+                                                    <option value="si">Sí</option>
+                                                    <option value="no">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ancho col-sm-2" id="select_frec_alcohol">
+                                            <label for="frec_alcohol">Frecuencia</label>
+                                            &nbsp;
+                                            <div>
+                                                <select id="frec_alcohol" class="form-control form-control-md">
+                                                    <option value="dia">Día</option>
+                                                    <option value="mes">Mes</option>
+                                                    <option value="anyo">Año</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ancho col-sm-2" id="input_alcohol">
+                                            <label for="alcohol">Cantidad</label>
+                                            &nbsp;
+                                            <input type="number" class="form-control" name="alcohol" id="alcohol"><br>
+                                        </div>
+                                        <div class="form-group ancho col-sm-2" id="input_tipo_alcohol">
+                                            <label for="tipo_alcohol">Tipo de alcohol</label>
+                                            &nbsp;
+                                            <input type="text" maxlength="50" class="form-control" name="tipo_alcohol" id="tipo_alcohol"><br>
+                                        </div>
+                                    </div><!-- Fin fila 2 -->
+                                    <div class="titulos color6">
+                                        <label>DEPORTE</label>
+                                    </div>
+                                    <div class="form-row espaciado-empty">
+                                        <div class="form-group ancho col-sm-2" id="select_hace_deporte">
+                                            <label for="hace_deporte">Practica deporte</label>
+                                            &nbsp;
+                                            <div>
+                                                <select id="hace_deporte" class="form-control form-control-md">
+                                                    <option value="si">Sí</option>
+                                                    <option value="no">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ancho col-sm-2" id="select_frec_deporte">
+                                            <label for="frec_deporte">Frecuencia</label>
+                                            &nbsp;
+                                            <div>
+                                                <select id="frec_deporte" class="form-control form-control-md">
+                                                    <option value="dia">Día</option>
+                                                    <option value="mes">Mes</option>
+                                                    <option value="anyo">Año</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ancho col-sm-2" id="input_deporte">
+                                            <label for="deporte">Cantidad</label>
+                                            &nbsp;
+                                            <input type="number" class="form-control" name="deporte" id="deporte"><br>
+                                        </div>
+                                        <div class="form-group ancho col-sm-2" id="input_tipo_deporte">
+                                            <label for="tipo_deporte">Tipo de deporte</label>
+                                            &nbsp;
+                                            <input type="text" maxlength="50" class="form-control" name="tipo_deporte" id="tipo_deporte"><br>
+                                        </div>
+                                        
+                                    </div><!-- Fin fila 3 ** -->
+                                    <div class="form-row espaciado-empty">
+                                        <div class="form-group ancho col-sm-3" id="input_t_sesion">
+                                            <label for="t_sesion">Tiempo de la sesión</label>
+                                            &nbsp;
+                                            <input type="number" class="form-control" name="t_sesion" id="t_sesion"><br>
+                                        </div>
+                                        <div class="form-group ancho col-sm-3" id="select_t_sesion_medidas">
+                                            <label for="t_sesion_medidas">Medida de tiempo</label>
+                                            &nbsp;
+                                            <div>
+                                                <select id="t_sesion_medidas" class="form-control form-control-md">
+                                                    <option value="minutos">Minutos</option>
+                                                    <option value="horas">Horas</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div><!-- Fin fila 4 -->
+
+
+                                    <div class="columna-btn">
+                                        <button class="btn estilo-boton-submit" type="button" id="btn-submit-6" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
+                                        
+                                    </div>
+                                </form>
+                            </div> <!-- fin HÁBITOS -->
 
 
 
@@ -701,6 +877,52 @@
                          $('#motivo_secundario_otro').prop('disabled', true);
                     }
                 });
+                //**
+                $("#fumador").change(function(){
+                    var fumador = this.value; //valor option del select
+                    if(fumador=="no"){
+                        $('#cigarros').prop('disabled', true);
+                        $('#frec_cigarros').prop('disabled', true);
+                        $('#fumador_social').prop('disabled', true);
+                    }
+                    else{
+                        $('#cigarros').prop('disabled', false);
+                        $('#frec_cigarros').prop('disabled', false);
+                        $('#fumador_social').prop('disabled', false);
+                    }
+                });
+
+                $("#toma_alcohol").change(function(){
+                    var toma_alcohol = this.value; //valor option del select
+                    if(toma_alcohol=="no"){
+                        $('#frec_alcohol').prop('disabled', true);
+                        $('#alcohol').prop('disabled', true);
+                        $('#tipo_alcohol').prop('disabled', true);
+                    }
+                    else{
+                        $('#frec_alcohol').prop('disabled', false);
+                        $('#alcohol').prop('disabled', false);
+                        $('#tipo_alcohol').prop('disabled', false);
+                    }
+                });
+
+                $("#hace_deporte").change(function(){
+                    var hace_deporte = this.value; //valor option del select
+                    if(hace_deporte=="no"){
+                        $('#frec_deporte').prop('disabled', true);
+                        $('#deporte').prop('disabled', true);
+                        $('#tipo_deporte').prop('disabled', true);
+                        $('#t_sesion').prop('disabled', true);
+                        $('#t_sesion_medidas').prop('disabled', true);
+                    }
+                    else{
+                        $('#frec_deporte').prop('disabled', false);
+                        $('#deporte').prop('disabled', false);
+                        $('#tipo_deporte').prop('disabled', false);
+                        $('#t_sesion').prop('disabled', false);
+                        $('#t_sesion_medidas').prop('disabled', false);
+                    }
+                });
 
     //  =============================== AJAX DE LOS FORMULARIOS =========================================== 
                 
@@ -809,38 +1031,38 @@
                     if(motivo_secundario=="Otro"){
                         motivo_secundario=$('#motivo_secundario_otro').val();
                     }
-                    var ant_vasculares = 'NO';
-                    var ant_infeccion_venosa = 'NO';
-                    var ant_sobrepeso = 'NO';
-                    var ant_lipedema = 'NO';
-                    var ant_permeabilidad_cap = 'NO';
-                    var ant_ansiedad = 'NO';
-                    var ant_diabetes = 'NO';
-                    var ant_triquiasis = 'NO';
+                    var ant_vasculares = 'no';
+                    var ant_infeccion_venosa = 'no';
+                    var ant_sobrepeso = 'no';
+                    var ant_lipedema = 'no';
+                    var ant_permeabilidad_cap = 'no';
+                    var ant_ansiedad = 'no';
+                    var ant_diabetes = 'no';
+                    var ant_triquiasis = 'no';
                     var ant_sindromes = $('#ant_sindromes').val();
                     if($('#ant_vasculares').prop('checked')){
-                        ant_vasculares = 'SI';
+                        ant_vasculares = 'si';
                     }
                     if($('#ant_infeccion_venosa').prop('checked')){
-                        ant_infeccion_venosa='SI';
+                        ant_infeccion_venosa='si';
                     }
                     if($('#ant_sobrepeso').prop('checked')){
-                            ant_sobrepeso='SI';
+                            ant_sobrepeso='si';
                     }
                     if($('#ant_lipedema').prop('checked')){
-                            ant_lipedema='SI';
+                            ant_lipedema='si';
                     }
                     if($('#ant_permeabilidad_cap').prop('checked')){
-                            ant_permeabilidad_cap='SI';
+                            ant_permeabilidad_cap='si';
                     }
                     if($('#ant_ansiedad').prop('checked')){
-                            ant_ansiedad='SI';
+                            ant_ansiedad='si';
                     }
                     if($('#ant_diabetes').prop('checked')){
-                            ant_diabetes='SI';
+                            ant_diabetes='si';
                     }
                     if($('#ant_triquiasis').prop('checked')){
-                            ant_triquiasis='SI';
+                            ant_triquiasis='si';
                     }
                     
                     var profesion = $('#profesion').val();
@@ -902,7 +1124,7 @@
                         var datos_correctos_queries = true;
 
                         var nombre_cirugia=$('#nombre_cirugia').val();
-                        var fecha = $('#fecha').val();
+                        var fecha = $('#fecha_cirugia').val();
                         var comentarios = $('#comentarios').val();
                         var opcion= "registro_cirugias";
                     
@@ -1006,133 +1228,137 @@
 
                 //  =============================== INFECCIÓN  ===========================================
 
-                // $("#form-5").submit(function(event){
-                //         event.preventDefault();
+                $("#form-5").submit(function(event){
+                        event.preventDefault();
 
 
-                //     var nombre_infeccion=$('#nombre_infeccion').val();
-                //     var fecha = $('#fecha').val();
-                //     var descripcion = $('#descripcion').val();
-                //     var opcion= $("#opcion-form5").val();
+                    var tipo_inf=$('#tipo_inf').val();
+                    var medicamentos_inf = $('#medicamentos_inf').val(); 
+                    var fecha_inf = $('#fecha_inf').val();
+                    var opcion= "registro_infeccion";
+
+                    console.log(tipo_inf);
+                    console.log(medicamentos_inf);
+                    console.log(fecha_inf);
+                    console.log(opcion);
+                
+                        // $.ajax({
+                        // type:'POST',
+                        // url: 'control/vista.php',
+                        // data: {id_user:id_user, tipo_inf:tipo_inf, medicamentos_inf:medicamentos_inf, fecha_inf:fecha_inf, opcion:opcion},
+                        // })
+                        // .done(function( msg ) {
+                        //     console.log(msg);                             	
+                        //     console.log("Ajax: Infección registrada"); 
+
+                        // })
+                        // .fail(function( jqXHR, textStatus, errorThrown ) {
+                        //     if ( console && console.log ) {
+                        //         console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                        //         console.log("ajax fail");
+                        //     }
+                        // });
+                    
+                });
+
+
+
+
+                //  =============================== HÁBITOS  ===========================================**
+
+
+                $("#form-6").submit(function(event){
+                        event.preventDefault();
+
+                // HE CAMBIADO "freq" por frec!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    var fumador=$('#fumador').val();
+                    var cig_dia = $('#cig_dia').val();
+                    var cig_mes = $('#cig_mes').val();
+                    var cig_anyo = $('#cig_anyo').val();
+                    var fumador_social = $('#fumador_social').val();
+                    var frec_alcohol = $('#frec_alcohol').val();
+                    var tipo_alcohol = $('#cig_anyo').val();
+                    var frec_deporte = $('#cig_anyo').val();
+                    var tipo_deporte = $('#tipo_deporte').val();
+                    var t_sesion = $('#t_sesion').val();
+                    var alimentacion = $('#alimentacion').val();
+                    var suenyo_reparador = $('#suenyo_reparador').val();
+                    var h_suenyo = $('#h_suenyo').val();
+                    var astenico = $('#astenico').val();
+                    var erg_sentado = $('#erg_sentado').val();
+                    var erg_bidepes_pasiva = $('#erg_bidepes_pasiva').val();
+                    var erg_bidepes_activa = $('#erg_bidepes_activa').val();
+                    var erg_otro = $('#erg_otro').val();
+                    var opcion= $("#opcion-form6").val();
 
                 
-                //         $.ajax({
-                //         type:'POST',
-                //         url: 'control/vista.php',
-                //         data: {id_user:id_user, nombre_infeccion: nombre_infeccion, fecha:fecha, descripcion:descripcion, opcion:opcion},
-                //         })
-                //         .done(function( msg ) {
-                //             console.log(msg);                             	
-                //             console.log("Ajax: Infección registrada"); 
+                        $.ajax({
+                        type:'POST',
+                        url: 'control/vista.php',
+                        data: {id_user:id_user, fumador: fumador, cig_dia: cig_dia, cig_mes: cig_mes, cig_anyo: cig_anyo, 
+                        fumador_social: fumador_social, frec_alcohol: frec_alcohol, tipo_alcohol: tipo_alcohol, frec_deporte: frec_deporte,
+                        tipo_deporte: tipo_deporte, t_sesion: t_sesion, alimentacion: alimentacion, suenyo_reparador: suenyo_reparador,
+                        h_suenyo: h_suenyo, astenico: astenico, erg_sentado: erg_sentado, erg_bipedes_pasiva: erg_bidepes_pasiva, erg_bidepes_activa: erg_bidepes_activa,
+                        erg_otro: erg_otro, opcion: opcion},
+                        })
+                        .done(function( msg ) {
+                            console.log(msg);                             	
+                            console.log("Ajax: Hábitos registrados registrada"); 
 
-                //         })
-                //         .fail(function( jqXHR, textStatus, errorThrown ) {
-                //             if ( console && console.log ) {
-                //                 console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                //                 console.log("ajax fail");
-                //             }
-                //         });
+                        })
+                        .fail(function( jqXHR, textStatus, errorThrown ) {
+                            if ( console && console.log ) {
+                                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                                console.log("ajax fail");
+                            }
+                        });
                     
-                // });
+                });
 
 
 
 
-                //  =============================== HÁBITOS  ===========================================
+                //  =============================== HISTORIAL TRATAMIENTO LINFEDEMA  =========================================== 
+
+                $("#form-7").submit(function(event){
+                        event.preventDefault();
 
 
-                // $("#form-6").submit(function(event){
-                //         event.preventDefault();
-
-
-                //     var fumador=$('#fumador').val();
-                //     var cig_dia = $('#cig_dia').val();
-                //     var cig_mes = $('#cig_mes').val();
-                //     var cig_anyo = $('#cig_anyo').val();
-                //     var fumador_social = $('#fumador_social').val();
-                //     var freq_alcohol = $('#freq_alcohol').val();
-                //     var tipo_alcohol = $('#cig_anyo').val();
-                //     var freq_deporte = $('#cig_anyo').val();
-                //     var tipo_deporte = $('#tipo_deporte').val();
-                //     var t_sesion = $('#t_sesion').val();
-                //     var alimentacion = $('#alimentacion').val();
-                //     var suenyo_reparador = $('#suenyo_reparador').val();
-                //     var h_suenyo = $('#h_suenyo').val();
-                //     var astenico = $('#astenico').val();
-                //     var erg_sentado = $('#erg_sentado').val();
-                //     var erg_bidepes_pasiva = $('#erg_bidepes_pasiva').val();
-                //     var erg_bidepes_activa = $('#erg_bidepes_activa').val();
-                //     var erg_otro = $('#erg_otro').val();
-                //     var opcion= $("#opcion-form6").val();
+                    var fecha_ult_tratamiento=$('#fecha_ult_tratamiento').val();
+                    var satisfecho_result = $('#satisfecho_result').val();
+                    var fallo_terapia = $('#fallo_terapia').val();
+                    var tipo_drenaje_linfa = $('#tipo_drenaje_linfa').val();
+                    var vendaje = $('#vendaje').val();
+                    var nota = $('#nota').val();
+                    var contencion_dia = $('#contencion_dia').val();
+                    var contencion_tipo = $('#contencion_tipo').val();
+                    var contencion_sensacion = $('#contencion_sensacion').val();
+                    var contencion_dolor = $('#contencion_dolor').val();
+                    var contencion_escala = $('#contencion_escala').val();
+                    var contencion_pesadez = $('#contencion_pesadez').val();
+                    var opcion= $("#opcion-form7").val();
 
                 
-                //         $.ajax({
-                //         type:'POST',
-                //         url: 'control/vista.php',
-                //         data: {id_user:id_user, fumador: fumador, cig_dia: cig_dia, cig_mes: cig_mes, cig_anyo: cig_anyo, 
-                //         fumador_social: fumador_social, freq_alcohol: freq_alcohol, tipo_alcohol: tipo_alcohol, freq_deporte: freq_deporte,
-                //         tipo_deporte: tipo_deporte, t_sesion: t_sesion, alimentacion: alimentacion, suenyo_reparador: suenyo_reparador,
-                //         h_suenyo: h_suenyo, astenico: astenico, erg_sentado: erg_sentado, erg_bipedes_pasiva: erg_bidepes_pasiva, erg_bidepes_activa: erg_bidepes_activa,
-                //         erg_otro: erg_otro, opcion: opcion},
-                //         })
-                //         .done(function( msg ) {
-                //             console.log(msg);                             	
-                //             console.log("Ajax: Hábitos registrados registrada"); 
+                        // $.ajax({
+                        // type:'POST',
+                        // url: 'control/vista.php',
+                        // data: {id_user:id_user, fecha_ult_tratamiento: fecha_ult_tratamiento,satisfecho_result: satisfecho_result, fallo_terapia:fallo_terapia, tipo_drenaje_linfa:tipo_drenaje_linfa,
+                        // vendaje:vendaje, nota: nota, contencion_dia: contencion_dia, contencion_tipo: contencion_tipo, contencion_sensacion: contencion_sensacion, contencion_dolor: contencion_dolor,
+                        // contencion_escala: contencion_escala, contencion_pesadez: contencion_pesadez, opcion: opcion},
+                        // })
+                        // .done(function( msg ) {
+                        //     console.log(msg);                             	
+                        //     console.log("Ajax: Tratamiento linfedema registrado"); 
 
-                //         })
-                //         .fail(function( jqXHR, textStatus, errorThrown ) {
-                //             if ( console && console.log ) {
-                //                 console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                //                 console.log("ajax fail");
-                //             }
-                //         });
+                        // })
+                        // .fail(function( jqXHR, textStatus, errorThrown ) {
+                        //     if ( console && console.log ) {
+                        //         console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                        //         console.log("ajax fail");
+                        //     }
+                        // });
                     
-                // });
-
-
-
-
-                //  =============================== HISTORIAL TRATAMIENTO LINFEDEMA  ===========================================
-
-                // $("#form-7").submit(function(event){
-                //         event.preventDefault();
-
-
-                //     var fecha_ult_tratamiento=$('#fecha_ult_tratamiento').val();
-                //     var satisfecho_result = $('#satisfecho_result').val();
-                //     var fallo_terapia = $('#fallo_terapia').val();
-                //     var tipo_drenaje_linfa = $('#tipo_drenaje_linfa').val();
-                //     var vendaje = $('#vendaje').val();
-                //     var nota = $('#nota').val();
-                //     var contencion_dia = $('#contencion_dia').val();
-                //     var contencion_tipo = $('#contencion_tipo').val();
-                //     var contencion_sensacion = $('#contencion_sensacion').val();
-                //     var contencion_dolor = $('#contencion_dolor').val();
-                //     var contencion_escala = $('#contencion_escala').val();
-                //     var contencion_pesadez = $('#contencion_pesadez').val();
-                //     var opcion= $("#opcion-form7").val();
-
-                
-                //         $.ajax({
-                //         type:'POST',
-                //         url: 'control/vista.php',
-                //         data: {id_user:id_user, fecha_ult_tratamiento: fecha_ult_tratamiento,satisfecho_result: satisfecho_result, fallo_terapia:fallo_terapia, tipo_drenaje_linfa:tipo_drenaje_linfa,
-                //         vendaje:vendaje, nota: nota, contencion_dia: contencion_dia, contencion_tipo: contencion_tipo, contencion_sensacion: contencion_sensacion, contencion_dolor: contencion_dolor,
-                //         contencion_escala: contencion_escala, contencion_pesadez: contencion_pesadez, opcion: opcion},
-                //         })
-                //         .done(function( msg ) {
-                //             console.log(msg);                             	
-                //             console.log("Ajax: Tratamiento linfedema registrado"); 
-
-                //         })
-                //         .fail(function( jqXHR, textStatus, errorThrown ) {
-                //             if ( console && console.log ) {
-                //                 console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                //                 console.log("ajax fail");
-                //             }
-                //         });
-                    
-                // });
+                });
 
 
 
