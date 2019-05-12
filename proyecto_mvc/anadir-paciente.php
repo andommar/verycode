@@ -187,7 +187,7 @@
                             <div id="apartado-usuario">
                                 <h3>Datos personales&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
                                 
-                    <!-- =============================== USUARIO ===========================================  -->
+                    <!-- =============================== USUARIO | vista, sql y validado ===========================================  -->
 
                                 <form id="form-1" class="margen-form">
                                     <div class="form-row justify-content-center">
@@ -241,7 +241,7 @@
                                     </div>
                                 </form>
                             </div>
-            <!-- =============================== HISTORIAL CLINICO ===========================================  -->
+            <!-- =============================== HISTORIAL CLINICO | vista, sql y validado ===========================================  -->
 
                             <div id="apartado-historial">
                                 <h3>Historial clínico</h3><hr>
@@ -343,8 +343,8 @@
                                             &nbsp;
                                             <div>
                                                 <select id="familiar_linfedema" class="form-control form-control-md">
-                                                    <option value="S">Si</option>
-                                                    <option value="N">No</option>
+                                                    <option value="SI">Si</option>
+                                                    <option value="NO">No</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -467,23 +467,23 @@
                                         <div class="form-group ancho" id="input_nombre_cirugia">
                                             <label for="nombre_cirugia">Nombre</label>
                                             &nbsp;
-                                            <input type="text" class="form-control" id="nombre_cirugia" name="nombre_cirugia"><br>
+                                            <input type="text" maxlength="50" class="form-control" id="nombre_cirugia" name="nombre_cirugia" required><br>
                                         </div>
                                         <div class="form-group ancho" id="input_fecha">
                                             <label for="fecha">Fecha</label>
                                             &nbsp;
-                                            <input type="date" class="form-control" name="fecha" id="fecha"><br>
+                                            <input type="date" class="form-control" name="fecha" id="fecha" required><br>
                                         </div>
                                     </div><!-- Fin fila 1 -->
                                     <div class="form-row justify-content-center espaciado-otro">
                                         <div class="form-group col-sm-12 mt-2" id="input_comentarios">
                                             <label class="col-form-label" for="comentarios">Comentarios</label>
-                                            <input type="text" class="form-control" name="comentarios" id="comentarios">
+                                            <textarea type="text" rows="3" maxlength="200" class="form-control" name="comentarios" id="comentarios"></textarea>
                                         </div>
                                     </div><!-- Fin fila 2 -->
                                     <div class="columna-btn">
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-anadir-1" value='<?php echo($_SESSION["id_especialista"])?>'>Añadir cirugía</button>
-                                        <button class="btn estilo-boton-submit" type="submit" id="btn-submit-3" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
+                                        <button class="btn estilo-boton-submit" type="button" id="btn-submit-3" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
                                         
                                     </div>
                                 </form>
@@ -501,17 +501,17 @@
                                         <div class="form-group ancho" id="input_medicamento">
                                             <label for="medicamento">Nombre del medicamento</label>
                                             &nbsp;
-                                            <input type="text" class="form-control" id="medicamento" name="medicamento"><br>
+                                            <input type="text" maxlength="50" class="form-control" id="medicamento" name="medicamento" required><br>
                                         </div>
                                         <div class="form-group ancho" id="input_patologias">
                                             <label for="patologias">Patología/s (separar por comas en caso de haber más de una)</label>
                                             &nbsp;
-                                            <input type="text" class="form-control" id="patologias" name="patologias"><br>
+                                            <input type="text" maxlength="50" class="form-control" id="patologias" name="patologias" required><br>
                                         </div>
                                     </div><!-- Fin fila 1 -->
                                     <div class="columna-btn">
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-anadir-2" value='<?php echo($_SESSION["id_especialista"])?>'>Añadir medicamento</button>
-                                        <button class="btn estilo-boton-submit" type="submit" id="btn-submit-4" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
+                                        <button class="btn estilo-boton-submit" type="button" id="btn-submit-4" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
                                         
                                     </div>
                                 </form>
@@ -732,8 +732,13 @@
                             data: {nombre: nombre, apellido1: apellido1, apellido2: apellido2, correo: correo,id_especialista: id_especialista, pass: pass, pass2: pass2, opcion: opcion}
                             })
                             .done(function( msg ) {
-
+                                console.log(msg);
+                                console.log(msg[0]);
+                                console.log(msg[1]);
                                 var resultado = $.parseJSON(msg);
+                                console.log(resultado[0]);
+                                console.log(resultado[1]);
+                               
                                 // console.log(msg);                             	
                                 console.log("ajax done"); 
                                 if(resultado[1]=="false"){
@@ -867,6 +872,7 @@
                             console.log("ajax done");
                             if(msg=="false"){
                                     $.notify("Error en la consulta SQL", "error");
+                                    datos_correctos_queries = false;
                                 }
                             else{
                                 $.notify("Historial clínico guardado correctamente", "success");
@@ -889,33 +895,55 @@
                 //  =============================== CIRUGIAS  ===========================================
 
 
-                // $("#form-3").submit(function(event){
-                //         event.preventDefault();
+                $("#form-3").submit(function(event){
+                        event.preventDefault();
 
+                        var datos_correctos = true;
+                        var datos_correctos_queries = true;
 
-                //     var nombre_cirugia=$('#nombre_cirugia').val();
-                //     var fecha = $('#fecha').val();
-                //     var comentarios = $('#comentarios').val();
-                //     var opcion= "registro_cirugias";
-                
-                //         $.ajax({
-                //         type:'POST',
-                //         url: 'control/vista.php',
-                //         data: {id_user:id_user, nombre_cirugia:nombre_cirugia, fecha: fecha, comentarios: comentarios, opcion:opcion},
-                //         })
-                //         .done(function( msg ) {
-                //             console.log(msg);                             	
-                //             console.log("Cirugia registrada"); 
-
-                //         })
-                //         .fail(function( jqXHR, textStatus, errorThrown ) {
-                //             if ( console && console.log ) {
-                //                 console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                //                 console.log("ajax fail");
-                //             }
-                //         });
+                        var nombre_cirugia=$('#nombre_cirugia').val();
+                        var fecha = $('#fecha').val();
+                        var comentarios = $('#comentarios').val();
+                        var opcion= "registro_cirugias";
                     
-                // });
+                        datos_correctos = validarCirugias(nombre_cirugia,fecha,comentarios);
+
+                        if(datos_correctos){
+
+                            $.ajax({
+                            type:'POST',
+                            url: 'control/vista.php',
+                            data: {id_user:id_user, nombre_cirugia:nombre_cirugia, fecha: fecha, comentarios: comentarios, opcion:opcion},
+                            })
+                            .done(function( msg ) {
+                                console.log("ajax done");
+                                if(msg=="false"){
+                                    $.notify("Error en la consulta SQL", "error");
+                                    datos_correctos_queries = false;
+                                }
+                                else if(msg=="cirugia"){
+                                    $("body").overhang({
+                                        type: "error",
+                                        message: "ERROR. Los datos de esta cirugía ya existen.",
+                                        duration: 3,
+                                        overlay: true,
+                                        closeConfirm: true
+                                    });
+                                    datos_correctos_queries = false;
+                                }
+                                else{
+                                    $.notify("Cirugías guardadas correctamente.", "success");
+                                }
+                            })
+                            .fail(function( jqXHR, textStatus, errorThrown ) {
+                                if ( console && console.log ) {
+                                    console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                                    console.log("ajax fail");
+                                }
+                            });
+                        }
+                        
+                });
 
 
 
@@ -923,33 +951,55 @@
                 //  =============================== MEDICAMENTOS  ===========================================
 
 
-                // $("#form-4").submit(function(event){
-                //         event.preventDefault();
-
-
-                //     var medicamento=$('#medicamento').val();
-                //     var patologias = $('#patologias').val();
-                //     var opcion= "registro_medicamento";
-
-                
-                //         $.ajax({
-                //         type:'POST',
-                //         url: 'control/vista.php',
-                //         data: {id_user:id_user, medicamento:medicamento, patologias:patologias, opcion:opcion},
-                //         })
-                //         .done(function( msg ) {
-                //             console.log(msg);                             	
-                //             console.log("Ajax: Medicamento registrado"); 
-
-                //         })
-                //         .fail(function( jqXHR, textStatus, errorThrown ) {
-                //             if ( console && console.log ) {
-                //                 console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                //                 console.log("ajax fail");
-                //             }
-                //         });
+                $("#form-4").submit(function(event){
                     
-                // });
+                    event.preventDefault();
+
+                    var datos_correctos = true;
+                    var datos_correctos_queries = true;
+                    var medicamento=$('#medicamento').val();
+                    var patologias = $('#patologias').val();
+                    var opcion= "registro_medicamento";
+
+                    datos_correctos = validarMedicamentos(medicamento,patologias);
+
+                    if(datos_correctos){
+                        $.ajax({
+                            type:'POST',
+                            url: 'control/vista.php',
+                            data: {id_user:id_user, medicamento:medicamento, patologias:patologias, opcion:opcion},
+                            })
+                            .done(function( msg ) {                           	
+                                console.log("Ajax done"); 
+                                if(msg=="false"){
+                                    $.notify("Error en la consulta SQL", "error");
+                                    datos_correctos_queries = false;
+                                }
+                                else if(msg=="medicamento"){
+                                    $("body").overhang({
+                                        type: "error",
+                                        message: "ERROR. Los datos del medicamento ya existen.",
+                                        duration: 3,
+                                        overlay: true,
+                                        closeConfirm: true
+                                    });
+                                    datos_correctos_queries = false;
+                                }
+                                else{
+                                    $.notify("Medicamentos guardados correctamente.", "success");
+                                }
+
+                            })
+                            .fail(function( jqXHR, textStatus, errorThrown ) {
+                                if ( console && console.log ) {
+                                    console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                                    console.log("ajax fail");
+                                }
+                        });
+                    }
+                    
+                    
+                });
 
 
 
@@ -1263,21 +1313,33 @@
                     }
                     if(isEmptyOrSpaces(doc_identificacion)){
                         mensaje_error="ERROR. El doc. de identificación no puede estar vacío.";
+                        datos_correctos = false;
+                        
                     }
                     if(isEmptyOrSpaces(nacionalidad)){
                         mensaje_error="ERROR. La nacionalidad no puede estar vacía.";
+                        datos_correctos = false;
+                        
                     }
                     if(isEmptyOrSpaces(raza)){
                         mensaje_error="ERROR. La raza no puede estar vacía.";
+                        datos_correctos = false;
+                        
                     }
                     if(isEmptyOrSpaces(fecha_nacimiento) || fecha_nacimiento==undefined){
                         mensaje_error="ERROR. No has seleccionado la fecha de nacimiento.";
+                        datos_correctos = false;
+                        
                     }
                     if(isEmptyOrSpaces(ant_sindromes)){
                         mensaje_error="ERROR. No has rellenado el campo de síndromes.";
+                        datos_correctos = false;
+                        
                     }
                     if(isEmptyOrSpaces(profesion)){
                         mensaje_error="ERROR. No has rellenado el campo de profesión.";
+                        datos_correctos = false;
+                        
                     }
 
                     if(!datos_correctos){
@@ -1293,32 +1355,125 @@
 
                 }
 
-                // function validarCirugias{
-                //     var datos_correctos = true;
-                // }
+                function validarCirugias(nombre_cirugia,fecha,comentarios){
+                    var mensaje_error = "";
+                    var datos_correctos = true;
+                    if(isEmptyOrSpaces(nombre_cirugia)){
+                        mensaje_error="ERROR. El nombre de cirugía no puede estar vacío.";
+                    }
+                    if(!datos_correctos){
+                        $("body").overhang({
+                                type: "error",
+                                message: mensaje_error,
+                                duration: 3,
+                                overlay: true,
+                                closeConfirm: true
+                            });
+                    }
+                    return datos_correctos;
 
-                // function validarMedicamentos{
-                //     var datos_correctos = true;
-                // }
+                }
+
+                function validarMedicamentos(medicamento,patologias){
+                    
+                    var mensaje_error = "";
+                    var datos_correctos = true;
+                    
+                    if(isEmptyOrSpaces(medicamento)){
+                        mensaje_error="ERROR. El nombre del medicamento no puede estar vacío.";
+                        datos_correctos = false;
+                    }
+                    if(isEmptyOrSpaces(patologias)){
+                        mensaje_error="ERROR. El campo de patologías no puede estar vacío.";
+                        datos_correctos = false;
+                    }
+
+                    if(!datos_correctos){
+                            $("body").overhang({
+                                    type: "error",
+                                    message: mensaje_error,
+                                    duration: 3,
+                                    overlay: true,
+                                    closeConfirm: true
+                                });
+                        }
+                    return datos_correctos;
+
+                }
 
                 // function validarInfecciones{
-                //     var datos_correctos = true;
+                //      var mensaje_error = "";
+                    // var datos_correctos = true;
+                    //  if(!datos_correctos){
+                    //     $("body").overhang({
+                    //             type: "error",
+                    //             message: mensaje_error,
+                    //             duration: 3,
+                    //             overlay: true,
+                    //             closeConfirm: true
+                    //         });
+                    // }
+                    // return datos_correctos;
                 // }
 
                 // function validarHabitos{
-                //     var datos_correctos = true;
+                //      var mensaje_error = "";
+                    // var datos_correctos = true;
+                    //  if(!datos_correctos){
+                    //     $("body").overhang({
+                    //             type: "error",
+                    //             message: mensaje_error,
+                    //             duration: 3,
+                    //             overlay: true,
+                    //             closeConfirm: true
+                    //         });
+                    // }
+                    // return datos_correctos;
                 // }
 
                 // function validarHistorialLinfedema{
-                //     var datos_correctos = true;
+                //      var mensaje_error = "";
+                    // var datos_correctos = true;
+                    //  if(!datos_correctos){
+                    //     $("body").overhang({
+                    //             type: "error",
+                    //             message: mensaje_error,
+                    //             duration: 3,
+                    //             overlay: true,
+                    //             closeConfirm: true
+                    //         });
+                    // }
+                    // return datos_correctos;
                 // }
 
                 // function validarLinfedema{
-                //     var datos_correctos = true;
+                //      var mensaje_error = "";
+                    // var datos_correctos = true;
+                    //  if(!datos_correctos){
+                    //     $("body").overhang({
+                    //             type: "error",
+                    //             message: mensaje_error,
+                    //             duration: 3,
+                    //             overlay: true,
+                    //             closeConfirm: true
+                    //         });
+                    // }
+                    // return datos_correctos;
                 // }
 
                 // function validarMediciones{
-                //     var datos_correctos = true;
+                //      var mensaje_error = "";
+                    // var datos_correctos = true;
+                    //  if(!datos_correctos){
+                    //     $("body").overhang({
+                    //             type: "error",
+                    //             message: mensaje_error,
+                    //             duration: 3,
+                    //             overlay: true,
+                    //             closeConfirm: true
+                    //         });
+                    // }
+                    // return datos_correctos;
                 // }
 
 

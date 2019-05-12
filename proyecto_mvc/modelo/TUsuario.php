@@ -147,16 +147,31 @@ class TUsuario{
 		$res=0;
 		$abd = new TAccesbd ();
 
-		
 		if($abd->conectado())
 		{
-			$sql="insert into cirugia values ('$id_user','$nombre','$fecha','$comentarios')";
-			$stmt = $abd->ejecuta_sql($sql);
+
+			//Comprobar si se repite la cirugia antes
+			$sql2="select count(*) from cirugia where nombre='$nombre' and fecha='$fecha'";
+			$stmt2 = $abd->consultar_dato($sql2);
+			if( $stmt2 === false ) {
+				$res=-1;
+			}
+			else{
+				if($stmt2>0){//se repite cirugia
+					$res=-2;
+				}
+				else{
+					$sql="insert into cirugia values ('$id_user','$nombre','$fecha','$comentarios')";
+					$stmt = $abd->ejecuta_sql($sql);
+					if( $stmt === false ) {
+						$res=-1;
+						die( print_r( sqlsrv_errors(), true));
+					}
+				}
+			}
+		
 		}
-		if( $stmt === false ) {
-			$res=-1;
-			die( print_r( sqlsrv_errors(), true));
-		}
+	
 
 
 		return $res;
@@ -168,18 +183,29 @@ class TUsuario{
 		$res=0;
 		$abd = new TAccesbd ();
 
-		
 		if($abd->conectado())
 		{
-			$sql="insert into medicamento values ($id_user,'$medicamento','$patologias')";
-			$stmt = $abd->ejecuta_sql($sql);
+				//Comprobar si se repite la cirugia antes
+				$sql2="select count(*) from medicamento where medicamento='$medicamento'";
+				$stmt2 = $abd->consultar_dato($sql2);
+				if( $stmt2 === false ) {
+					$res=-1;
+				}
+				else{
+					if($stmt2>0){//se repite medicamento
+						$res=-2;
+					}
+					else{
+						$sql="insert into medicamento values ($id_user,'$medicamento','$patologias')";
+						$stmt = $abd->ejecuta_sql($sql);
+						if( $stmt === false ) {
+							$res=-1;
+							die( print_r( sqlsrv_errors(), true));
+						}
+					}
+				}
 		}
-		if( $stmt === false ) {
-			$res=-1;
-			die( print_r( sqlsrv_errors(), true));
-		}
-
-
+		
 		return $res;
 	}
 
@@ -217,7 +243,7 @@ class TUsuario{
 		if($abd->conectado())
 		{
 			//Comprobar si se repite el correo antes
-			$sql="select count(*) from usuario where correo='"+$correo+"'";
+			$sql="select count(*) from usuario where correo='$correo'";
 			$stmt = $abd->consultar_dato($sql);
 
 			if( $stmt === false ) {
