@@ -64,8 +64,8 @@
                                 </a>
                             </li>
 
-                            <!-- Apartado "PACIENTES"-->
-                            <li class="espaciado-desplegable apartados">
+                             <!-- Apartado "PACIENTES"-->
+                             <li class="espaciado-desplegable apartados">
                                 <a href="#nav-pacientes" data-toggle="collapse" aria-expanded="false">
                                     <span class="ti-wheelchair"></span> Pacientes
                                 </a>
@@ -78,11 +78,10 @@
                                     </li>
                                 </ul>
                             </li>
-
-                           <!-- Apartado "mediciones"-->
-                           <li class="espaciado-desplegable apartados">
+                            <!-- Apartado "mediciones"-->
+                            <li class="espaciado-desplegable apartados">
                                 <a href="#nav-mediciones" data-toggle="collapse" aria-expanded="false" class="collapsed">
-                                <span class="ti-ruler-alt"></span>  Mediciones
+                                <span class="ti-ruler-alt"></span> Mediciones
                                 </a>
                                 <ul class="list-unstyled collapse tamano-letra" id="nav-mediciones" style="">
                                         <li>
@@ -101,10 +100,7 @@
                                 </a>
                                 <ul class="list-unstyled collapse tamano-letra" id="nav-graficas" style="">
                                     <li>
-                                        <a href="graficas-1.html">Evolución pacientes</a>
-                                    </li>
-                                    <li>
-                                        <a href="graficas-2.html">Estadísticas generales</a>
+                                        <a href="graficas-mediciones.php">mediciones</a>
                                     </li>
                                 </ul>
                             </li>
