@@ -762,7 +762,7 @@
                                 </form>
                             </div> <!-- fin HÁBITOS -->
 
-                        <!-- =============================== HISTORIAL TRATAMIENTO LINFEDEMA ** ===========================================  -->
+                        <!-- =============================== HISTORIAL TRATAMIENTO LINFEDEMA  ===========================================  -->
 
                             <div id="apartado-hist-trat-linf">
                                 <h3>Historial de Tratamiento del Linfedema&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
@@ -777,7 +777,108 @@
                                             &nbsp;
                                             <input type="date" class="form-control" name="fecha_ult_tratamiento" id="fecha_ult_tratamiento" required><br>
                                         </div>
+                                        <div class="form-group ancho col-sm-3" id="select_satisfecho_result">
+                                            <label for="satisfecho_result">Satisfecho</label>
+                                                &nbsp;
+                                            <div>
+                                                <select id="satisfecho_result" class="form-control form-control-md">
+                                                    <option value="si">Sí</option>
+                                                    <option value="no">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ancho col-sm-4" id="select_fallo_terapia">
+                                        <label for="fallo_terapia">Fallo de la terapia</label>
+                                            &nbsp;
+                                            <div>
+                                                <select disabled="disabled"  id="fallo_terapia" class="form-control form-control-md">
+                                                    <option value="falta-seguimiento">Falta de seguimiento</option>
+                                                    <option value="falta-programacion">Falta de programación</option>
+                                                    <option value="desidia">desidia</option>
+                                                    <option value="desesperacion">Desesperación</option>
+                                                    <option value="tediosa">Demasiado tediosa</option>
+                                                    <option value="falta-medios">Falta de medio económicos</option>
+                                                    <option value="otro">Otros</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div><!-- Fin fila 1 -->
+                                    <div class="form-row justify-content-center espaciado-otro">
+                                        <div class="form-group col-sm-12" id="input_fallo_terapia_otro">
+                                            <label class="col-form-label" for="fallo_terapia_otro">Si seleccionaste "Otros" en el campo anterior, especifica tu respuesta</label>
+                                            <input type="text" class="form-control" name="fallo_terapia_otro" id="fallo_terapia_otro" disabled="disabled" maxlength="50">
+                                        </div>
+                                    </div><!-- Fin fila 2 -->
+                                    <div class="titulos color7">
+                                        <label>TIPO DE TRATAMIENTO</label>
+                                    </div>
+                                    <div class="form-row espaciado-empty">
+                                        <div class="form-group ancho" id="select_tipo_drenaje_linfa">
+                                            <label for="tipo_drenaje_linfa">Tipo de drenaje linfático</label>
+                                                &nbsp;
+                                            <div>
+                                                <select id="tipo_drenaje_linfa" class="form-control form-control-md">
+                                                    <option value="vodder">Vodder</option>
+                                                    <option value="leduc">Leduc</option>
+                                                    <option value="godoy">Godoy</option>
+                                                    <option value="otro">Otros</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ancho" id="input_tipo_drenaje_linfa_otro">
+                                            <label for="tipo_drenaje_linfa_otro">Si seleccionaste "Otros"</label>
+                                            &nbsp;
+                                            <input disabled="disabled" type="text" maxlength="50" class="form-control" name="tipo_drenaje_linfa_otro" id="tipo_drenaje_linfa_otro" disabled="disabled"><br>
+                                        </div>
+                                        <div class="form-group ancho" id="select_vendaje">
+                                            <label for="vendaje">Vendaje</label>
+                                                &nbsp;
+                                            <div>
+                                                <select id="vendaje" class="form-control form-control-md">
+                                                    <option value="si">Sí</option>
+                                                    <option value="no">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div><!-- Fin fila 3 -->
+                                    <div class="form-row justify-content-center espaciado-otro">
+                                        <div class="form-group col-sm-12" id="input_nota">
+                                            <label class="col-form-label" for="nota">Nota</label>
+                                            <textarea type="text" rows="3" maxlength="200" class="form-control" name="nota" id="nota"></textarea>
+                                        </div>
+                                    </div><!-- Fin fila 4  **-->
+                                    <div class="titulos color7">
+                                        <label>CONTENCIÓN</label>
+                                    </div>
+                                    <div class="form-row espaciado-empty">
+                                        <div class="form-group ancho" id="select_contencion_dia">
+                                            <label for="contencion_dia">Contención de día</label>
+                                                &nbsp;
+                                            <div>
+                                                <select id="contencion_dia" class="form-control form-control-md">
+                                                    <option value="si">Sí</option>
+                                                    <option value="no">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ancho" id="select_contencion_tipo">
+                                            <label for="contencion_tipo">Contención de día</label>
+                                                &nbsp;
+                                            <div>
+                                                <select id="contencion_tipo" class="form-control form-control-md">
+                                                    <option value="jobst">Jobst</option>
+                                                    <option value="medi">Medi</option>
+                                                    <option value="vendas">Vendas</option>
+                                                    <option value="otro">Otro</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ancho col-sm-3" id="input_contencion_tipo_otro">
+                                            <label for="contencion_tipo_otro">Si seleccionaste "Otro"</label>
+                                            &nbsp;
+                                            <input disabled="disabled" type="text" maxlength="50" class="form-control" name="contencion_tipo_otro" id="contencion_tipo_otro" disabled="disabled"><br>
+                                        </div>
+                                    </div><!-- Fin fila 5  **-->
                                     <div class="columna-btn">
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-submit-7" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
                                         

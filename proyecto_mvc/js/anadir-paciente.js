@@ -220,6 +220,45 @@
                     }
                 });
 
+                $("#satisfecho_result").change(function(){
+                    var satisfecho_result = this.value; //valor option del select
+                    if(satisfecho_result=="no"){
+                        $('#fallo_terapia').prop('disabled', false);
+                    }
+                    else{
+                         $('#fallo_terapia').prop('disabled', true);
+                    }
+                });
+
+                $("#fallo_terapia").change(function(){
+                    var fallo_terapia = this.value; //valor option del select
+                    if(fallo_terapia=="otro"){
+                        $('#fallo_terapia_otro').prop('disabled', false);
+                    }
+                    else{
+                         $('#fallo_terapia_otro').prop('disabled', true);
+                    }
+                });
+               
+                $("#tipo_drenaje_linfa").change(function(){
+                    var tipo_drenaje_linfa = this.value; //valor option del select
+                    if(tipo_drenaje_linfa=="otro"){
+                        $('#tipo_drenaje_linfa_otro').prop('disabled', false);
+                    }
+                    else{
+                         $('#tipo_drenaje_linfa_otro').prop('disabled', true);
+                    }
+                });
+                $("#contencion_tipo").change(function(){
+                    var contencion_tipo = this.value; //valor option del select
+                    if(contencion_tipo=="otro"){
+                        $('#contencion_tipo_otro').prop('disabled', false);
+                    }
+                    else{
+                         $('#contencion_tipo_otro').prop('disabled', true);
+                    }
+                });
+
     //  =============================== AJAX DE LOS FORMULARIOS =========================================== 
                 
                 //  =============================== USUARIO ===========================================  
