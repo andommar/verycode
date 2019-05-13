@@ -878,7 +878,55 @@
                                             &nbsp;
                                             <input disabled="disabled" type="text" maxlength="50" class="form-control" name="contencion_tipo_otro" id="contencion_tipo_otro" disabled="disabled"><br>
                                         </div>
-                                    </div><!-- Fin fila 5  **-->
+                                    </div><!-- Fin fila 5  -->
+                                    <div class="form-row espaciado-empty">
+                                        <div class="form-group" id="radiobuttons_contencion_sensacion">
+                                            <label for="contencion_sensacion">¿Qué le supone emocionalmente la contención?</label>
+                                                &nbsp;
+                                            <div class="mt-3 mb-3"> <!--  d-flex justify-content-center -->
+                                                <input checked type="radio" name="contencion_sensacion" value="1"> <img class="tamano-emoji margen-emoji" src="img/1_GENIAL.png" alt="Emoji Genial">  
+                                                &nbsp;&nbsp;
+                                                <input type="radio" name="contencion_sensacion" value="2"> <img class="tamano-emoji margen-emoji" src="img/2_MUYBIEN.png" alt="Emoji Muy bien"> 
+                                                &nbsp;&nbsp;
+                                                <input type="radio" name="contencion_sensacion" value="3"> <img class="tamano-emoji margen-emoji" src="img/3_BIEN.png" alt="Emoji Bien">
+                                                &nbsp;&nbsp;
+                                                <input type="radio" name="contencion_sensacion" value="4"> <img class="tamano-emoji margen-emoji" src="img/4_NORMAL.png" alt="Emoji Normal">
+                                                &nbsp;&nbsp;
+                                                <input type="radio" name="contencion_sensacion" value="5"> <img class="tamano-emoji margen-emoji" src="img/5_REGULAR.png" alt="Emoji Regular"> 
+                                                &nbsp;&nbsp;
+                                                <input type="radio" name="contencion_sensacion" value="6"> <img class="tamano-emoji margen-emoji" src="img/6_MAL.png" alt="Emoji Mal">
+                                                &nbsp;&nbsp;
+                                                <input type="radio" name="contencion_sensacion" value="7"> <img class="tamano-emoji" src="img/7_MUYMAL.png" alt="Emoji Muy mal">
+                                            </div>
+                                        </div>
+                                    </div><!-- Fin fila 6  -->
+                                    <div class="form-row espaciado-empty">
+                                        <div class="form-group ancho" id="select_contencion_dolor">
+                                            <label for="contencion_dolor">Dolor</label>
+                                                &nbsp;
+                                            <div>
+                                                <select id="contencion_dolor" class="form-control form-control-md">
+                                                    <option value="si">Sí</option>
+                                                    <option value="no">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ancho col-sm-3" id="input_contencion_escala">
+                                            <label for="contencion_escala">Escala de dolor</label>
+                                            &nbsp;
+                                            <input type="number" min="1" max="10" class="form-control" name="contencion_escala" id="contencion_escala" required><br>
+                                        </div>
+                                        <div class="form-group ancho" id="select_contencion_pesadez">
+                                            <label for="contencion_pesadez">Pesadez</label>
+                                                &nbsp;
+                                            <div>
+                                                <select id="contencion_pesadez" class="form-control form-control-md">
+                                                    <option value="si">Sí</option>
+                                                    <option value="no">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div><!-- Fin fila 7  **-->
                                     <div class="columna-btn">
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-submit-7" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
                                         
