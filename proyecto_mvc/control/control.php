@@ -6,6 +6,11 @@ include_once("../modelo/TUsuario.php");
 
 class TControl{
 
+    public function listado_usuarios($id_especialista){
+        $usr = new TUsuario();
+        $resultado = $usr->listado_usuarios($id_especialista);
+        return ($resultado);
+    }
     public function borrar_especialista($id_especialista, $tipo_especialista){
         
         $usr = new TUsuario();

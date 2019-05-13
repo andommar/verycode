@@ -55,7 +55,25 @@ class TUsuario{
 		}
 	  return $res;
 	}
-	
+	public function listado_usuarios($id_especialista){
+			$res=false;
+			$abd = new TAccesbd ();
+		
+			if($abd->conectado())
+			{ 	
+				$res=true;
+				$sql = "SELECT id_user, nombre, apellido1, apellido2, correo, pass FROM usuario where id_especialista=$id_especialista ";
+				$stmt = $abd->listado_asociativo($sql);
+			}
+			if( $stmt === false ) {
+
+				$res=false;
+			}
+			else{
+				$res = $stmt;
+			}
+			return $res;
+	}
 	//Rellena el home del admin con la lista de fisios (tabla)
 	
 	public function listado_especialistas(){
