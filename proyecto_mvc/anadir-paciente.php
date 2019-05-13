@@ -846,7 +846,7 @@
                                             <label class="col-form-label" for="nota">Nota</label>
                                             <textarea type="text" rows="3" maxlength="200" class="form-control" name="nota" id="nota"></textarea>
                                         </div>
-                                    </div><!-- Fin fila 4  **-->
+                                    </div><!-- Fin fila 4  -->
                                     <div class="titulos color7">
                                         <label>CONTENCIÓN</label>
                                     </div>
@@ -926,13 +926,140 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    </div><!-- Fin fila 7  **-->
+                                    </div><!-- Fin fila 7  -->
                                     <div class="columna-btn">
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-submit-7" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
                                         
                                     </div>
                                 </form>
                             </div> <!-- fin Hist Trat Linfedema -->
+
+
+                             <!-- =============================== VALORACION LINFEDEMA  ===========================================  -->
+
+                             <div id="apartado-valoracion-linf">
+                                <h3>Valoración del linfedema&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
+                                <!--  TABLA valoracion linfedema  -->
+                                <form id="form-8" class="margen-form">
+                                    <!-- <div class="titulos color8">
+                                        <label></label>
+                                    </div> -->
+                                    <div class="form-row espaciado-empty">
+                                        <div class="form-group ancho" id="input_fecha_val_linf">
+                                            <label for="fecha_val_linf">Fecha</label>
+                                            &nbsp;
+                                            <input type="date" class="form-control" name="fecha_val_linf" id="fecha_val_linf" required><br>
+                                        </div>
+                                        <div class="form-group ancho col-sm-3" id="select_localizacion_linf">
+                                            <label for="localizacion_linf">Localización</label>
+                                                &nbsp;
+                                            <div>
+                                                <select id="localizacion_linf" class="form-control form-control-md">
+                                                    <option value="cara">Cara</option>
+                                                    <option value="cuello">Cuello</option>
+                                                    <option value="miembro-superior-d">Miembro superior derecho</option>
+                                                    <option value="miembro-superior-i">Miembro superior izquierdo</option>
+                                                    <option value="pierna-d">Pierna derecha</option>
+                                                    <option value="pierna-i">Pierna izquierda</option>
+                                                    <option value="escroto">Escroto</option>
+                                                    <option value="pubis">Pubis</option>
+                                                    <option value="vulva">Vulva</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ancho col-sm-3" id="input_consistencia_edema">
+                                            <label for="consistencia_edema">Consistencia del edema</label>
+                                            &nbsp;
+                                            <input type="number" min="1" max="5" class="form-control" name="consistencia_edema" id="consistencia_edema" required><br>
+                                        </div>
+                                    </div><!-- Fin fila 1 -->
+                                    <div class="form-row espaciado-empty">
+                                        <div class="form-group ancho" id="select_color">
+                                            <label for="color">Color</label>
+                                                &nbsp;
+                                            <div>
+                                                <select id="color" class="form-control form-control-md">
+                                                    <option id="color-normal" value="normal">Normal</option>
+                                                    <option id="color-amarillo" value="amarillo">Amarillo</option>
+                                                    <option id="color-azulado" value="azulado">Azulado</option>
+                                                    <option id="color-rojo" value="rojo">Rojo</option>
+                                                    <option id="color-negro" value="negro">Negro</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ancho col-sm-3" id="select_valoracion_piel">
+                                            <label for="valoracion_piel">Valoración de la piel</label>
+                                                &nbsp;
+                                            <div>
+                                                <select id="valoracion_piel" class="form-control form-control-md">
+                                                    <option value="petequias">Petequías</option>
+                                                    <option value="eritema">Eritema</option>
+                                                    <option value="rubis">Rubís</option>
+                                                    <option value="costras">Costras</option>
+                                                    <option value="hiperqueratosis">Hiperqueratosis</option>
+                                                    <option value="heridas">Heridas</option>
+                                                    <option value="ulceras">Úlceras</option>
+                                                    <option value="supurante">Supurante</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div><!-- Fin fila 2 -->
+                                    <div class="form-row espaciado-empty mt-4 mb-4">
+                                        <div class="form-group ancho col-sm-2" id="select_stemmer">
+                                            <label for="stemmer">Stemmer</label>
+                                                &nbsp;
+                                            <div>
+                                                <select id="stemmer" class="form-control form-control-md">
+                                                    <option value="mas">+</option>
+                                                    <option value="menos">-</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ancho col-sm-2" id="select_fovea">
+                                            <label for="fovea">Fóvea</label>
+                                                &nbsp;
+                                            <div>
+                                                <select id="fovea" class="form-control form-control-md">
+                                                    <option value="mas">+</option>
+                                                    <option value="menos">-</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ancho col-sm-2" id="select_pesadez">
+                                            <label for="pesadez">Pesadez</label>
+                                                &nbsp;
+                                            <div>
+                                                <select id="pesadez" class="form-control form-control-md">
+                                                    <option value="mas">+</option>
+                                                    <option value="menos">-</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ancho col-sm-2" id="select_rubor">
+                                            <label for="rubor">Rubor</label>
+                                                &nbsp;
+                                            <div>
+                                                <select id="rubor" class="form-control form-control-md">
+                                                    <option value="mas">+</option>
+                                                    <option value="menos">-</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div><!-- Fin fila 3 -->
+                                    <div class="columna-btn">
+                                        <button class="btn estilo-boton-submit" type="submit" id="btn-anadir-4" value='<?php echo($_SESSION["id_especialista"])?>'>Añadir valoración</button>
+                                        <button class="btn estilo-boton-submit" type="button" id="btn-submit-8" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
+                                    </div>
+                                </form>
+                            </div> <!-- fin Valoracion Linfedema -->
+
+
+
 
 
 

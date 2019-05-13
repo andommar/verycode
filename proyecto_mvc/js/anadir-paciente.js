@@ -564,24 +564,24 @@
                     // console.log(fecha_inf);
                     // console.log(opcion);
 
-                    if(validarInfecciones(tipo_inf, medicamentos_inf)){
-                        //  $.ajax({
-                        // type:'POST',
-                        // url: 'control/vista.php',
-                        // data: {id_user:id_user, tipo_inf:tipo_inf, medicamentos_inf:medicamentos_inf, fecha_inf:fecha_inf, opcion:opcion},
-                        // })
-                        // .done(function( msg ) {
-                        //     console.log(msg);                             	
-                        //     console.log("Ajax: Infección registrada"); 
+                    // if(validarInfecciones(tipo_inf, medicamentos_inf)){
+                    //      $.ajax({
+                    //     type:'POST',
+                    //     url: 'control/vista.php',
+                    //     data: {id_user:id_user, tipo_inf:tipo_inf, medicamentos_inf:medicamentos_inf, fecha_inf:fecha_inf, opcion:opcion},
+                    //     })
+                    //     .done(function( msg ) {
+                    //         console.log(msg);                             	
+                    //         console.log("Ajax: Infección registrada"); 
 
-                        // })
-                        // .fail(function( jqXHR, textStatus, errorThrown ) {
-                        //     if ( console && console.log ) {
-                        //         console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                        //         console.log("ajax fail");
-                        //     }
-                        // });
-                    }
+                    //     })
+                    //     .fail(function( jqXHR, textStatus, errorThrown ) {
+                    //         if ( console && console.log ) {
+                    //             console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                    //             console.log("ajax fail");
+                    //         }
+                    //     });
+                    // }
                 
                        
                     

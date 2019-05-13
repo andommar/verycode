@@ -1,4 +1,18 @@
-
+#color-azulado{
+    color: rgb(34, 75, 185);
+}
+#color-normal{
+    color: rgb(226, 150, 150);
+}
+#color-amarillo{
+    color: rgb(250, 221, 60);
+}
+#color-rojo{
+    color: rgb(149, 28, 28);
+}
+#color-negro{
+    color: black;
+}
 .tamano-emoji{
     width: 6%;
     height: 6%;
@@ -6,10 +20,10 @@
 .margen-emoji{
     margin-right: 2em;
 }
-#apartado-historial, #apartado-cirugias, #apartado-medicamentos,#apartado-infecciones, #apartado-habitos,#apartado-hist-trat-linf{
+#apartado-historial, #apartado-cirugias, #apartado-medicamentos,#apartado-infecciones, #apartado-habitos,#apartado-hist-trat-linf, #apartado-valoracion-linf{
     /* display: none;  */
 }
-#apartado-formulario, #apartado-usuario, #apartado-historial, #apartado-cirugias, #apartado-medicamentos, #apartado-infecciones, #apartado-habitos,#apartado-hist-trat-linf{
+#apartado-formulario, #apartado-usuario, #apartado-historial, #apartado-cirugias, #apartado-medicamentos, #apartado-infecciones, #apartado-habitos,#apartado-hist-trat-linf, #apartado-valoracion-linf{
     background: #fff;
     margin-top: 20px;
     padding: 20px;
@@ -35,7 +49,7 @@
     margin-left: 2.7em;
     margin-bottom: 1em;
 }
-#apartado-formulario h3, #apartado-usuario h3, #apartado-historial h3, #apartado-cirugias h3, #apartado-medicamentos h3, #apartado-infecciones h3, #apartado-habitos h3, #apartado-hist-trat-linf h3{
+#apartado-formulario h3, #apartado-usuario h3, #apartado-historial h3, #apartado-cirugias h3, #apartado-medicamentos h3, #apartado-infecciones h3, #apartado-habitos h3, #apartado-hist-trat-linf h3, #apartado-valoracion-linf h3{
     font-size: 19px;
     font-weight: 600;
 }
@@ -112,11 +126,13 @@
     color:#28a745;
 }
 .color8{
-    color:#20c997;
+    color: #3da3bc;
 }
 .color9{
     color:#007bff;
 }
+
+
 
 #apartado-usuario h3{
     color: #3da3bc;
@@ -138,6 +154,9 @@
 }
 #apartado-hist-trat-linf h3{
     color:#28a745;
+}
+#apartado-valoracion-linf h3{
+    color:#3da3bc; 
 }
 /* #btn-medicamentos{
     background-color:#dc3545;
@@ -210,6 +229,12 @@
     background-color:#24a041;
 }
 
+#btn-submit-8, #btn-anadir-4{
+    background-color:#3da3bc;
+}
+#btn-submit-8:hover, #btn-anadir-4:hover{
+    background-color:#3897af;
+}
 /* background-color:#fd7e14; */
 .columna-btn{
     text-align: right;
