@@ -747,11 +747,10 @@
                 // //  =============================== VALORACIÓN LINFEDEMA  ===========================================**
 
                 $("#form-8").submit(function(event){
-                        event.preventDefault();
-
-
+                    
+                    event.preventDefault();
                     var fecha_val_linfedema=$('#fecha_val_linfedema').val();
-                    var localizacion = $('#localizacion').val();
+                    var localizacion_linf = $('#localizacion_linf').val();
                     var consistencia_edema = $('#consistencia_edema').val();
                     var color = $('#color').val();
                     var valoracion_piel = $('#valoracion_piel').val();
@@ -759,33 +758,69 @@
                     var fovea = $('#fovea').val();
                     var pesadez = $('#pesadez').val();
                     var rubor = $('#rubor').val();
-                    var foto_pierna_ant_d = $('#foto_pierna_ant_d').val();
-                    var foto_pierna_post_d = $('#foto_pierna_post_d').val();
-                    var foto_pierna_lat_d1 = $('#foto_pierna_lat_d1').val();
-                    var foto_pierna_lat_d2 = $('#foto_pierna_lat_d2').val();
-                    var foto_pierna_ant_i = $('#foto_pierna_ant_i').val();
-                    var foto_pierna_post_i = $('#foto_pierna_post_i').val();
-                    var foto_pierna_lat_i1 = $('#foto_pierna_lat_i1').val();
-                    var foto_pierna_lat_i2 = $('#foto_pierna_lat_i2').val();
-                    var foto_brazo_cruz_d = $('#foto_brazo_cruz_d').val();
-                    var foto_brazo_frontal_d = $('#foto_brazo_frontal_d').val();
-                    var foto_brazo_cruz_i = $('#foto_brazo_cruz_i').val();
-                    var foto_brazo_frontal_i = $('#foto_brazo_frontal_i').val();
                     var opcion= "registro_valoracion_linfedema";
+
+                    //PONER NULL DE MOMENTO EN LA BD
+                    // var foto_pierna_ant_d = $('#foto_pierna_ant_d').val();
+                    // var foto_pierna_post_d = $('#foto_pierna_post_d').val();
+                    // var foto_pierna_lat_d1 = $('#foto_pierna_lat_d1').val();
+                    // var foto_pierna_lat_d2 = $('#foto_pierna_lat_d2').val();
+                    // var foto_pierna_ant_i = $('#foto_pierna_ant_i').val();
+                    // var foto_pierna_post_i = $('#foto_pierna_post_i').val();
+                    // var foto_pierna_lat_i1 = $('#foto_pierna_lat_i1').val();
+                    // var foto_pierna_lat_i2 = $('#foto_pierna_lat_i2').val();
+                    // var foto_brazo_cruz_d = $('#foto_brazo_cruz_d').val();
+                    // var foto_brazo_frontal_d = $('#foto_brazo_frontal_d').val();
+                    // var foto_brazo_cruz_i = $('#foto_brazo_cruz_i').val();
+                    // var foto_brazo_frontal_i = $('#foto_brazo_frontal_i').val();
+
+                    // $.ajax({
+                    // type:'POST',
+                    // url: 'control/vista.php',
+                    // data: {id_user:id_user, fecha_val_linfedema: fecha_val_linfedema,localizacion_linf:localizacion_linf,consistencia_edema:consistencia_edema,color:color,
+                    // valoracion_piel:valoracion_piel,stemmer:stemmer,fovea:fovea,pesadez:pesadez,rubor:rubor, opcion:opcion},
+                    // })
+                    // .done(function( msg ) {
+                    //     console.log(msg);                             	
+                    //     console.log("Ajax: Valoración linfedema registrado"); 
+
+                    // })
+                    // .fail(function( jqXHR, textStatus, errorThrown ) {
+                    //     if ( console && console.log ) {
+                    //         console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                    //         console.log("ajax fail");
+                    //     }
+                    // });
+                    
+                });
+
+
+
+                //  =============================== MEDICIONES  ===========================================
+
+                $("#form-9").submit(function(event){
+                    
+                    event.preventDefault();
+                    var fecha_val_mediciones=$('#fecha_val_mediciones').val();
+                    var extremidad = $('#extremidad').val();
+                    var lado = $('#lado').val();
+                    var p1 = $('#p1').val();
+                    var p2 = $('#p2').val();
+                    var p3 = $('#p3').val();
+                    var p4 = $('#p4').val();
+                    var p5 = $('#p5').val();
+                    var p6 = $('#p6').val();
+                    var opcion= "registro_mediciones";
 
                 
                         // $.ajax({
                         // type:'POST',
                         // url: 'control/vista.php',
-                        // data: {id_user:id_user, fecha_val_linfedema: fecha_val_linfedema,localizacion:localizacion,consistencia_edema:consistencia_edema,color:color,
-                        // valoracion_piel:valoracion_piel,stemmer:stemmer,fovea:fovea,pesadez:pesadez,rubor: rubor, foto_pierna_ant_d: foto_pierna_ant_d,foto_pierna_post_d: foto_pierna_post_d,
-                        // foto_pierna_lat_d1: foto_pierna_lat_d1, foto_pierna_lat_d2: foto_pierna_lat_d2, foto_pierna_ant_i: foto_pierna_ant_i, foto_pierna_post_i: foto_pierna_post_i,
-                        // foto_pierna_lat_i1: foto_pierna_lat_i1, foto_pierna_lat_i2:foto_pierna_lat_i2, foto_brazo_cruz_d: foto_brazo_cruz_d, foto_brazo_frontal_d:foto_brazo_frontal_d,
-                        // foto_brazo_cruz_i: foto_brazo_cruz_i,  foto_brazo_frontal_i:foto_brazo_frontal_i, opcion: opcion},
+                        // data: {id_user:id_user, fecha_val_mediciones:fecha_val_mediciones, extremidad:extremidad, lado:lado, p1:p1, p2:p2, p3:p3, p4:p4, p5:p5, p6:p6 opcion: opcion},
                         // })
                         // .done(function( msg ) {
                         //     console.log(msg);                             	
-                        //     console.log("Ajax: Valoración linfedema registrado"); 
+                        //     console.log("Ajax: Mediciones registradas"); 
 
                         // })
                         // .fail(function( jqXHR, textStatus, errorThrown ) {
@@ -796,45 +831,6 @@
                         // });
                     
                 });
-
-
-
-                //  =============================== MEDICIONES  ===========================================
-
-                // $("#form-9").submit(function(event){
-                //         event.preventDefault();
-
-
-                //     var fecha_val_mediciones=$('#fecha_val_mediciones').val();
-                //     var extremidad = $('#extremidad').val();
-                //     var lado = $('#lado').val();
-                //     var p1 = $('#p1').val();
-                //     var p2 = $('#p2').val();
-                //     var p3 = $('#p3').val();
-                //     var p4 = $('#p4').val();
-                //     var p5 = $('#p5').val();
-                //     var p6 = $('#p6').val();
-                //     var opcion= $("#opcion-form8").val();
-
-                
-                //         $.ajax({
-                //         type:'POST',
-                //         url: 'control/vista.php',
-                //         data: {id_user:id_user, fecha_val_mediciones:fecha_val_mediciones, extremidad:extremidad, lado:lado, p1:p1, p2:p2, p3:p3, p4:p4, p5:p5, p6:p6 opcion: opcion},
-                //         })
-                //         .done(function( msg ) {
-                //             console.log(msg);                             	
-                //             console.log("Ajax: Mediciones registradas"); 
-
-                //         })
-                //         .fail(function( jqXHR, textStatus, errorThrown ) {
-                //             if ( console && console.log ) {
-                //                 console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                //                 console.log("ajax fail");
-                //             }
-                //         });
-                    
-                // });
 
 
 

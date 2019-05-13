@@ -555,9 +555,9 @@
                                             &nbsp;
                                             <div>
                                                 <select id="frec_cigarros" class="form-control form-control-md">
-                                                    <option value="dia">Día</option>
-                                                    <option value="mes">Mes</option>
-                                                    <option value="anyo">Año</option>
+                                                    <option>Día</option>
+                                                    <option >Mes</option>
+                                                    <option >Año</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -597,9 +597,9 @@
                                             &nbsp;
                                             <div>
                                                 <select id="frec_alcohol" class="form-control form-control-md">
-                                                    <option value="frecuentemente">Frecuentemente</option>
-                                                    <option value="ocasionalmente">Ocasionalmente</option>
-                                                    <option value="socialmente">Socialmente</option>
+                                                    <option >Frecuentemente</option>
+                                                    <option>Ocasionalmente</option>
+                                                    <option>Socialmente</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -632,12 +632,12 @@
                                             &nbsp;
                                             <div>
                                                 <select id="frec_deporte" class="form-control form-control-md">
-                                                    <option value="todos">Todos los días</option>
-                                                    <option value="5sem">5 a la semana</option>
-                                                    <option value="3sem">3 a la semana</option>
-                                                    <option value="1sem">1 a la semana</option>
-                                                    <option value="15dias">Cada 15 días</option>
-                                                    <option value="1mes">1 al mes</option>
+                                                    <option >Todos los días</option>
+                                                    <option >5 a la semana</option>
+                                                    <option >3 a la semana</option>
+                                                    <option >1 a la semana</option>
+                                                    <option >Cada 15 días</option>
+                                                    <option >1 al mes</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -646,11 +646,11 @@
                                             &nbsp;
                                             <div>
                                                 <select id="tipo_deporte" class="form-control form-control-md">
-                                                    <option value="aerobico">Aeróbico</option>
-                                                    <option value="anaerobico">Anaeróbico</option>
-                                                    <option value="impacto">Impacto</option>
-                                                    <option value="alta-intensidad">Alta intensidad</option>
-                                                    <option value="aero-anaero">Aeróbico+anaeróbico</option>
+                                                    <option >Aeróbico</option>
+                                                    <option >Anaeróbico</option>
+                                                    <option >Impacto</option>
+                                                    <option>Alta intensidad</option>
+                                                    <option >Aeróbico+anaeróbico</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -682,14 +682,14 @@
                                             &nbsp;
                                             <div>
                                                 <select id="alimentacion" class="form-control form-control-md">
-                                                    <option value="equilibrada">Equilibrada</option>
-                                                    <option value="hipocalorica">Hipocalórica</option>
-                                                    <option value="hipercalorica">Hipercalórica</option>
-                                                    <option value="cetogenica">Cetogénica</option>
-                                                    <option value="proteica">Proteica</option>
-                                                    <option value="vegetariana">Vegetariana</option>
-                                                    <option value="vegana">Vegana</option>
-                                                    <option value="fast-food">Fast food</option>
+                                                    <option >Equilibrada</option>
+                                                    <option >Hipocalórica</option>
+                                                    <option >Hipercalórica</option>
+                                                    <option >Cetogénica</option>
+                                                    <option >Proteica</option>
+                                                    <option >Vegetariana</option>
+                                                    <option >Vegana</option>
+                                                    <option >Fast food</option>
                                                     <option value="otro">Otras</option>
                                                 </select>
                                             </div>
@@ -792,12 +792,12 @@
                                             &nbsp;
                                             <div>
                                                 <select disabled="disabled"  id="fallo_terapia" class="form-control form-control-md">
-                                                    <option value="falta-seguimiento">Falta de seguimiento</option>
-                                                    <option value="falta-programacion">Falta de programación</option>
-                                                    <option value="desidia">desidia</option>
-                                                    <option value="desesperacion">Desesperación</option>
-                                                    <option value="tediosa">Demasiado tediosa</option>
-                                                    <option value="falta-medios">Falta de medio económicos</option>
+                                                    <option >Falta de seguimiento</option>
+                                                    <option>Falta de programación</option>
+                                                    <option >desidia</option>
+                                                    <option >Desesperación</option>
+                                                    <option >Demasiado tediosa</option>
+                                                    <option >Falta de medio económicos</option>
                                                     <option value="otro">Otros</option>
                                                 </select>
                                             </div>
@@ -818,10 +818,10 @@
                                                 &nbsp;
                                             <div>
                                                 <select id="tipo_drenaje_linfa" class="form-control form-control-md">
-                                                    <option value="vodder">Vodder</option>
-                                                    <option value="leduc">Leduc</option>
-                                                    <option value="godoy">Godoy</option>
-                                                    <option value="otro">Otros</option>
+                                                    <option >Vodder</option>
+                                                    <option >Leduc</option>
+                                                    <option >Godoy</option>
+                                                    <option >Otros</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -866,10 +866,10 @@
                                                 &nbsp;
                                             <div>
                                                 <select id="contencion_tipo" class="form-control form-control-md">
-                                                    <option value="jobst">Jobst</option>
-                                                    <option value="medi">Medi</option>
-                                                    <option value="vendas">Vendas</option>
-                                                    <option value="otro">Otro</option>
+                                                    <option >Jobst</option>
+                                                    <option >Medi</option>
+                                                    <option >Vendas</option>
+                                                    <option >Otro</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -945,25 +945,25 @@
                                         <label></label>
                                     </div> -->
                                     <div class="form-row espaciado-empty">
-                                        <div class="form-group ancho" id="input_fecha_val_linf">
-                                            <label for="fecha_val_linf">Fecha</label>
+                                        <div class="form-group ancho" id="input_fecha_val_linfedema">
+                                            <label for="fecha_val_linfedema">Fecha</label>
                                             &nbsp;
-                                            <input type="date" class="form-control" name="fecha_val_linf" id="fecha_val_linf" required><br>
+                                            <input type="date" class="form-control" name="fecha_val_linfedema" id="fecha_val_linfedema" required><br>
                                         </div>
                                         <div class="form-group ancho col-sm-3" id="select_localizacion_linf">
                                             <label for="localizacion_linf">Localización</label>
                                                 &nbsp;
                                             <div>
                                                 <select id="localizacion_linf" class="form-control form-control-md">
-                                                    <option value="cara">Cara</option>
-                                                    <option value="cuello">Cuello</option>
-                                                    <option value="miembro-superior-d">Miembro superior derecho</option>
-                                                    <option value="miembro-superior-i">Miembro superior izquierdo</option>
-                                                    <option value="pierna-d">Pierna derecha</option>
-                                                    <option value="pierna-i">Pierna izquierda</option>
-                                                    <option value="escroto">Escroto</option>
-                                                    <option value="pubis">Pubis</option>
-                                                    <option value="vulva">Vulva</option>
+                                                    <option >Cara</option>
+                                                    <option >Cuello</option>
+                                                    <option >Miembro superior derecho</option>
+                                                    <option >Miembro superior izquierdo</option>
+                                                    <option >Pierna derecha</option>
+                                                    <option >Pierna izquierda</option>
+                                                    <option >Escroto</option>
+                                                    <option >Pubis</option>
+                                                    <option >Vulva</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -979,11 +979,11 @@
                                                 &nbsp;
                                             <div>
                                                 <select id="color" class="form-control form-control-md">
-                                                    <option id="color-normal" value="normal">Normal</option>
-                                                    <option id="color-amarillo" value="amarillo">Amarillo</option>
-                                                    <option id="color-azulado" value="azulado">Azulado</option>
-                                                    <option id="color-rojo" value="rojo">Rojo</option>
-                                                    <option id="color-negro" value="negro">Negro</option>
+                                                    <option id="color-normal" >Normal</option>
+                                                    <option id="color-amarillo" >Amarillo</option>
+                                                    <option id="color-azulado" >Azulado</option>
+                                                    <option id="color-rojo" >Rojo</option>
+                                                    <option id="color-negro" >Negro</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -992,14 +992,14 @@
                                                 &nbsp;
                                             <div>
                                                 <select id="valoracion_piel" class="form-control form-control-md">
-                                                    <option value="petequias">Petequías</option>
-                                                    <option value="eritema">Eritema</option>
-                                                    <option value="rubis">Rubís</option>
-                                                    <option value="costras">Costras</option>
-                                                    <option value="hiperqueratosis">Hiperqueratosis</option>
-                                                    <option value="heridas">Heridas</option>
-                                                    <option value="ulceras">Úlceras</option>
-                                                    <option value="supurante">Supurante</option>
+                                                    <option >Petequías</option>
+                                                    <option >Eritema</option>
+                                                    <option >Rubís</option>
+                                                    <option >Costras</option>
+                                                    <option >Hiperqueratosis</option>
+                                                    <option >Heridas</option>
+                                                    <option >Úlceras</option>
+                                                    <option >Supurante</option>
 
                                                 </select>
                                             </div>
@@ -1011,8 +1011,8 @@
                                                 &nbsp;
                                             <div>
                                                 <select id="stemmer" class="form-control form-control-md">
-                                                    <option value="mas">+</option>
-                                                    <option value="menos">-</option>
+                                                    <option >+</option>
+                                                    <option >-</option>
 
                                                 </select>
                                             </div>
@@ -1022,8 +1022,8 @@
                                                 &nbsp;
                                             <div>
                                                 <select id="fovea" class="form-control form-control-md">
-                                                    <option value="mas">+</option>
-                                                    <option value="menos">-</option>
+                                                    <option >+</option>
+                                                    <option>-</option>
 
                                                 </select>
                                             </div>
@@ -1033,8 +1033,8 @@
                                                 &nbsp;
                                             <div>
                                                 <select id="pesadez" class="form-control form-control-md">
-                                                    <option value="mas">+</option>
-                                                    <option value="menos">-</option>
+                                                    <option >+</option>
+                                                    <option>-</option>
 
                                                 </select>
                                             </div>
@@ -1044,8 +1044,8 @@
                                                 &nbsp;
                                             <div>
                                                 <select id="rubor" class="form-control form-control-md">
-                                                    <option value="mas">+</option>
-                                                    <option value="menos">-</option>
+                                                    <option >+</option>
+                                                    <option>-</option>
 
                                                 </select>
                                             </div>
@@ -1058,6 +1058,24 @@
                                 </form>
                             </div> <!-- fin Valoracion Linfedema -->
 
+                             <!-- =============================== Medición inicial  ===========================================  -->
+
+                             <div id="apartado-medicion-inicial">
+                                <h3>Medición inicial&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
+                                <!--  TABLA valoracion linfedema  -->
+                                <form id="form-9" class="margen-form">
+                                     <div class="titulos color9">
+                                        <label>MIEMBRO SANO</label>
+                                    </div> 
+                                    <div class="form-row espaciado-empty">
+                                        
+                                    </div><!-- Fin fila 1 -->
+                                   
+                                    <div class="columna-btn">
+                                        <button class="btn estilo-boton-submit" type="submit" id="btn-submit-9" value='<?php echo($_SESSION["id_especialista"])?>'>Guardar datos</button>
+                                    </div>
+                                </form>
+                            </div> <!-- fin Medición inicial -->
 
 
 

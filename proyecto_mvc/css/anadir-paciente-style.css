@@ -20,10 +20,10 @@
 .margen-emoji{
     margin-right: 2em;
 }
-#apartado-historial, #apartado-cirugias, #apartado-medicamentos,#apartado-infecciones, #apartado-habitos,#apartado-hist-trat-linf, #apartado-valoracion-linf{
+#apartado-historial, #apartado-cirugias, #apartado-medicamentos,#apartado-infecciones, #apartado-habitos,#apartado-hist-trat-linf, #apartado-valoracion-linf, #apartado-medicion-inicial{
     /* display: none;  */
 }
-#apartado-formulario, #apartado-usuario, #apartado-historial, #apartado-cirugias, #apartado-medicamentos, #apartado-infecciones, #apartado-habitos,#apartado-hist-trat-linf, #apartado-valoracion-linf{
+#apartado-formulario, #apartado-usuario, #apartado-historial, #apartado-cirugias, #apartado-medicamentos, #apartado-infecciones, #apartado-habitos,#apartado-hist-trat-linf, #apartado-valoracion-linf, #apartado-medicion-inicial{
     background: #fff;
     margin-top: 20px;
     padding: 20px;
@@ -49,7 +49,7 @@
     margin-left: 2.7em;
     margin-bottom: 1em;
 }
-#apartado-formulario h3, #apartado-usuario h3, #apartado-historial h3, #apartado-cirugias h3, #apartado-medicamentos h3, #apartado-infecciones h3, #apartado-habitos h3, #apartado-hist-trat-linf h3, #apartado-valoracion-linf h3{
+#apartado-formulario h3, #apartado-usuario h3, #apartado-historial h3, #apartado-cirugias h3, #apartado-medicamentos h3, #apartado-infecciones h3, #apartado-habitos h3, #apartado-hist-trat-linf h3, #apartado-valoracion-linf h3, #apartado-medicion-inicial h3{
     font-size: 19px;
     font-weight: 600;
 }
@@ -158,6 +158,9 @@
 #apartado-valoracion-linf h3{
     color:#3da3bc; 
 }
+#apartado-medicion-inicial h3{
+    color:#007bff;
+}
 /* #btn-medicamentos{
     background-color:#dc3545;
 }
@@ -234,6 +237,12 @@
 }
 #btn-submit-8:hover, #btn-anadir-4:hover{
     background-color:#3897af;
+}
+#btn-submit-9{
+    background-color:#007bff;
+}
+#btn-submit-9:hover{
+    background-color:#0075f3;
 }
 /* background-color:#fd7e14; */
 .columna-btn{
