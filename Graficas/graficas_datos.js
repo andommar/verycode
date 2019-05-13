@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   /**
-   * call the data.php file to fetch the result from db table.
+   * llamamos a los datos con un get
    */
     $.ajax({
         url:"grafica.php",
@@ -9,13 +9,14 @@ $(document).ready(function(){
         success:function(data){
             console.log(data);
 
-            var datos = JSON.parse(data);
+            var datos = JSON.parse(data); //hace falta parsear al devolver los datos del php (aunque hayamos hecho json encode en php)
 
-
+            //creamos un array de objetos con las mediciones de lado izquierdo, derecho y la diferencia entre los puntos
             var mediciones =
             {
                 izquierdo: [],
-                derecho: []
+                derecho: [],
+                diferencia: []
             };
 
             var len = datos.length;
@@ -42,8 +43,19 @@ $(document).ready(function(){
                 }
             }
 
+            var resta=0;
+
+            for(i=0; i<mediciones.izquierdo.length;i++)
+            {
+
+                resta=mediciones.derecho[i]-mediciones.izquierdo[i];
+                mediciones.diferencia.push(resta);
+                //console.log(resta);
+            }
+
             console.log(mediciones.izquierdo);
             console.log(mediciones.derecho);
+            console.log(mediciones.diferencia);
 
             var grafica_datos=document.getElementById("lineChart");
 
@@ -56,7 +68,8 @@ $(document).ready(function(){
                         borderColor: 'blue',
                         fill:false,
                         lineTension:0,
-                        pointRadius: 5
+                        pointRadius: 5,
+                        type: 'line'
                     },
                     {
                         label: "Mediciones lado derecho",
@@ -64,29 +77,68 @@ $(document).ready(function(){
                         borderColor: 'red',
                         fill:false,
                         lineTension:0,
-                        pointRadius: 5
+                        pointRadius: 5,
+                        type: 'line'
+                    },
+                    {
+                        label: "Diferencia mediciones",
+                        data: mediciones.diferencia,
+                        backgroundColor: 'rgba(134,213,102,0.3)',
+                        borderColor: 'rgba(134,213,102,0.3)'
                     }
                 ]
             };
 
-            var options = {
-                title : {
-                  display : true,
-                  position : "top",
-                  text : "Line Graph",
-                  fontSize : 18,
-                  fontColor : "#111"
+
+            var opciones = {
+                title:{
+                    display: true,
+                    text: 'Comparativa. Fecha: ',
+                    fontSize: 20,
+                    fontColor:"#111"
                 },
-                legend : {
-                  display : true,
-                  position : "bottom"
-                }
-              };
+                legend:{
+                    display:true,
+                    position:'bottom',
+                    labels:{
+                        boxWidth:20,
+                        fontColor: 'black'
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            autoSkip: false // en teoria no deberia saltarse labels del eje de las x
+                        }
+                    }],
+                    yAxes:[{
+                        ticks: {
+                            autoSkip: false, // en teoria no deberia saltarse labels del eje de las y
+                            stepSize: 1
+                        }
+                    }]
+
+                },
+            }
+
+            // var options = {
+            //     title : {
+            //       display : true,
+            //       position : "top",
+            //       text : "Line Graph",
+            //       fontSize : 18,
+            //       fontColor : "#111"
+            //     },
+            //     legend : {
+            //       display : true,
+            //       position : "bottom"
+            //     }
+            //   };
 
               var chart = new Chart( grafica_datos, {
-                type : "line",
+                type : "bar",
                 data : datos_graph,
-                options : options
+                options : opciones
               } );
 
         },
