@@ -626,7 +626,7 @@
                         t_sesion_medidas="";
                     }
                     var alimentacion = $('#alimentacion').val();
-                    if(alimentacion=="Otras"){
+                    if(alimentacion=="otro"){
                         alimentacion = $('#alimentacion_otro').val();
                     }
                    
@@ -640,7 +640,7 @@
                     var opcion= "registro_habitos";
                     
                    
-                    if(validarHabitos(tipo_acohol,toma_alcohol,alimentacion)){
+                    if(validarHabitos($('#tipo_alcohol').val(),$('#alcohol').val(),toma_alcohol,fumador,$('#cigarros').val(),hace_deporte, $('#t_sesion').val(), alimentacion)){
                         // $.ajax({
                         // type:'POST',
                         // url: 'control/vista.php',
@@ -1005,7 +1005,7 @@
 
                 }
 
-                function validarHabitos(tipo_acohol,toma_alcohol,alimentacion){
+                function validarHabitos(tipo_acohol,alcohol,toma_alcohol,fumador,cigarros,hace_deporte, t_sesion, alimentacion){
 
                     var datos_correctos=true;
                     var mensaje_error="";
@@ -1014,10 +1014,23 @@
                         mensaje_error="ERROR. Si el paciente toma alcohol debes especificar el tipo";
                         datos_correctos = false;
                     }
+                    if(isEmptyOrSpaces(alcohol) && toma_alcohol=="si"){
+                        mensaje_error="ERROR. Si el paciente toma alcohol debes especificar la cantidad";
+                        datos_correctos = false;
+                    }
+                    if(isEmptyOrSpaces(cigarros) && fumador=="si"){
+                        mensaje_error="ERROR. Si el paciente fuma debes especificar la cantidad";
+                        datos_correctos = false;
+                    }
+                    if(isEmptyOrSpaces(t_sesion) && hace_deporte=="si"){
+                        mensaje_error="ERROR. Si el paciente hace deporte debes especificar el tiempo de la sesión";
+                        datos_correctos = false;
+                    }
                     if(isEmptyOrSpaces(alimentacion)){
                         mensaje_error="ERROR. Si la alimentación es otra debes especificar cuál.";
                         datos_correctos = false;
                     }
+                  
                     if(!datos_correctos){
                         $("body").overhang({
                             type: "error",
