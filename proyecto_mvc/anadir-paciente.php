@@ -862,7 +862,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group ancho" id="select_contencion_tipo">
-                                            <label for="contencion_tipo">Contención de día</label>
+                                            <label for="contencion_tipo">Tipo de contención</label>
                                                 &nbsp;
                                             <div>
                                                 <select id="contencion_tipo" class="form-control form-control-md">

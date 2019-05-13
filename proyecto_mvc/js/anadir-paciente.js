@@ -165,7 +165,7 @@
                          $('#motivo_secundario_otro').prop('disabled', true);
                     }
                 });
-                //**
+                
                 $("#fumador").change(function(){
                     var fumador = this.value; //valor option del select
                     if(fumador=="no"){
@@ -265,9 +265,6 @@
 
                 $("#form-1").submit(function(event){
                         event.preventDefault();
-                
-                        
-                        var datos_correctos = true;
                         var datos_correctos_queries = true;
 
 
@@ -280,9 +277,7 @@
                         id_especialista=$('#btn-submit-1').val(); 
                         var opcion="registro_paciente";
 
-                        datos_correctos = validarDatosPersonales(nombre,apellido1,apellido2,correo,pass,pass2);
-
-                        if(datos_correctos){
+                        if(validarDatosPersonales(nombre,apellido1,apellido2,correo,pass,pass2)){
                             $.ajax({
                             type:'POST',
                             url: 'control/vista.php',
@@ -454,18 +449,14 @@
 
                 $("#form-3").submit(function(event){
                         event.preventDefault();
-
-                        var datos_correctos = true;
                         var datos_correctos_queries = true;
 
                         var nombre_cirugia=$('#nombre_cirugia').val();
                         var fecha = $('#fecha_cirugia').val();
                         var comentarios = $('#comentarios').val();
                         var opcion= "registro_cirugias";
-                    
-                        datos_correctos = validarCirugias(nombre_cirugia,fecha,comentarios);
 
-                        if(datos_correctos){
+                        if(validarCirugias(nombre_cirugia,fecha,comentarios)){
 
                             $.ajax({
                             type:'POST',
@@ -511,16 +502,12 @@
                 $("#form-4").submit(function(event){
                     
                     event.preventDefault();
-
-                    var datos_correctos = true;
                     var datos_correctos_queries = true;
                     var medicamento=$('#medicamento').val();
                     var patologias = $('#patologias').val();
                     var opcion= "registro_medicamento";
 
-                    datos_correctos = validarMedicamentos(medicamento,patologias);
-
-                    if(datos_correctos){
+                    if(validarMedicamentos(medicamento,patologias)){
                         $.ajax({
                             type:'POST',
                             url: 'control/vista.php',
@@ -572,10 +559,10 @@
                     var fecha_inf = $('#fecha_inf').val();
                     var opcion= "registro_infeccion";
 
-                    console.log(tipo_inf);
-                    console.log(medicamentos_inf);
-                    console.log(fecha_inf);
-                    console.log(opcion);
+                    // console.log(tipo_inf);
+                    // console.log(medicamentos_inf);
+                    // console.log(fecha_inf);
+                    // console.log(opcion);
 
                    
                 
@@ -601,7 +588,7 @@
 
 
 
-                //  =============================== HÁBITOS  ===========================================**
+                //  =============================== HÁBITOS  ===========================================
 
 
                 $("#form-6").submit(function(event){
@@ -609,9 +596,6 @@
                     event.preventDefault();
                 // HE CAMBIADO "freq" por frec!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! y pongo en comillas cigarros=""; frec_cigarros=""; fumador_social ="";
                 //frec_alcohol=""; alcohol=""; tipo_alcohol=""; porque pueden quedar vacios si el usuario no fuma o no bebe, al insertar los pondremos en null
-                    var datos_correctos = true;
-                    var mensaje_error="";
-
                     var fumador=$('#fumador').val();
                     var cigarros=$('#cigarros').val();
                     var frec_cigarros=$('#frec_cigarros').val();
@@ -654,45 +638,32 @@
                     var erg_bidepes_activa = $('#erg_bidepes_activa').val();
                     var erg_otro = $('#erg_otro').val();
                     var opcion= "registro_habitos";
+                    
+                   
+                    if(validarHabitos(tipo_acohol,toma_alcohol,alimentacion)){
+                        // $.ajax({
+                        // type:'POST',
+                        // url: 'control/vista.php',
+                        // data: {id_user:id_user, fumador:fumador,cigarros:cigarros,frec_cigarros:frec_cigarros,fumador_social:fumador_social,toma_alcohol:toma_alcohol, frec_alcohol:frec_alcohol, 
+                        // alcohol:alcohol, tipo_alcohol:tipo_alcohol, hace_deporte:hace_deporte, frec_deporte:frec_deporte, tipo_deporte:tipo_deporte, t_sesion:t_sesion,
+                        // t_sesion_medidas:t_sesion_medidas, alimentacion:alimentacion, suenyo_reparador:suenyo_reparador, h_suenyo:h_suenyo, astenico:astenico, 
+                        // erg_sentado:erg_sentado, erg_bidepes_pasiva:erg_bidepes_pasiva, erg_bidepes_activa:erg_bidepes_activa, erg_otro:erg_otro, opcion:opcion}
+                        // })
+                        // .done(function( msg ) {
+                        //     console.log(msg);                             	
+                        //     console.log("Ajax: Hábitos registrados "); 
 
-                    if(isEmptyOrSpaces(tipo_acohol) && toma_alcohol=="si"){
-                        mensaje_error="ERROR. Si el paciente toma alcohol debes especificar el tipo";
-                        datos_correctos = false;
+                        // })
+                        // .fail(function( jqXHR, textStatus, errorThrown ) {
+                        //     if ( console && console.log ) {
+                        //         console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                        //         console.log("ajax fail");
+                        //     }
+                        // });
                     }
-                    if(isEmptyOrSpaces(alimentacion)){
-                        mensaje_error="ERROR. Si la alimentación es otra debes especificar cuál.";
-                        datos_correctos = false;
-                    }
-                    if(!datos_correctos){
-                        $("body").overhang({
-                            type: "error",
-                            message: mensaje_error,
-                            duration: 3,
-                            overlay: true,
-                            closeConfirm: true
-                        });
-                    }
-                    else{
-                             // $.ajax({
-                            // type:'POST',
-                            // url: 'control/vista.php',
-                            // data: {id_user:id_user, fumador:fumador,cigarros:cigarros,frec_cigarros:frec_cigarros,fumador_social:fumador_social,toma_alcohol:toma_alcohol, frec_alcohol:frec_alcohol, 
-                            // alcohol:alcohol, tipo_alcohol:tipo_alcohol, hace_deporte:hace_deporte, frec_deporte:frec_deporte, tipo_deporte:tipo_deporte, t_sesion:t_sesion,
-                            // t_sesion_medidas:t_sesion_medidas, alimentacion:alimentacion, suenyo_reparador:suenyo_reparador, h_suenyo:h_suenyo, astenico:astenico, 
-                            // erg_sentado:erg_sentado, erg_bidepes_pasiva:erg_bidepes_pasiva, erg_bidepes_activa:erg_bidepes_activa, erg_otro:erg_otro, opcion:opcion}
-                            // })
-                            // .done(function( msg ) {
-                            //     console.log(msg);                             	
-                            //     console.log("Ajax: Hábitos registrados "); 
-
-                            // })
-                            // .fail(function( jqXHR, textStatus, errorThrown ) {
-                            //     if ( console && console.log ) {
-                            //         console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                            //         console.log("ajax fail");
-                            //     }
-                            // });
-                    }
+                    
+                          
+                    
                    
                     
                 });
@@ -700,28 +671,51 @@
 
 
 
-                //  =============================== HISTORIAL TRATAMIENTO LINFEDEMA  =========================================== 
+                //  =============================== HISTORIAL TRATAMIENTO LINFEDEMA  =========================================== **
 
-                // $("#form-7").submit(function(event){
-                //         event.preventDefault();
+                $("#form-7").submit(function(event){
+                     
+                    event.preventDefault();
 
+                    var datos_correctos = true;
 
-                //     var fecha_ult_tratamiento=$('#fecha_ult_tratamiento').val();
-                //     var satisfecho_result = $('#satisfecho_result').val();
-                //     var fallo_terapia = $('#fallo_terapia').val();
-                //     var tipo_drenaje_linfa = $('#tipo_drenaje_linfa').val();
-                //     var vendaje = $('#vendaje').val();
-                //     var nota = $('#nota').val();
-                //     var contencion_dia = $('#contencion_dia').val();
-                //     var contencion_tipo = $('#contencion_tipo').val();
-                //     var contencion_sensacion = $('#contencion_sensacion').val();
-                //     var contencion_dolor = $('#contencion_dolor').val();
-                //     var contencion_escala = $('#contencion_escala').val();
-                //     var contencion_pesadez = $('#contencion_pesadez').val();
-                //     var opcion= $("#opcion-form7").val();
+                    var fecha_ult_tratamiento=$('#fecha_ult_tratamiento').val();
+                    var satisfecho_result = $('#satisfecho_result').val();
+                    var fallo_terapia="";
+                    if(satisfecho_result=="no"){
+                        if($('#fallo_terapia').val()=="otro"){
+                            fallo_terapia = $('#fallo_terapia_otro').val(); 
+                        }
+                        else{
+                           fallo_terapia = $('#fallo_terapia').val(); 
+                        }
+                        
+                    }
+                    var tipo_drenaje_linfa = $('#tipo_drenaje_linfa').val();
+                    if(tipo_drenaje_linfa=="otro"){
+                        tipo_drenaje_linfa = $('#tipo_drenaje_linfa_otro').val();
+                    }
+                    var vendaje = $('#vendaje').val();
+                    var nota="";
+                    if(!isEmptyOrSpaces($('#nota').val())){
+                        nota = $('#nota').val();
+                    }
+                    var contencion_dia = $('#contencion_dia').val();
+                    var contencion_tipo = $('#contencion_tipo').val();
+                    if(contencion_tipo=="otro"){
+                        contencion_tipo = $('#contencion_tipo_otro').val();
+                    }
+                    var contencion_sensacion_numero = $('input:radio[name=contencion_sensacion]:checked').val();
+                    var contencion_sensacion= contencionSegunNumero(contencion_sensacion_numero);
+                    var contencion_dolor = $('#contencion_dolor').val();
+                    var contencion_escala = $('#contencion_escala').val();
+                    var contencion_pesadez = $('#contencion_pesadez').val();
+                    var opcion= "registro_tratamiento_linfedema";
 
-                
-                        // $.ajax({
+                    datos_correctos= validarHistTratLinf(satisfecho_result,$('#fallo_terapia').val(), $('#fallo_terapia_otro').val(), $('#tipo_drenaje_linfa').val(), $('#tipo_drenaje_linfa_otro').val(),$('#contencion_tipo').val(), $('#contencion_tipo_otro').val());
+                    
+                   if(datos_correctos){
+                         // $.ajax({
                         // type:'POST',
                         // url: 'control/vista.php',
                         // data: {id_user:id_user, fecha_ult_tratamiento: fecha_ult_tratamiento,satisfecho_result: satisfecho_result, fallo_terapia:fallo_terapia, tipo_drenaje_linfa:tipo_drenaje_linfa,
@@ -739,8 +733,10 @@
                         //         console.log("ajax fail");
                         //     }
                         // });
+                    }
+                       
                     
-                // });
+                });
 
 
 
@@ -1009,6 +1005,86 @@
 
                 }
 
+                function validarHabitos(tipo_acohol,toma_alcohol,alimentacion){
+
+                    var datos_correctos=true;
+                    var mensaje_error="";
+
+                    if(isEmptyOrSpaces(tipo_acohol) && toma_alcohol=="si"){
+                        mensaje_error="ERROR. Si el paciente toma alcohol debes especificar el tipo";
+                        datos_correctos = false;
+                    }
+                    if(isEmptyOrSpaces(alimentacion)){
+                        mensaje_error="ERROR. Si la alimentación es otra debes especificar cuál.";
+                        datos_correctos = false;
+                    }
+                    if(!datos_correctos){
+                        $("body").overhang({
+                            type: "error",
+                            message: mensaje_error,
+                            duration: 3,
+                            overlay: true,
+                            closeConfirm: true
+                        });
+                    }
+                    return datos_correctos;
+                }
+                function contencionSegunNumero(contencion_sensacion_numero){
+                    var contencion_sensacion="";
+                    switch(contencion_sensacion_numero){
+                        case "1":
+                            contencion_sensacion="Genial";
+                        break;
+                        case "2":
+                            contencion_sensacion="Muy bien";
+                        break;
+                        case "3":
+                            contencion_sensacion="Bien";
+                        break;
+                        case "4":
+                            contencion_sensacion="Normal";
+                        break;
+                        case "5":
+                            contencion_sensacion="Regular";
+                        break;
+                        case "6":
+                            contencion_sensacion="Mal";
+                        break;
+                        case "7":
+                            contencion_sensacion="Muy mal";
+                        break;
+                    }
+                    return contencion_sensacion;
+                }
+
+                function validarHistTratLinf(satisfecho_result,fallo_terapia, fallo_terapia_otro,tipo_drenaje_linfa,tipo_drenaje_linfa_otro,contencion_tipo, contencion_tipo_otro){
+                    
+                    var datos_correctos=true;
+                    var mensaje_error="";
+
+                    if(satisfecho_result=="no" && fallo_terapia=="otro" && isEmptyOrSpaces( fallo_terapia_otro )  ){
+                        mensaje_error="ERROR. Especifica tu respuesta sobre el fallo de la terapia.";
+                        datos_correctos = false;
+                    }
+                    if(tipo_drenaje_linfa=="otro" && isEmptyOrSpaces(tipo_drenaje_linfa_otro) ){
+                        mensaje_error="ERROR. Especifica tu respuesta sobre el tipo de drenaje linfático.";
+                        datos_correctos = false;
+                    }
+                    if(contencion_tipo=="otro" && isEmptyOrSpaces(contencion_tipo_otro)){
+                        mensaje_error="ERROR. Especifica tu respuesta sobre el tipo contención.";
+                        datos_correctos = false;
+                    }
+                    if(!datos_correctos){
+                        $("body").overhang({
+                            type: "error",
+                            message: mensaje_error,
+                            duration: 3,
+                            overlay: true,
+                            closeConfirm: true
+                        });
+                    }
+                    return datos_correctos;
+                }
                 // function validarInfecciones{
                 //      var mensaje_error = "";
                     // var datos_correctos = true;
