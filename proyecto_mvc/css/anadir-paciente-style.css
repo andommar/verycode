@@ -1,3 +1,21 @@
+
+.margen-inferior{
+    margin-bottom: 0 !important;
+}
+#input_pierna_i_p3, #input_pierna_i_p6{
+    margin-right: 12em;
+}
+#titulo-brazo-d{
+    margin-left: 36em;
+    margin-top: 3em;
+}
+#titulo-pierna-d{
+    margin-left: 36em;
+    margin-top: 4em;
+}
+.margen-radio{
+    margin-left: 33.4em;
+}
 #color-azulado{
     color: rgb(34, 75, 185);
 }
@@ -74,12 +92,14 @@
     margin-left: 2em;
 }
 
-#imagen-brazo{
-    width: 71%;
+#imagen-brazo {
+    width: 31%;
 }
-#imagen-pierna{
-    width: 49%;
+
+#imagen-pierna {
+    width: 17%;
 }
+
 .margen{
     margin-right: 4px;
 }
@@ -128,16 +148,14 @@
 .color8{
     color: #3da3bc;
 }
-.color9{
-    color:#007bff;
-}
+
 
 
 
 #apartado-usuario h3{
     color: #3da3bc;
 }
-#apartado-historial h3{
+#apartado-historial h3, #apartado-medicion-inicial h3{
     color:#6610f2;
 }
 #apartado-cirugias h3{
@@ -158,9 +176,7 @@
 #apartado-valoracion-linf h3{
     color:#3da3bc; 
 }
-#apartado-medicion-inicial h3{
-    color:#007bff;
-}
+
 /* #btn-medicamentos{
     background-color:#dc3545;
 }
@@ -195,10 +211,10 @@
 #btn-submit-1:hover{
     background-color:#3897af;
 }
-#btn-submit-2{
+#btn-submit-2, #btn-submit-9{
     background-color:#6610f2;
 }
-#btn-submit-2:hover{
+#btn-submit-2:hover, #btn-submit-9:hover{
     background-color:#6211e4;
 }
 #btn-submit-3, #btn-anadir-1{
@@ -237,12 +253,6 @@
 }
 #btn-submit-8:hover, #btn-anadir-4:hover{
     background-color:#3897af;
-}
-#btn-submit-9{
-    background-color:#007bff;
-}
-#btn-submit-9:hover{
-    background-color:#0075f3;
 }
 /* background-color:#fd7e14; */
 .columna-btn{
