@@ -114,6 +114,26 @@ class TAccesbd
 				return($datos);	
 		}
 		
+		public function mostrar_graficas($sql)
+		{
+			$data=false;
+			if(isset($sql) && $sql !="" && isset($this->conn))
+			{
+				$stmt = sqlsrv_query( $conn, $sql);
+				if( $stmt === false ) {
+						die( print_r( sqlsrv_errors(), true));
+				}
+		
+				$data = array();
+				while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+						array_push($data,(array) $row);
+				}
+		
+		
+				sqlsrv_free_stmt($stmt);
+				return json_encode($data);
+			}
+		}
         
 
 

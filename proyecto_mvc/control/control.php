@@ -88,6 +88,16 @@ class TControl{
     }
 
 
+    //--------------------------- Mediciones/Gráficas -----------------------
+
+    public function mostrar_graficas($id_user)
+    {
+        $graf = new TGrafica();
+        $resultat=$graf->mostrar_graficas($id_user);
+        return $resultat;
+    }
+
+
 }
 
 ?>
