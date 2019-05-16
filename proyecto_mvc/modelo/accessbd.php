@@ -12,8 +12,8 @@ class TAccesbd
 	// private $connectionInfo = array( "Database"=>"DAW2_VERYCODE", "UID"=>"DAW2_VERYCODE", "PWD"=>"a1VERYCODE");
 
 
-		//private $servidor = "192.168.3.26, 1433";
-		private $servidor = "oracle.ilerna.com, 1433";
+		//private $servidor = "oracle.ilerna.com, 1433";
+		private $servidor = "192.168.3.26, 1433";
 		private $connectionInfo = array( "Database"=>"ONCOSALUT", "UID"=>"DAM2_VESTIGIUM", "PWD"=>"Vestigium2019", "CharacterSet"=>"UTF-8");
 		private $conn;
 		private $res;

@@ -194,8 +194,7 @@
                     </div><!-- Fin cuerpo página-->
                 </div> <!-- Fin columna derecha-->
             </div> <!-- ROW -->
-
-
+            <input type="hidden" id="id_especialista" value="<?php echo($_SESSION["id_especialista"]) ?>" />
         </div><!-- CONTAINER FLUID-->
 
         <!-- SCRIPTS -->
@@ -204,75 +203,7 @@
         <script src="js/jquery-ui/jquery-ui.min.js"></script>
         <script type="text/javascript" src="js/overhang/dist/overhang.min.js"></script> 
         <script type="text/javascript" src="js/notify/notify.min.js"></script>
-        <script>
-            var id_especialista= <?php echo($_SESSION["id_especialista"]) ?>;
-            var listado_pacientes="";
-             $.ajax({
-                        type: "GET",
-                        url: 'control/vista.php',
-                        data: { 
-                            opcion: "listado_usuarios",
-                            id_especialista: id_especialista
-                        }
-                        
-            })        
-            .done(function( data, textStatus, jqXHR ) {
-                
-                if ( console && console.log ) {
-                    console.log( "La solicitud de acceso se ha completado correctamente." );
-                }
-                var datos = $.parseJSON(data);
-                var listado_pacientes = datos;
-                
-                //console.log(datos);
-                //RELLENAMOS TABLA
-                var filas_pacientes='';
-                datos.forEach(function(element) {
-                    filas_pacientes+= '<tr id='+element.id_user+'><td>'+element.id_user+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn mt-1 rojo" value="verPaciente" onclick="verPaciente(\'' + element.id_user + '\')"><span class="ti-eye"></span></button><button type="button" class="btn azul" value="editarPaciente" onclick="editarPaciente(\'' + element.id_user + '\')"><span class="ti-pencil-alt"></span></button></td></tr>';
-
-                });
-                $('#pacientes-table tbody').html(filas_pacientes);
-
-                //RELLENAMOS SELECT
-                $("#Select-id-usuario").html("");
-                $('#Select-id-usuario').append($('<option>', { 
-                        value: "Todos",
-                        text :  "Todos"
-                }));
-                listado_pacientes.forEach(function(element) {
-                    //console.log(element);
-                    $('#Select-id-usuario').append($('<option>', { 
-                        value: element.id_user,
-                        text : element.id_user
-                    }));
-                });
-
-
-            })
-            .fail(function( jqXHR, textStatus, errorThrown ) {
-                if ( console && console.log ) {
-                    console.log( "La solicitud de acceso ha fallado: " +  textStatus);
-                }
-            });
-
-            $( document ).ready(function() {
-                $("#Select-id-usuario").change(function(){
-                    var id_usuario = this.value; //valor option del select
-                    if(id_usuario=="Todos"){
-                        $("tbody tr").show();
-                    }
-                    else{
-                         $("tbody tr:not(#"+id_usuario+")").hide();
-                    }
-                   
-
-                });
-
-            });
-
-               
-        
-        
-        </script>
+        <script type="text/javascript" src="js/mediciones.js"></script>
       
-           
+    </body>
+</html>
