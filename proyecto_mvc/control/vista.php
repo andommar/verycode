@@ -326,6 +326,17 @@ if(isset($_POST["opcion"]))
 
         break;
 
+        case "mostrar_graficas":
+            $id_user=$_POST["id_user"];
+
+            $error=$c->mostrar_graficas($id_user);
+
+
+
+            echo error;
+
+        break;
+
 
 
     }
