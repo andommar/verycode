@@ -8,10 +8,12 @@ $(document).ready(function(){
         data:{opcion:opcion, id_usuario:id_usuario},
         success:function(data){
             console.log(data);
-
             var datos = $.parseJSON(data); //hace falta parsear al devolver los datos del php (aunque hayamos hecho json encode en php)
+            console.log(datos);
 
             //creamos un array de objetos con las mediciones de lado izquierdo, derecho y la diferencia entre los puntos
+            
+            var fechas=[];
             var mediciones =
             {
                 izquierdo: [],
@@ -19,7 +21,18 @@ $(document).ready(function(){
                 diferencia: []
             };
 
+            var puntos=
+            {
+                p1:[],
+                p2:[],
+                p3:[],
+                p4:[],
+                p5:[],
+            };
+
             var len = datos.length;
+            console.log(data.fecha);
+            console.log(datos);
 
             for(var i = 0; i<len; i++)
             {
@@ -41,16 +54,26 @@ $(document).ready(function(){
                     mediciones.derecho.push(datos[i].p4);
                     mediciones.derecho.push(datos[i].p5);
                 }
+
+                datos[i].fecha=fechas[i];
+                console.log(datos[i].fecha);
+                // if(datos[i].lado_sano=="no")
+                // {
+                //     puntos.p1.push(datos[i].p1);
+                //     puntos.p2.push(datos[i].p2);
+                //     puntos.p3.push(datos[i].p3);
+                //     puntos.p4.push(datos[i].p4);
+                //     puntos.p5.push(datos[i].p5);
+                // }
             }
 
             var resta=0;
 
             for(i=0; i<mediciones.izquierdo.length;i++)
             {
-
                 resta=mediciones.derecho[i]-mediciones.izquierdo[i];
                 mediciones.diferencia.push(resta);
-                //console.log(resta);
+                //console.log(fechas[i]);
             }
 
             console.log(mediciones.izquierdo);
@@ -139,13 +162,57 @@ $(document).ready(function(){
                 type : "bar",
                 data : datos_graph,
                 options : opciones
-              } );
+              }
+              );
+
+              //===================== SEGUNDA GRÁFICA
+
+              var grafica_ultimas=document.getElementById("lineChart_ultimas10");
+
+              var datos_ultimas ={
+                labels:fechas,
+                datasets:[
+                    {
+                        label: "p1",
+                        data: puntos.p1,
+                        borderColor: 'blue',
+                        fill:false,
+                        lineTension:0,
+                        pointRadius: 5,
+                        type: 'line'
+                    },
+                    {
+                        label: "p2",
+                        data: puntos.p2,
+                        borderColor: 'red',
+                        fill:false,
+                        lineTension:0,
+                        pointRadius: 5,
+                        type: 'line'
+                    },
+                    // {
+                    //     label: "Diferencia mediciones",
+                    //     data: mediciones.diferencia,
+                    //     backgroundColor: 'rgba(134,213,102,0.3)',
+                    //     borderColor: 'rgba(134,213,102,0.3)'
+                    // }
+                ]
+            };
+
+            var chart = new Chart( grafica_ultimas, {
+                type : "line",
+                data : datos_ultimas,
+                options : opciones
+              }
+              );
 
         },
         error : function(data) {
             console.log(data);
           }
     });
+
+
 
 
 
