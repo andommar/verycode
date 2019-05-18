@@ -23,7 +23,7 @@ var listado_pacientes="";
     //RELLENAMOS TABLA
     var filas_pacientes='';
     listado_pacientes.forEach(function(element) {
-        filas_pacientes+= '<tr id='+element.id_user+'><td>'+element.id_user+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn mt-1 rojo" value="verPaciente" onclick="verPaciente(\'' + element.id_user + '\')"><span class="ti-eye"></span></button><button type="button" class="btn azul" value="editarPaciente" onclick="editarPaciente(\'' + element.id_user + '\')"><span class="ti-pencil-alt"></span></button></td></tr>';
+        filas_pacientes+= '<tr id='+element.id_user+'><td>'+element.id_user+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn mt-1 rojo" value="verPaciente" onClick="verPaciente(' + element.id_user + ')"><span class="ti-eye"></span></button><button type="button" class="btn azul" value="editarPaciente" onClick="editarPaciente('+ element.id_user + ')"><span class="ti-pencil-alt"></span></button></td></tr>';
 
     });
     $('#pacientes-table tbody').html(filas_pacientes);
