@@ -35,6 +35,7 @@
          <!-- NOTIFICACIONES OVERHANG.JS  1 -->
         <link rel="stylesheet" type="text/css" href="js/overhang/dist/overhang.min.css" />
         <link rel="stylesheet" href="js/jquery-ui/jquery-ui.min.css">
+        <script type="text/javascript" src="js/mediciones.js"></script>
         
     </head>
      <!-- ===============  BODY ============= -->
@@ -204,6 +205,31 @@
         <script type="text/javascript" src="js/overhang/dist/overhang.min.js"></script> 
         <script type="text/javascript" src="js/notify/notify.min.js"></script>
         <script type="text/javascript" src="js/mediciones.js"></script>
+        <script>
+           
+              
+                function verPaciente(id_usuario){
+                        
+                    $.ajax({
+                                    type:'POST',
+                                    url: 'display-grafica.php',
+                                    data: {id_usuario:id_usuario}
+                                    })
+                                    .done(function( msg ) {
+                                        // var resultado = $.parseJSON(msg);
+                                        console.log("ajax done");
+                                    })
+                                    .fail(function( jqXHR, textStatus, errorThrown ) {
+                                        if ( console && console.log ) {
+                                            console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                                            console.log("ajax fail");
+                                        }
+                                    });
+                    
+                }
+                
+            
+        </script>
       
     </body>
 </html>

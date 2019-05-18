@@ -2,6 +2,10 @@
     if(!(isset($_SESSION["tipo_usuario"]))){
         header("Location: index.php");
     }
+    if((isset($_POST["id_usuario"]))){
+        $_SESSION["id_usuario"]= $_POST["id_usuario"];
+    }
+
 ?> 
 <!DOCTYPE html>
 <html>
@@ -173,7 +177,7 @@
                 </div> <!-- Fin columna derecha-->
             </div> <!-- ROW -->
 
-
+            <input id="usuario" type="hidden" value="<?php $_SESSION["id_usuario"]?>">
         </div><!-- CONTAINER FLUID-->
 
         <!-- SCRIPTS -->

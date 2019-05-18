@@ -21,7 +21,7 @@ if( $conn ) {
     }
 
 
-    sqlsrv_free_stmt( $stmt);
+    sqlsrv_free_stmt($stmt);
     echo json_encode($data);
 }
 ?>
