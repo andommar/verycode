@@ -1,6 +1,5 @@
 $(document).ready(function(){
 
-
     var id_usuario = $("#usuario").val();
     var opcion = "mostrar_graficas";
     $.ajax({

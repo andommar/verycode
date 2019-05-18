@@ -212,7 +212,7 @@
                 function verPaciente(id_usuario){
                         
                     console.log("id usuario joder "+id_usuario);
-                    document.location.href="display-grafica.php";
+                    document.location.href="display-grafica.php?id_user="+id_usuario+" ";
 
 
                     // var opcion = "definir_usuario_medicion";
