@@ -53,7 +53,7 @@ class TControl{
         $resultat = $usr->registro_paciente($correo,$pass,$pass2,$nombre,$apellido1,$apellido2,$id_especialista,$id_user);
         return ($resultat);
     }
-
+   
     public function registro_historial_clinico($id_user,$doc_identificacion,$nacionalidad, $raza, $fecha_nacimiento,$sexo, $altura, $peso, $tipo_congenito, $subtipo_congenito,
     $fecha_debut, $familiar_linfedema,$motivo_secundario, $ant_vasculares, $ant_infeccion_venosa, $ant_sobrepeso, $ant_lipedema, $ant_permeabilidad_cap, $ant_ansiedad,
 	$ant_diabetes, $ant_triquiasis, $ant_sindromes, $profesion, $grado_resp_profesion, $grado_stress_profesion)
@@ -73,7 +73,7 @@ class TControl{
         return ($resultat);
 
     }
-
+ 
     public function registro_medicamento($id_user,$medicamento,$patologias)
     {
         $usr = new TUsuario();
@@ -81,14 +81,35 @@ class TControl{
         return ($resultat);
     }
 
-    public function registro_infeccion($id_user,$nombre_infeccion,$fecha,$descripcion)
+    public function registro_infeccion($id_user,$tipo,$medicamento,$fecha) 
     {
         $usr = new TUsuario();
-        $resultat=$usr->registro_infeccion($id_user,$nombre_infeccion,$fecha,$descripcion);
+        $resultat=$usr->registro_infeccion($id_user,$tipo,$medicamento,$fecha);
         return ($resultat);
     }
 
+    public function registro_habitos($id_user,$fumador,$cigarros,$frec_cigarros,$fumador_social,$toma_alcohol,$alcohol,$frec_alcohol,$tipo_alcohol,
+                    $hace_deporte,$frec_deporte,$tipo_deporte,$t_sesion,$t_sesion_medidas,$alimentacion,$suenyo_reparador,$h_suenyo,$astenico,$erg_sentado,
+                    $erg_bidepes_pasiva,$erg_bidepes_activa,$erg_otro)
+    {
+        $usr = new TUsuario();
+        $resultat=$usr->registro_habitos($id_user,$fumador,$cigarros,$frec_cigarros,$fumador_social,$toma_alcohol,$alcohol,$frec_alcohol,$tipo_alcohol,
+                                        $hace_deporte,$frec_deporte,$tipo_deporte,$t_sesion,$t_sesion_medidas,$alimentacion,$suenyo_reparador,$h_suenyo,$astenico,$erg_sentado,
+                                        $erg_bidepes_pasiva,$erg_bidepes_activa,$erg_otro);
 
+        return ($resultat);
+    }
+
+//**
+    public function registro_tratamiento_linfedema($id_user,$fecha_ult_tratamiento,$satisfecho_result,$fallo_terapia,$tipo_drenaje_linfa,
+    $vendaje,$nota,$contencion_dia,$contencion_tipo,$contencion_sensacion,$contencion_dolor,$contencion_escala,$contencion_pesadez)
+    {
+        $usr = new TUsuario();
+        $resultat=$usr->registro_tratamiento_linfedema($id_user,$fecha_ult_tratamiento,$satisfecho_result,$fallo_terapia,$tipo_drenaje_linfa,
+        $vendaje,$nota,$contencion_dia,$contencion_tipo,$contencion_sensacion,$contencion_dolor,$contencion_escala,$contencion_pesadez);
+
+        return ($resultat);
+    }
     //--------------------------- Mediciones/Gráficas -----------------------
 
     public function mostrar_graficas($id_user)
