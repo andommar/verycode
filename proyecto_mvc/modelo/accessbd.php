@@ -119,7 +119,7 @@ class TAccesbd
 			$data=false;
 			if(isset($sql) && $sql !="" && isset($this->conn))
 			{
-				$stmt = sqlsrv_query( $conn, $sql);
+				$stmt = sqlsrv_query( $this->conn, $sql);
 				if( $stmt === false ) {
 						die( print_r( sqlsrv_errors(), true));
 				}

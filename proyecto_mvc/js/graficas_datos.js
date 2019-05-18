@@ -1,174 +1,152 @@
 $(document).ready(function(){
 
+
     var id_usuario = $("#usuario").val();
     var opcion = "mostrar_graficas";
-    console.log(id_usuario);
-  /**
-   * llamamos a los datos con un get
-   */
+    $.ajax({
+        url:"control/vista.php",
+        type:"GET",
+        data:{opcion:opcion, id_usuario:id_usuario},
+        success:function(data){
+            console.log(data);
 
-  $.ajax({
-        url:"modelo/control.php",
-        type:"POST",
-        data: {id_usuario: id_usuario, opcion: opcion}
-      
-    })
-    .done(function( msg ) {
-       
-        // var resultado = $.parseJSON(msg);
-       
-        
-    })
-    .fail(function( jqXHR, textStatus, errorThrown ) {
-        if ( console && console.log ) {
-            console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-            console.log("ajax fail");
-        }
+            var datos = $.parseJSON(data); //hace falta parsear al devolver los datos del php (aunque hayamos hecho json encode en php)
+
+            //creamos un array de objetos con las mediciones de lado izquierdo, derecho y la diferencia entre los puntos
+            var mediciones =
+            {
+                izquierdo: [],
+                derecho: [],
+                diferencia: []
+            };
+
+            var len = datos.length;
+
+            for(var i = 0; i<len; i++)
+            {
+                if(datos[i].lado=="izquierdo")
+                {
+                    mediciones.izquierdo.push(datos[i].p1);
+                    mediciones.izquierdo.push(datos[i].p2);
+                    mediciones.izquierdo.push(datos[i].p3);
+                    mediciones.izquierdo.push(datos[i].p4);
+                    mediciones.izquierdo.push(datos[i].p5);
+                    console.log("holap");
+                    console.log(datos[i].p1);
+                }
+                else if(datos[i].lado="derecho")
+                {
+                    mediciones.derecho.push(datos[i].p1);
+                    mediciones.derecho.push(datos[i].p2);
+                    mediciones.derecho.push(datos[i].p3);
+                    mediciones.derecho.push(datos[i].p4);
+                    mediciones.derecho.push(datos[i].p5);
+                }
+            }
+
+            var resta=0;
+
+            for(i=0; i<mediciones.izquierdo.length;i++)
+            {
+
+                resta=mediciones.derecho[i]-mediciones.izquierdo[i];
+                mediciones.diferencia.push(resta);
+                //console.log(resta);
+            }
+
+            console.log(mediciones.izquierdo);
+            console.log(mediciones.derecho);
+            console.log(mediciones.diferencia);
+
+            var grafica_datos=document.getElementById("lineChart");
+
+            var datos_graph ={
+                labels:["p1","p2","p3","p4","p5"],
+                datasets:[
+                    {
+                        label: "Mediciones lado izquierdo",
+                        data: mediciones.izquierdo,
+                        borderColor: 'blue',
+                        fill:false,
+                        lineTension:0,
+                        pointRadius: 5,
+                        type: 'line'
+                    },
+                    {
+                        label: "Mediciones lado derecho",
+                        data: mediciones.derecho,
+                        borderColor: 'red',
+                        fill:false,
+                        lineTension:0,
+                        pointRadius: 5,
+                        type: 'line'
+                    },
+                    {
+                        label: "Diferencia mediciones",
+                        data: mediciones.diferencia,
+                        backgroundColor: 'rgba(134,213,102,0.3)',
+                        borderColor: 'rgba(134,213,102,0.3)'
+                    }
+                ]
+            };
+
+
+            var opciones = {
+                title:{
+                    display: true,
+                    text: 'Comparativa. Fecha: ',
+                    fontSize: 20,
+                    fontColor:"#111"
+                },
+                legend:{
+                    display:true,
+                    position:'bottom',
+                    labels:{
+                        boxWidth:20,
+                        fontColor: 'black'
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            autoSkip: false // en teoria no deberia saltarse labels del eje de las x
+                        }
+                    }],
+                    yAxes:[{
+                        ticks: {
+                            autoSkip: false, // en teoria no deberia saltarse labels del eje de las y
+                            stepSize: 1
+                        }
+                    }]
+
+                },
+            }
+
+            // var options = {
+            //     title : {
+            //       display : true,
+            //       position : "top",
+            //       text : "Line Graph",
+            //       fontSize : 18,
+            //       fontColor : "#111"
+            //     },
+            //     legend : {
+            //       display : true,
+            //       position : "bottom"
+            //     }
+            //   };
+
+              var chart = new Chart( grafica_datos, {
+                type : "bar",
+                data : datos_graph,
+                options : opciones
+              } );
+
+        },
+        error : function(data) {
+            console.log(data);
+          }
     });
-
-    // $.ajax({
-    //     url:"modelo/control.php",
-    //     type:"GET",
-    //     success:function(data){
-    //         console.log(data);
-
-    //         var datos = JSON.parse(data); //hace falta parsear al devolver los datos del php (aunque hayamos hecho json encode en php)
-
-    //         //creamos un array de objetos con las mediciones de lado izquierdo, derecho y la diferencia entre los puntos
-    //         var mediciones =
-    //         {
-    //             izquierdo: [],
-    //             derecho: [],
-    //             diferencia: []
-    //         };
-
-    //         var len = datos.length;
-
-    //         for(var i = 0; i<len; i++)
-    //         {
-    //             if(datos[i].lado=="izquierdo")
-    //             {
-    //                 mediciones.izquierdo.push(datos[i].p1);
-    //                 mediciones.izquierdo.push(datos[i].p2);
-    //                 mediciones.izquierdo.push(datos[i].p3);
-    //                 mediciones.izquierdo.push(datos[i].p4);
-    //                 mediciones.izquierdo.push(datos[i].p5);
-    //                 console.log("holap");
-    //                 console.log(datos[i].p1);
-    //             }
-    //             else if(datos[i].lado="derecho")
-    //             {
-    //                 mediciones.derecho.push(datos[i].p1);
-    //                 mediciones.derecho.push(datos[i].p2);
-    //                 mediciones.derecho.push(datos[i].p3);
-    //                 mediciones.derecho.push(datos[i].p4);
-    //                 mediciones.derecho.push(datos[i].p5);
-    //             }
-    //         }
-
-    //         var resta=0;
-
-    //         for(i=0; i<mediciones.izquierdo.length;i++)
-    //         {
-
-    //             resta=mediciones.derecho[i]-mediciones.izquierdo[i];
-    //             mediciones.diferencia.push(resta);
-    //             //console.log(resta);
-    //         }
-
-    //         console.log(mediciones.izquierdo);
-    //         console.log(mediciones.derecho);
-    //         console.log(mediciones.diferencia);
-
-    //         var grafica_datos=document.getElementById("lineChart");
-
-    //         var datos_graph ={
-    //             labels:["p1","p2","p3","p4","p5"],
-    //             datasets:[
-    //                 {
-    //                     label: "Mediciones lado izquierdo",
-    //                     data: mediciones.izquierdo,
-    //                     borderColor: 'blue',
-    //                     fill:false,
-    //                     lineTension:0,
-    //                     pointRadius: 5,
-    //                     type: 'line'
-    //                 },
-    //                 {
-    //                     label: "Mediciones lado derecho",
-    //                     data: mediciones.derecho,
-    //                     borderColor: 'red',
-    //                     fill:false,
-    //                     lineTension:0,
-    //                     pointRadius: 5,
-    //                     type: 'line'
-    //                 },
-    //                 {
-    //                     label: "Diferencia mediciones",
-    //                     data: mediciones.diferencia,
-    //                     backgroundColor: 'rgba(134,213,102,0.3)',
-    //                     borderColor: 'rgba(134,213,102,0.3)'
-    //                 }
-    //             ]
-    //         };
-
-
-    //         var opciones = {
-    //             title:{
-    //                 display: true,
-    //                 text: 'Comparativa. Fecha: ',
-    //                 fontSize: 20,
-    //                 fontColor:"#111"
-    //             },
-    //             legend:{
-    //                 display:true,
-    //                 position:'bottom',
-    //                 labels:{
-    //                     boxWidth:20,
-    //                     fontColor: 'black'
-    //                 }
-    //             },
-    //             scales: {
-    //                 xAxes: [{
-    //                     ticks: {
-    //                         autoSkip: false // en teoria no deberia saltarse labels del eje de las x
-    //                     }
-    //                 }],
-    //                 yAxes:[{
-    //                     ticks: {
-    //                         autoSkip: false, // en teoria no deberia saltarse labels del eje de las y
-    //                         stepSize: 1
-    //                     }
-    //                 }]
-
-    //             },
-    //         }
-
-    //         // var options = {
-    //         //     title : {
-    //         //       display : true,
-    //         //       position : "top",
-    //         //       text : "Line Graph",
-    //         //       fontSize : 18,
-    //         //       fontColor : "#111"
-    //         //     },
-    //         //     legend : {
-    //         //       display : true,
-    //         //       position : "bottom"
-    //         //     }
-    //         //   };
-
-    //           var chart = new Chart( grafica_datos, {
-    //             type : "bar",
-    //             data : datos_graph,
-    //             options : opciones
-    //           } );
-
-    //     },
-    //     error : function(data) {
-    //         console.log(data);
-    //       }
-    // });
 
 
 

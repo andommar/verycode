@@ -9,18 +9,20 @@ var listado_pacientes="";
             }
             
 })        
-.done(function( data, textStatus, jqXHR ) {
+.done(function(msg) {
     
     if ( console && console.log ) {
         console.log( "La solicitud de acceso se ha completado correctamente." );
     }
-    var datos = $.parseJSON(data);
+   
+    var datos = $.parseJSON(msg); //
+    // var listado_pacientes = datos;
     var listado_pacientes = datos;
     
     //console.log(datos);
     //RELLENAMOS TABLA
     var filas_pacientes='';
-    datos.forEach(function(element) {
+    listado_pacientes.forEach(function(element) {
         filas_pacientes+= '<tr id='+element.id_user+'><td>'+element.id_user+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn mt-1 rojo" value="verPaciente" onclick="verPaciente(\'' + element.id_user + '\')"><span class="ti-eye"></span></button><button type="button" class="btn azul" value="editarPaciente" onclick="editarPaciente(\'' + element.id_user + '\')"><span class="ti-pencil-alt"></span></button></td></tr>';
 
     });

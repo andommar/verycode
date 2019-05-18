@@ -326,16 +326,12 @@ if(isset($_POST["opcion"]))
 
         break;
 
-        case "mostrar_graficas":
-            $id_user=$_POST["id_usuario"];
+       
 
-            $error=$c->mostrar_graficas($id_user);
-
-
-
-            echo error;
-
-        break;
+        // case "definir_usuario_medicion":
+        //     $id_user=$_POST["id_usuario"];
+        //     $_SESSION["id_usuario"]= $id_user;
+        // break;
 
 
 
@@ -361,6 +357,14 @@ if(isset($_GET["opcion"]))
             }
         
         break;
+
+        case "mostrar_graficas":
+        $id_user=$_GET["id_usuario"];
+
+        $error=$c->mostrar_graficas($id_user);
+        echo $error;
+
+    break;
     }
 }
 ?>

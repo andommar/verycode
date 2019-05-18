@@ -9,7 +9,7 @@ $(document).ready(function(){
         success:function(data){
             console.log(data);
 
-            var datos = JSON.parse(data); //hace falta parsear al devolver los datos del php (aunque hayamos hecho json encode en php)
+            var datos = $.parseJSON(data); //hace falta parsear al devolver los datos del php (aunque hayamos hecho json encode en php)
 
             //creamos un array de objetos con las mediciones de lado izquierdo, derecho y la diferencia entre los puntos
             var mediciones =

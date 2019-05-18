@@ -2,9 +2,10 @@
     if(!(isset($_SESSION["tipo_usuario"]))){
         header("Location: index.php");
     }
-    if((isset($_POST["id_usuario"]))){
-        $_SESSION["id_usuario"]= $_POST["id_usuario"];
-    }
+    // if((isset($_POST["id_usuario"]))){
+    //     $_SESSION["id_usuario"]= $_POST["id_usuario"];
+    //     echo json_encode ('todo bien');
+    // }
 
 ?> 
 <!DOCTYPE html>
@@ -32,7 +33,7 @@
         <!-- Hojas de estilo -->
         <link rel="stylesheet" type="text/css" href="css/global-style.css">
         <link rel="stylesheet" type="text/css" href="css/anadir-paciente-style.css">
-        <link rel="stylesheet" type="text/css" href="css/todas-mediciones.css">
+        <link rel="stylesheet" type="text/css" href="css/mediciones.css">
         <!-- Gráficas -->
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/grafica1.css">
@@ -177,7 +178,7 @@
                 </div> <!-- Fin columna derecha-->
             </div> <!-- ROW -->
 
-            <input id="usuario" type="hidden" value="<?php $_SESSION["id_usuario"]?>">
+            <input id="usuario" type="hidden" value="17"> <!--<?php /*echo $_SESSION["id_usuario"]*/?>-->
         </div><!-- CONTAINER FLUID-->
 
         <!-- SCRIPTS -->
@@ -190,10 +191,6 @@
         <script type="text/javascript" src="js/notify/notify.min.js"></script>
         <script>
             var id_especialista= <?php echo($_SESSION["id_especialista"]) ?>;
-
-               
-        
-        
         </script>
       
            

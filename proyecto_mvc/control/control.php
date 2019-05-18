@@ -3,6 +3,7 @@ header("Content-Type: text/html;charset=utf-8");
 //include_once("fisio.php");
 //include_once("admin.php");
 include_once("../modelo/TUsuario.php");
+include_once("../modelo/TGrafica.php");
 
 class TControl{
 
