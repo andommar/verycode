@@ -141,7 +141,7 @@
                     <div class="row" id="grupo-titulo-pagina">
                         <!-- Título -->
                         <div class="col-md-6" id="titulo">
-                            <h3 class="block-title">Página Principal · Especialista</h3>
+                            <h3 class="block-title">Página Principal · Especialista <?php echo($_SESSION["id_especialista"])?> </h3>
                         </div>
                         <!-- Breadcrumb -->
                         <div class="col-md-6">

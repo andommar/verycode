@@ -129,7 +129,7 @@
                     <div class="row" id="grupo-titulo-pagina">
                         <!-- Título -->
                         <div class="col-md-6" id="titulo">
-                            <h3 class="block-title">Añadir Paciente</h3>
+                            <h3 class="block-title">Mediciones</h3>
                         </div>
                         <!-- Breadcrumb -->
                         <div class="col-md-6">
@@ -142,11 +142,11 @@
                                 </li>
                                 
                                 <li class="breadcrumb-item color-blanco">
-                                        Paciente
+                                        Mediciones
                                 </li>
                                 <li class="breadcrumb-item color-blanco">
-                                    <a href="anadir-paciente.php">
-                                        Añadir Paciente
+                                    <a href="mediciones.php">
+                                        Todas las mediciones
                                     </a>
                                 </li>
                                

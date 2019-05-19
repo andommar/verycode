@@ -32,8 +32,6 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <!-- Hojas de estilo -->
         <link rel="stylesheet" type="text/css" href="css/global-style.css">
-        <link rel="stylesheet" type="text/css" href="css/anadir-paciente-style.css">
-        <link rel="stylesheet" type="text/css" href="css/mediciones.css">
         <!-- Gráficas -->
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/grafica1.css">
@@ -133,7 +131,7 @@
                     <div class="row" id="grupo-titulo-pagina">
                         <!-- Título -->
                         <div class="col-md-6" id="titulo">
-                            <h3 class="block-title">Añadir Paciente</h3>
+                            <h3 id="titulo-paciente" class="block-title"></h3>
                         </div>
                         <!-- Breadcrumb -->
                         <div class="col-md-6">
@@ -146,11 +144,11 @@
                                 </li>
                                 
                                 <li class="breadcrumb-item color-blanco">
-                                        Paciente
+                                        Mediciones
                                 </li>
                                 <li class="breadcrumb-item color-blanco">
-                                    <a href="anadir-paciente.php">
-                                        Añadir Paciente
+                                    <a href="mediciones.php">
+                                        Todas las mediciones
                                     </a>
                                 </li>
                                
@@ -167,18 +165,14 @@
                     <!-- =============================== USUARIO | vista, sql y validado ===========================================  -->
                         <div class="col-lg-12">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div width=90%>
-                                        <canvas id ="lineChart" height="200" width="400"></canvas>
+                                <div class="sombra-cuadro col-md-5 mx-auto mt-4">
+                                    <div width=100%>
+                                        <canvas id ="lineChart" height="300" width="400"></canvas>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div>
-                                    <div class="col-md-12">
-                                        <div width=90%>
-                                            <canvas id ="lineChart_ultimas10" height="200" width="400"></canvas>
-                                        </div>
+                                <div class="sombra-cuadro col-md-5 mx-auto mt-4">
+                                    <div width=100%>
+                                        <canvas id ="lineChart_ultimas10" height="300" width="400"></canvas>
                                     </div>
                                 </div>
                             </div>

@@ -1,3 +1,10 @@
+#cuerpo-pagina-2{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    padding: 5px 20px;
+    background-color: #f1f1f1;
+}
+
 #apartado-pacientes{
     background: #fff;
     margin-top: 7px;

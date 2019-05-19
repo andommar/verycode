@@ -169,7 +169,7 @@
                     </div>
                         <div class="col-lg-12">
                             <div id="apartado-usuario">
-                                <h3>Datos personales&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
+                                <h3>Datos personales&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
                                 
                     <!-- =============================== USUARIO | vista, sql y validado ===========================================  -->
 
