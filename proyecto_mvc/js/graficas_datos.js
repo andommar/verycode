@@ -8,13 +8,26 @@ $(document).ready(function(){
         type:"GET",
         data:{opcion:opcion, id_usuario:id_usuario},
         success:function(data){
-            console.log(data);
+
+            
             var datos = $.parseJSON(data); //hace falta parsear al devolver los datos del php (aunque hayamos hecho json encode en php)
-            console.log(datos);
+            //datos[0]; --> todo menos fechas
+            //datos[1]; --> fechas
+            console.log("datos "+datos);
+            console.log("datos "+datos[1]);
+            console.log("datos "+datos[0]);
+
+            var cosas = datos[0];
+            var fechas = datos[1];
+
+            console.log("Array cosas"+cosas);
+            console.log("Array fechas"+fechas);
+
+
 
             //creamos un array de objetos con las mediciones de lado izquierdo, derecho y la diferencia entre los puntos
             
-            var fechas=[];
+            //var fechas=[];
             var mediciones =
             {
                 izquierdo: [],
@@ -22,50 +35,31 @@ $(document).ready(function(){
                 diferencia: []
             };
 
-            var puntos=
-            {
-                p1:[],
-                p2:[],
-                p3:[],
-                p4:[],
-                p5:[],
-            };
 
             var len = datos.length;
-            console.log(data.fecha);
-            console.log(datos);
+            // console.log(data.fecha);
+            // console.log(datos);
 
             for(var i = 0; i<len; i++)
             {
-                if(datos[i].lado=="izquierdo")
+                if(cosas[0][i].lado=="izquierdo")
                 {
-                    mediciones.izquierdo.push(datos[i].p1);
-                    mediciones.izquierdo.push(datos[i].p2);
-                    mediciones.izquierdo.push(datos[i].p3);
-                    mediciones.izquierdo.push(datos[i].p4);
-                    mediciones.izquierdo.push(datos[i].p5);
-                    console.log("holap");
-                    console.log(datos[i].p1);
+                    mediciones.izquierdo.push(cosas[0][i].p1);
+                    mediciones.izquierdo.push(cosas[0][i].p2);
+                    mediciones.izquierdo.push(cosas[0][i].p3);
+                    mediciones.izquierdo.push(cosas[0][i].p4);
+                    mediciones.izquierdo.push(cosas[0][i].p5);
+                    // console.log("holap");
+                    // console.log(datos[i].p1);
                 }
-                else if(datos[i].lado="derecho")
+                else if(cosas[i].lado="derecho")
                 {
-                    mediciones.derecho.push(datos[i].p1);
-                    mediciones.derecho.push(datos[i].p2);
-                    mediciones.derecho.push(datos[i].p3);
-                    mediciones.derecho.push(datos[i].p4);
-                    mediciones.derecho.push(datos[i].p5);
+                    mediciones.derecho.push(cosas[i].p1);
+                    mediciones.derecho.push(cosas[i].p2);
+                    mediciones.derecho.push(cosas[i].p3);
+                    mediciones.derecho.push(cosas[i].p4);
+                    mediciones.derecho.push(cosas[i].p5);
                 }
-
-                datos[i].fecha=fechas[i];
-                console.log(datos[i].fecha);
-                // if(datos[i].lado_sano=="no")
-                // {
-                //     puntos.p1.push(datos[i].p1);
-                //     puntos.p2.push(datos[i].p2);
-                //     puntos.p3.push(datos[i].p3);
-                //     puntos.p4.push(datos[i].p4);
-                //     puntos.p5.push(datos[i].p5);
-                // }
             }
 
             var resta=0;
@@ -77,9 +71,9 @@ $(document).ready(function(){
                 //console.log(fechas[i]);
             }
 
-            console.log(mediciones.izquierdo);
-            console.log(mediciones.derecho);
-            console.log(mediciones.diferencia);
+             console.log(mediciones.izquierdo);
+             console.log(mediciones.derecho);
+             console.log(mediciones.diferencia);
 
             var grafica_datos=document.getElementById("lineChart");
 

@@ -17,14 +17,18 @@ class TGrafica
         $abd = new TAccesbd ();
         if($abd->conectado())
         {
-            $sql="select id_user,fecha,extremidad,lado,lado_sano,p1,p2,p3,p4,p5 from mediciones where id_user= $id_user";
+            $sql="select id_user,extremidad,lado,lado_sano,p1,p2,p3,p4,p5 from mediciones where id_user= $id_user";
             $res=$abd->mostrar_graficas($sql);
+
+            $sql2="select fecha from mediciones where id_user= $id_user";
+            $res2=$abd->mostrar_fechas_graficas($sql2);
         }
         else
         {
             $res=-1;//error conexión
         }
-        return $res;
+        $datos= array($res, $res2);
+        return $datos;
     }
 
 
