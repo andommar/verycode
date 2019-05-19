@@ -1,0 +1,35 @@
+#apartado-pacientes{
+    background: #fff;
+    margin-top: 7px;
+    padding: 20px;
+    padding-bottom: 2px;
+    border-radius: 2px;
+    border-radius: 0;
+    border: 0;
+    box-shadow: 0 0 0 1px #dce3ec, 0 8px 16px 0 #dce3ec;
+    background: #fff;
+    margin-bottom: 33px;
+}
+#apartado-pacientes h3{
+    color: #38aece;
+    font-size: 19px;
+}
+#pacientes-table{
+    text-align: center;
+} 
+#pacientes-table thead tr th, #pacientes-table thead tr th{
+    color: #3e5569;
+    border: 0px;
+}
+#pacientes-table tbody tr td, #pacientes-table tbody tr td{
+    vertical-align: middle;
+    color: #3e5569;
+    border: 1px solid #dee2e6;
+}
+#pacientes-table tbody tr:nth-child(2n), #pacientes-table tbody tr:nth-child(2n){
+    background: #fafafa;
+}
+#pacientes-table tbody tr:hover, #pacientes-table tbody tr:hover  {
+    background: #31313113;
+    transition: all 0.3s;
+}

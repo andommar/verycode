@@ -1,20 +1,13 @@
-<?php 
-    session_start();
-    
+<?php session_start();
     if(!(isset($_SESSION["tipo_usuario"]))){
         header("Location: index.php");
-    }
-    else{
-        if($_SESSION["tipo_usuario"]=='administrador'){
-            header("Location: pagina-principal-admin.php");
-        }
     }
 ?> 
 <!DOCTYPE html>
 <html>
     <!-- ===============  HEAD ============= -->
     <head>
-        <title>LOGO</title>
+        <title>Añadir medición</title>
         <meta charset="utf-8">
         <!-- Mobile First -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,14 +28,18 @@
         <!-- Hojas de estilo -->
         <link rel="stylesheet" type="text/css" href="css/global-style.css">
         <link rel="stylesheet" type="text/css" href="css/anadir-paciente-style.css">
+        <link rel="stylesheet" type="text/css" href="css/mediciones.css">
         <!-- Gráficas -->
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/grafica1.css">
-        <link rel="stylesheet" href="css/formularios-style.css">
+         <!-- NOTIFICACIONES OVERHANG.JS  1 -->
+        <link rel="stylesheet" type="text/css" href="js/overhang/dist/overhang.min.css" />
+        <link rel="stylesheet" href="js/jquery-ui/jquery-ui.min.css">
+        <script type="text/javascript" src="js/mediciones.js"></script>
+        
     </head>
-  
-    <!-- ===============  BODY ============= -->
-    <body>  
+     <!-- ===============  BODY ============= -->
+     <body>  
         <!-- Cuadrícula con el máximo ancho de la página -->
         <div class="container-fluid" id="body-container">
             <div class="row">
@@ -58,7 +55,7 @@
                         <ul class="list-unstyled components">
 
                             <!-- Apartado "PÁGINA PRINCIPAL"-->
-                            <li class="active espaciado-desplegable">
+                            <li class="espaciado-desplegable">
                                 <a href="pagina-principal.php">
                                     <span class="ti-home"></span> Página Principal
                                 </a>
@@ -79,7 +76,7 @@
                                 </ul>
                             </li>
                             <!-- Apartado "mediciones"-->
-                            <li class="espaciado-desplegable apartados">
+                            <li class="active espaciado-desplegable apartados">
                                 <a href="#nav-mediciones" data-toggle="collapse" aria-expanded="false" class="collapsed">
                                 <span class="ti-ruler-alt"></span> Mediciones
                                 </a>
@@ -125,15 +122,6 @@
                                     <a id="btn-salir" href="logout.php" class="dropdown-item" > <span class="ti-power-off"></span>&nbsp;&nbsp;Salir</a>
                                     </div>
                                 </div>
-                                <!--<div class="dropdown-menu proclinic-box-shadow2 profile animated flipInY">
-                                    <h5>John Willing</h5>
-                                    <a class="dropdown-item" href="#">
-                                        <span class="ti-settings"></span> Settings</a>
-                                    <a class="dropdown-item" href="#">
-                                        <span class="ti-help-alt"></span> Help</a>
-                                    <a class="dropdown-item" href="#">
-                                        <span class="ti-power-off"></span> Logout</a>
-                                </div>-->
                            
                         </ul>
                     </nav>
@@ -141,7 +129,7 @@
                     <div class="row" id="grupo-titulo-pagina">
                         <!-- Título -->
                         <div class="col-md-6" id="titulo">
-                            <h3 class="block-title">Página Principal · Especialista</h3>
+                            <h3 class="block-title">Añadir Paciente</h3>
                         </div>
                         <!-- Breadcrumb -->
                         <div class="col-md-6">
@@ -149,80 +137,107 @@
                                 <li class="breadcrumb-item color-blanco">
                                     <a href="pagina-principal.php">
                                         <span class="ti-home"></span>
-                                        &nbsp;&nbsp;Página principal&nbsp;&nbsp;
+                                        &nbsp;&nbsp;Página principal
                                     </a>
                                 </li>
-                                <!--
-                                <li class="breadcrumb-item">Doctors</li>
-                                <li class="breadcrumb-item active">Add Doctor</li>
-                                -->
+                                
+                                <li class="breadcrumb-item color-blanco">
+                                        Paciente
+                                </li>
+                                <li class="breadcrumb-item color-blanco">
+                                    <a href="anadir-paciente.php">
+                                        Añadir Paciente
+                                    </a>
+                                </li>
+                               
                             </ol>
                         </div>
                     </div> <!-- Fin fila -->
 
                      <!-- Cuerpo página (lado derecho)-->
-                    <!-- FILA 1 | ESTADÍSTICAS GENERALES-->
-                    <div id="cuerpo-pagina-1" class="row"> 
-                        <div class="col-lg-4">
-                            <div class="area-cuadro sombra-cuadro color-azul">
-                                <div class="widget-izq">
-                                    <span class="ti-user"></span>
-                                </div>
-                                <div class="widget-der">
-                                    <h4 class="wiget-titulo">Pacientes</h4>
-                                    <span class="numero">348</span>
-                                    <p class="flecha-inc mb-0"><span class="ti-angle-up"></span> +20% Aumento</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="area-cuadro sombra-cuadro color-azul">
-                                <div class="widget-izq">
-                                    <span class="ti-user"></span>
-                                </div>
-                                <div class="widget-der">
-                                    <h4 class="wiget-titulo">Pacientes</h4>
-                                    <span class="numero">348</span>
-                                    <p class="flecha-inc mb-0"><span class="ti-angle-up"></span> +20% Aumento</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="area-cuadro sombra-cuadro color-azul">
-                                <div class="widget-izq">
-                                    <span class="ti-user"></span>
-                                </div>
-                                <div class="widget-der">
-                                    <h4 class="wiget-titulo">Pacientes</h4>
-                                    <span class="numero">348</span>
-                                    <p class="flecha-inc mb-0"><span class="ti-angle-up"></span> +20% Aumento</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- FILA 2 | GRÁFICAS -->
-                    <!-- FILA 2 | GRÁFICAS -->
+                    <!-- FILA 1 | INPUTS -->
+                    
                     <div id="cuerpo-pagina-2" class="row"> 
-                        <div class="col-lg-6 align-middle">
-                            <div class="area-cuadro sombra-cuadro color-azul">
-                                <canvas id ="lineChart" height="200" width="400"></canvas>
+                        
+                        <div class="col-lg-12">
+                            <!-- TABLA PACIENTES -->
+                            <div id="apartado-pacientes" class="">
+                            <div class="form-row">
+                                <div class="form-group" id="id-usuario">
+									<label for="Select-id-usuario">id usuario:</label>
+									&nbsp;
+									<select class="form-control" id="Select-id-usuario" name="Select-id-usuario">
+									</select>
+								</div>
                             </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="area-cuadro sombra-cuadro color-azul">
-                                <canvas id ="lineChart2" height="200" width="400"></canvas>
+                                <h3>Listado de pacientes</h3>
+                                <hr>
+                                <table class="table" id="pacientes-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Id usuario</th>
+                                            <th>Nombre</th>
+                                            <th>Apellido 1</th>
+                                            <th>Apellido 2</th>
+                                            <th>Correo</th>
+                                            <th>Contraseña</th>
+                                            <th>Opciones</th>
+                                        </tr>
+                                    </thead>
+                                        <!-- Se rellena con la consulta AJAX de JS a la BD -->
+                                    <tbody>     
+                                    
+                                    </tbody>
+                                </table>
                             </div>
+
                         </div>
-                    </div>
+                    </div><!-- Fin cuerpo página-->
                 </div> <!-- Fin columna derecha-->
             </div> <!-- ROW -->
-
-
+            <input type="hidden" id="id_especialista" value="<?php echo($_SESSION["id_especialista"]) ?>" />
         </div><!-- CONTAINER FLUID-->
 
         <!-- SCRIPTS -->
-        <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
-        <script src="js/grafica1.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="js/jquery-ui/external/jquery/jquery.js"></script>
+        <script src="js/jquery-ui/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js/overhang/dist/overhang.min.js"></script> 
+        <script type="text/javascript" src="js/notify/notify.min.js"></script>
+        <script type="text/javascript" src="js/mediciones.js"></script>
+        <script>
+           
+          
 
+                function verPaciente(id_usuario){
+                        
+                    console.log("id usuario joder "+id_usuario);
+                    document.location.href="display-grafica.php?id_user="+id_usuario+" ";
+
+
+                    // var opcion = "definir_usuario_medicion";
+                    // $.ajax({
+                    //                 type:'POST',
+                    //                 url: 'control/vista.php',
+                    //                 data: {id_usuario:id_usuario, opcion:opcion}
+                    //                 })
+                    //                 .done(function( msg ) {
+                    //                     //var resultado = $.parseJSON(msg);
+                    //                     // console.log("ajax done"+msg);
+                    //                     //<?php //header("Location: display-grafica.php"); ?>
+                    //                 })
+                    //                 .fail(function( jqXHR, textStatus, errorThrown ) {
+                    //                     if ( console && console.log ) {
+                    //                         console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                    //                         console.log("ajax fail");
+                    //                     }
+                    //                 });
+                    
+                }
+          
+                
+            
+        </script>
+      
     </body>
 </html>

@@ -13,6 +13,7 @@ class TAccesbd
 
 
 		private $servidor = "oracle.ilerna.com, 1433";
+		//private $servidor = "192.168.3.26, 1433";
 		private $connectionInfo = array( "Database"=>"ONCOSALUT", "UID"=>"DAM2_VESTIGIUM", "PWD"=>"Vestigium2019", "CharacterSet"=>"UTF-8");
 		private $conn;
 		private $res;
@@ -113,6 +114,26 @@ class TAccesbd
 				return($datos);	
 		}
 		
+		public function mostrar_graficas($sql)
+		{
+			$data=false;
+			if(isset($sql) && $sql !="" && isset($this->conn))
+			{
+				$stmt = sqlsrv_query( $this->conn, $sql);
+				if( $stmt === false ) {
+						die( print_r( sqlsrv_errors(), true));
+				}
+		
+				$data = array();
+				while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+						array_push($data,(array) $row);
+				}
+		
+		
+				sqlsrv_free_stmt($stmt);
+				return json_encode($data);
+			}
+		}
         
 
 
