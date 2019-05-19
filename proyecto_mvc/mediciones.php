@@ -213,25 +213,6 @@
                         
                     console.log("id usuario joder "+id_usuario);
                     document.location.href="display-grafica.php?id_user="+id_usuario+" ";
-
-
-                    // var opcion = "definir_usuario_medicion";
-                    // $.ajax({
-                    //                 type:'POST',
-                    //                 url: 'control/vista.php',
-                    //                 data: {id_usuario:id_usuario, opcion:opcion}
-                    //                 })
-                    //                 .done(function( msg ) {
-                    //                     //var resultado = $.parseJSON(msg);
-                    //                     // console.log("ajax done"+msg);
-                    //                     //<?php //header("Location: display-grafica.php"); ?>
-                    //                 })
-                    //                 .fail(function( jqXHR, textStatus, errorThrown ) {
-                    //                     if ( console && console.log ) {
-                    //                         console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                    //                         console.log("ajax fail");
-                    //                     }
-                    //                 });
                     
                 }
           
