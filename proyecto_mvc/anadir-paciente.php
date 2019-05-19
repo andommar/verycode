@@ -225,7 +225,7 @@
                                     </div>
                                 </form>
                             </div>
-            <!-- =============================== HISTORIAL CLINICO | vista, sql y validado ===========================================  -->
+            <!-- =============================== HISTORIAL CLINICO | vista, sql y validado **===========================================  -->
 
                             <div id="apartado-historial">
                                 <h3>Historial clínico</h3><hr>
@@ -1062,7 +1062,7 @@
 
                              <div id="apartado-medicion-inicial">
                                 <h3>Medición inicial&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
-                                <!--  TABLA medición inicial  **-->
+                                <!--  TABLA medición inicial  -->
                                 <form id="form-9" class="margen-form">
                                     <div class="titulos color2">
                                         <label>MIEMBRO/S A MEDIR</label>

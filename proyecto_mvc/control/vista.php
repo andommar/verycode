@@ -97,7 +97,7 @@ if(isset($_POST["opcion"]))
 
         break;
 
-        case "registro_historial_clinico":
+        case "registro_historial_clinico": 
             
             $id_user=$_POST["id_user"];
             $doc_identificacion =$_POST["doc_identificacion"];
@@ -132,13 +132,17 @@ if(isset($_POST["opcion"]))
             $motivo_secundario, $ant_vasculares, $ant_infeccion_venosa, $ant_sobrepeso, $ant_lipedema, $ant_permeabilidad_cap, $ant_ansiedad,
             $ant_diabetes, $ant_triquiasis, $ant_sindromes, $profesion, $grado_resp_profesion, $grado_stress_profesion); 
 
-            if($error==0)
+            if($error==0)//Todo bien
             {
-                echo "true";
+                $resultado = "true";
             }
-            else
-                echo "false";
-
+            else if($error==-2){//error, historial repetido
+                $resultado = "historial";
+            }
+            else{//error sql por variables, conflicto bd...
+                $resultado = "false";
+            }
+            echo ($resultado);
         break;
 
         
@@ -185,57 +189,66 @@ if(isset($_POST["opcion"]))
         case "registro_infeccion":
 
             $id_user=$_POST["id_user"];
-            $nombre_infeccion = $_POST["nombre_infeccion"];
-            $fecha = $_POST["fecha"];   
-            $descripcion = $_POST["descripcion"];       
+            $tipo = $_POST["tipo_inf"];
+            $medicamento = $_POST["medicamentos_inf"];
+            $fecha = $_POST["fecha_inf"];
             
-            $error=$c->registro_infeccion($id_user,$nombre_infeccion,$fecha,$descripcion);
+            
+            $error=$c->registro_infeccion($id_user,$tipo,$medicamento,$fecha);
             if($error==0)
             {
-                echo "Infeccion registrada";
+                echo "true";
+            }
+            else if($error==-2){
+                echo "infeccion";
             }
             else
-                echo "Fallo registro";
+                echo "false";
 
         break;
 
-        case "registro_habitos":
+        case "registro_habitos": 
 
             $id_user=$_POST["id_user"];
             $fumador = $_POST["fumador"];
-            $cig_dia = $_POST["cig_dia"];
-            $cig_mes = $_POST["fumador"];
-            $cig_dia = $_POST["cig_dia"];
-            $cig_anyo = $_POST["descripcion"];   
-            $fumador_social = $_POST["fumador"];
-            $freq_alcohol = $_POST["cig_dia"];
-            $tipo_alcohol = $_POST["descripcion"];   
-            $freq_deporte = $_POST["descripcion"];
+            $cigarros = $_POST["cigarros"];
+            $frec_cigarros = $_POST["frec_cigarros"];
+            $fumador_social = $_POST["fumador_social"];
+            $toma_alcohol = $_POST["toma_alcohol"];
+            $frec_alcohol = $_POST["frec_alcohol"];
+            $alcohol = $_POST["alcohol"];
+            $tipo_alcohol = $_POST["tipo_alcohol"];
+            $hace_deporte = $_POST["hace_deporte"];
+            $frec_deporte = $_POST["frec_deporte"];
             $tipo_deporte = $_POST["tipo_deporte"];
             $t_sesion = $_POST["t_sesion"];
+            $t_sesion_medidas = $_POST["t_sesion_medidas"];
             $alimentacion = $_POST["alimentacion"];   
             $suenyo_reparador = $_POST["suenyo_reparador"];
             $h_suenyo = $_POST["h_suenyo"];
-            $astenico = $_POST["astenico"];   
+            $astenico = $_POST["astenico"];  
             $erg_sentado = $_POST["erg_sentado"];
             $erg_bidepes_pasiva = $_POST["erg_bidepes_pasiva"];
-            $erg_bidepes_activa = $_POST["erg_bidepes_activa"];   
+            $erg_bidepes_activa = $_POST["erg_bidepes_activa"];
             $erg_otro = $_POST["erg_otro"];
 
-            $error=$c->registro_habitos($id_user,$fumador,$cig_dia,$cig_mes,$cig_anyo,$fumador_social,$freq_alcohol,$tipo_alcohol,
-            $freq_deporte,$tipo_deporte,$t_sesion,$alimentacion,$suenyo_reparador,$h_suenyo,$astenico,$erg_sentado,$erg_bidepes_pasiva,$erg_bidepes_activa,
-            $erg_otro);
+            $error=$c->registro_habitos($id_user,$fumador,$cigarros,$frec_cigarros,$fumador_social,$toma_alcohol,$alcohol,$frec_alcohol,$tipo_alcohol,
+                        $hace_deporte,$frec_deporte,$tipo_deporte,$t_sesion,$t_sesion_medidas,$alimentacion,$suenyo_reparador,$h_suenyo,$astenico,$erg_sentado,
+                        $erg_bidepes_pasiva,$erg_bidepes_activa,$erg_otro);
 
             if($error==0)
             {
-                echo "Habitos registrados";
+                echo "true";
+            }
+            else if($error==-2){
+                echo "habito";
             }
             else
-                echo "Fallo registro";
+                echo "false";
 
         break;
 
-        case "registro_tratamiento_linfedema":
+        case "registro_tratamiento_linfedema"://**
 
             $id_user=$_POST["id_user"];
             $fecha_ult_tratamiento = $_POST["fecha_ult_tratamiento"];
@@ -253,12 +266,16 @@ if(isset($_POST["opcion"]))
 
             $error=$c->registro_tratamiento_linfedema($id_user,$fecha_ult_tratamiento,$satisfecho_result,$fallo_terapia,$tipo_drenaje_linfa,
             $vendaje,$nota,$contencion_dia,$contencion_tipo,$contencion_sensacion,$contencion_dolor,$contencion_escala,$contencion_pesadez);
+           
             if($error==0)
             {
-                echo "Tratamiento linfedema registrado";
+                echo "true";
+            }
+            else if($error==-2){
+                echo "historial";
             }
             else
-                echo "Fallo registro";
+                echo "false";
 
         break;
 
@@ -325,13 +342,6 @@ if(isset($_POST["opcion"]))
                 echo "Fallo registro";
 
         break;
-
-       
-
-        // case "definir_usuario_medicion":
-        //     $id_user=$_POST["id_usuario"];
-        //     $_SESSION["id_usuario"]= $id_user;
-        // break;
 
 
 

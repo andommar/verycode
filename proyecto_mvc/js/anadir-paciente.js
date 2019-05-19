@@ -242,7 +242,7 @@
                
                 $("#tipo_drenaje_linfa").change(function(){
                     var tipo_drenaje_linfa = this.value; //valor option del select
-                    if(tipo_drenaje_linfa=="otro"){
+                    if(tipo_drenaje_linfa=="Otros"){
                         $('#tipo_drenaje_linfa_otro').prop('disabled', false);
                     }
                     else{
@@ -251,7 +251,7 @@
                 });
                 $("#contencion_tipo").change(function(){
                     var contencion_tipo = this.value; //valor option del select
-                    if(contencion_tipo=="otro"){
+                    if(contencion_tipo=="Otro"){
                         $('#contencion_tipo_otro').prop('disabled', false);
                     }
                     else{
@@ -294,7 +294,13 @@
                                 // console.log(msg);                             	
                                 console.log("ajax done"); 
                                 if(resultado[1]=="false"){
-                                    $.notify("Error en la consulta SQL", "error");
+                                    $("body").overhang({
+                                        type: "error",
+                                        message: "Error en la consulta sql",
+                                        duration: 3,
+                                        overlay: true,
+                                        closeConfirm: true
+                                    });
                                     datos_correctos_queries = false;
                                 }
                                 else if(resultado[1]=="correo"){
@@ -315,7 +321,7 @@
                                 if(datos_correctos_queries){
                                     //Pasamos al siguiente formulario (HISTORIAL CLÍNICO)
                                     $("#apartado-historial").css("display","block");
-                                    $("#apartado-usuario").css("display","none");
+                                    //$("#apartado-usuario").css("display","none");
                                     $("#btn-datos-personales").css("background-color","rgb(109, 109, 109)");
                                     $("#btn-historial-clinico").css("background-color","#7037f4");
                                 }
@@ -423,13 +429,31 @@
                                                  	
                             console.log("ajax done");
                             if(msg=="false"){
-                                    $.notify("Error en la consulta SQL", "error");
-                                    datos_correctos_queries = false;
-                                }
+                                $("body").overhang({
+                                    type: "error",
+                                    message: "Error en la consulta SQL",
+                                    duration: 3,
+                                    overlay: true,
+                                    closeConfirm: true
+                                });
+                                datos_correctos_queries = false;
+                            }
+                            else if(msg=="historial"){
+                                $("body").overhang({
+                                    type: "error",
+                                    message: "ERROR, este paciente ya tiene un historial clínico registrado",
+                                    duration: 3,
+                                    overlay: true,
+                                    closeConfirm: true
+                                });
+                                datos_correctos_queries = false;
+                            }
                             else{
                                 $.notify("Historial clínico guardado correctamente", "success");
                             }
-                            
+                            // if(datos_correctos_queries){
+
+                            // }
                         })
                         .fail(function( jqXHR, textStatus, errorThrown ) {
                             if ( console && console.log ) {
@@ -480,8 +504,11 @@
                                     datos_correctos_queries = false;
                                 }
                                 else{
-                                    $.notify("Cirugías guardadas correctamente.", "success");
+                                    $.notify("Cirugía guardada correctamente.", "success");
                                 }
+                                 // if(datos_correctos_queries){
+
+                            // }
                             })
                             .fail(function( jqXHR, textStatus, errorThrown ) {
                                 if ( console && console.log ) {
@@ -516,7 +543,13 @@
                             .done(function( msg ) {                           	
                                 console.log("Ajax done"); 
                                 if(msg=="false"){
-                                    $.notify("Error en la consulta SQL", "error");
+                                    $("body").overhang({
+                                        type: "error",
+                                        message: "Error en la consulta SQL",
+                                        duration: 3,
+                                        overlay: true,
+                                        closeConfirm: true
+                                    });
                                     datos_correctos_queries = false;
                                 }
                                 else if(msg=="medicamento"){
@@ -530,8 +563,11 @@
                                     datos_correctos_queries = false;
                                 }
                                 else{
-                                    $.notify("Medicamentos guardados correctamente.", "success");
+                                    $.notify("Medicamento guardado correctamente.", "success");
                                 }
+                                 // if(datos_correctos_queries){
+
+                            // }
 
                             })
                             .fail(function( jqXHR, textStatus, errorThrown ) {
@@ -545,9 +581,6 @@
                     
                 });
 
-
-
-
                 //  =============================== INFECCIÓN  ===========================================
 
                 $("#form-5").submit(function(event){
@@ -558,30 +591,52 @@
                     var medicamentos_inf = $('#medicamentos_inf').val(); 
                     var fecha_inf = $('#fecha_inf').val();
                     var opcion= "registro_infeccion";
+                    var datos_correctos_queries = true;
 
-                    // console.log(tipo_inf);
-                    // console.log(medicamentos_inf);
-                    // console.log(fecha_inf);
-                    // console.log(opcion);
+                    if(validarInfecciones(tipo_inf, medicamentos_inf)){
+                         $.ajax({
+                        type:'POST',
+                        url: 'control/vista.php',
+                        data: {id_user:id_user, tipo_inf:tipo_inf, medicamentos_inf:medicamentos_inf, fecha_inf:fecha_inf, opcion:opcion},
+                        })
+                        .done(function( msg ) {
+                            // console.log(msg);                             	
+                            console.log("ajax done");
+                            if(msg=="false"){
+                                $("body").overhang({
+                                    type: "error",
+                                    message: "Error en la consulta SQL",
+                                    duration: 3,
+                                    overlay: true,
+                                    closeConfirm: true
+                                });
+                                datos_correctos_queries = false;
+                            } 
+                            else if(msg=="infeccion"){
+                                $("body").overhang({
+                                    type: "error",
+                                    message: "ERROR, esta infección ya está registrada",
+                                    duration: 3,
+                                    overlay: true,
+                                    closeConfirm: true
+                                });
+                                datos_correctos_queries = false;
+                            }
+                            else{
+                                $.notify("Infección guardada correctamente.", "success");
+                            }
+                             // if(datos_correctos_queries){
 
-                    // if(validarInfecciones(tipo_inf, medicamentos_inf)){
-                    //      $.ajax({
-                    //     type:'POST',
-                    //     url: 'control/vista.php',
-                    //     data: {id_user:id_user, tipo_inf:tipo_inf, medicamentos_inf:medicamentos_inf, fecha_inf:fecha_inf, opcion:opcion},
-                    //     })
-                    //     .done(function( msg ) {
-                    //         console.log(msg);                             	
-                    //         console.log("Ajax: Infección registrada"); 
+                            // }
 
-                    //     })
-                    //     .fail(function( jqXHR, textStatus, errorThrown ) {
-                    //         if ( console && console.log ) {
-                    //             console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                    //             console.log("ajax fail");
-                    //         }
-                    //     });
-                    // }
+                        })
+                        .fail(function( jqXHR, textStatus, errorThrown ) {
+                            if ( console && console.log ) {
+                                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                                console.log("ajax fail");
+                            }
+                        });
+                    }
                 
                        
                     
@@ -597,8 +652,8 @@
                     
                     event.preventDefault();
                     var datos_correctos = true;
-                // HE CAMBIADO "freq" por frec!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! y pongo en comillas cigarros=""; frec_cigarros=""; fumador_social ="";
-                //frec_alcohol=""; alcohol=""; tipo_alcohol=""; porque pueden quedar vacios si el usuario no fuma o no bebe, al insertar los pondremos en null
+                    var datos_correctos_queries = true;
+              
                     var fumador=$('#fumador').val();
                     var cigarros=$('#cigarros').val();
                     var frec_cigarros=$('#frec_cigarros').val();
@@ -643,27 +698,53 @@
                     var opcion= "registro_habitos";
                     
                    datos_correctos= validarHabitos($('#tipo_alcohol').val(),$('#alcohol').val(),toma_alcohol,fumador,$('#cigarros').val(),hace_deporte, $('#t_sesion').val(), alimentacion);
-                    // if(datos_correctos){
-                    //     $.ajax({
-                    //     type:'POST',
-                    //     url: 'control/vista.php',
-                    //     data: {id_user:id_user, fumador:fumador,cigarros:cigarros,frec_cigarros:frec_cigarros,fumador_social:fumador_social,toma_alcohol:toma_alcohol, frec_alcohol:frec_alcohol, 
-                    //     alcohol:alcohol, tipo_alcohol:tipo_alcohol, hace_deporte:hace_deporte, frec_deporte:frec_deporte, tipo_deporte:tipo_deporte, t_sesion:t_sesion,
-                    //     t_sesion_medidas:t_sesion_medidas, alimentacion:alimentacion, suenyo_reparador:suenyo_reparador, h_suenyo:h_suenyo, astenico:astenico, 
-                    //     erg_sentado:erg_sentado, erg_bidepes_pasiva:erg_bidepes_pasiva, erg_bidepes_activa:erg_bidepes_activa, erg_otro:erg_otro, opcion:opcion}
-                    //     })
-                    //     .done(function( msg ) {
-                    //         console.log(msg);                             	
-                    //         console.log("Ajax: Hábitos registrados "); 
+                    if(datos_correctos){
+                        $.ajax({
+                        type:'POST',
+                        url: 'control/vista.php',
+                        data: {id_user:id_user, fumador:fumador,cigarros:cigarros,frec_cigarros:frec_cigarros,fumador_social:fumador_social,toma_alcohol:toma_alcohol, alcohol:alcohol, 
+                        frec_alcohol:frec_alcohol, tipo_alcohol:tipo_alcohol, hace_deporte:hace_deporte, frec_deporte:frec_deporte, tipo_deporte:tipo_deporte, t_sesion:t_sesion,
+                        t_sesion_medidas:t_sesion_medidas, alimentacion:alimentacion, suenyo_reparador:suenyo_reparador, h_suenyo:h_suenyo, astenico:astenico, 
+                        erg_sentado:erg_sentado, erg_bidepes_pasiva:erg_bidepes_pasiva, erg_bidepes_activa:erg_bidepes_activa, erg_otro:erg_otro, opcion:opcion}
+                        })
+                        .done(function( msg ) {
 
-                    //     })
-                    //     .fail(function( jqXHR, textStatus, errorThrown ) {
-                    //         if ( console && console.log ) {
-                    //             console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                    //             console.log("ajax fail");
-                    //         }
-                    //     });
-                    // }
+                            console.log("ajax done "); 
+                            if(msg=="false"){
+                                $("body").overhang({
+                                    type: "error",
+                                    message: "Error en la consulta SQL",
+                                    duration: 3,
+                                    overlay: true,
+                                    closeConfirm: true
+                                });
+                                datos_correctos_queries = false;
+                            } 
+                            else if(msg=="habito"){
+                                $("body").overhang({
+                                    type: "error",
+                                    message: "ERROR, este usuario ya tiene sus hábitos registrados",
+                                    duration: 3,
+                                    overlay: true,
+                                    closeConfirm: true
+                                });
+                                datos_correctos_queries = false;
+                            }
+                            else{
+                                $.notify("Hábitos guardados correctamente.", "success");
+                            }
+                            // if(datos_correctos_queries){
+
+                            // }
+
+                        })
+                        .fail(function( jqXHR, textStatus, errorThrown ) {
+                            if ( console && console.log ) {
+                                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                                console.log("ajax fail");
+                            }
+                        });
+                    }
                     
                           
                     
@@ -674,14 +755,14 @@
 
 
 
-                //  =============================== HISTORIAL TRATAMIENTO LINFEDEMA  =========================================== 
+                //  =============================== HISTORIAL TRATAMIENTO LINFEDEMA  ===========================================** 
 
                 $("#form-7").submit(function(event){
                      
                     event.preventDefault();
 
                     var datos_correctos = true;
-
+                    var datos_correctos_queries = true;
                     var fecha_ult_tratamiento=$('#fecha_ult_tratamiento').val();
                     var satisfecho_result = $('#satisfecho_result').val();
                     var fallo_terapia="";
@@ -695,7 +776,7 @@
                         
                     }
                     var tipo_drenaje_linfa = $('#tipo_drenaje_linfa').val();
-                    if(tipo_drenaje_linfa=="otro"){
+                    if(tipo_drenaje_linfa=="Otros"){
                         tipo_drenaje_linfa = $('#tipo_drenaje_linfa_otro').val();
                     }
                     var vendaje = $('#vendaje').val();
@@ -705,7 +786,7 @@
                     }
                     var contencion_dia = $('#contencion_dia').val();
                     var contencion_tipo = $('#contencion_tipo').val();
-                    if(contencion_tipo=="otro"){
+                    if(contencion_tipo=="Otro"){
                         contencion_tipo = $('#contencion_tipo_otro').val();
                     }
                     var contencion_sensacion_numero = $('input:radio[name=contencion_sensacion]:checked').val();
@@ -717,26 +798,52 @@
 
                     datos_correctos= validarHistTratLinf(satisfecho_result,$('#fallo_terapia').val(), $('#fallo_terapia_otro').val(), $('#tipo_drenaje_linfa').val(), $('#tipo_drenaje_linfa_otro').val(),$('#contencion_tipo').val(), $('#contencion_tipo_otro').val());
                     
-                //    if(datos_correctos){
-                //          $.ajax({
-                //         type:'POST',
-                //         url: 'control/vista.php',
-                //         data: {id_user:id_user, fecha_ult_tratamiento: fecha_ult_tratamiento,satisfecho_result: satisfecho_result, fallo_terapia:fallo_terapia, tipo_drenaje_linfa:tipo_drenaje_linfa,
-                //         vendaje:vendaje, nota: nota, contencion_dia: contencion_dia, contencion_tipo: contencion_tipo, contencion_sensacion: contencion_sensacion, contencion_dolor: contencion_dolor,
-                //         contencion_escala: contencion_escala, contencion_pesadez: contencion_pesadez, opcion: opcion},
-                //         })
-                //         .done(function( msg ) {
-                //             console.log(msg);                             	
-                //             console.log("Ajax: Tratamiento linfedema registrado"); 
+                   if(datos_correctos){
+                         $.ajax({
+                        type:'POST',
+                        url: 'control/vista.php',
+                        data: {id_user:id_user, fecha_ult_tratamiento: fecha_ult_tratamiento,satisfecho_result: satisfecho_result, fallo_terapia:fallo_terapia, tipo_drenaje_linfa:tipo_drenaje_linfa,
+                        vendaje:vendaje, nota: nota, contencion_dia: contencion_dia, contencion_tipo: contencion_tipo, contencion_sensacion: contencion_sensacion, contencion_dolor: contencion_dolor,
+                        contencion_escala: contencion_escala, contencion_pesadez: contencion_pesadez, opcion: opcion},
+                        })
+                        .done(function( msg ) {
+                           console.log("ajax done"); 
+                                if(msg=="false"){
+                                    $("body").overhang({
+                                        type: "error",
+                                        message: "Error en la consulta SQL",
+                                        duration: 3,
+                                        overlay: true,
+                                        closeConfirm: true
+                                    });
+                                    datos_correctos_queries = false;
+                                } 
+                                else if(msg=="historial"){
+                                    $("body").overhang({
+                                        type: "error",
+                                        message: "ERROR, este usuario ya tiene el historial guardado.",
+                                        duration: 3,
+                                        overlay: true,
+                                        closeConfirm: true
+                                    });
+                                    datos_correctos_queries = false;
+                                }
+                                else{
+                                    $.notify("Historial guardado correctamente.", "success");
+                                }    
+                                 if(datos_correctos_queries){
 
-                //         })
-                //         .fail(function( jqXHR, textStatus, errorThrown ) {
-                //             if ( console && console.log ) {
-                //                 console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                //                 console.log("ajax fail");
-                //             }
-                //         });
-                //     }
+                            } 	
+                            
+
+                        })
+                        .fail(function( jqXHR, textStatus, errorThrown ) {
+                            if ( console && console.log ) {
+                                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                                console.log("ajax fail");
+                            }
+                        });
+                    }
                        
                     
                 });
@@ -744,7 +851,7 @@
 
 
 
-                // //  =============================== VALORACIÓN LINFEDEMA  ===========================================**
+                // //  =============================== VALORACIÓN LINFEDEMA  ===========================================
 
                 $("#form-8").submit(function(event){
                     
@@ -1093,7 +1200,7 @@
                     return contencion_sensacion;
                 }
 
-                function validarHistTratLinf(satisfecho_result,fallo_terapia, fallo_terapia_otro,tipo_drenaje_linfa,tipo_drenaje_linfa_otro,contencion_tipo, contencion_tipo_otro){
+                function validarHistTratLinf(satisfecho_result,fallo_terapia, fallo_terapia_otro,tipo_drenaje_linfa,tipo_drenaje_linfa_otro,contencion_tipo, contencion_tipo_otro){//** 
                     
                     var datos_correctos=true;
                     var mensaje_error="";
@@ -1121,83 +1228,6 @@
                     }
                     return datos_correctos;
                 }
-                // function validarInfecciones{
-                //      var mensaje_error = "";
-                    // var datos_correctos = true;
-                    //  if(!datos_correctos){
-                    //     $("body").overhang({
-                    //             type: "error",
-                    //             message: mensaje_error,
-                    //             duration: 3,
-                    //             overlay: true,
-                    //             closeConfirm: true
-                    //         });
-                    // }
-                    // return datos_correctos;
-                // }
-
-                // function validarHabitos{
-                //      var mensaje_error = "";
-                    // var datos_correctos = true;
-                    //  if(!datos_correctos){
-                    //     $("body").overhang({
-                    //             type: "error",
-                    //             message: mensaje_error,
-                    //             duration: 3,
-                    //             overlay: true,
-                    //             closeConfirm: true
-                    //         });
-                    // }
-                    // return datos_correctos;
-                // }
-
-                // function validarHistorialLinfedema{
-                //      var mensaje_error = "";
-                    // var datos_correctos = true;
-                    //  if(!datos_correctos){
-                    //     $("body").overhang({
-                    //             type: "error",
-                    //             message: mensaje_error,
-                    //             duration: 3,
-                    //             overlay: true,
-                    //             closeConfirm: true
-                    //         });
-                    // }
-                    // return datos_correctos;
-                // }
-
-                // function validarLinfedema{
-                //      var mensaje_error = "";
-                    // var datos_correctos = true;
-                    //  if(!datos_correctos){
-                    //     $("body").overhang({
-                    //             type: "error",
-                    //             message: mensaje_error,
-                    //             duration: 3,
-                    //             overlay: true,
-                    //             closeConfirm: true
-                    //         });
-                    // }
-                    // return datos_correctos;
-                // }
-
-                // function validarMediciones{
-                //      var mensaje_error = "";
-                    // var datos_correctos = true;
-                    //  if(!datos_correctos){
-                    //     $("body").overhang({
-                    //             type: "error",
-                    //             message: mensaje_error,
-                    //             duration: 3,
-                    //             overlay: true,
-                    //             closeConfirm: true
-                    //         });
-                    // }
-                    // return datos_correctos;
-                // }
-
-
-
 
             });//document ready
     
