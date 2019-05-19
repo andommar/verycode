@@ -185,7 +185,7 @@
                 </div> <!-- Fin columna derecha-->
             </div> <!-- ROW -->
 
-            <input id="usuario" type="hidden" value="<?php echo $_GET['id_user']?>"> 
+            <input id="usuario" type="hidden" value="17"> <!--<?php /*echo $_SESSION["id_usuario"]*/?>-->
         </div><!-- CONTAINER FLUID-->
 
         <!-- SCRIPTS -->
