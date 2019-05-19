@@ -227,6 +227,77 @@
 							    </table>
                             </div>
 
+                            <!-- DATOS ESPECIALISTA -->
+                            <div id="apartado-datos-especialista">
+                                <h3>Datos especialista</h3>
+                                <hr>
+
+                                <form id="form-1" class="margen-form">
+                                    <div class="form-row justify-content-center">
+                                        <div class="form-group ancho" id="input_nombre">
+                                            <label for="nombre">Nombre</label>
+                                            &nbsp;
+                                            <input type="text" class="form-control" id="nombre" name="nombre" required maxlength="30"><br>
+                                        </div>
+                                    
+                                        &nbsp;&nbsp;
+                                        
+                                        <div class="form-group ancho" id="input_apellido1">
+                                            <label for="apellido1">Primer apellido</label>
+                                            &nbsp;
+                                            <input type="text" class="form-control" id="apellido1" required maxlength="50"><br>
+                                        </div>
+                                        &nbsp;&nbsp;
+
+                                        <div class="form-group ancho" id="input_apellido2">
+                                            <label for="apellido2">Segundo apellido</label>
+                                            &nbsp;
+                                            <input type="text" class="form-control" name="apellido1" id="apellido2" required maxlength="50"><br>
+                                        </div>
+                                    </div>  <!--Fin fila 1-->
+                                    &nbsp;&nbsp;
+                                    <div class="form-row justify-content-center">
+                                        <div class="form-group ancho" id="input_correo">
+                                            <label for="correo">Correo</label>
+                                            &nbsp;
+                                            <input type="email" class="form-control" name="correo" id="correo" required maxlength="100"><br>
+                                        </div>
+                                            
+                                        &nbsp;&nbsp;
+                                        <div class="form-group ancho" id="input_pass">
+                                            <label for="pass">Contraseña</label>
+                                            &nbsp;
+                                            <input type="password" class="form-control" name="pass" id="pass" required maxlength="50"><br>
+                                        </div>
+                                        
+                                        &nbsp;&nbsp;
+                                        
+                                        <div class="form-group ancho" id="input_pass2">
+                                            <label for="pass2">Confirmar contraseña</label>
+                                            &nbsp;
+                                            <input type="password" class="form-control" name="pass2" id="pass2" required maxlength="50"><br>
+                                        </div>
+
+                                        &nbsp;&nbsp;
+                                        
+                                        <div class="form-group ancho" id="input_pass2">
+                                            <label for="pass2">Confirmar contraseña</label>
+                                            &nbsp;
+                                            <input type="password" class="form-control" name="pass2" id="pass2" required maxlength="50"><br>
+                                        </div>
+                                    </div>  <!--Fin fila 2-->
+                                    <div class="columna-btn">
+                                        <button class="btn estilo-boton-submit" type="submit" id="btn-submit-1" value='<?php echo($_SESSION["id_especialista"])?>'>Modificar</button>
+                                       
+                                    </div>
+                                </form>
+                            </div>
+
+
+
+
+                            </div>
+
 
 
                         </div>
@@ -251,6 +322,8 @@
                     $( "#btn-gestionar-pacientes" ).css("background-color","rgb(109, 109, 109)");
                     $( "#apartado-especialistas" ).css("display","block");
                     $( "#btn-gestionar-especialistas" ).css("background-color","#3da3bc"); 
+
+                    $( "#apartado-datos-especialista" ).css("display","none");
                     
                 });
 
@@ -388,6 +461,13 @@
                 // console.log("id especialista: "+id_especialista);
                 // console.log("tipo especialista: "+tipo_especialista);
             });
+
+            function editarEspecialista(id_especialista){
+
+                $( "#fisios-table" ).css("display","none");
+                $( "#apartado-botones-admin" ).css("display","none");
+
+            };
 
         
         </script>
