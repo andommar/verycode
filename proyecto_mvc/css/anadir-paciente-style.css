@@ -1,4 +1,8 @@
 
+
+#panel-pierna{
+    display: none;
+}
 .margen-inferior{
     margin-bottom: 0 !important;
 }

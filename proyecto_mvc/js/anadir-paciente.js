@@ -83,7 +83,7 @@
 
             $(document).ready(function(){
 
-                //  =============================== VALIDACIÓN CAMPOS Y RECOGIDA DE DATOS  =========================================== 
+                //  =============================== EVENTOS  =========================================== 
 
                 //Según lo que seleccione en el origen del linfedema (primario) le mostramos un select diferente en secundario
                 //Eso, una vez seleccione la primera opción
@@ -258,6 +258,59 @@
                          $('#contencion_tipo_otro').prop('disabled', true);
                     }
                 });
+                
+                $("#radiobuttons_escoger_miembro").change(function(){
+                    var valor_seleccionado = $("#radiobuttons_escoger_miembro input[type='radio']:checked").val(); //valor option del select
+                   if(valor_seleccionado=="brazo"){
+                        $("#panel-brazo").css("display","block");
+                        $("#panel-pierna").css("display","none");
+                    }
+                    else if(valor_seleccionado=="pierna"){
+                        $("#panel-brazo").css("display","none");
+                        $("#panel-pierna").css("display","block");
+                    }
+                    
+                });
+                //**
+                //Focus brazo y pierna
+                //FOCUS BRAZO
+                $( "input[id='brazo_i_p1'], input[id='brazo_d_p1']" ).focus(function() {
+                    $("#imagen-brazo").attr("src","img/brazo/a.png");
+                });
+                $( "input[id='brazo_i_p2'], input[id='brazo_d_p2']" ).focus(function() {
+                    $("#imagen-brazo").attr("src","img/brazo/b.png");
+                });
+                $( "input[id='brazo_i_p3'], input[id='brazo_d_p3']" ).focus(function() {
+                    $("#imagen-brazo").attr("src","img/brazo/c.png");
+                });
+                $( "input[id='brazo_i_p4'], input[id='brazo_d_p4']" ).focus(function() {
+                    $("#imagen-brazo").attr("src","img/brazo/d.png");
+                });
+                $( "input[id='brazo_i_p5'], input[id='brazo_d_p5']" ).focus(function() {
+                    $("#imagen-brazo").attr("src","img/brazo/e.png");
+                });
+               //FOCUS PIERNA
+                $( "input[id='pierna_i_p1'], input[id='pierna_d_p1']" ).focus(function() {
+                    $("#imagen-pierna").attr("src","img/pierna/a.png");
+                });
+                $( "input[id='pierna_i_p2'], input[id='pierna_d_p2']" ).focus(function() {
+                    $("#imagen-pierna").attr("src","img/pierna/b.png");
+                });
+                $( "input[id='pierna_i_p3'], input[id='pierna_d_p3']" ).focus(function() {
+                    $("#imagen-pierna").attr("src","img/pierna/c.png");
+                });
+                $( "input[id='pierna_i_p4'], input[id='pierna_d_p4']" ).focus(function() {
+                    $("#imagen-pierna").attr("src","img/pierna/d.png");
+                });
+                $( "input[id='pierna_i_p5'], input[id='pierna_d_p5']" ).focus(function() {
+                    $("#imagen-pierna").attr("src","img/pierna/e.png");
+                });
+                $( "input[id='pierna_i_p6'], input[id='pierna_d_p6']" ).focus(function() {
+                    $("#imagen-pierna").attr("src","img/pierna/f.png");
+                });
+    
+               
+
 
     //  =============================== AJAX DE LOS FORMULARIOS =========================================== 
                 
@@ -854,7 +907,7 @@
 
 
 
-                // //  =============================== VALORACIÓN LINFEDEMA  ===========================================//**
+                // //  =============================== VALORACIÓN LINFEDEMA  ===========================================
 
                 $("#form-8").submit(function(event){
                     
@@ -934,27 +987,88 @@
 
 
 
-                //  =============================== MEDICIONES  ===========================================
+                //  =============================== MEDICIONES  ===========================================//**
 
-                $("#form-9").submit(function(event){
+                $("#btn-submit-9").click(function(event){
                     
                     event.preventDefault();
-                    var fecha_val_mediciones=$('#fecha_val_mediciones').val();
-                    var extremidad = $('#extremidad').val();
-                    var lado = $('#lado').val();
-                    var p1 = $('#p1').val();
-                    var p2 = $('#p2').val();
-                    var p3 = $('#p3').val();
-                    var p4 = $('#p4').val();
-                    var p5 = $('#p5').val();
-                    var p6 = $('#p6').val();
+                   
                     var opcion= "registro_mediciones";
+                    var datos_correctos=true;
+                    var datos_correctos_queries=true;
+                    var valor_seleccionado = $("#radiobuttons_escoger_miembro input[type='radio']:checked").val();
+                    var lado_sano_brazo = $("#miembro_sano_brazo input[type='radio']:checked").val(); 
+                    var lado_sano_pierna = $("#miembro_sano_pierna input[type='radio']:checked").val(); 
+                    
 
-                
+                    var fecha="";
+                    var extremidad = "";
+                    var lado_sano="";
+
+                    var p1_d=0;
+                    var p2_d=0;
+                    var p3_d=0;
+                    var p4_d=0;
+                    var p5_d=0;
+                    var p6_d=0;
+
+                    var p1_i=0;
+                    var p2_i=0;
+                    var p3_i=0;
+                    var p4_i=0;
+                    var p5_i=0;
+                    var p6_i=0;
+                    if(valor_seleccionado=="brazo"){//INSERT BRAZO
+
+                        fecha = $('#fecha_brazo').val();
+                        extremidad = "brazo";
+                        lado_sano=lado_sano_brazo;
+                        
+                        console.log(lado_sano);
+                        
+                        p1_i=$("#brazo_i_p1").val();
+                        p2_i=$("#brazo_i_p2").val();
+                        p3_i=$("#brazo_i_p3").val();
+                        p4_i=$("#brazo_i_p4").val();
+                        p5_i=$("#brazo_i_p5").val();
+
+                        p1_d=$("#brazo_d_p1").val();
+                        p2_d=$("#brazo_d_p2").val();
+                        p3_d=$("#brazo_d_p3").val();
+                        p4_d=$("#brazo_d_p4").val();
+                        p5_d=$("#brazo_d_p5").val(); 
+                        
+                        datos_correctos=validarMedicionesBrazo(fecha,p1_i,p2_i,p3_i,p4_i,p5_i,p1_d,p2_d,p3_d,p4_d,p5_d);
+                    }
+                    else if(valor_seleccionado=="pierna"){//INSERT PIERNA
+
+                        fecha = $('#fecha_pierna').val();
+                        extremidad = "pierna";
+                        lado_sano=lado_sano_pierna;
+
+                        p1_i=$("#pierna_i_p1").val();
+                        p2_i=$("#pierna_i_p2").val();
+                        p3_i=$("#pierna_i_p3").val();
+                        p4_i=$("#pierna_i_p4").val();
+                        p5_i=$("#pierna_i_p5").val();
+                        p6_i=$("#pierna_i_p6").val();
+
+                        p1_d=$("#pierna_d_p1").val();
+                        p2_d=$("#pierna_d_p2").val();
+                        p3_d=$("#pierna_d_p3").val();
+                        p4_d=$("#pierna_d_p4").val();
+                        p5_d=$("#pierna_d_p5").val();
+                        p6_d=$("#pierna_d_p6").val();
+                        
+                        datos_correctos=validarMedicionesPierna(fecha,p1_i,p2_i,p3_i,p4_i,p5_i,p6_i,p1_d,p2_d,p3_d,p4_d,p5_d,p6_d);
+                    }
+
+                    if(datos_correctos){//ejecutamos ajax, el mismo para brazo y pierna, haremos dos inserts de cada brazo/pierna
+                        
                         // $.ajax({
                         // type:'POST',
                         // url: 'control/vista.php',
-                        // data: {id_user:id_user, fecha_val_mediciones:fecha_val_mediciones, extremidad:extremidad, lado:lado, p1:p1, p2:p2, p3:p3, p4:p4, p5:p5, p6:p6 opcion: opcion},
+                        // data: {id_user:id_user,fecha:fecha,extremidad:extremidad,lado_sano:lado_sano,p1_i:p1_i, p2_i:p2_i,p3_i:p3_i,p4_i:p4_i,p5_i:p5_i,p6_i:p6_i,p1_d:p1_d,p2_d:p2_d,p3_d:p3_d,p4_d:p4_d,p5_d:p5_d,p6_d:p6_d,opcion: opcion},
                         // })
                         // .done(function( msg ) {
                         //     console.log(msg);                             	
@@ -967,6 +1081,7 @@
                         //         console.log("ajax fail");
                         //     }
                         // });
+                    }
                     
                 });
 
@@ -1239,6 +1354,62 @@
                     }
                     if(satisfecho_result=="no" && fallo_terapia=="otro" && isEmptyOrSpaces( fallo_terapia_otro )  ){
                         mensaje_error="ERROR. Especifica tu respuesta sobre el fallo de la terapia.";
+                        datos_correctos = false;
+                    }
+                    if(!datos_correctos){
+                        $("body").overhang({
+                            type: "error",
+                            message: mensaje_error,
+                            duration: 3,
+                            overlay: true,
+                            closeConfirm: true
+                        });
+                    }
+                    return datos_correctos;
+                }
+                function validarMedicionesBrazo(fecha,p1_i,p2_i,p3_i,p4_i,p5_i,p1_d,p2_d,p3_d,p4_d,p5_d){ //**
+                    var datos_correctos=true;
+                    var mensaje_error="";
+
+                    if(isEmptyOrSpaces(p1_d) || isEmptyOrSpaces(p2_d) || isEmptyOrSpaces(p3_d) || isEmptyOrSpaces(p4_d) || isEmptyOrSpaces(p5_d) ){
+                        mensaje_error="ERROR. Introduce todas las mediciones del brazo derecho";
+                        datos_correctos = false;
+                    } 
+                    if(isEmptyOrSpaces(p1_i) || isEmptyOrSpaces(p2_i) || isEmptyOrSpaces(p3_i) || isEmptyOrSpaces(p4_i) || isEmptyOrSpaces(p5_i) ){
+                        mensaje_error="ERROR. Introduce todas las mediciones del brazo izquierdo";
+                        datos_correctos = false;
+                    } 
+                    if(isEmptyOrSpaces(fecha)){
+                        mensaje_error="ERROR. Introduce una fecha";
+                        datos_correctos = false;
+                    }
+                    if(!datos_correctos){
+                        $("body").overhang({
+                            type: "error",
+                            message: mensaje_error,
+                            duration: 3,
+                            overlay: true,
+                            closeConfirm: true
+                        });
+                    }
+                    return datos_correctos;
+                    
+                }
+                function validarMedicionesPierna(fecha,p1_i,p2_i,p3_i,p4_i,p5_i,p6_i,p1_d,p2_d,p3_d,p4_d,p5_d,p6_d){
+                    var datos_correctos=true;
+                    var mensaje_error="";
+
+                    if(isEmptyOrSpaces(p1_d) || isEmptyOrSpaces(p2_d) || isEmptyOrSpaces(p3_d) || isEmptyOrSpaces(p4_d) || isEmptyOrSpaces(p5_d) || isEmptyOrSpaces(p6_d) ){
+                        mensaje_error="ERROR. Introduce todas las mediciones de la pierna derecha";
+                        datos_correctos = false;
+                    } 
+                    if(isEmptyOrSpaces(p1_i) || isEmptyOrSpaces(p2_i) || isEmptyOrSpaces(p3_i) || isEmptyOrSpaces(p4_i) || isEmptyOrSpaces(p5_i) || isEmptyOrSpaces(p6_i) ){
+                        mensaje_error="ERROR. Introduce todas las mediciones de la pierna izquierda";
+                        datos_correctos = false;
+                    } 
+                  
+                    if(isEmptyOrSpaces(fecha)){
+                        mensaje_error="ERROR. Introduce una fecha";
                         datos_correctos = false;
                     }
                     if(!datos_correctos){

@@ -225,7 +225,7 @@
                                     </div>
                                 </form>
                             </div>
-            <!-- =============================== HISTORIAL CLINICO | vista, sql y validado **===========================================  -->
+            <!-- =============================== HISTORIAL CLINICO | vista, sql y validado ===========================================  -->
 
                             <div id="apartado-historial">
                                 <h3>Historial clínico</h3><hr>
@@ -1058,7 +1058,7 @@
                                 </form>
                             </div> <!-- fin Valoracion Linfedema -->
 
-                             <!-- =============================== Medición inicial  ===========================================  -->
+                             <!-- =============================== Medición inicial  ** ===========================================  -->
 
                              <div id="apartado-medicion-inicial">
                                 <h3>Medición inicial&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
@@ -1071,174 +1071,191 @@
                                         <div class="form-group" id="radiobuttons_escoger_miembro">
                                             <label class="mr-2">Deseo insertar mediciones de:</label>
                                                 &nbsp;
-                                            <input type="radio" id="brazo" name="extremidad" checked>
+                                            <input type="radio" id="brazo" name="extremidad" value="brazo" checked>
                                             <label class="mr-4" for="brazo">Brazo</label>
 
-                                            <input type="radio" id="pierna" name="extremidad">
+                                            <input type="radio" id="pierna" name="extremidad" value="pierna">
                                             <label for="pierna" class="mr-4">Pierna</label>
-
-                                            <input type="radio" id="ambos" name="extremidad">
-                                            <label for="ambos">Ambos</label>
                                         </div>
                                     </div><!-- Fin fila 1 -->
-                                    <div class="text-center">
-                                            <img id="imagen-brazo" class="img-fluid" src="img/brazo/e.png" class="logo" alt="logo">
-                                    </div><!-- Fin fila 2 -->
-                                    <div class="titulos color2 mt-3">
-                                            <label id="titulo-brazo-i">LADO IZQUIERDO</label>
-                                            <label id="titulo-brazo-d">LADO DERECHO</label>
+                                    <!-- ===============================================      brazo       =======================================-->
+                                    <div id="panel-brazo" >
+                                        <div class="text-center">
+                                                <img id="imagen-brazo" class="img-fluid" src="img/brazo/e.png" class="logo" alt="logo">
+                                        </div><!-- Fin fila 2 -->
+                                        <div class="titulos form-group ancho" id="input_fecha_brazo">
+                                            <label for="fecha_brazo">Fecha</label>
+                                            &nbsp;
+                                            <input type="date" class="form-control" name="fecha_brazo" id="fecha_brazo" required=""><br>
+                                        </div>
+                                        <div class="titulos color2 mt-3">
+                                                <label id="titulo-brazo-i">LADO IZQUIERDO</label>
+                                                <label id="titulo-brazo-d">LADO DERECHO</label>
+                                        </div>
+                                        <div class="titulos form-group" id="miembro_sano_brazo">
+                                                <input type="radio" value="brazo_i" id="miembro_sano_brazo_i" name="miembro_sano_brazo" checked>
+                                                <label class="mr-4" for="miembro_sano_brazo_i">Miembro sano</label>
+
+                                                <input class="margen-radio" value="brazo_d" type="radio" id="miembro_sano_brazo_d" name="miembro_sano_brazo" >
+                                                <label class="mr-4" for="miembro_sano_brazo_d">Miembro sano</label>
+                                        </div>
+                                        <div class="form-row espaciado-empty">
+
+                                            <!-- BRAZO IZQUIERDO -->
+                                            <div class="form-group col-sm-1" id="input_brazo_i_p1">
+                                                <label for="brazo_i_p1">A</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="brazo_i_p1" id="brazo_i_p1" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1" id="input_brazo_i_p2">
+                                                <label for="brazo_i_p2">B</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="brazo_i_p2" id="brazo_i_p2" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1" id="input_brazo_i_p3">
+                                                <label for="brazo_i_p3">C</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="brazo_i_p3" id="brazo_i_p3" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1" id="input_brazo_i_p4">
+                                                <label for="brazo_i_p4">D</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="brazo_i_p4" id="brazo_i_p4" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1 ancho" id="input_brazo_i_p5">
+                                                <label for="brazo_i_p5">E</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="brazo_i_p5" id="brazo_i_p5" required><br>
+                                            </div>
+
+                                            <!-- BRAZO DERECHO -->
+                                            <div class="form-group col-sm-1" id="input_brazo_d_p1">
+                                                <label for="brazo_d_p1">A</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="brazo_d_p1" id="brazo_d_p1" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1" id="input_brazo_d_p2">
+                                                <label for="brazo_d_p2">B</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="brazo_d_p2" id="brazo_d_p2" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1" id="input_brazo_d_p3">
+                                                <label for="brazo_d_p3">C</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="brazo_d_p3" id="brazo_d_p3" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1" id="input_brazo_d_p4">
+                                                <label for="brazo_d_p4">D</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="brazo_d_p4" id="brazo_d_p4" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1" id="input_brazo_d_p5">
+                                                <label for="brazo_d_p5">E</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="brazo_d_p5" id="brazo_d_p5" required><br>
+                                            </div>
+                                        </div><!-- Fin fila 3 -->
                                     </div>
-                                    <div class="titulos">
-                                            <input type="radio" id="miembro_sano_brazo_i" name="miembro_sano_brazo" checked>
-                                            <label class="mr-4" for="miembro_sano_brazo_i">Miembro sano</label>
+                                     <!-- ===============================================       fin brazo       =======================================-->
+                                      <!-- ===============================================       pierna         =======================================-->
+                                    <div id="panel-pierna">
+                                        <div class="text-center">
+                                            <img id="imagen-pierna" class="img-fluid" src="img/pierna/f.png" class="logo" alt="logo">
+                                        </div><!-- Fin fila 4 -->
+                                        <div class="titulos form-group ancho" id="input_fecha_pierna">
+                                            <label for="fecha_pierna">Fecha</label>
+                                            &nbsp;
+                                            <input type="date" class="form-control" name="fecha_pierna" id="fecha_pierna" required=""><br>
+                                        </div>
+                                        <div class="titulos color2 mt-3">
+                                                <label id="titulo-pierna-i">LADO IZQUIERDO</label>
+                                                <label id="titulo-pierna-d">LADO DERECHO</label>
+                                        </div>
+                                        <div class="titulos form-group" id="miembro_sano_pierna">
+                                                <input type="radio" value="pierna_i" id="miembro_sano_pierna_i" name="miembro_sano_pierna" checked>
+                                                <label class="mr-4"  for="miembro_sano_pierna_i">Miembro sano</label>
 
-                                            <input class="margen-radio" type="radio" id="miembro_sano_brazo_d" name="miembro_sano_brazo" >
-                                            <label class="mr-4" for="miembro_sano_brazo_d">Miembro sano</label>
-                                    </div>
-                                    <div class="form-row espaciado-empty">
-
-                                        <!-- BRAZO IZQUIERDO -->
-                                        <div class="form-group col-sm-1" id="input_brazo_i_p1">
-                                            <label for="brazo_i_p1">A</label>
-                                            &nbsp;
-                                            <input type="number" min="1" step=".01" class="form-control" name="brazo_i_p1" id="brazo_i_p1" required><br>
+                                                <input class="margen-radio" value="pierna_d" type="radio" id="miembro_sano_pierna_d" name="miembro_sano_pierna" >
+                                                <label class="mr-4" for="miembro_sano_pierna_d">Miembro sano</label>
                                         </div>
-                                        <div class="form-group col-sm-1" id="input_brazo_i_p2">
-                                            <label for="brazo_i_p2">B</label>
-                                            &nbsp;
-                                            <input type="number" min="1" step=".01" class="form-control" name="brazo_i_p2" id="brazo_i_p2" required><br>
-                                        </div>
-                                        <div class="form-group col-sm-1" id="input_brazo_i_p3">
-                                            <label for="brazo_i_p3">C</label>
-                                            &nbsp;
-                                            <input type="number" min="1" step=".01" class="form-control" name="brazo_i_p3" id="brazo_i_p3" required><br>
-                                        </div>
-                                        <div class="form-group col-sm-1" id="input_brazo_i_p4">
-                                            <label for="brazo_i_p4">D</label>
-                                            &nbsp;
-                                            <input type="number" min="1" step=".01" class="form-control" name="brazo_i_p4" id="brazo_i_p4" required><br>
-                                        </div>
-                                        <div class="form-group col-sm-1 ancho" id="input_brazo_i_p5">
-                                            <label for="brazo_i_p5">E</label>
-                                            &nbsp;
-                                            <input type="number" min="1" step=".01" class="form-control" name="brazo_i_p5" id="brazo_i_p5" required><br>
-                                        </div>
-
-                                        <!-- BRAZO DERECHO -->
-                                        <div class="form-group col-sm-1" id="input_brazo_d_p1">
-                                            <label for="brazo_d_p1">A</label>
-                                            &nbsp;
-                                            <input type="number" min="1" step=".01" class="form-control" name="brazo_d_p1" id="brazo_d_p1" required><br>
-                                        </div>
-                                        <div class="form-group col-sm-1" id="input_brazo_d_p2">
-                                            <label for="brazo_d_p2">B</label>
-                                            &nbsp;
-                                            <input type="number" min="1" step=".01" class="form-control" name="brazo_d_p2" id="brazo_d_p2" required><br>
-                                        </div>
-                                        <div class="form-group col-sm-1" id="input_brazo_d_p3">
-                                            <label for="brazo_d_p3">C</label>
-                                            &nbsp;
-                                            <input type="number" min="1" step=".01" class="form-control" name="brazo_d_p3" id="brazo_d_p3" required><br>
-                                        </div>
-                                        <div class="form-group col-sm-1" id="input_brazo_d_p4">
-                                            <label for="brazo_d_p4">D</label>
-                                            &nbsp;
-                                            <input type="number" min="1" step=".01" class="form-control" name="brazo_d_p4" id="brazo_d_p4" required><br>
-                                        </div>
-                                        <div class="form-group col-sm-1" id="input_brazo_d_p5">
-                                            <label for="brazo_d_p5">E</label>
-                                            &nbsp;
-                                            <input type="number" min="1" step=".01" class="form-control" name="brazo_d_p5" id="brazo_d_p5" required><br>
-                                        </div>
-                                    </div><!-- Fin fila 3 -->
-                                    <div class="text-center">
-                                        <img id="imagen-pierna" class="img-fluid" src="img/pierna/f.png" class="logo" alt="logo">
-                                    </div><!-- Fin fila 4 -->
-                                    <div class="titulos color2 mt-3">
-                                            <label id="titulo-pierna-i">LADO IZQUIERDO</label>
-                                            <label id="titulo-pierna-d">LADO DERECHO</label>
-                                    </div>
-                                    <div class="titulos">
-                                            <input type="radio" id="miembro_sano_pierna_i" name="miembro_sano_pierna" checked>
-                                            <label class="mr-4" for="miembro_sano_pierna_i">Miembro sano</label>
-
-                                            <input class="margen-radio" type="radio" id="miembro_sano_pierna_d" name="miembro_sano_pierna" >
-                                            <label class="mr-4" for="miembro_sano_pierna_d">Miembro sano</label>
-                                    </div>
-                                    <div class="form-row espaciado-empty">
-                                        <!-- PIERNA IZQUIERDA -->
-                                        <div class="form-group margen-inferior col-sm-1" id="input_pierna_i_p1">
-                                            <label for="pierna_i_p1">A</label>
-                                            &nbsp;
-                                            <input type="number" min="1" step=".01" class="form-control" name="pierna_i_p1" id="pierna_i_p1" required><br>
-                                        </div>
-                                        <div class="form-group margen-inferior col-sm-1" id="input_pierna_i_p2">
-                                            <label for="pierna_i_p2">B</label>
-                                            &nbsp;
-                                            <input type="number" min="1" step=".01" class="form-control" name="pierna_i_p2" id="pierna_i_p2" required><br>
-                                        </div>
-                                        <div class="form-group margen-inferior col-sm-1" id="input_pierna_i_p3">
-                                            <label for="pierna_i_p3">C</label>
-                                            &nbsp;
-                                            <input type="number" min="1" step=".01" class="form-control" name="pierna_i_p3" id="pierna_i_p3" required><br>
-                                        </div>
-                                       
-
-                                        <!-- PIERNA DERECHA -->
-                                         <div class="form-group margen-inferior col-sm-1" id="input_pierna_d_p1">
-                                            <label for="pierna_d_p1">A</label>
-                                            &nbsp;
-                                            <input type="number" min="1" step=".01" class="form-control" name="pierna_d_p1" id="pierna_d_p1" required><br>
-                                        </div>
-                                        <div class="form-group margen-inferior col-sm-1" id="input_pierna_d_p2">
-                                            <label for="pierna_d_p2">B</label>
-                                            &nbsp;
-                                            <input type="number" min="1" step=".01" class="form-control" name="pierna_d_p2" id="pierna_d_p2" required><br>
-                                        </div>
-                                        <div class="form-group margen-inferior col-sm-1" id="input_pierna_d_p3">
-                                            <label for="pierna_d_p3">C</label>
-                                            &nbsp;
-                                            <input type="number" min="1" step=".01" class="form-control" name="pierna_d_p3" id="pierna_d_p3" required><br>
-                                        </div>
+                                        <div class="form-row espaciado-empty">
+                                            <!-- PIERNA IZQUIERDA -->
+                                            <div class="form-group margen-inferior col-sm-1" id="input_pierna_i_p1">
+                                                <label for="pierna_i_p1">A</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_i_p1" id="pierna_i_p1" required><br>
+                                            </div>
+                                            <div class="form-group margen-inferior col-sm-1" id="input_pierna_i_p2">
+                                                <label for="pierna_i_p2">B</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_i_p2" id="pierna_i_p2" required><br>
+                                            </div>
+                                            <div class="form-group margen-inferior col-sm-1" id="input_pierna_i_p3">
+                                                <label for="pierna_i_p3">C</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_i_p3" id="pierna_i_p3" required><br>
+                                            </div>
                                         
 
-                                    </div><!-- Fin fila 5 -->
-                                    <div class="form-row espaciado-empty">
-                                        <!-- PIERNA IZQUIERDA -->
-                                        <div class="form-group col-sm-1" id="input_pierna_i_p4">
-                                            <label for="pierna_i_p4">D</label>
-                                            &nbsp;
-                                            <input type="number" min="1" step=".01" class="form-control" name="pierna_i_p4" id="pierna_i_p4" required><br>
-                                        </div>
-                                        <div class="form-group col-sm-1" id="input_pierna_i_p5">
-                                            <label for="pierna_i_p5">E</label>
-                                            &nbsp;
-                                            <input type="number" min="1" step=".01" class="form-control" name="pierna_i_p5" id="pierna_i_p5" required><br>
-                                        </div>
-                                        <div class="form-group col-sm-1" id="input_pierna_i_p6">
-                                            <label for="pierna_i_p6">F</label>
-                                            &nbsp;
-                                            <input type="number" min="1" step=".01" class="form-control" name="pierna_i_p6" id="pierna_i_p6" required><br>
-                                        </div>
-                                        <!-- PIERNA DERECHA -->
-                                        <div class="form-group col-sm-1" id="input_pierna_d_p6">
-                                            <label for="pierna_d_p6">F</label>
-                                            &nbsp;
-                                            <input type="number" min="1" step=".01" class="form-control" name="pierna_d_p6" id="pierna_d_p6" required><br>
-                                        </div>
-                                        <div class="form-group col-sm-1" id="input_pierna_d_p4">
-                                            <label for="pierna_d_p4">D</label>
-                                            &nbsp;
-                                            <input type="number" min="1" step=".01" class="form-control" name="pierna_d_p4" id="pierna_d_p4" required><br>
-                                        </div>
-                                        <div class="form-group col-sm-1" id="input_pierna_d_p5">
-                                            <label for="pierna_d_p5">E</label>
-                                            &nbsp;
-                                            <input type="number" min="1" step=".01" class="form-control" name="pierna_d_p5" id="pierna_d_p5" required><br>
-                                        </div>
-                                    </div><!-- Fin fila 6 -->
+                                            <!-- PIERNA DERECHA -->
+                                            <div class="form-group margen-inferior col-sm-1" id="input_pierna_d_p1">
+                                                <label for="pierna_d_p1">A</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_d_p1" id="pierna_d_p1" required><br>
+                                            </div>
+                                            <div class="form-group margen-inferior col-sm-1" id="input_pierna_d_p2">
+                                                <label for="pierna_d_p2">B</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_d_p2" id="pierna_d_p2" required><br>
+                                            </div>
+                                            <div class="form-group margen-inferior col-sm-1" id="input_pierna_d_p3">
+                                                <label for="pierna_d_p3">C</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_d_p3" id="pierna_d_p3" required><br>
+                                            </div>
+                                            
+
+                                        </div><!-- Fin fila 5 -->
+                                        <div class="form-row espaciado-empty">
+                                            <!-- PIERNA IZQUIERDA -->
+                                            <div class="form-group col-sm-1" id="input_pierna_i_p4">
+                                                <label for="pierna_i_p4">D</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_i_p4" id="pierna_i_p4" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1" id="input_pierna_i_p5">
+                                                <label for="pierna_i_p5">E</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_i_p5" id="pierna_i_p5" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1" id="input_pierna_i_p6">
+                                                <label for="pierna_i_p6">F</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_i_p6" id="pierna_i_p6" required><br>
+                                            </div>
+                                            <!-- PIERNA DERECHA -->
+                                             <div class="form-group col-sm-1" id="input_pierna_d_p4">
+                                                <label for="pierna_d_p4">D</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_d_p4" id="pierna_d_p4" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1" id="input_pierna_d_p5">
+                                                <label for="pierna_d_p5">E</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_d_p5" id="pierna_d_p5" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1" id="input_pierna_d_p6">
+                                                <label for="pierna_d_p6">F</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_d_p6" id="pierna_d_p6" required><br>
+                                            </div>
+                                           
+                                            
+                                        </div><!-- Fin fila 6 -->
+                                    </div>
+                                    <!-- ===============================================       fin pierna      =======================================-->
                                     <div class="columna-btn">
-                                        <button class="btn estilo-boton-submit" type="submit" id="btn-submit-9" value='<?php echo($_SESSION["id_especialista"])?>'>Guardar datos</button>
+                                        <button class="btn estilo-boton-submit" type="button" id="btn-submit-9"  value='<?php echo($_SESSION["id_especialista"])?>'>Guardar datos</button>
                                     </div>
                                 </form>
                             </div> <!-- fin Medición inicial -->
