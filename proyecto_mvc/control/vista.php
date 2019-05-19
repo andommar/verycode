@@ -345,6 +345,19 @@ if(isset($_POST["opcion"]))
 
         break;
 
+        case "datos_especialista":
+
+            $id_especialista = $_POST["id_especialista"];
+            $error=$c->datos_especialista($id_especialista);
+            if($error==-1)
+            {
+                echo "Error carga datos especialista";
+            }
+            else
+                echo json_encode($error);
+
+        break;
+
 
     }
 }

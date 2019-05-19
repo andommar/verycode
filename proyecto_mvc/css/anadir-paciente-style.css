@@ -262,3 +262,7 @@
 .tamano-letra{
     font-size: 14px;
 }
+
+#apartado-datos-especialista{
+    display: none;
+}

@@ -16,6 +16,27 @@ class TUsuario{
 		
   }
 
+	public function datos_especialista($id_especialista)
+	{
+
+		$res=true;
+		$abd = new TAccesbd ();
+  
+		if($abd->conectado())
+		{ 	
+		
+			$sql = "SELECT correo, pass, pass2, nombre, apellido1, apellido2, tipo FROM especialista where id_especialista=$id_especialista ";
+			$stmt = $abd->listado_asociativo($sql);
+		}
+		if( $stmt != false ) {
+
+			$res=-1;
+
+		}
+
+		return $stmt;
+	}
+
 
 	public function obtener_id_especialista($correo, &$id_especialista){
 

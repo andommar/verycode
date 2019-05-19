@@ -7,6 +7,12 @@ include_once("../modelo/TGrafica.php");
 
 class TControl{
 
+    public function datos_especialista($id_especialista){
+        $usr = new TUsuario();
+        $resultado = $usr->datos_especialista($id_especialista);
+        return ($resultado);
+    }
+
     public function listado_usuarios($id_especialista){
         $usr = new TUsuario();
         $resultado = $usr->listado_usuarios($id_especialista);

@@ -36,6 +36,7 @@
         <!-- Hojas de estilo -->
         <link rel="stylesheet" type="text/css" href="css/global-style.css">
         <link rel="stylesheet" type="text/css" href="css/pagina-principal-admin-style.css">
+        <link rel="stylesheet" type="text/css" href="css/anadir-paciente-style.css">
         <!-- Gráficas -->
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/grafica1.css">
@@ -237,7 +238,7 @@
                                         <div class="form-group ancho" id="input_nombre">
                                             <label for="nombre">Nombre</label>
                                             &nbsp;
-                                            <input type="text" class="form-control" id="nombre" name="nombre" required maxlength="30"><br>
+                                            <input type="text" class="form-control" id="nombre" name="nombre" required maxlength="30" value=><br>
                                         </div>
                                     
                                         &nbsp;&nbsp;
@@ -281,9 +282,9 @@
                                         &nbsp;&nbsp;
                                         
                                         <div class="form-group ancho" id="input_pass2">
-                                            <label for="pass2">Confirmar contraseña</label>
+                                            <label for="pass2">Tipo</label>
                                             &nbsp;
-                                            <input type="password" class="form-control" name="pass2" id="pass2" required maxlength="50"><br>
+                                            <input type="text" class="form-control" name="tipo" id="tipo" required maxlength="50"><br>
                                         </div>
                                     </div>  <!--Fin fila 2-->
                                     <div class="columna-btn">
@@ -332,6 +333,7 @@
                     $( "#btn-gestionar-especialistas" ).css("background-color","rgb(109, 109, 109)"); 
                     $( "#apartado-pacientes" ).css("display","block");
                     $( "#btn-gestionar-pacientes" ).css("background-color","#3da3bc");
+                    $( "#apartado-datos-especialista" ).css("display","none");
                     
                 });
 
@@ -356,9 +358,9 @@
                             console.log( "La solicitud de acceso se ha completado correctamente." );
                         }
                         var datos = $.parseJSON(data);
-                        console.log(datos);
-                        console.log(datos[0]); //tabla especialistas
-                        console.log(datos[1]); //tabla pacientes
+                        // console.log(datos);
+                        // console.log(datos[0]); //tabla especialistas
+                        // console.log(datos[1]); //tabla pacientes
                         var filas_especialistas='';
                         var filas_pacientes='';
                         datos[0].forEach(function(element) {
@@ -464,10 +466,77 @@
 
             function editarEspecialista(id_especialista){
 
-                $( "#fisios-table" ).css("display","none");
-                $( "#apartado-botones-admin" ).css("display","none");
+            event.preventDefault();
+            $( "#apartado-especialistas" ).css("display","none");
+            $( "#apartado-pacientes" ).css("display","none");
+            $( "#apartado-datos-especialista" ).css("display","block");
+            $( "#apartado-botones-admin" ).css("display","none");
+            var opcion= "datos_especialista";
+
+            $.ajax({
+                    type:'POST',
+                    url: 'control/vista.php',
+                    data: {id_especialista: id_especialista, opcion:opcion},
+                    })
+                    .done(function( msg ) {
+                        var datos = $.parseJSON(msg);
+                        console.log(datos[0].nombre);
+                        $( "#nombre" ).val(datos[0].nombre);
+                        $( "#apellido1" ).val(datos[0].apellido1);
+                        $( "#apellido2" ).val(datos[0].apellido2);
+                        $( "#pass" ).val(datos[0].pass);
+                        $( "#pass2" ).val(datos[0].pass2);
+                        $( "#correo" ).val(datos[0].correo);
+                        $( "#tipo" ).val(datos[0].tipo);
+
+
+                    })
+                    .fail(function( jqXHR, textStatus, errorThrown ) {
+                        if ( console && console.log ) {
+                            console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                            console.log("ajax fail");
+                        }
+                    });
 
             };
+
+            function editarEspecialista(id_especialista){
+
+            event.preventDefault();
+            $( "#apartado-especialistas" ).css("display","none");
+            $( "#apartado-pacientes" ).css("display","none");
+            $( "#apartado-datos-especialista" ).css("display","block");
+            $( "#apartado-botones-admin" ).css("display","none");
+            var opcion= "datos_especialista";
+
+            $.ajax({
+                    type:'POST',
+                    url: 'control/vista.php',
+                    data: {id_especialista: id_especialista, opcion:opcion},
+                    })
+                    .done(function( msg ) {
+                        var datos = $.parseJSON(msg);
+                        console.log(datos[0].nombre);
+                        $( "#nombre" ).val(datos[0].nombre);
+                        $( "#apellido1" ).val(datos[0].apellido1);
+                        $( "#apellido2" ).val(datos[0].apellido2);
+                        $( "#pass" ).val(datos[0].pass);
+                        $( "#pass2" ).val(datos[0].pass2);
+                        $( "#correo" ).val(datos[0].correo);
+                        $( "#tipo" ).val(datos[0].tipo);
+
+
+                    })
+                    .fail(function( jqXHR, textStatus, errorThrown ) {
+                        if ( console && console.log ) {
+                            console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                            console.log("ajax fail");
+                        }
+                    });
+
+            };
+
+
 
         
         </script>
