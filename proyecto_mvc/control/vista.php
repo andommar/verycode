@@ -373,7 +373,9 @@ if(isset($_GET["opcion"]))
             $id_user=$_GET["id_usuario"];
 
             $error=$c->mostrar_graficas($id_user);
-            echo json_encode ($error);
+            $error2=$c->mostrar_fechas_graficas($id_user);
+            
+            echo json_encode(array($error,$error2));
 
     break;
     }

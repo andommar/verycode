@@ -131,7 +131,7 @@ class TAccesbd
 				}
 				sqlsrv_free_stmt($stmt);	
 
-				return json_encode($data);
+				return ($data);
 			}
 				//$data2= date_format(($data[0]['fecha']), 'Y-m-d');
 		
@@ -162,7 +162,7 @@ class TAccesbd
 				
 				// $datos = array($data, $data2);
 
-				return json_encode($data);
+				return ($data);
 			}
 		}
         

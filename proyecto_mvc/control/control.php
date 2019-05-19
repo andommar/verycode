@@ -128,6 +128,12 @@ class TControl{
         $resultat=$graf->mostrar_graficas($id_user);
         return $resultat;
     }
+    public function mostrar_fechas_graficas($id_user)
+    {
+        $graf = new TGrafica();
+        $resultat=$graf->mostrar_fechas_graficas($id_user);
+        return $resultat;
+    }
 
 
 }
