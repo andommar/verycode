@@ -343,7 +343,7 @@ if(isset($_POST["opcion"]))
 
         break;
 
-
+//HOLA
 
     }
 }
