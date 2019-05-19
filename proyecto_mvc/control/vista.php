@@ -370,10 +370,10 @@ if(isset($_GET["opcion"]))
         break;
 
         case "mostrar_graficas":
-        $id_user=$_GET["id_usuario"];
+            $id_user=$_GET["id_usuario"];
 
-        $error=$c->mostrar_graficas($id_user);
-        echo $error;
+            $error=$c->mostrar_graficas($id_user);
+            echo json_encode ($error);
 
     break;
     }

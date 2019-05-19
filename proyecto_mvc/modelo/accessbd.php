@@ -113,7 +113,30 @@ class TAccesbd
 				
 				return($datos);	
 		}
+		public function mostrar_fechas_graficas($sql){
+			$data=false;
+			if(isset($sql) && $sql !="" && isset($this->conn))
+			{
+				$stmt = sqlsrv_query( $this->conn, $sql);
+				if( $stmt === false ) {
+						die( print_r( sqlsrv_errors(), true));
+				}
 		
+				$data = array();
+			
+				while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+						
+						array_push($data,date_format($row['fecha'],'Y-m-d'));
+						
+				}
+				sqlsrv_free_stmt($stmt);	
+
+				return json_encode($data);
+			}
+				//$data2= date_format(($data[0]['fecha']), 'Y-m-d');
+		
+				
+		}
 		public function mostrar_graficas($sql)
 		{
 			$data=false;
@@ -125,12 +148,20 @@ class TAccesbd
 				}
 		
 				$data = array();
+			
 				while( $row = sqlsrv_fetch_array( $stmt, SQLSRV_FETCH_ASSOC) ) {
+					
+						
 						array_push($data,(array) $row);
+						
+						
 				}
+		//$data2= date_format(($data[0]['fecha']), 'Y-m-d');
 		
-		
-				sqlsrv_free_stmt($stmt);
+				sqlsrv_free_stmt($stmt);	
+				
+				// $datos = array($data, $data2);
+
 				return json_encode($data);
 			}
 		}
