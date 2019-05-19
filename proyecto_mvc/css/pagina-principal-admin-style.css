@@ -1,0 +1,71 @@
+.rojo{
+    color: rgb(172, 23, 23);
+}
+.azul{
+    color: rgb(42, 143, 157);
+}
+#apartado-especialistas, #apartado-pacientes{
+    background: #fff;
+    margin-top: 7px;
+    padding: 20px;
+    padding-bottom: 2px;
+    border-radius: 2px;
+    border-radius: 0;
+    border: 0;
+    box-shadow: 0 0 0 1px #dce3ec, 0 8px 16px 0 #dce3ec;
+    background: #fff;
+    margin-bottom: 33px;
+}
+#apartado-pacientes{
+    display: none;
+}
+#apartado-especialistas h3, #apartado-pacientes h3{
+    color: #38aece;
+    font-size: 19px;
+}
+#fisios-table, #pacientes-table{
+    text-align: center;
+} 
+#botones-admin{
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+#botones-admin button{
+    
+    color: white;
+}
+#btn-gestionar-especialistas:hover,#btn-gestionar-pacientes:hover{
+    background-color: #3899b0;
+}
+
+#btn-gestionar-especialistas{
+    background-color: #3da3bc;
+    margin-top: 1em;
+    margin-bottom: 0.4em;
+}
+#btn-gestionar-pacientes{
+    background-color: rgb(109, 109, 109);
+    margin-top: 1em;
+    margin-bottom: 0.4em;
+}
+#fisios-table thead tr th, #pacientes-table thead tr th{
+    color: #3e5569;
+    border: 0px;
+}
+#fisios-table tbody tr td, #pacientes-table tbody tr td{
+    vertical-align: middle;
+    color: #3e5569;
+    border: 1px solid #dee2e6;
+}
+#fisios-table tbody tr:nth-child(2n), #pacientes-table tbody tr:nth-child(2n){
+    background: #fafafa;
+}
+#fisios-table tbody tr:hover, #pacientes-table tbody tr:hover  {
+    background: #31313113;
+    transition: all 0.3s;
+}
+#apartado-botones-admin {
+    /* margin: 1.3em; */
+    padding: 0;
+}
