@@ -20,7 +20,7 @@ $(document).ready(function(){
             var cosas = datos[0];
             var fechas = datos[1];
 
-            console.log("Array cosas"+cosas);
+            console.log("Array cosas"+cosas[0]["p1"]);
             console.log("Array fechas"+fechas);
 
 
@@ -44,11 +44,11 @@ $(document).ready(function(){
             {
                 if(cosas[0][i].lado=="izquierdo")
                 {
-                    mediciones.izquierdo.push(cosas[0][i].p1);
-                    mediciones.izquierdo.push(cosas[0][i].p2);
-                    mediciones.izquierdo.push(cosas[0][i].p3);
-                    mediciones.izquierdo.push(cosas[0][i].p4);
-                    mediciones.izquierdo.push(cosas[0][i].p5);
+                    mediciones.izquierdo.push(cosas[i].p1);
+                    mediciones.izquierdo.push(cosas[i].p2);
+                    mediciones.izquierdo.push(cosas[i].p3);
+                    mediciones.izquierdo.push(cosas[i].p4);
+                    mediciones.izquierdo.push(cosas[i].p5);
                     // console.log("holap");
                     // console.log(datos[i].p1);
                 }
