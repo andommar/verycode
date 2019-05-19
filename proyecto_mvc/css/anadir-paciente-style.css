@@ -1,0 +1,268 @@
+
+.margen-inferior{
+    margin-bottom: 0 !important;
+}
+#input_pierna_i_p3, #input_pierna_i_p6{
+    margin-right: 12em;
+}
+#titulo-brazo-d{
+    margin-left: 36em;
+    margin-top: 3em;
+}
+#titulo-pierna-d{
+    margin-left: 36em;
+    margin-top: 4em;
+}
+.margen-radio{
+    margin-left: 33.4em;
+}
+#color-azulado{
+    color: rgb(34, 75, 185);
+}
+#color-normal{
+    color: rgb(226, 150, 150);
+}
+#color-amarillo{
+    color: rgb(250, 221, 60);
+}
+#color-rojo{
+    color: rgb(149, 28, 28);
+}
+#color-negro{
+    color: black;
+}
+.tamano-emoji{
+    width: 6%;
+    height: 6%;
+}
+.margen-emoji{
+    margin-right: 2em;
+}
+#apartado-historial, #apartado-cirugias, #apartado-medicamentos,#apartado-infecciones, #apartado-habitos,#apartado-hist-trat-linf, #apartado-valoracion-linf, #apartado-medicion-inicial{
+    /* display: none;  */
+}
+#apartado-formulario, #apartado-usuario, #apartado-historial, #apartado-cirugias, #apartado-medicamentos, #apartado-infecciones, #apartado-habitos,#apartado-hist-trat-linf, #apartado-valoracion-linf, #apartado-medicion-inicial{
+    background: #fff;
+    margin-top: 20px;
+    padding: 20px;
+    padding-bottom: 2px;
+    border-radius: 2px;
+    border-radius: 0;
+    border: 0;
+    box-shadow: 0 0 0 1px #dce3ec, 0 8px 16px 0 #dce3ec;
+    background: #fff;
+    margin-top: 20px;
+    margin-bottom: 33px;
+}
+#apartado-medicamentos #input_patologias{
+    width: 62%;
+}
+.mouse-pointer{
+    cursor: pointer;
+}
+
+.titulos{
+    font-weight: 600;
+    font-size: 10px;
+    margin-left: 2.7em;
+    margin-bottom: 1em;
+}
+#apartado-formulario h3, #apartado-usuario h3, #apartado-historial h3, #apartado-cirugias h3, #apartado-medicamentos h3, #apartado-infecciones h3, #apartado-habitos h3, #apartado-hist-trat-linf h3, #apartado-valoracion-linf h3, #apartado-medicion-inicial h3{
+    font-size: 19px;
+    font-weight: 600;
+}
+.espaciado-otro{
+    margin-left: 1.4em;
+    margin-right: 3em;
+    margin-bottom: 1em;
+}
+.espaciado-empty{
+    margin-left: 1.8em;
+}
+.ancho{
+    width: 28%;
+    margin-right: 2em;
+}
+
+.margen-form{
+    margin-left: 0.4em;
+    margin-top: 2em;
+}
+.margen-filas{
+    margin-left: 2em;
+}
+
+#imagen-brazo {
+    width: 31%;
+}
+
+#imagen-pierna {
+    width: 17%;
+}
+
+.margen{
+    margin-right: 4px;
+}
+#col-botones{
+    
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 3px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.estilo-botones{
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(109, 109, 109);
+}
+.estilo-botones:hover{
+    color: white;
+}
+
+#btn-datos-personales{
+    background-color:#3da3bc;
+}
+.color1{
+    color: #3da3bc;
+}
+.color2{
+    color:#6610f2;
+}
+.color3{
+    color: #e83e8c;
+}
+.color4{
+    color: #dc3545;
+}
+.color5{
+    color:#fd7e14;
+}
+.color6{
+    color: #ffc107;
+}
+.color7{
+    color:#28a745;
+}
+.color8{
+    color: #3da3bc;
+}
+
+
+
+
+#apartado-usuario h3{
+    color: #3da3bc;
+}
+#apartado-historial h3, #apartado-medicion-inicial h3{
+    color:#6610f2;
+}
+#apartado-cirugias h3{
+    color: #e83e8c;
+}
+#apartado-medicamentos h3{
+    color: #dc3545;
+}
+#apartado-infecciones h3{
+    color:#fd7e14;
+}
+#apartado-habitos h3{
+    color: #ffc107;
+}
+#apartado-hist-trat-linf h3{
+    color:#28a745;
+}
+#apartado-valoracion-linf h3{
+    color:#3da3bc; 
+}
+
+/* #btn-medicamentos{
+    background-color:#dc3545;
+}
+#btn-infecciones{
+    background-color:#fd7e14;
+} */
+/* #btn-habitos{
+    background-color:#ffc107;
+}
+#btn-hist-trat-linf{
+    background-color:#28a745;
+
+}
+#btn-valoracion-linfedema{
+    background-color:#20c997;  
+}
+#btn-medicion{
+    background-color:#007bff;
+    
+} */
+
+
+.estilo-boton-submit{
+    color: white;
+}
+.estilo-boton-submit:hover{
+    color: white;
+}
+#btn-submit-1{
+    background-color:#3da3bc;
+}
+#btn-submit-1:hover{
+    background-color:#3897af;
+}
+#btn-submit-2, #btn-submit-9{
+    background-color:#6610f2;
+}
+#btn-submit-2:hover, #btn-submit-9:hover{
+    background-color:#6211e4;
+}
+#btn-submit-3, #btn-anadir-1{
+    background-color:#e83e8c;
+}
+#btn-submit-3:hover, #btn-anadir-1:hover{
+    background-color:#ea388a;
+}
+#btn-submit-4, #btn-anadir-2{
+    background-color:#dc3545;
+}
+#btn-submit-4:hover, #btn-anadir-2:hover{
+    background-color:#d32d3e;
+}
+#btn-submit-5, #btn-anadir-3{
+    background-color:#fd7e14;
+}
+#btn-submit-5:hover, #btn-anadir-3:hover{
+    background-color:#ee7614;
+}
+#btn-submit-6{
+    background-color:#ffc107;
+}
+#btn-submit-6:hover{
+    background-color:#f5b907;
+}
+#btn-submit-7{
+    background-color:#28a745;
+}
+#btn-submit-7:hover{
+    background-color:#24a041;
+}
+
+#btn-submit-8, #btn-anadir-4{
+    background-color:#3da3bc;
+}
+#btn-submit-8:hover, #btn-anadir-4:hover{
+    background-color:#3897af;
+}
+/* background-color:#fd7e14; */
+.columna-btn{
+    text-align: right;
+    margin: 0em 6em 2em 0em;
+}
+.tamano-letra{
+    font-size: 14px;
+}
+
+#apartado-datos-especialista{
+    display: none;
+}

@@ -25,7 +25,7 @@ if( $conn ) {
 
     */
 
-    $sql = "insert into especialista values (?,?,?,?,?,?,?)";
+    $sql = "insert into especialista values (?,?,?,?,?,?)";
     $params = array($correo,$pass,$pass2,$nombre,$apellido,$tipo);
 
     $stmt = sqlsrv_query( $conn, $sql, $params);
