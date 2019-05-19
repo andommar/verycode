@@ -36,13 +36,13 @@ $(document).ready(function(){
             };
 
 
-            var len = datos.length;
+            var len = cosas.length;
             // console.log(data.fecha);
             // console.log(datos);
 
             for(var i = 0; i<len; i++)
             {
-                if(cosas[0][i].lado=="izquierdo")
+                if(cosas[i].lado=="izquierdo")
                 {
                     mediciones.izquierdo.push(cosas[i].p1);
                     mediciones.izquierdo.push(cosas[i].p2);
@@ -162,6 +162,32 @@ $(document).ready(function(){
 
               //===================== SEGUNDA GRÁFICA
 
+              var evolucion =
+              {
+                  p1: [],
+                  p2: [],
+                  p3: [],
+                  p4: [],
+                  p5: []
+              };
+  
+  
+              //var len = cosas.length;
+              // console.log(data.fecha);
+              // console.log(datos);
+  
+              for(var i = 0; i<len; i++)
+              {
+                evolucion.p1.push(cosas[i].p1);
+                evolucion.p2.push(cosas[i].p2);
+                evolucion.p3.push(cosas[i].p3);
+                evolucion.p4.push(cosas[i].p4);
+                evolucion.p5.push(cosas[i].p5);
+              }
+
+
+
+
               var grafica_ultimas=document.getElementById("lineChart_ultimas10");
 
               var datos_ultimas ={
@@ -169,7 +195,7 @@ $(document).ready(function(){
                 datasets:[
                     {
                         label: "p1",
-                        data: puntos.p1,
+                        data: evolucion.p1,
                         borderColor: 'blue',
                         fill:false,
                         lineTension:0,
@@ -178,8 +204,35 @@ $(document).ready(function(){
                     },
                     {
                         label: "p2",
-                        data: puntos.p2,
+                        data: evolucion.p2,
                         borderColor: 'red',
+                        fill:false,
+                        lineTension:0,
+                        pointRadius: 5,
+                        type: 'line'
+                    },
+                    {
+                        label: "p3",
+                        data: evolucion.p3,
+                        borderColor: 'green',
+                        fill:false,
+                        lineTension:0,
+                        pointRadius: 5,
+                        type: 'line'
+                    },
+                    {
+                        label: "p4",
+                        data: evolucion.p4,
+                        borderColor: 'purple',
+                        fill:false,
+                        lineTension:0,
+                        pointRadius: 5,
+                        type: 'line'
+                    },
+                    {
+                        label: "p5",
+                        data: evolucion.p5,
+                        borderColor: '#e8c3b9',
                         fill:false,
                         lineTension:0,
                         pointRadius: 5,

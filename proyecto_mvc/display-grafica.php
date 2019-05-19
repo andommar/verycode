@@ -175,8 +175,10 @@
                             </div>
                             <div class="row">
                                 <div>
-                                    <div width=90%>
-                                        <canvas id ="lineChart_ultimas10" height="200" width="400"></canvas>
+                                    <div class="col-md-12">
+                                        <div width=90%>
+                                            <canvas id ="lineChart_ultimas10" height="200" width="400"></canvas>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
