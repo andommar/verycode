@@ -248,7 +248,7 @@ if(isset($_POST["opcion"]))
 
         break;
 
-        case "registro_tratamiento_linfedema"://**
+        case "registro_tratamiento_linfedema":
 
             $id_user=$_POST["id_user"];
             $fecha_ult_tratamiento = $_POST["fecha_ult_tratamiento"];
@@ -279,10 +279,10 @@ if(isset($_POST["opcion"]))
 
         break;
 
-        case "registro_valoracion_linfedema":
+        case "registro_valoracion_linfedema"://**
 
             $id_user=$_POST["id_user"];
-            $fecha_val_linfedema = $_POST["fecha_val_linfedema"];
+            $fecha = $_POST["fecha"];
             $localizacion = $_POST["localizacion"];
             $consistencia_edema = $_POST["consistencia_edema"];
             $color = $_POST["color"];
@@ -291,29 +291,31 @@ if(isset($_POST["opcion"]))
             $fovea = $_POST["fovea"];
             $pesadez = $_POST["pesadez"];
             $rubor = $_POST["rubor"];
-            $foto_pierna_ant_d = $_POST["foto_pierna_ant_d"];
-            $foto_pierna_post_d = $_POST["foto_pierna_post_d"];
-            $foto_pierna_lat_d1 = $_POST["foto_pierna_lat_d1"];
-            $foto_pierna_lat_d2 = $_POST["foto_pierna_lat_d2"];
-            $foto_pierna_ant_i = $_POST["foto_pierna_ant_i"];
-            $foto_pierna_post_i = $_POST["foto_pierna_post_i"];
-            $foto_pierna_lat_i1 = $_POST["foto_pierna_lat_i1"];
-            $foto_pierna_lat_i2 = $_POST["foto_pierna_lat_i2"];
-            $foto_brazo_cruz_d = $_POST["foto_brazo_cruz_d"];
-            $foto_brazo_frontal_d = $_POST["foto_brazo_frontal_d"];
-            $foto_brazo_cruz_i = $_POST["foto_brazo_cruz_i"];
-            $foto_brazo_frontal_i = $_POST["foto_brazo_frontal_i"];
+            // $foto_pierna_ant_d = $_POST["foto_pierna_ant_d"];
+            // $foto_pierna_post_d = $_POST["foto_pierna_post_d"];
+            // $foto_pierna_lat_d1 = $_POST["foto_pierna_lat_d1"];
+            // $foto_pierna_lat_d2 = $_POST["foto_pierna_lat_d2"];
+            // $foto_pierna_ant_i = $_POST["foto_pierna_ant_i"];
+            // $foto_pierna_post_i = $_POST["foto_pierna_post_i"];
+            // $foto_pierna_lat_i1 = $_POST["foto_pierna_lat_i1"];
+            // $foto_pierna_lat_i2 = $_POST["foto_pierna_lat_i2"];
+            // $foto_brazo_cruz_d = $_POST["foto_brazo_cruz_d"];
+            // $foto_brazo_frontal_d = $_POST["foto_brazo_frontal_d"];
+            // $foto_brazo_cruz_i = $_POST["foto_brazo_cruz_i"];
+            // $foto_brazo_frontal_i = $_POST["foto_brazo_frontal_i"];
 
             
-            $error=$c->registro_tratamiento_linfedema($id_user,$fecha_val_linfedema,$localizacion,$consistencia_edema,$color,
-            $valoracion_piel,$stemmer,$fovea,$pesadez,$rubor,$foto_pierna_ant_d,$foto_pierna_post_d,$foto_pierna_lat_d1,$foto_pierna_lat_d2,$foto_pierna_ant_i,$foto_pierna_post_i,
-            $foto_pierna_lat_i1,$foto_pierna_lat_i2,$foto_brazo_cruz_d,$foto_brazo_frontal_d, $foto_brazo_cruz_i,$foto_brazo_frontal_i);
+            $error=$c->registro_valoracion_linfedema($id_user,$fecha,$localizacion,$consistencia_edema,$color,
+            $valoracion_piel,$stemmer,$fovea,$pesadez,$rubor);
             if($error==0)
             {
-                echo "Valoración linfedema registrado";
+                echo "true";
+            }
+            else if($error==-2){
+                echo "valoracion";
             }
             else
-                echo "Fallo registro";
+                echo "false";
 
         break;
 
@@ -343,7 +345,6 @@ if(isset($_POST["opcion"]))
 
         break;
 
-//HOLA
 
     }
 }

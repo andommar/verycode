@@ -151,9 +151,7 @@ class TUsuario{
 				}
 				else{//No existe, podemos hacer el insert
 
-						 $sql="insert into historial_clinico values ($id_user,'$doc_identificacion','$nacionalidad','$raza','$fecha_nacimiento','$sexo',$altura, $peso,'$tipo_congenito','$subtipo_congenito', 
-						'$fecha_debut','$familiar_linfedema','$motivo_secundario','$ant_vasculares','$ant_infeccion_venosa','$ant_sobrepeso','$ant_lipedema','$ant_permeabilidad_cap','$ant_ansiedad',
-						'$ant_diabetes','$ant_triquiasis','$ant_sindromes','$profesion',$grado_resp_profesion,$grado_stress_profesion)";
+						 $sql="insert into historial_clinico values ($id_user,'$doc_identificacion','$nacionalidad','$raza','$fecha_nacimiento','$sexo',$altura, $peso,'$tipo_congenito','$subtipo_congenito','$fecha_debut','$familiar_linfedema','$motivo_secundario','$ant_vasculares','$ant_infeccion_venosa','$ant_sobrepeso','$ant_lipedema','$ant_permeabilidad_cap','$ant_ansiedad','$ant_diabetes','$ant_triquiasis','$ant_sindromes','$profesion',$grado_resp_profesion,$grado_stress_profesion)";
 			
 						$stmt = $abd->ejecuta_sql($sql);
 						if( $stmt === false ) {//Fallo consulta
@@ -347,6 +345,36 @@ class TUsuario{
 		}
 		return $res;
 	}
+	//** 
+	public function registro_valoracion_linfedema($id_user,$fecha,$localizacion,$consistencia_edema,$color,$valoracion_piel,$stemmer,$fovea,$pesadez,$rubor){
+		$res=0;
+		$abd = new TAccesbd ();
+		if($abd->conectado())
+		{
+			//Comprobar si se repite la valoracion
+			$sql2="select count(*) from valoracion_linfedema where id_user=$id_user";
+			$stmt2 = $abd->consultar_dato($sql2);
+			if( $stmt2 === false ) {//error sql
+				$res=-1;
+			}
+			else{
+				if($stmt2>0){//se repite la valoracion
+					$res=-2;
+				}
+				else{
+
+					$sql="insert into valoracion_linfedema values ($id_user,'$fecha','$localizacion','$consistencia_edema','$color','$valoracion_piel','$stemmer','$fovea','$pesadez','$rubor', null, null, null, null, null, null, null, null, null, null, null, null)";
+					$stmt = $abd->ejecuta_sql($sql);
+					if( $stmt === false ) {
+						$res=-1;
+					die( print_r( sqlsrv_errors(), true));
+					}
+				}
+			}
+		}
+		return $res;
+		}
+
 
 	//ESTA FUNCIÓN A PARTE DE REGISTRAR PACIENTE, DEVUELVE EL ID DESPUÉS DE REGISTRARLO
 	public function registro_paciente($correo,$pass,$pass2,$nombre,$apellido1,$apellido2,$id_especialista,&$id_user)

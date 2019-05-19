@@ -413,6 +413,9 @@
                                         ant_triquiasis, ant_sindromes, profesion,grado_resp_profesion,grado_stress_profesion);
                     
                     if(datos_correctos){
+                        //peso = num.toFixed(2);
+                        //altura = num.toFixed(2);
+
                         $.ajax({
                         method: "POST",
                         url: 'control/vista.php',
@@ -755,7 +758,7 @@
 
 
 
-                //  =============================== HISTORIAL TRATAMIENTO LINFEDEMA  ===========================================** 
+                //  =============================== HISTORIAL TRATAMIENTO LINFEDEMA  ===========================================
 
                 $("#form-7").submit(function(event){
                      
@@ -851,11 +854,13 @@
 
 
 
-                // //  =============================== VALORACIÓN LINFEDEMA  ===========================================
+                // //  =============================== VALORACIÓN LINFEDEMA  ===========================================//**
 
                 $("#form-8").submit(function(event){
                     
                     event.preventDefault();
+                    var datos_correctos_queries = true;
+
                     var fecha_val_linfedema=$('#fecha_val_linfedema').val();
                     var localizacion_linf = $('#localizacion_linf').val();
                     var consistencia_edema = $('#consistencia_edema').val();
@@ -867,37 +872,63 @@
                     var rubor = $('#rubor').val();
                     var opcion= "registro_valoracion_linfedema";
 
-                    //PONER NULL DE MOMENTO EN LA BD
-                    // var foto_pierna_ant_d = $('#foto_pierna_ant_d').val();
-                    // var foto_pierna_post_d = $('#foto_pierna_post_d').val();
-                    // var foto_pierna_lat_d1 = $('#foto_pierna_lat_d1').val();
-                    // var foto_pierna_lat_d2 = $('#foto_pierna_lat_d2').val();
-                    // var foto_pierna_ant_i = $('#foto_pierna_ant_i').val();
-                    // var foto_pierna_post_i = $('#foto_pierna_post_i').val();
-                    // var foto_pierna_lat_i1 = $('#foto_pierna_lat_i1').val();
-                    // var foto_pierna_lat_i2 = $('#foto_pierna_lat_i2').val();
-                    // var foto_brazo_cruz_d = $('#foto_brazo_cruz_d').val();
-                    // var foto_brazo_frontal_d = $('#foto_brazo_frontal_d').val();
-                    // var foto_brazo_cruz_i = $('#foto_brazo_cruz_i').val();
-                    // var foto_brazo_frontal_i = $('#foto_brazo_frontal_i').val();
+                    // PONER NULL DE MOMENTO EN LA BD
+                    var foto_pierna_ant_d = $('#foto_pierna_ant_d').val();
+                    var foto_pierna_post_d = $('#foto_pierna_post_d').val();
+                    var foto_pierna_lat_d1 = $('#foto_pierna_lat_d1').val();
+                    var foto_pierna_lat_d2 = $('#foto_pierna_lat_d2').val();
+                    var foto_pierna_ant_i = $('#foto_pierna_ant_i').val();
+                    var foto_pierna_post_i = $('#foto_pierna_post_i').val();
+                    var foto_pierna_lat_i1 = $('#foto_pierna_lat_i1').val();
+                    var foto_pierna_lat_i2 = $('#foto_pierna_lat_i2').val();
+                    var foto_brazo_cruz_d = $('#foto_brazo_cruz_d').val();
+                    var foto_brazo_frontal_d = $('#foto_brazo_frontal_d').val();
+                    var foto_brazo_cruz_i = $('#foto_brazo_cruz_i').val();
+                    var foto_brazo_frontal_i = $('#foto_brazo_frontal_i').val();
 
-                    // $.ajax({
-                    // type:'POST',
-                    // url: 'control/vista.php',
-                    // data: {id_user:id_user, fecha_val_linfedema: fecha_val_linfedema,localizacion_linf:localizacion_linf,consistencia_edema:consistencia_edema,color:color,
-                    // valoracion_piel:valoracion_piel,stemmer:stemmer,fovea:fovea,pesadez:pesadez,rubor:rubor, opcion:opcion},
-                    // })
-                    // .done(function( msg ) {
-                    //     console.log(msg);                             	
-                    //     console.log("Ajax: Valoración linfedema registrado"); 
+                    $.ajax({
+                    type:'POST',
+                    url: 'control/vista.php',
+                    data: {id_user:id_user, fecha: fecha_val_linfedema,localizacion:localizacion_linf,consistencia_edema:consistencia_edema,color:color,
+                    valoracion_piel:valoracion_piel,stemmer:stemmer,fovea:fovea,pesadez:pesadez,rubor:rubor, opcion:opcion},
+                    })
+                    .done(function( msg ) {                             	
+                        console.log("ajax done"); 
+                        if(msg=="false"){
+                            $("body").overhang({
+                                type: "error",
+                                message: "Error en la consulta SQL",
+                                duration: 3,
+                                overlay: true,
+                                closeConfirm: true
+                            });
+                            datos_correctos_queries = false;
+                        } 
+                        else if(msg=="valoracion"){
+                            $("body").overhang({
+                                type: "error",
+                                message: "ERROR, este usuario ya tiene una valoración guardada.",
+                                duration: 3,
+                                overlay: true,
+                                closeConfirm: true
+                            });
+                            datos_correctos_queries = false;
+                        }
+                        else{
+                            $.notify("Valoración guardada correctamente.", "success");
+                        }    
+                        
+                        // if(datos_correctos_queries){
 
-                    // })
-                    // .fail(function( jqXHR, textStatus, errorThrown ) {
-                    //     if ( console && console.log ) {
-                    //         console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                    //         console.log("ajax fail");
-                    //     }
-                    // });
+                        // } 	
+
+                    })
+                    .fail(function( jqXHR, textStatus, errorThrown ) {
+                        if ( console && console.log ) {
+                            console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                            console.log("ajax fail");
+                        }
+                    });
                     
                 });
 
@@ -938,11 +969,6 @@
                         // });
                     
                 });
-
-
-
-
-
 
 
 
@@ -1140,10 +1166,18 @@
                     var datos_correctos=true;
                     var mensaje_error="";
 
+                    if(isEmptyOrSpaces(t_sesion) && hace_deporte=="si"){
+                        mensaje_error="ERROR. Si el paciente hace deporte debes especificar el tiempo de la sesión";
+                        datos_correctos = false;
+                    }
+                    if(isEmptyOrSpaces(alimentacion)){
+                        mensaje_error="ERROR. Si la alimentación es otra debes especificar cuál.";
+                        datos_correctos = false;
+                    } 
                     if(isEmptyOrSpaces(tipo_acohol) && toma_alcohol=="si"){
                         mensaje_error="ERROR. Si el paciente toma alcohol debes especificar el tipo";
                         datos_correctos = false;
-                    }
+                    } 
                     if(isEmptyOrSpaces(alcohol) && toma_alcohol=="si"){
                         mensaje_error="ERROR. Si el paciente toma alcohol debes especificar la cantidad";
                         datos_correctos = false;
@@ -1152,15 +1186,6 @@
                         mensaje_error="ERROR. Si el paciente fuma debes especificar la cantidad";
                         datos_correctos = false;
                     }
-                    if(isEmptyOrSpaces(t_sesion) && hace_deporte=="si"){
-                        mensaje_error="ERROR. Si el paciente hace deporte debes especificar el tiempo de la sesión";
-                        datos_correctos = false;
-                    }
-                    if(isEmptyOrSpaces(alimentacion)){
-                        mensaje_error="ERROR. Si la alimentación es otra debes especificar cuál.";
-                        datos_correctos = false;
-                    }
-                  
                     if(!datos_correctos){
                         $("body").overhang({
                             type: "error",
@@ -1200,21 +1225,20 @@
                     return contencion_sensacion;
                 }
 
-                function validarHistTratLinf(satisfecho_result,fallo_terapia, fallo_terapia_otro,tipo_drenaje_linfa,tipo_drenaje_linfa_otro,contencion_tipo, contencion_tipo_otro){//** 
+                function validarHistTratLinf(satisfecho_result,fallo_terapia, fallo_terapia_otro,tipo_drenaje_linfa,tipo_drenaje_linfa_otro,contencion_tipo, contencion_tipo_otro){
                     
                     var datos_correctos=true;
                     var mensaje_error="";
-
-                    if(satisfecho_result=="no" && fallo_terapia=="otro" && isEmptyOrSpaces( fallo_terapia_otro )  ){
-                        mensaje_error="ERROR. Especifica tu respuesta sobre el fallo de la terapia.";
+                    if(contencion_tipo=="otro" && isEmptyOrSpaces(contencion_tipo_otro)){
+                        mensaje_error="ERROR. Especifica tu respuesta sobre el tipo contención.";
                         datos_correctos = false;
                     }
                     if(tipo_drenaje_linfa=="otro" && isEmptyOrSpaces(tipo_drenaje_linfa_otro) ){
                         mensaje_error="ERROR. Especifica tu respuesta sobre el tipo de drenaje linfático.";
                         datos_correctos = false;
                     }
-                    if(contencion_tipo=="otro" && isEmptyOrSpaces(contencion_tipo_otro)){
-                        mensaje_error="ERROR. Especifica tu respuesta sobre el tipo contención.";
+                    if(satisfecho_result=="no" && fallo_terapia=="otro" && isEmptyOrSpaces( fallo_terapia_otro )  ){
+                        mensaje_error="ERROR. Especifica tu respuesta sobre el fallo de la terapia.";
                         datos_correctos = false;
                     }
                     if(!datos_correctos){

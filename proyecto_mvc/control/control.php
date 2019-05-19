@@ -54,6 +54,7 @@ class TControl{
         return ($resultat);
     }
    
+    //
     public function registro_historial_clinico($id_user,$doc_identificacion,$nacionalidad, $raza, $fecha_nacimiento,$sexo, $altura, $peso, $tipo_congenito, $subtipo_congenito,
     $fecha_debut, $familiar_linfedema,$motivo_secundario, $ant_vasculares, $ant_infeccion_venosa, $ant_sobrepeso, $ant_lipedema, $ant_permeabilidad_cap, $ant_ansiedad,
 	$ant_diabetes, $ant_triquiasis, $ant_sindromes, $profesion, $grado_resp_profesion, $grado_stress_profesion)
@@ -100,7 +101,7 @@ class TControl{
         return ($resultat);
     }
 
-//**
+
     public function registro_tratamiento_linfedema($id_user,$fecha_ult_tratamiento,$satisfecho_result,$fallo_terapia,$tipo_drenaje_linfa,
     $vendaje,$nota,$contencion_dia,$contencion_tipo,$contencion_sensacion,$contencion_dolor,$contencion_escala,$contencion_pesadez)
     {
@@ -110,6 +111,15 @@ class TControl{
 
         return ($resultat);
     }
+//**
+    public function registro_valoracion_linfedema($id_user,$fecha,$localizacion,$consistencia_edema,$color,$valoracion_piel,$stemmer,$fovea,$pesadez,$rubor)
+    {
+        $usr = new TUsuario();
+        $resultat=$usr->registro_valoracion_linfedema($id_user,$fecha,$localizacion,$consistencia_edema,$color,$valoracion_piel,$stemmer,$fovea,$pesadez,$rubor);
+
+        return ($resultat);
+    }
+     
     //--------------------------- Mediciones/Gráficas -----------------------
 
     public function mostrar_graficas($id_user)
