@@ -81,12 +81,12 @@ if(isset($_POST["opcion"]))
             $tipo = $_POST["tipo"];
 
             $error=$c->registro_admin($correo, $pass, $pass2, $nombre, $apellido, $apellido2, $tipo);
-            // if($error==0)
-            // {
-            //     //echo "Usuario registrado correctamente";
-            // }
-            // else
-            //     //echo "Fallo registro";
+            if($error==0)
+            {
+                echo "true";
+            }
+            else
+                echo "false";
 
         break;
 
