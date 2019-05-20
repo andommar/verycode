@@ -127,7 +127,7 @@ class TControl{
 
         return ($resultat);
     }
-//**
+
     public function registro_valoracion_linfedema($id_user,$fecha,$localizacion,$consistencia_edema,$color,$valoracion_piel,$stemmer,$fovea,$pesadez,$rubor)
     {
         $usr = new TUsuario();
@@ -135,6 +135,14 @@ class TControl{
 
         return ($resultat);
     }
+    public function registro_mediciones($id_user,$fecha,$extremidad,$lado_sano,$p1_i,$p2_i,$p3_i,$p4_i,$p5_i,$p6_i,$p1_d,$p2_d,$p3_d,$p4_d,$p5_d,$p6_d)
+    {
+        $usr = new TUsuario();
+        $resultat=$usr->registro_mediciones($id_user,$fecha,$extremidad,$lado_sano,$p1_i,$p2_i,$p3_i,$p4_i,$p5_i,$p6_i,$p1_d,$p2_d,$p3_d,$p4_d,$p5_d,$p6_d);
+
+        return ($resultat);
+    }
+   
      
     //--------------------------- Mediciones/Gráficas -----------------------
 
