@@ -7,6 +7,16 @@ include_once("../modelo/TGrafica.php");
 
 class TControl{
 
+
+    public function modificar_especialista($id_especialista_seleccionado, $nombre, $apellido1,
+    $apellido2,$correo,$pass, $pass2, $tipo){
+        
+        $usr = new TUsuario();
+        $resultado = $usr->modificar_especialista($id_especialista_seleccionado, $nombre, $apellido1,
+        $apellido2,$correo,$pass, $pass2, $tipo);
+        return ($resultado);
+    }
+
     public function datos_especialista($id_especialista){
         $usr = new TUsuario();
         $resultado = $usr->datos_especialista($id_especialista);

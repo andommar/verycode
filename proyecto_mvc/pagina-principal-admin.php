@@ -288,8 +288,7 @@
                                         </div>
                                     </div>  <!--Fin fila 2-->
                                     <div class="columna-btn">
-                                        <button class="btn estilo-boton-submit" type="submit" id="btn-submit-1" value='<?php echo($_SESSION["id_especialista"])?>'>Modificar</button>
-                                       
+                                        <button class="btn estilo-boton-submit" type="submit" id="btn-modificar" value='<?php echo($_SESSION["id_especialista"])?>'>Modificar</button>
                                     </div>
                                 </form>
                             </div>
@@ -313,6 +312,7 @@
 
         <!-- SCRIPTS -->
         <script>
+            var id_especialista_seleccionado="";
             var id_especialista="";
             var id_usuario="";
             var tipo_especialista="";
@@ -472,6 +472,7 @@
             $( "#apartado-datos-especialista" ).css("display","block");
             $( "#apartado-botones-admin" ).css("display","none");
             var opcion= "datos_especialista";
+            id_especialista_seleccionado=id_especialista;
 
             $.ajax({
                     type:'POST',
@@ -500,41 +501,59 @@
 
             };
 
-            function editarEspecialista(id_especialista){
+            $("#btn-modificar").click(function(){
 
-            event.preventDefault();
-            $( "#apartado-especialistas" ).css("display","none");
-            $( "#apartado-pacientes" ).css("display","none");
-            $( "#apartado-datos-especialista" ).css("display","block");
-            $( "#apartado-botones-admin" ).css("display","none");
-            var opcion= "datos_especialista";
+                var opcion = "modificar_especialista";
 
-            $.ajax({
-                    type:'POST',
+                var nombre =$('#nombre').val();
+                var apellido1=$('#apellido1').val();
+                var apellido2=$('#apellido2').val();
+                var correo =$('#correo').val();
+                var pass =$('#pass').val();
+                var pass2=$('#pass2').val();
+                var tipo= $( "#tipo" ).val();
+
+                $.ajax({
+                    method:"POST",
                     url: 'control/vista.php',
-                    data: {id_especialista: id_especialista, opcion:opcion},
-                    })
-                    .done(function( msg ) {
-                        var datos = $.parseJSON(msg);
-                        console.log(datos[0].nombre);
-                        $( "#nombre" ).val(datos[0].nombre);
-                        $( "#apellido1" ).val(datos[0].apellido1);
-                        $( "#apellido2" ).val(datos[0].apellido2);
-                        $( "#pass" ).val(datos[0].pass);
-                        $( "#pass2" ).val(datos[0].pass2);
-                        $( "#correo" ).val(datos[0].correo);
-                        $( "#tipo" ).val(datos[0].tipo);
+                    data: {opcion: opcion, id_especialista_seleccionado:id_especialista_seleccionado, nombre:nombre,
+                        apellido1:apellido1, apellido2:apellido2, correo:correo, pass:pass, pass2:pass2, tipo:tipo}
+                })
+                .done(function( msg ) {                             	
+                    console.log("ajax done");
+
+                    if(msg=="true"){
+                        $("body").overhang({
+                                    type: "success",
+                                    message: "Especialista modificado correctamente",
+                                    duration: 6,
+                                    overlay: true,
+                                    closeConfirm: true
+                        });
+                    }
+                    else if(msg=="false"){
+                        $("body").overhang({
+                                    type: "error",
+                                    message: "ERROR, modificación ha fallado",
+                                    duration: 6,
+                                    overlay: true,
+                                    closeConfirm: true
+                        });
+                    }
+                    
+                })
+                .fail(function( jqXHR, textStatus, errorThrown ) {
+                    if ( console && console.log ) {
+                        console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                    }
+                });
+
+            });
+
+            
 
 
-                    })
-                    .fail(function( jqXHR, textStatus, errorThrown ) {
-                        if ( console && console.log ) {
-                            console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                            console.log("ajax fail");
-                        }
-                    });
-
-            };
+            
 
 
 

@@ -515,6 +515,26 @@ class TUsuario{
 	}
 
 
+	public function modificar_especialista($id_especialista_seleccionado, $nombre, $apellido1,
+	$apellido2,$correo,$pass, $pass2, $tipo)
+	{
+		
+		$res=0;
+		$abd = new TAccesbd ();
+		if($abd->conectado())
+		{
+			$sql="update especialista set correo='$correo', pass='$pass', pass2='$pass2', nombre='$nombre', apellido1='$apellido1', apellido2='$apellido2', tipo='$tipo'  where id_especialista = $id_especialista_seleccionado";
+			$stmt = $abd->ejecuta_sql($sql);
+		}
+		if( $stmt === false ) {
+			$res=-1;
+			die( print_r( sqlsrv_errors(), true));
+		}
+
+
+	}
+
+
 }
 
 ?>

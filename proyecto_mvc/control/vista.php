@@ -15,6 +15,30 @@ if(isset($_POST["opcion"]))
 
     switch($opcion)
     {
+        case "modificar_especialista":
+
+            $id_especialista_seleccionado = $_POST["id_especialista_seleccionado"];
+            $nombre = $_POST["nombre"];
+            $apellido1 = $_POST["apellido1"];
+            $apellido2 = $_POST["apellido2"];
+            $correo = $_POST["correo"];
+            $pass = $_POST["pass"];
+            $pass2 = $_POST["pass2"];
+            $tipo = $_POST["tipo"];
+
+            $error=$c->modificar_especialista($id_especialista_seleccionado, $nombre, $apellido1,
+            $apellido2,$correo,$pass, $pass2, $tipo);
+            if($error==0)
+            {
+                echo "true";
+            }
+            else
+                echo "false";
+
+
+        break;
+
+
         case "borrar_especialista":
 
             $id_especialista = $_POST["id_especialista"];
@@ -45,9 +69,8 @@ if(isset($_POST["opcion"]))
             // ->delete from especialista where id_especialista = 7
         
         break;
-        case "registro_admin":
 
-            
+        case "registro_admin":           
 
             $correo = $_POST["correo"];
             $pass = $_POST["pass"];
