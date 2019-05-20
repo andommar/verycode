@@ -14,15 +14,15 @@ $(document).ready(function(){
             var datos = $.parseJSON(data); //hace falta parsear al devolver los datos del php (aunque hayamos hecho json encode en php)
             //datos[0]; --> todo menos fechas
             //datos[1]; --> fechas
-            console.log("datos "+datos);
-            console.log("datos "+datos[1]);
-            console.log("datos "+datos[0]);
+            // console.log("datos "+datos);
+            // console.log("datos "+datos[1]);
+            // console.log("datos "+datos[0]);
 
             var cosas = datos[0];
             var fechas = datos[1];
 
-            console.log("Array cosas"+cosas[0]["p1"]);
-            console.log("Array fechas"+fechas);
+            // console.log("Array cosas"+cosas[0]["p1"]);
+            // console.log("Array fechas"+fechas);
 
 
 
@@ -45,7 +45,7 @@ $(document).ready(function(){
             var len = cosas.length;
             // console.log(data.fecha);
             // console.log(datos);
-            console.log("Array len"+len);
+            // console.log("Array len"+len);
 
             for(var i = 0; i<len; i++)
             {
@@ -86,9 +86,9 @@ $(document).ready(function(){
                 //console.log(fechas[i]);
             }
 
-             console.log(mediciones.izquierdo);
-             console.log(mediciones.derecho);
-             console.log(mediciones.diferencia);
+            //  console.log(mediciones.izquierdo);
+            //  console.log(mediciones.derecho);
+            //  console.log(mediciones.diferencia);
 
             var grafica_datos=document.getElementById("lineChart");
 
@@ -175,116 +175,118 @@ $(document).ready(function(){
               }
               );
 
-              //===================== SEGUNDA GRÁFICA
+            //   //===================== SEGUNDA GRÁFICA
 
-              var evolucion =
-              {
-                  p1: [],
-                  p2: [],
-                  p3: [],
-                  p4: [],
-                  p5: []
-              };
+            //   var evolucion =
+            //   {
+            //       p1: [],
+            //       p2: [],
+            //       p3: [],
+            //       p4: [],
+            //       p5: []
+            //   };
   
   
-              //var len = cosas.length;
-              // console.log(data.fecha);
-              // console.log(datos);
+            //   //var len = cosas.length;
+            //   // console.log(data.fecha);
+            //   // console.log(datos);
   
-              for(var i = 0; i<len; i++)
-              {
-                evolucion.p1.push(cosas[i].p1);
-                evolucion.p2.push(cosas[i].p2);
-                evolucion.p3.push(cosas[i].p3);
-                evolucion.p4.push(cosas[i].p4);
-                evolucion.p5.push(cosas[i].p5);
-              }
+            //   for(var i = 0; i<len; i++)
+            //   {
+            //     evolucion.p1.push(cosas[i].p1);
+            //     evolucion.p2.push(cosas[i].p2);
+            //     evolucion.p3.push(cosas[i].p3);
+            //     evolucion.p4.push(cosas[i].p4);
+            //     evolucion.p5.push(cosas[i].p5);
+            //   }
 
 
 
 
-              var grafica_ultimas=document.getElementById("lineChart_ultimas10");
+            //   var grafica_ultimas=document.getElementById("lineChart_ultimas10");
 
-              var datos_ultimas ={
-                labels:fechas,
-                datasets:[
-                    {
-                        label: "p1",
-                        data: evolucion.p1,
-                        borderColor: 'blue',
-                        fill:false,
-                        lineTension:0,
-                        pointRadius: 5,
-                        type: 'line'
-                    },
-                    {
-                        label: "p2",
-                        data: evolucion.p2,
-                        borderColor: 'red',
-                        fill:false,
-                        lineTension:0,
-                        pointRadius: 5,
-                        type: 'line'
-                    },
-                    {
-                        label: "p3",
-                        data: evolucion.p3,
-                        borderColor: 'green',
-                        fill:false,
-                        lineTension:0,
-                        pointRadius: 5,
-                        type: 'line'
-                    },
-                    {
-                        label: "p4",
-                        data: evolucion.p4,
-                        borderColor: 'purple',
-                        fill:false,
-                        lineTension:0,
-                        pointRadius: 5,
-                        type: 'line'
-                    },
-                    {
-                        label: "p5",
-                        data: evolucion.p5,
-                        borderColor: '#e8c3b9',
-                        fill:false,
-                        lineTension:0,
-                        pointRadius: 5,
-                        type: 'line'
-                    },
-                    // {
-                    //     label: "Diferencia mediciones",
-                    //     data: mediciones.diferencia,
-                    //     backgroundColor: 'rgba(134,213,102,0.3)',
-                    //     borderColor: 'rgba(134,213,102,0.3)'
-                    // }
-                ]
-            };
+            //   var datos_ultimas ={
+            //     labels:fechas,
+            //     datasets:[
+            //         {
+            //             label: "p1",
+            //             data: evolucion.p1,
+            //             borderColor: 'blue',
+            //             fill:false,
+            //             lineTension:0,
+            //             pointRadius: 5,
+            //             type: 'line'
+            //         },
+            //         {
+            //             label: "p2",
+            //             data: evolucion.p2,
+            //             borderColor: 'red',
+            //             fill:false,
+            //             lineTension:0,
+            //             pointRadius: 5,
+            //             type: 'line'
+            //         },
+            //         {
+            //             label: "p3",
+            //             data: evolucion.p3,
+            //             borderColor: 'green',
+            //             fill:false,
+            //             lineTension:0,
+            //             pointRadius: 5,
+            //             type: 'line'
+            //         },
+            //         {
+            //             label: "p4",
+            //             data: evolucion.p4,
+            //             borderColor: 'purple',
+            //             fill:false,
+            //             lineTension:0,
+            //             pointRadius: 5,
+            //             type: 'line'
+            //         },
+            //         {
+            //             label: "p5",
+            //             data: evolucion.p5,
+            //             borderColor: '#e8c3b9',
+            //             fill:false,
+            //             lineTension:0,
+            //             pointRadius: 5,
+            //             type: 'line'
+            //         },
+            //         // {
+            //         //     label: "Diferencia mediciones",
+            //         //     data: mediciones.diferencia,
+            //         //     backgroundColor: 'rgba(134,213,102,0.3)',
+            //         //     borderColor: 'rgba(134,213,102,0.3)'
+            //         // }
+            //     ]
+            // };
 
-            var chart = new Chart( grafica_ultimas, {
-                type : "line",
-                data : datos_ultimas,
-                options : opciones
-              }
-              );
+            // var chart = new Chart( grafica_ultimas, {
+            //     type : "line",
+            //     data : datos_ultimas,
+            //     options : opciones
+            //   }
+            //   );
 
 
 
             // CARGAR TABLA
 
             var filas_mediciones='';
-    
+            console.log("caca");
+            console.log(cosas[0].extremidad);
+            console.log("caca");
             cosas.forEach(function(element){
-                console.log("foreach")
-                //filas_mediciones+= '<tr><td>'+element.extremidad+'</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td></tr>';
+                // console.log("foreach");
+                filas_mediciones+= '<tr><td>'+element.extremidad+'</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td></tr>';
             });
             $('#pacientes-table tbody').html(filas_mediciones);
 
 
         },
         error : function(data) {
-            console.log(data);
+            // console.log(data);
           }
     });
 
