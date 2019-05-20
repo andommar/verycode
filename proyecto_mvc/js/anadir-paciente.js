@@ -1065,23 +1065,45 @@
 
                     if(datos_correctos){//ejecutamos ajax, el mismo para brazo y pierna, haremos dos inserts de cada brazo/pierna
                         
-                        // $.ajax({
-                        // type:'POST',
-                        // url: 'control/vista.php',
-                        // data: {id_user:id_user,fecha:fecha,extremidad:extremidad,lado_sano:lado_sano,p1_i:p1_i, p2_i:p2_i,p3_i:p3_i,p4_i:p4_i,p5_i:p5_i,p6_i:p6_i,p1_d:p1_d,p2_d:p2_d,p3_d:p3_d,p4_d:p4_d,p5_d:p5_d,p6_d:p6_d,opcion: opcion},
-                        // })
-                        // .done(function( msg ) {
-                        //     console.log(msg);                             	
-                        //     console.log("Ajax: Mediciones registradas"); 
-
-                        // })
-                        // .fail(function( jqXHR, textStatus, errorThrown ) {
-                        //     if ( console && console.log ) {
-                        //         console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                        //         console.log("ajax fail");
-                        //     }
-                        // });
+                        $.ajax({
+                        type:'POST',
+                        url: 'control/vista.php',
+                        data: {id_user:id_user,fecha:fecha,extremidad:extremidad,lado_sano:lado_sano,p1_i:p1_i, p2_i:p2_i,p3_i:p3_i,p4_i:p4_i,p5_i:p5_i,p6_i:p6_i,p1_d:p1_d,p2_d:p2_d,p3_d:p3_d,p4_d:p4_d,p5_d:p5_d,p6_d:p6_d,opcion: opcion},
+                        })
+                        .done(function( msg ) {                           	
+                            console.log("ajax done"); 
+                            if(msg=="false"){
+                                $("body").overhang({
+                                    type: "error",
+                                    message: "Error en la consulta SQL",
+                                    duration: 3,
+                                    overlay: true,
+                                    closeConfirm: true
+                                });
+                                datos_correctos_queries = false;
+                            } 
+                            else if(msg=="medicion"){
+                                $("body").overhang({
+                                    type: "error",
+                                    message: "ERROR, este usuario ya tiene una primera medición guardada.",
+                                    duration: 3,
+                                    overlay: true,
+                                    closeConfirm: true
+                                });
+                                datos_correctos_queries = false;
+                            }
+                            else{
+                                $.notify("Medición guardada correctamente.", "success");
+                            }    
+                        })
+                        .fail(function( jqXHR, textStatus, errorThrown ) {
+                            if ( console && console.log ) {
+                                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                                console.log("ajax fail");
+                            }
+                        });
                     }
+
                     
                 });
 

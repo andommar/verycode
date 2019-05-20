@@ -279,7 +279,7 @@ if(isset($_POST["opcion"]))
 
         break;
 
-        case "registro_valoracion_linfedema"://**
+        case "registro_valoracion_linfedema":
 
             $id_user=$_POST["id_user"];
             $fecha = $_POST["fecha"];
@@ -318,30 +318,38 @@ if(isset($_POST["opcion"]))
                 echo "false";
 
         break;
-
+//**
         case "registro_mediciones":
-
-            $id_user=$_POST["id_user"];
-            $fecha_val_mediciones = $_POST["fecha_val_mediciones"];
-            $extremidad = $_POST["extremidad"];
-            $lado = $_POST["lado"];
-            $p1 = $_POST["p1"];
-            $p2 = $_POST["p2"];
-            $p3 = $_POST["p3"];
-            $p4 = $_POST["p4"];
-            $p5 = $_POST["p5"];
-            $p6 = $_POST["p6"];
-
-            $fecha = $_POST["fecha"];   
-            $descripcion = $_POST["descripcion"];       
             
-            $error=$c->registro_mediciones($id_user,$fecha_val_mediciones,$extremidad,$lado,$p1,$p2,$p3,$p4,$p5,$p6);
+            $id_user=$_POST["id_user"];
+            $fecha= $_POST["fecha"];
+            $extremidad = $_POST["extremidad"];//brazo, pierna
+            $lado_sano = $_POST["lado_sano"]; //pierna_d, pierna_i, brazo_i, brazo_d
+
+            $p1_i = $_POST["p1_i"];
+            $p2_i = $_POST["p2_i"];
+            $p3_i = $_POST["p3_i"];
+            $p4_i = $_POST["p4_i"];
+            $p5_i = $_POST["p5_i"];
+            $p6_i = $_POST["p6_i"];
+
+            $p1_d = $_POST["p1_d"];
+            $p2_d = $_POST["p2_d"];
+            $p3_d = $_POST["p3_d"];
+            $p4_d = $_POST["p4_d"];
+            $p5_d = $_POST["p5_d"];
+            $p6_d = $_POST["p6_d"];
+                  
+            $error=$c->registro_mediciones($id_user,$fecha,$extremidad,$lado_sano,$p1_i,$p2_i,$p3_i,$p4_i,$p5_i,$p6_i,$p1_d,$p2_d,$p3_d,$p4_d,$p5_d,$p6_d);
             if($error==0)
             {
-                echo "Mediciones registrada";
+                echo "true";
             }
-            else
-                echo "Fallo registro";
+            else if($error==-2){
+                echo "medicion";
+            }
+            else 
+                echo "false";
 
         break;
 

@@ -366,7 +366,7 @@ class TUsuario{
 		}
 		return $res;
 	}
-	//** 
+
 	public function registro_valoracion_linfedema($id_user,$fecha,$localizacion,$consistencia_edema,$color,$valoracion_piel,$stemmer,$fovea,$pesadez,$rubor){
 		$res=0;
 		$abd = new TAccesbd ();
@@ -395,6 +395,93 @@ class TUsuario{
 		}
 		return $res;
 		}
+
+		//**
+
+		public function registro_mediciones($id_user,$fecha,$extremidad,$lado_sano,$p1_i,$p2_i,$p3_i,$p4_i,$p5_i,$p6_i,$p1_d,$p2_d,$p3_d,$p4_d,$p5_d,$p6_d){
+			$res=0;
+			$abd = new TAccesbd ();
+			if($abd->conectado())
+			{
+				$p6_i = ($p6_i==0) ? "null" : $p6_i;
+				$p6_d = ($p6_d==0) ? "null" : $p6_d;
+
+				if($extremidad=="brazo"){
+					
+					//Comprobar si se repite la 1a medicion (si o si se insertarán lado d y lado i)
+					$sql2="select count(*) from mediciones where id_user=$id_user and fecha='$fecha' and extremidad='brazo'";
+					$stmt2 = $abd->consultar_dato($sql2);
+					if( $stmt2 === false ) {//error sql
+						$res=-1;
+					}
+					else{
+						if($stmt2>0){//se repite la 1a medicion brazo (derecho e izquierdo)
+							$res=-2;
+						}
+						else{//no hay primera medición
+							
+							//BRAZO IZQUIERDO
+							//$lado_sano: brazo_i, brazo_d
+							$lado_sano = ($lado_sano=="brazo_i") ? "si" : "no";
+							$sql="insert into mediciones values ($id_user,'$fecha','brazo','izquierdo','$lado_sano',$p1_i,$p2_i,$p3_i,$p4_i,$p5_i,$p6_i)";
+							$stmt = $abd->ejecuta_sql($sql);
+							if( $stmt === false ) {
+								$res=-1;
+							die( print_r( sqlsrv_errors(), true));
+							}
+							else{//BRAZO DERECHO
+								$lado_sano = ($lado_sano=="brazo_d") ? "si" : "no";
+								$sql3="insert into mediciones values ($id_user,'$fecha','brazo','derecho','$lado_sano',$p1_d,$p2_d,$p3_d,$p4_d,$p5_d,$p6_d)";
+								$stmt3 = $abd->ejecuta_sql($sql3);
+								if( $stmt3 === false ) {
+									$res=-1;
+								die( print_r( sqlsrv_errors(), true));
+								}
+							}
+						}
+					}
+
+				}//fin brazo
+				else if($extremidad="pierna"){
+
+					//Comprobar si se repite la 1a medicion (si o si se insertarán lado d y lado i)
+					$sql4="select count(*) from mediciones where id_user=$id_user and fecha='$fecha' and extremidad='pierna'";
+					$stmt4 = $abd->consultar_dato($sql4);
+					if( $stmt4 === false ) {//error sql
+						$res=-1;
+					}
+					else{
+						if($stmt4>0){//se repite la 1a medicion pierna (derecho e izquierdo)
+							$res=-2;
+						}
+						else{//no hay primera medición
+							
+							//PIERNA IZQUIERDA
+							//$lado_sano: pierna_d, pierna_i, 
+							$lado_sano = ($lado_sano=="pierna_i") ? "si" : "no";
+							$sql5="insert into mediciones values ($id_user,'$fecha','pierna','izquierdo','$lado_sano',$p1_i,$p2_i,$p3_i,$p4_i,$p5_i,$p6_i)";
+							$stmt5 = $abd->ejecuta_sql($sql5);
+							if( $stmt5 === false ) {
+								$res=-1;
+							die( print_r( sqlsrv_errors(), true));
+							}
+							else{//PIERNA IZQUIERDA
+								$lado_sano = ($lado_sano=="pierna_d") ? "si" : "no";
+								$sql6="insert into mediciones values ($id_user,'$fecha','pierna','derecho','$lado_sano',$p1_d,$p2_d,$p3_d,$p4_d,$p5_d,$p6_d)";
+								$stmt6 = $abd->ejecuta_sql($sql6);
+								if( $stmt6 === false ) {
+									$res=-1;
+								die( print_r( sqlsrv_errors(), true));
+								}
+							}
+						}
+					}
+
+				}//fin pierna
+			}
+			return $res;
+		 }
+		
 
 
 	//ESTA FUNCIÓN A PARTE DE REGISTRAR PACIENTE, DEVUELVE EL ID DESPUÉS DE REGISTRARLO
