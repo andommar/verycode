@@ -81,9 +81,6 @@
                                 </a>
                                 <ul class="list-unstyled collapse tamano-letra" id="nav-mediciones" style="">
                                         <li>
-                                                <a href="anadir-medicion.php">Añadir medición</a>
-                                        </li>
-                                        <li>
                                             <a href="mediciones.php">Todas las mediciones</a>
                                         </li>
                                 </ul>

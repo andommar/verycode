@@ -86,9 +86,6 @@
                                 </a>
                                 <ul class="list-unstyled collapse tamano-letra" id="nav-mediciones" style="">
                                         <li>
-                                                <a href="anadir-medicion.php">Añadir medición</a>
-                                        </li>
-                                        <li>
                                             <a href="mediciones.php">Todas las mediciones</a>
                                         </li>
                                 </ul>
@@ -117,7 +114,7 @@
                     <!-- Barra de navegación superior =============================================================================== -->
                     <nav id="nav-top" class="navbar navbar-default">
                         <ul class="nav" id="user">
-                              <div class="dropdown show">
+                            <div class="dropdown show">
                                 <a class="dropdown-toggle" id="icono-usuario" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                     <span class="ti-user"></span>
                                 </a>
@@ -125,7 +122,7 @@
                                     <h6 class="dropdown-header">Usuario</h6>
                                     <a id="btn-salir" href="logout.php" class="dropdown-item" > <span class="ti-power-off"></span>&nbsp;&nbsp;Salir</a>
                                     </div>
-                                </div>
+                            </div>
                            
                         </ul>
                     </nav>
@@ -159,26 +156,25 @@
                             </div> 
                         </div>
                         <div class="col-lg-12">
+                            <!-- VENTANA CONFIRMACIÓN BORRAR ESPECIALISTAS -->
 
-                        <!-- VENTANA CONFIRMACIÓN BORRAR ESPECIALISTAS -->
-
-                        <div class="modal" id="modal-borrar">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 id="titulo-modal" class="modal-title"></h4>
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    </div>
-                                    <div id="texto-modal" class="modal-body"></div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal" id="cancelar-borrar-especialista">Cancelar</button>
-                                        <button type="button" class="btn btn-success" data-dismiss="modal" id="aceptar-borrar-especialista">Aceptar</button> 
+                            <div class="modal" id="modal-borrar">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 id="titulo-modal" class="modal-title"></h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+                                        <div id="texto-modal" class="modal-body"></div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="cancelar-borrar-especialista">Cancelar</button>
+                                            <button type="button" class="btn btn-success" data-dismiss="modal" id="aceptar-borrar-especialista">Aceptar</button> 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- TABLA ESPECIALISTAS -->
+                            <!-- TABLA ESPECIALISTAS -->
 
                             <div id="apartado-especialistas">
                                 <h3>Listado de especialistas</h3>
@@ -196,7 +192,7 @@
                                             <th>Opciones</th>
                                         </tr>
                                     </thead>
-                                        <!-- Se rellena con la consulta AJAX de JS a la BD -->
+                                        
                                     <tbody>     
                                        
                                     </tbody>
@@ -286,21 +282,15 @@
                                             &nbsp;
                                             <input type="text" class="form-control" name="tipo" id="tipo" required maxlength="50"><br>
                                         </div>
-                                    </div>  <!--Fin fila 2-->
+                                    </div>  
                                     <div class="columna-btn">
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-modificar" value='<?php echo($_SESSION["id_especialista"])?>'>Modificar</button>
                                     </div>
                                 </form>
-                            </div>
+                            </div> 
 
-
-
-
-                            </div>
-
-
-
-                        </div>
+                            
+                        
                         
                         
                     </div>

@@ -1,0 +1,69 @@
+#cuerpo-pagina-2{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    padding: 5px 20px;
+    background-color: #f1f1f1;
+}
+
+#apartado-pacientes-no-asignados{
+    display: none;
+}
+#botones-fisio{
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+#botones-fisio button{
+    
+    color: white;
+}
+#btn-mis-pacientes:hover,#btn-pacientes-por-asignar:hover{
+    background-color: #3899b0;
+}
+
+#btn-mis-pacientes{
+    background-color: #3da3bc;
+    margin-top: 1em;
+    margin-bottom: 0.4em;
+}
+#btn-pacientes-por-asignar{
+    background-color: rgb(109, 109, 109);
+    margin-top: 1em;
+    margin-bottom: 0.4em;
+}
+
+#apartado-pacientes, #apartado-pacientes-no-asignados{
+    background: #fff;
+    margin-top: 7px;
+    padding: 20px;
+    padding-bottom: 2px;
+    border-radius: 2px;
+    border-radius: 0;
+    border: 0;
+    box-shadow: 0 0 0 1px #dce3ec, 0 8px 16px 0 #dce3ec;
+    background: #fff;
+    margin-bottom: 33px;
+}
+#apartado-pacientes h3, #apartado-pacientes-no-asignados h3{
+    color: #38aece;
+    font-size: 19px;
+}
+#pacientes-table, #pacientes-no-asignados-table{
+    text-align: center;
+} 
+#pacientes-table thead tr th, #pacientes-table thead tr th, #pacientes-no-asignados-table thead tr th, #pacientes-no-asignados-table thead tr th{
+    color: #3e5569;
+    border: 0px;
+}
+#pacientes-table tbody tr td, #pacientes-table tbody tr td, #pacientes-no-asignados-table tbody tr td, #pacientes-no-asignados-table tbody tr td{
+    vertical-align: middle;
+    color: #3e5569;
+    border: 1px solid #dee2e6;
+}
+#pacientes-table tbody tr:nth-child(2n), #pacientes-table tbody tr:nth-child(2n), #pacientes-no-asignados-table tbody tr:nth-child(2n), #pacientes-no-asignados-table tbody tr:nth-child(2n){
+    background: #fafafa;
+}
+#pacientes-table tbody tr:hover, #pacientes-no-asignados-table tbody tr:hover {
+    background: #31313113;
+    transition: all 0.3s;
+}

@@ -406,11 +406,16 @@ if(isset($_GET["opcion"]))
             $id_especialista = $_GET["id_especialista"];
             $error=$c->listado_usuarios($id_especialista);
             if($error!=false){
-                //$res = array($res1, $res2);
                 echo json_encode($error);
-               // $datos = array("usuario_correcto"=>$res,"tipo_usuario"=>$tipo_usuario);
             }
         
+        break;
+        case "listado_usuarios_no_asignados":
+            $id_especialista = $_GET["id_especialista"];
+            $error=$c->listado_usuarios_no_asignados($id_especialista);
+            if($error!=false){
+                echo json_encode($error);
+            }
         break;
 
         case "mostrar_graficas":

@@ -16,9 +16,6 @@
     background: #fff;
     margin-bottom: 33px;
 }
-#apartado-pacientes{
-    display: none;
-}
 #apartado-especialistas h3, #apartado-pacientes h3{
     color: #38aece;
     font-size: 19px;

@@ -82,9 +82,6 @@
                                 </a>
                                 <ul class="list-unstyled collapse tamano-letra" id="nav-mediciones" style="">
                                         <li>
-                                                <a href="anadir-medicion.php">Añadir medición</a>
-                                        </li>
-                                        <li>
                                             <a href="mediciones.php">Todas las mediciones</a>
                                         </li>
                                 </ul>
@@ -211,7 +208,7 @@
 
                 function verPaciente(id_usuario){
                         
-                    console.log("id usuario joder "+id_usuario);
+                    
                     document.location.href="display-grafica.php?id_user="+id_usuario+" ";
                     
                 }
