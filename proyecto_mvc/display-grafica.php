@@ -169,7 +169,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="sombra-cuadro col-md-6 mx-auto mt-4">
+                                <div class="sombra-cuadro col-md-8 mx-auto mt-4">
                                     <table class="table" id="pacientes-table">
                                         <thead>
                                             <tr>
@@ -182,6 +182,7 @@
                                             <th>P3</th>
                                             <th>P4</th>
                                             <th>P5</th>
+                                            <th>Acción</th>
                                             </tr>
                                         </thead>
                                             <!-- Se rellena con la consulta AJAX de JS a la BD -->

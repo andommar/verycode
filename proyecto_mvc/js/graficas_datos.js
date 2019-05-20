@@ -1,8 +1,91 @@
-$(document).ready(function(){
-
 
     var id_usuario = $("#usuario").val();
     var opcion = "mostrar_graficas";
+    var cosas = "";
+    var fechas = "";
+    var chart ="";
+    var grafica_datos=document.getElementById("lineChart");
+
+
+
+    var mediciones =
+    {
+        izquierdo: [],
+        derecho: [],
+        derecho_carga: [],
+        diferencia: []
+    };
+
+
+
+
+    //GRAFICA
+
+    var datos_graph ={
+        labels:["p1","p2","p3","p4","p5"],
+        datasets:[
+            {
+                label: "Mediciones lado sano",
+                data: mediciones.izquierdo,
+                borderColor: 'blue',
+                fill:false,
+                lineTension:0,
+                pointRadius: 5,
+                type: 'line'
+            },
+            {
+                label: "Mediciones lado afecto",
+                data: mediciones.derecho_carga,
+                borderColor: 'red',
+                fill:false,
+                lineTension:0,
+                pointRadius: 5,
+                type: 'line'
+            },
+            {
+                label: "Diferencia mediciones",
+                data: mediciones.diferencia,
+                backgroundColor: 'rgba(134,213,102,0.3)',
+                borderColor: 'rgba(134,213,102,0.3)'
+            }
+        ]
+    };
+
+
+    var opciones = {
+        title:{
+            display: true,
+            text: 'Comparativa. Fecha: ',
+            fontSize: 20,
+            fontColor:"#111"
+        },
+        legend:{
+            display:true,
+            position:'bottom',
+            labels:{
+                boxWidth:20,
+                fontColor: 'black'
+            }
+        },
+        scales: {
+            xAxes: [{
+                ticks: {
+                    autoSkip: false // en teoria no deberia saltarse labels del eje de las x
+                }
+            }],
+            yAxes:[{
+                ticks: {
+                    autoSkip: false, // en teoria no deberia saltarse labels del eje de las y
+                    min: 0
+                }
+            }]
+
+        },
+    }
+
+$(document).ready(function(){
+
+   
     $.ajax({
         url:"control/vista.php",
         type:"GET",
@@ -18,8 +101,8 @@ $(document).ready(function(){
             // console.log("datos "+datos[1]);
             // console.log("datos "+datos[0]);
 
-            var cosas = datos[0];
-            var fechas = datos[1];
+            cosas = datos[0];
+            fechas = datos[1];
 
             // console.log("Array cosas"+cosas[0]["p1"]);
             // console.log("Array fechas"+fechas);
@@ -33,13 +116,7 @@ $(document).ready(function(){
             //creamos un array de objetos con las mediciones de lado izquierdo, derecho y la diferencia entre los puntos
             
             //var fechas=[];
-            var mediciones =
-            {
-                izquierdo: [],
-                derecho: [],
-                derecho_carga: [],
-                diferencia: []
-            };
+
 
 
             var len = cosas.length;
@@ -82,7 +159,7 @@ $(document).ready(function(){
             for(i=0; i<mediciones.izquierdo.length;i++)
             {
                 resta=mediciones.derecho[i]-mediciones.izquierdo[i];
-                mediciones.diferencia.push(resta);
+                mediciones.diferencia[i]=resta;
                 //console.log(fechas[i]);
             }
 
@@ -90,85 +167,12 @@ $(document).ready(function(){
             //  console.log(mediciones.derecho);
             //  console.log(mediciones.diferencia);
 
-            var grafica_datos=document.getElementById("lineChart");
-
-            var datos_graph ={
-                labels:["p1","p2","p3","p4","p5"],
-                datasets:[
-                    {
-                        label: "Mediciones lado sano",
-                        data: mediciones.izquierdo,
-                        borderColor: 'blue',
-                        fill:false,
-                        lineTension:0,
-                        pointRadius: 5,
-                        type: 'line'
-                    },
-                    {
-                        label: "Mediciones lado afecto",
-                        data: mediciones.derecho_carga,
-                        borderColor: 'red',
-                        fill:false,
-                        lineTension:0,
-                        pointRadius: 5,
-                        type: 'line'
-                    },
-                    {
-                        label: "Diferencia mediciones",
-                        data: mediciones.diferencia,
-                        backgroundColor: 'rgba(134,213,102,0.3)',
-                        borderColor: 'rgba(134,213,102,0.3)'
-                    }
-                ]
-            };
 
 
-            var opciones = {
-                title:{
-                    display: true,
-                    text: 'Comparativa. Fecha: ',
-                    fontSize: 20,
-                    fontColor:"#111"
-                },
-                legend:{
-                    display:true,
-                    position:'bottom',
-                    labels:{
-                        boxWidth:20,
-                        fontColor: 'black'
-                    }
-                },
-                scales: {
-                    xAxes: [{
-                        ticks: {
-                            autoSkip: false // en teoria no deberia saltarse labels del eje de las x
-                        }
-                    }],
-                    yAxes:[{
-                        ticks: {
-                            autoSkip: false, // en teoria no deberia saltarse labels del eje de las y
-                            min: 0
-                        }
-                    }]
+           
 
-                },
-            }
 
-            // var options = {
-            //     title : {
-            //       display : true,
-            //       position : "top",
-            //       text : "Line Graph",
-            //       fontSize : 18,
-            //       fontColor : "#111"
-            //     },
-            //     legend : {
-            //       display : true,
-            //       position : "bottom"
-            //     }
-            //   };
-
-              var chart = new Chart( grafica_datos, {
+                chart = new Chart( grafica_datos, {
                 type : "bar",
                 data : datos_graph,
                 options : opciones
@@ -274,28 +278,74 @@ $(document).ready(function(){
             // CARGAR TABLA
 
             var filas_mediciones='';
-            console.log("caca");
-            console.log(cosas[0].extremidad);
-            console.log("caca");
+            var i=1;
+
+
             cosas.forEach(function(element){
-                // console.log("foreach");
-                filas_mediciones+= '<tr><td>'+element.extremidad+'</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td></tr>';
+                    if(element.lado_sano=='si')
+                    {
+                        filas_mediciones+= '<tr style="color:blue"><td>'+fechas[0]+'</td><td>'+element.extremidad+'</td><td>'+element.lado+'</td><td>'+element.lado_sano+'</td><td>'+element.p1+'</td><td>'+element.p2+'</td><td>'+element.p3+'</td><td>'+element.p4+'</td><td>'+element.p5+'</td><td></td></tr>';
+                    }
             });
+
+            cosas.forEach(function(element){
+
+                if(element.lado_sano=='no')
+                {
+                    filas_mediciones+= '<tr><td>'+fechas[i]+'</td><td>'+element.extremidad+'</td><td>'+element.lado+'</td><td>'+element.lado_sano+'</td><td>'+element.p1+'</td><td>'+element.p2+'</td><td>'+element.p3+'</td><td>'+element.p4+'</td><td>'+element.p5+'</td><td><button type="button" class="btn azul" value="fechaMedicion" onClick="fechaMedicion('+element.p1+','+element.p2+','+element.p3+','+element.p4+','+element.p5+')"><span class="ti-bar-chart-alt"></span></button></td></tr>';
+                    i++;
+                }
+            });
+
+
             $('#pacientes-table tbody').html(filas_mediciones);
 
 
         },
         error : function(data) {
             // console.log(data);
-          }
+          },
+
+
+          
+
     });
-
-
 
 
 
 });
 
+function fechaMedicion(p1,p2,p3,p4,p5){
+    console.log(p1,p2,p3,p4,p5);
+
+    
+
+    mediciones.derecho_carga[0]=p1;
+    mediciones.derecho_carga[1]=p2;
+    mediciones.derecho_carga[2]=p3;
+    mediciones.derecho_carga[3]=p4;
+    mediciones.derecho_carga[4]=p5;
+
+    var resta=0;
+
+    for(i=0; i<mediciones.izquierdo.length;i++)
+    {
+        resta=mediciones.derecho_carga[i]-mediciones.izquierdo[i];
+        mediciones.diferencia[i]=resta;
+        //console.log(fechas[i]);
+    }
+
+
+    chart = new Chart( grafica_datos, {
+        type : "bar",
+        data : datos_graph,
+        options : opciones
+      });
+    
+
+
+
+};
 
 
 
