@@ -26,6 +26,10 @@ $(document).ready(function(){
 
 
 
+
+
+   
+
             //creamos un array de objetos con las mediciones de lado izquierdo, derecho y la diferencia entre los puntos
             
             //var fechas=[];
@@ -33,6 +37,7 @@ $(document).ready(function(){
             {
                 izquierdo: [],
                 derecho: [],
+                derecho_carga: [],
                 diferencia: []
             };
 
@@ -40,10 +45,11 @@ $(document).ready(function(){
             var len = cosas.length;
             // console.log(data.fecha);
             // console.log(datos);
+            console.log("Array len"+len);
 
             for(var i = 0; i<len; i++)
             {
-                if(cosas[i].lado=="izquierdo")
+                if(cosas[i].lado_sano=="si")
                 {
                     mediciones.izquierdo.push(cosas[i].p1);
                     mediciones.izquierdo.push(cosas[i].p2);
@@ -53,13 +59,21 @@ $(document).ready(function(){
                     // console.log("holap");
                     // console.log(datos[i].p1);
                 }
-                else if(cosas[i].lado="derecho")
+                else if(cosas[i].lado_sano="no")
                 {
                     mediciones.derecho.push(cosas[i].p1);
                     mediciones.derecho.push(cosas[i].p2);
                     mediciones.derecho.push(cosas[i].p3);
                     mediciones.derecho.push(cosas[i].p4);
                     mediciones.derecho.push(cosas[i].p5);
+
+                    //Primeras mediciones que coge del lado derecho
+                    mediciones.derecho_carga[0]=cosas[0].p1;
+                    mediciones.derecho_carga[1]=cosas[0].p2;
+                    mediciones.derecho_carga[2]=cosas[0].p3;
+                    mediciones.derecho_carga[3]=cosas[0].p4;
+                    mediciones.derecho_carga[4]=cosas[0].p5;
+
                 }
             }
 
@@ -82,7 +96,7 @@ $(document).ready(function(){
                 labels:["p1","p2","p3","p4","p5"],
                 datasets:[
                     {
-                        label: "Mediciones lado izquierdo",
+                        label: "Mediciones lado sano",
                         data: mediciones.izquierdo,
                         borderColor: 'blue',
                         fill:false,
@@ -91,8 +105,8 @@ $(document).ready(function(){
                         type: 'line'
                     },
                     {
-                        label: "Mediciones lado derecho",
-                        data: mediciones.derecho,
+                        label: "Mediciones lado afecto",
+                        data: mediciones.derecho_carga,
                         borderColor: 'red',
                         fill:false,
                         lineTension:0,
@@ -133,7 +147,7 @@ $(document).ready(function(){
                     yAxes:[{
                         ticks: {
                             autoSkip: false, // en teoria no deberia saltarse labels del eje de las y
-                            stepSize: 1
+                            min: 0
                         }
                     }]
 
@@ -254,6 +268,19 @@ $(document).ready(function(){
                 options : opciones
               }
               );
+
+
+
+            // CARGAR TABLA
+
+            var filas_mediciones='';
+    
+            cosas.forEach(function(element){
+                console.log("foreach")
+                //filas_mediciones+= '<tr><td>'+element.extremidad+'</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td></tr>';
+            });
+            $('#pacientes-table tbody').html(filas_mediciones);
+
 
         },
         error : function(data) {
