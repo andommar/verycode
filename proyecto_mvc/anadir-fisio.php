@@ -14,7 +14,7 @@
 <html>
     <!-- ===============  HEAD ============= -->
     <head>
-        <title>Añadir paciente</title>
+        <title>Añadir especialista</title>
         <meta charset="utf-8">
         <!-- Mobile First -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -62,14 +62,14 @@
                         <ul class="list-unstyled components">
 
                             <!-- Apartado "PÁGINA PRINCIPAL"-->
-                            <li class="espaciado-desplegable">
+                            <li class="active espaciado-desplegable">
                                 <a href="pagina-principal.php">
                                     <span class="ti-home"></span> Página Principal
                                 </a>
                             </li>
-
+                            <?php if($_SESSION["tipo_usuario"]=='fisioterapeuta'){?>
                              <!-- Apartado "PACIENTES"-->
-                             <li class="active espaciado-desplegable apartados">
+                             <li class=" espaciado-desplegable apartados">
                                 <a href="#nav-pacientes" data-toggle="collapse" aria-expanded="false">
                                     <span class="ti-wheelchair"></span> Pacientes
                                 </a>
@@ -104,10 +104,11 @@
                                 </a>
                                 <ul class="list-unstyled collapse tamano-letra" id="nav-graficas" style="">
                                     <li>
-                                        <a href="graficas-mediciones.php">mediciones</a>
+                                        <a href="mediciones.php">mediciones</a>
                                     </li>
                                 </ul>
                             </li>
+                            <?php } ?>
                         </ul>
                         <!-- FIN Lista desplegable -->
                     </nav>
@@ -136,7 +137,7 @@
                     <div class="row" id="grupo-titulo-pagina">
                         <!-- Título -->
                         <div class="col-md-6" id="titulo">
-                            <h3 class="block-title">Añadir Paciente</h3>
+                            <h3 class="block-title">Añadir Especialista</h3>
                         </div>
                         <!-- Breadcrumb -->
                         <div class="col-md-6">
@@ -145,15 +146,6 @@
                                     <a href="pagina-principal.php">
                                         <span class="ti-home"></span>
                                         &nbsp;&nbsp;Página principal
-                                    </a>
-                                </li>
-                                
-                                <li class="breadcrumb-item color-blanco">
-                                        Paciente
-                                </li>
-                                <li class="breadcrumb-item color-blanco">
-                                    <a href="anadir-paciente.php">
-                                        Añadir Paciente
                                     </a>
                                 </li>
                                

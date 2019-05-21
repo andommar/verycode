@@ -62,7 +62,7 @@
                                     <span class="ti-home"></span> Página Principal
                                 </a>
                             </li>
-
+                            <?php if($_SESSION["tipo_usuario"]=='fisioterapeuta'){?>
                              <!-- Apartado "PACIENTES"-->
                              <li class="espaciado-desplegable apartados">
                                 <a href="#nav-pacientes" data-toggle="collapse" aria-expanded="false">
@@ -96,10 +96,11 @@
                                 </a>
                                 <ul class="list-unstyled collapse tamano-letra" id="nav-graficas" style="">
                                     <li>
-                                        <a href="graficas-mediciones.php">mediciones</a>
+                                        <a href="mediciones.php">mediciones</a>
                                     </li>
                                 </ul>
                             </li>
+                            <?php } ?>
                         </ul>
                         <!-- FIN Lista desplegable -->
                     </nav>

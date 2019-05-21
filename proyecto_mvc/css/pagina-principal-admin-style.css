@@ -1,3 +1,18 @@
+#logout-admin{
+    padding: 10px;
+    border-radius: 50%;
+    background-color: #40a6ba;
+    color: white;
+    margin-right: 5.6em;
+}
+#espaciado-logout{
+    padding: 20px 0px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #ddd;
+    text-align: right;
+}
 .rojo{
     color: rgb(172, 23, 23);
 }
@@ -9,6 +24,9 @@
 }
 #btn-tabla{
     text-align: right;
+}
+#apartado-pacientes{
+    display: none;
 }
 #apartado-especialistas, #apartado-pacientes, #apartado-datos-especialista{
     background: #fff;

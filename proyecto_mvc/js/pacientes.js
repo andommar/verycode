@@ -65,7 +65,22 @@ $( document ).ready(function() {
 
     });
 
-    
+    $("#btn-pacientes-por-asignar").click(function(){
+        $("#apartado-pacientes-no-asignados").css("display","block");
+        $("#apartado-pacientes").css("display","none");
+        $("#apartado-pacientes").css("display","none");
+        $("#btn-pacientes-por-asignar").css("background-color","#3899b0");
+        $("#btn-mis-pacientes").css("background-color","rgb(109, 109, 109)");
+
+    });
+    $("#btn-mis-pacientes").click(function(){
+        $("#apartado-pacientes-no-asignados").css("display","none");
+        $("#apartado-pacientes").css("display","block");
+        $("#btn-mis-pacientes").css("background-color","#3899b0");
+        $("#btn-pacientes-por-asignar").css("background-color","rgb(109, 109, 109)");
+    });
+    //btn-pacientes-por-asignar
+    //btn-mis-pacientes
     
 });
 

@@ -67,7 +67,7 @@
                                     <span class="ti-home"></span> Página Principal
                                 </a>
                             </li>
-
+                            <?php if($_SESSION["tipo_usuario"]=='fisioterapeuta'){?>
                              <!-- Apartado "PACIENTES"-->
                              <li class="espaciado-desplegable apartados">
                                 <a href="#nav-pacientes" data-toggle="collapse" aria-expanded="false">
@@ -93,7 +93,7 @@
                                         </li>
                                 </ul>
                             </li> 
-
+                            
                             <!-- Apartado "GRÁFICAS"-->
                             <li class="espaciado-desplegable apartados">
                                 <a href="#nav-graficas" data-toggle="collapse" aria-expanded="false" class="collapsed">
@@ -101,10 +101,11 @@
                                 </a>
                                 <ul class="list-unstyled collapse tamano-letra" id="nav-graficas" style="">
                                     <li>
-                                        <a href="graficas-mediciones.php">mediciones</a>
+                                        <a href="mediciones.php">mediciones</a>
                                     </li>
                                 </ul>
                             </li>
+                            <?php } ?>
                         </ul>
                         <!-- FIN Lista desplegable -->
                     </nav>
@@ -115,9 +116,18 @@
                 <div class="col-lg-10 col-der" >
 
                     <!-- Barra de navegación superior =============================================================================== -->
-                    <nav id="nav-top" class="navbar navbar-default">
+                    <nav id="espaciado-logout">
+                        <ul>
+                            <a  href="logout.php" role="button">
+                                <span id="logout-admin" class="ti-user"></span>
+                            </a>
+                           
+                        </ul>
+                    </nav>
+
+                    <!-- <nav id="nav-top" class="navbar navbar-default">
                         <ul class="nav" id="user">
-                            <div class="dropdown show">
+                              <div class="dropdown show">
                                 <a class="dropdown-toggle" id="icono-usuario" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                                     <span class="ti-user"></span>
                                 </a>
@@ -125,10 +135,11 @@
                                     <h6 class="dropdown-header">Usuario</h6>
                                     <a id="btn-salir" href="logout.php" class="dropdown-item" > <span class="ti-power-off"></span>&nbsp;&nbsp;Salir</a>
                                     </div>
-                            </div>
+                                </div>
                            
                         </ul>
-                    </nav>
+                    </nav> -->
+                    
                     <!-- Fila título página + Breadcrumb -->
                     <div class="row" id="grupo-titulo-pagina">
                         <!-- Título -->

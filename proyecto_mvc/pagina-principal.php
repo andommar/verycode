@@ -35,10 +35,6 @@
         <!-- Hojas de estilo -->
         <link rel="stylesheet" type="text/css" href="css/global-style.css">
         <link rel="stylesheet" type="text/css" href="css/anadir-paciente-style.css">
-        <!-- Gráficas -->
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/grafica1.css">
-        <link rel="stylesheet" href="css/formularios-style.css">
     </head>
   
     <!-- ===============  BODY ============= -->
@@ -65,6 +61,7 @@
                             </li>
 
                              <!-- Apartado "PACIENTES"-->
+                             <?php if($_SESSION["tipo_usuario"]=='fisioterapeuta'){?>
                              <li class="espaciado-desplegable apartados">
                                 <a href="#nav-pacientes" data-toggle="collapse" aria-expanded="false">
                                     <span class="ti-wheelchair"></span> Pacientes
@@ -97,10 +94,11 @@
                                 </a>
                                 <ul class="list-unstyled collapse tamano-letra" id="nav-graficas" style="">
                                     <li>
-                                        <a href="graficas-mediciones.php">mediciones</a>
+                                        <a href="mediciones.php">mediciones</a>
                                     </li>
                                 </ul>
                             </li>
+                            <?php } ?>
                         </ul>
                         <!-- FIN Lista desplegable -->
                     </nav>
@@ -122,15 +120,6 @@
                                     <a id="btn-salir" href="logout.php" class="dropdown-item" > <span class="ti-power-off"></span>&nbsp;&nbsp;Salir</a>
                                     </div>
                                 </div>
-                                <!--<div class="dropdown-menu proclinic-box-shadow2 profile animated flipInY">
-                                    <h5>John Willing</h5>
-                                    <a class="dropdown-item" href="#">
-                                        <span class="ti-settings"></span> Settings</a>
-                                    <a class="dropdown-item" href="#">
-                                        <span class="ti-help-alt"></span> Help</a>
-                                    <a class="dropdown-item" href="#">
-                                        <span class="ti-power-off"></span> Logout</a>
-                                </div>-->
                            
                         </ul>
                     </nav>
@@ -160,66 +149,17 @@
                      <!-- Cuerpo página (lado derecho)-->
                     <!-- FILA 1 | ESTADÍSTICAS GENERALES-->
                     <div id="cuerpo-pagina-1" class="row"> 
-                        <div class="col-lg-4">
-                            <div class="area-cuadro sombra-cuadro color-azul">
-                                <div class="widget-izq">
-                                    <span class="ti-user"></span>
-                                </div>
-                                <div class="widget-der">
-                                    <h4 class="wiget-titulo">Pacientes</h4>
-                                    <span class="numero">348</span>
-                                    <p class="flecha-inc mb-0"><span class="ti-angle-up"></span> +20% Aumento</p>
-                                </div>
-                            </div>
+                        <div class="col-lg-12">
+                            
                         </div>
-                        <div class="col-lg-4">
-                            <div class="area-cuadro sombra-cuadro color-azul">
-                                <div class="widget-izq">
-                                    <span class="ti-user"></span>
-                                </div>
-                                <div class="widget-der">
-                                    <h4 class="wiget-titulo">Pacientes</h4>
-                                    <span class="numero">348</span>
-                                    <p class="flecha-inc mb-0"><span class="ti-angle-up"></span> +20% Aumento</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="area-cuadro sombra-cuadro color-azul">
-                                <div class="widget-izq">
-                                    <span class="ti-user"></span>
-                                </div>
-                                <div class="widget-der">
-                                    <h4 class="wiget-titulo">Pacientes</h4>
-                                    <span class="numero">348</span>
-                                    <p class="flecha-inc mb-0"><span class="ti-angle-up"></span> +20% Aumento</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- FILA 2 | GRÁFICAS -->
-                    <!-- FILA 2 | GRÁFICAS -->
-                    <div id="cuerpo-pagina-2" class="row"> 
-                        <div class="col-lg-6 align-middle">
-                            <div class="area-cuadro sombra-cuadro color-azul">
-                                <canvas id ="lineChart" height="200" width="400"></canvas>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="area-cuadro sombra-cuadro color-azul">
-                                <canvas id ="lineChart2" height="200" width="400"></canvas>
-                            </div>
-                        </div>
+                        
+                       
                     </div>
                 </div> <!-- Fin columna derecha-->
             </div> <!-- ROW -->
 
 
         </div><!-- CONTAINER FLUID-->
-
-        <!-- SCRIPTS -->
-        <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
-        <script src="js/grafica1.js"></script>
 
     </body>
 </html>

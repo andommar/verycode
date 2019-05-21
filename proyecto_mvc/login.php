@@ -75,8 +75,8 @@
                     var correo= $("#correo").val().trim();
                     var contrasenya= $("#contrasenya").val().trim();
 
-                    console.log("correo: "+correo);
-                    console.log("contraseña: "+contrasenya);
+                    // console.log("correo: "+correo);
+                    // console.log("contraseña: "+contrasenya);
 
                     //action="control/control_login.php"
 
@@ -88,7 +88,7 @@
                     })        
                     .done(function( msg ) {                             	
                         console.log("ajax done");
-                        console.log(msg);
+                        // console.log(msg);
                         var datos = $.parseJSON(msg);
                         var usuario_correcto = datos.usuario_correcto;
                         var tipo_usuario = datos.tipo_usuario;

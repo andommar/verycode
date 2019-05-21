@@ -106,18 +106,8 @@ $(document).ready(function(){
 
             // console.log("Array cosas"+cosas[0]["p1"]);
             // console.log("Array fechas"+fechas);
-
-
-
-
-
-   
-
             //creamos un array de objetos con las mediciones de lado izquierdo, derecho y la diferencia entre los puntos
-            
             //var fechas=[];
-
-
 
             var len = cosas.length;
             // console.log(data.fecha);
@@ -166,12 +156,7 @@ $(document).ready(function(){
             //  console.log(mediciones.izquierdo);
             //  console.log(mediciones.derecho);
             //  console.log(mediciones.diferencia);
-
-
-
-           
-
-
+            
                 chart = new Chart( grafica_datos, {
                 type : "bar",
                 data : datos_graph,

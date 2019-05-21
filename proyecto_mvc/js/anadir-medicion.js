@@ -115,6 +115,13 @@ var id_usuario= $("#id_usuario").val();
 
                 jQuery("input[id=miembro_sano_pierna_i]:radio").attr('checked',true);
                 jQuery("input[id=miembro_sano_pierna_d]:radio").attr('disabled',true);
+
+                jQuery("input[id=pierna_i_p1]").attr('disabled',true);
+                jQuery("input[id=pierna_i_p2]").attr('disabled',true);
+                jQuery("input[id=pierna_i_p3]").attr('disabled',true);
+                jQuery("input[id=pierna_i_p4]").attr('disabled',true);
+                jQuery("input[id=pierna_i_p5]").attr('disabled',true);
+                jQuery("input[id=pierna_i_p6]").attr('disabled',true);
             }
             else if(msg=="pierna_i"){//pierna d lado sano
 
@@ -126,6 +133,13 @@ var id_usuario= $("#id_usuario").val();
 
                 jQuery("input[id=miembro_sano_pierna_d]:radio").attr('checked',true);
                 jQuery("input[id=miembro_sano_pierna_i]:radio").attr('disabled',true);
+
+                jQuery("input[id=pierna_d_p1]").attr('disabled',true);
+                jQuery("input[id=pierna_d_p2]").attr('disabled',true);
+                jQuery("input[id=pierna_d_p3]").attr('disabled',true);
+                jQuery("input[id=pierna_d_p4]").attr('disabled',true);
+                jQuery("input[id=pierna_d_p5]").attr('disabled',true);
+                jQuery("input[id=pierna_d_p6]").attr('disabled',true);
                 
             }
     })
