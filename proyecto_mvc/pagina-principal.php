@@ -35,6 +35,7 @@
         <!-- Hojas de estilo -->
         <link rel="stylesheet" type="text/css" href="css/global-style.css">
         <link rel="stylesheet" type="text/css" href="css/anadir-paciente-style.css">
+        <link rel="stylesheet" type="text/css" href="css/pagina-principal.css">
     </head>
   
     <!-- ===============  BODY ============= -->
@@ -148,9 +149,30 @@
 
                      <!-- Cuerpo página (lado derecho)-->
                     <!-- FILA 1 | ESTADÍSTICAS GENERALES-->
-                    <div id="cuerpo-pagina-1" class="row"> 
-                        <div class="col-lg-12">
-                            
+                    <div id="cuerpo-pagina-1" class="row">
+                        <div class="col-lg-3 text-center mx-auto" id="apartado-botones-1">
+                            <div id="botones-1">
+                            <a href="anadir-paciente.php">
+                                <button id="btn-1" type="button" class="button btn estilo-botones2">
+                                    <span class="ti-user estilo-icono"></span><br><br>Añadir paciente</button>
+                            </a>
+                            </div> 
+                        </div>
+                        <div class="col-lg-3 text-center mx-auto" id="apartado-botones-2">
+                            <div id="botones-2">
+                                <a href="pacientes.php">
+                                    <button id="btn-2" type="button" class="button btn estilo-botones2 ">
+                                    <span class="ti-eye estilo-icono"></span><br><br>Ver pacientes</button>
+                                </a>
+                            </div> 
+                        </div>
+                        <div class="col-lg-3 text-center mx-auto" id="apartado-botones-3">
+                            <div id="botones-3">
+                                <a href="mediciones.php">
+                                    <button id="btn-3" type="button" class="button btn estilo-botones2 ">
+                                        <span class="ti-ruler-alt estilo-icono"></span><br><br>Nueva medición</button>
+                                </a>
+                            </div> 
                         </div>
                         
                        

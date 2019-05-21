@@ -171,10 +171,6 @@ $(document).ready(function(){
             //  console.log(mediciones.izquierdo);
             //  console.log(mediciones.derecho);
             //  console.log(mediciones.diferencia);
-<<<<<<< HEAD
-            
-                chart = new Chart( grafica_datos, {
-=======
 
 
 
@@ -182,7 +178,6 @@ $(document).ready(function(){
 
 
                 var chart = new Chart( grafica_datos, {
->>>>>>> anna
                 type : "bar",
                 data : datos_graph,
                 options : opciones
@@ -397,3 +392,23 @@ function fechaMedicion(p1,p2,p3,p4,p5){
 //             ]
 //         },
 // });
+
+$(document).ready(function(){
+    //grafica-sano-afecto
+    //grafica-evolucion
+    $( "#btn-sano-afecto" ).click(function() {
+        $( "#grafica-evolucion" ).css("display","none");
+        $( "#btn-evolucion" ).css("background-color","rgb(109, 109, 109)");
+        $( "#grafica-sano-afecto" ).css("display","block");
+        $( "#btn-sano-afecto" ).css("background-color","#3da3bc"); 
+        
+    });
+
+    $( "#btn-evolucion" ).click(function() {
+        $( "#grafica-sano-afecto" ).css("display","none");
+        $( "#btn-sano-afecto" ).css("background-color","rgb(109, 109, 109)");
+        $( "#grafica-evolucion" ).css("display","block");
+        $( "#btn-evolucion" ).css("background-color","#3da3bc"); 
+        
+    });
+});

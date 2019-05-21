@@ -35,6 +35,7 @@
         <!-- Gráficas -->
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/grafica1.css">
+        <link rel="stylesheet" href="css/display-grafica.css">
          <!-- NOTIFICACIONES OVERHANG.JS  1 -->
         <link rel="stylesheet" type="text/css" href="js/overhang/dist/overhang.min.css" />
         <link rel="stylesheet" href="js/jquery-ui/jquery-ui.min.css">
@@ -162,39 +163,49 @@
                        
                     <!-- =============================== USUARIO | vista, sql y validado ===========================================  -->
                         <div class="col-lg-12">
-                            <div class="row">
-                                <div class="sombra-cuadro col-md-6 mx-auto mt-4">
-                                    <div id="grafica1" width=100%>
-                                        <canvas id ="lineChart" height="300" width="400"></canvas>
+                            
+                            <div class="col-lg-12 text-center" id="apartado-botones-graficas">
+                                <div id="botones-graficas">
+                                    <button id="btn-sano-afecto" type="button" class="button btn">Sano-afecto</button>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button id="btn-evolucion" type="button" class="button btn ">Evolución puntos</button>
+                                </div> 
+                            </div>
+                            <div id="grafica-sano-afecto">
+                                <div class="row">
+                                    <div class="sombra-cuadro col-md-6 mx-auto mt-4">
+                                        <div id="grafica1" width=100%>
+                                            <canvas id ="lineChart" height="300" width="400"></canvas>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="sombra-cuadro col-md-8 mx-auto mt-4">
-                                    <table class="table" id="pacientes-table">
-                                        <thead>
-                                            <tr>
-                                            <th>Fecha</th>
-                                            <th>Extremidad</th>
-                                            <th>Lado</th>
-                                            <th>Lado sano</th>
-                                            <th>P1</th>
-                                            <th>P2</th>
-                                            <th>P3</th>
-                                            <th>P4</th>
-                                            <th>P5</th>
-                                            <th>Acción</th>
-                                            </tr>
-                                        </thead>
-                                            <!-- Se rellena con la consulta AJAX de JS a la BD -->
-                                        <tbody>     
-                                        
-                                        </tbody>
-                                    </table>
+                                <div class="row">
+                                    <div class="sombra-cuadro col-md-10 mx-auto mt-4 mb-4">
+                                        <table class="table" id="pacientes-table">
+                                            <thead>
+                                                <tr>
+                                                <th>Fecha</th>
+                                                <th>Extremidad</th>
+                                                <th>Lado</th>
+                                                <th>Lado sano</th>
+                                                <th>P1</th>
+                                                <th>P2</th>
+                                                <th>P3</th>
+                                                <th>P4</th>
+                                                <th>P5</th>
+                                                <th>Acción</th>
+                                                </tr>
+                                            </thead>
+                                                <!-- Se rellena con la consulta AJAX de JS a la BD -->
+                                            <tbody>     
+                                            
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
                                 </div>
-                                
                             </div>
-                            <div class="row">
+                            <div id="grafica-evolucion" class="row">
                                 <div class="sombra-cuadro col-md-6 mx-auto mt-4">
                                     <div width=100%>
                                         <canvas id ="lineChartevolucion" height="300" width="400"></canvas>
