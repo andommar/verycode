@@ -3,8 +3,8 @@
     var opcion = "mostrar_graficas";
     var cosas = "";
     var fechas = "";
-    var chart ="";
     var grafica_datos=document.getElementById("lineChart");
+
 
 
 
@@ -158,7 +158,7 @@ $(document).ready(function(){
 
             for(i=0; i<mediciones.izquierdo.length;i++)
             {
-                resta=mediciones.derecho[i]-mediciones.izquierdo[i];
+                resta=mediciones.derecho_carga[i]-mediciones.izquierdo[i];
                 mediciones.diferencia[i]=resta;
                 //console.log(fechas[i]);
             }
@@ -172,7 +172,7 @@ $(document).ready(function(){
            
 
 
-                chart = new Chart( grafica_datos, {
+                var chart = new Chart( grafica_datos, {
                 type : "bar",
                 data : datos_graph,
                 options : opciones
@@ -335,12 +335,16 @@ function fechaMedicion(p1,p2,p3,p4,p5){
         //console.log(fechas[i]);
     }
 
-
-    chart = new Chart( grafica_datos, {
+    grafica_datos.remove();
+    
+    $("div#grafica1").append('<canvas id ="lineChart" height="300" width="400"></canvas>');
+    grafica_datos=document.getElementById("lineChart");
+    var chart = new Chart( grafica_datos, {
         type : "bar",
         data : datos_graph,
         options : opciones
-      });
+      }
+      );
     
 
 

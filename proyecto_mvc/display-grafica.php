@@ -163,7 +163,7 @@
                         <div class="col-lg-12">
                             <div class="row">
                                 <div class="sombra-cuadro col-md-6 mx-auto mt-4">
-                                    <div width=100%>
+                                    <div id="grafica1" width=100%>
                                         <canvas id ="lineChart" height="300" width="400"></canvas>
                                     </div>
                                 </div>
