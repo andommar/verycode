@@ -193,11 +193,13 @@
                                 </div>
                                 
                             </div>
-                                <!-- <div class="sombra-cuadro col-md-5 mx-auto mt-4">
+                            <div class="row">
+                                <div class="sombra-cuadro col-md-6 mx-auto mt-4">
                                     <div width=100%>
-                                        <canvas id ="lineChart_ultimas10" height="300" width="400"></canvas>
+                                        <canvas id ="lineChartevolucion" height="300" width="400"></canvas>
                                     </div>
-                                </div> -->
+                                </div>
+                            </div>
 
                         </div>
                     </div><!-- Fin cuerpo página-->
