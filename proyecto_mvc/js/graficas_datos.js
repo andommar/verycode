@@ -3,8 +3,9 @@
     var opcion = "mostrar_graficas";
     var cosas = "";
     var fechas = "";
-    var chart ="";
     var grafica_datos=document.getElementById("lineChart");
+    var grafica_evolucion=document.getElementById("lineChartevolucion");
+
 
 
 
@@ -16,6 +17,14 @@
         diferencia: []
     };
 
+    var evolucion =
+    {
+        p1: [],
+        p2: [],
+        p3: [],
+        p4: [],
+        p5: []
+    };
 
 
 
@@ -55,7 +64,7 @@
     var opciones = {
         title:{
             display: true,
-            text: 'Comparativa. Fecha: ',
+            text: 'Comparativa miembro sano-afecto',
             fontSize: 20,
             fontColor:"#111"
         },
@@ -141,6 +150,12 @@ $(document).ready(function(){
                     mediciones.derecho_carga[3]=cosas[0].p4;
                     mediciones.derecho_carga[4]=cosas[0].p5;
 
+                    evolucion.p1.push(cosas[i].p1);
+                    evolucion.p2.push(cosas[i].p2);
+                    evolucion.p3.push(cosas[i].p3);
+                    evolucion.p4.push(cosas[i].p4);
+                    evolucion.p5.push(cosas[i].p5);
+
                 }
             }
 
@@ -148,7 +163,7 @@ $(document).ready(function(){
 
             for(i=0; i<mediciones.izquierdo.length;i++)
             {
-                resta=mediciones.derecho[i]-mediciones.izquierdo[i];
+                resta=mediciones.derecho_carga[i]-mediciones.izquierdo[i];
                 mediciones.diferencia[i]=resta;
                 //console.log(fechas[i]);
             }
@@ -156,8 +171,18 @@ $(document).ready(function(){
             //  console.log(mediciones.izquierdo);
             //  console.log(mediciones.derecho);
             //  console.log(mediciones.diferencia);
+<<<<<<< HEAD
             
                 chart = new Chart( grafica_datos, {
+=======
+
+
+
+           
+
+
+                var chart = new Chart( grafica_datos, {
+>>>>>>> anna
                 type : "bar",
                 data : datos_graph,
                 options : opciones
@@ -166,97 +191,76 @@ $(document).ready(function(){
 
             //   //===================== SEGUNDA GRÁFICA
 
-            //   var evolucion =
-            //   {
-            //       p1: [],
-            //       p2: [],
-            //       p3: [],
-            //       p4: [],
-            //       p5: []
-            //   };
-  
-  
-            //   //var len = cosas.length;
-            //   // console.log(data.fecha);
-            //   // console.log(datos);
-  
-            //   for(var i = 0; i<len; i++)
-            //   {
-            //     evolucion.p1.push(cosas[i].p1);
-            //     evolucion.p2.push(cosas[i].p2);
-            //     evolucion.p3.push(cosas[i].p3);
-            //     evolucion.p4.push(cosas[i].p4);
-            //     evolucion.p5.push(cosas[i].p5);
-            //   }
 
 
 
+            // 
 
-            //   var grafica_ultimas=document.getElementById("lineChart_ultimas10");
+              var datos_ultimas ={
+                labels:fechas,
+                datasets:[
+                    {
+                        label: "p1",
+                        data: evolucion.p1,
+                        borderColor: 'blue',
+                        fill:false,
+                        lineTension:0,
+                        pointRadius: 5,
+                        type: 'line'
+                    },
+                    {
+                        label: "p2",
+                        data: evolucion.p2,
+                        borderColor: 'red',
+                        fill:false,
+                        lineTension:0,
+                        pointRadius: 5,
+                        type: 'line'
+                    },
+                    {
+                        label: "p3",
+                        data: evolucion.p3,
+                        borderColor: 'green',
+                        fill:false,
+                        lineTension:0,
+                        pointRadius: 5,
+                        type: 'line'
+                    },
+                    {
+                        label: "p4",
+                        data: evolucion.p4,
+                        borderColor: 'purple',
+                        fill:false,
+                        lineTension:0,
+                        pointRadius: 5,
+                        type: 'line'
+                    },
+                    {
+                        label: "p5",
+                        data: evolucion.p5,
+                        borderColor: '#e8c3b9',
+                        fill:false,
+                        lineTension:0,
+                        pointRadius: 5,
+                        type: 'line'
+                    },
+                    // {
+                    //     label: "Diferencia mediciones",
+                    //     data: mediciones.diferencia,
+                    //     backgroundColor: 'rgba(134,213,102,0.3)',
+                    //     borderColor: 'rgba(134,213,102,0.3)'
+                    // }
+                ]
+            };
 
-            //   var datos_ultimas ={
-            //     labels:fechas,
-            //     datasets:[
-            //         {
-            //             label: "p1",
-            //             data: evolucion.p1,
-            //             borderColor: 'blue',
-            //             fill:false,
-            //             lineTension:0,
-            //             pointRadius: 5,
-            //             type: 'line'
-            //         },
-            //         {
-            //             label: "p2",
-            //             data: evolucion.p2,
-            //             borderColor: 'red',
-            //             fill:false,
-            //             lineTension:0,
-            //             pointRadius: 5,
-            //             type: 'line'
-            //         },
-            //         {
-            //             label: "p3",
-            //             data: evolucion.p3,
-            //             borderColor: 'green',
-            //             fill:false,
-            //             lineTension:0,
-            //             pointRadius: 5,
-            //             type: 'line'
-            //         },
-            //         {
-            //             label: "p4",
-            //             data: evolucion.p4,
-            //             borderColor: 'purple',
-            //             fill:false,
-            //             lineTension:0,
-            //             pointRadius: 5,
-            //             type: 'line'
-            //         },
-            //         {
-            //             label: "p5",
-            //             data: evolucion.p5,
-            //             borderColor: '#e8c3b9',
-            //             fill:false,
-            //             lineTension:0,
-            //             pointRadius: 5,
-            //             type: 'line'
-            //         },
-            //         // {
-            //         //     label: "Diferencia mediciones",
-            //         //     data: mediciones.diferencia,
-            //         //     backgroundColor: 'rgba(134,213,102,0.3)',
-            //         //     borderColor: 'rgba(134,213,102,0.3)'
-            //         // }
-            //     ]
-            // };
+            opciones.title.text="Evolución puntos";
 
-            // var chart = new Chart( grafica_ultimas, {
-            //     type : "line",
-            //     data : datos_ultimas,
-            //     options : opciones
-            //   }
-            //   );
+            var chart2 = new Chart( grafica_evolucion, {
+                type : "line",
+                data : datos_ultimas,
+                options : opciones
+              }
+              );
 
 
 
@@ -320,12 +324,17 @@ function fechaMedicion(p1,p2,p3,p4,p5){
         //console.log(fechas[i]);
     }
 
-
-    chart = new Chart( grafica_datos, {
+    grafica_datos.remove();
+    
+    opciones.title.text="Comparativa miembro sano-afecto";
+    $("div#grafica1").append('<canvas id ="lineChart" height="300" width="400"></canvas>');
+    grafica_datos=document.getElementById("lineChart");
+    var chart = new Chart( grafica_datos, {
         type : "bar",
         data : datos_graph,
         options : opciones
-      });
+      }
+      );
     
 
 
