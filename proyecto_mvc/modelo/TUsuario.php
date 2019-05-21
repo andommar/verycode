@@ -501,7 +501,129 @@ class TUsuario{
 			return $res;
 		 }
 		
+		public function get_miembro_afecto($id_user){
+			$res=-3;
+			$abd = new TAccesbd ();
 
+			if($abd->conectado())
+			{
+				//-3 brazo_i_afecto, -4 brazo_d_afecto, -5 pierna_i_afecto, -6 pierna_d_afecto
+				//Comprobar si tiene medición inicial
+				$sql="select count(*) from mediciones where id_user=$id_user";
+				$stmt = $abd->consultar_dato($sql);
+				if( $stmt === false ) {//error consulta sql
+					$res=-1;
+				}
+				else{
+					if($stmt<2){//no tiene medicion inicial
+						$res=-2;
+					}
+					else{//tiene medicion inicial, buscamos si es brazo o pierna, primero
+						$sql2="SELECT TOP 1 extremidad FROM mediciones WHERE id_user = $id_user ORDER BY fecha";
+						$stmt2 = $abd->consultar_dato($sql2);
+						if( $stmt2 === false ) {//error consulta sql
+							$res=-1;
+						}
+						else{
+							if($stmt2=="brazo"){
+								$sql3="SELECT TOP 1 lado FROM mediciones WHERE id_user = $id_user and lado_sano='no' and extremidad='brazo' ORDER BY fecha";
+								$stmt3 = $abd->consultar_dato($sql3);
+								if( $stmt3 === false ) {//error consulta sql
+									$res=-1;
+								}
+								else{//lado izquierdo es el afecto
+									if($stmt3=="izquierdo"){
+										$res=-3;
+									}
+									else{//lado derecho es el afecto
+										$res=-4;
+									}
+								}
+							}
+							else{//"pierna"
+								$sql4="SELECT TOP 1 lado FROM mediciones WHERE id_user = $id_user and lado_sano='no' and extremidad='pierna' ORDER BY fecha";
+								$stmt4 = $abd->consultar_dato($sql4);
+								if( $stmt4 === false ) {//error consulta sql
+									$res=-1;
+								}
+								else{//lado izquierdo es el afecto
+									if($stmt4=="izquierdo"){
+										$res=-5;
+									}
+									else{//lado derecho es el afecto
+										$res=-6;
+									}
+								}
+
+							}
+						}
+						
+
+					}
+				}
+
+
+			}
+			return $res;
+		}
+
+		//brazo_i/d, pierna_i/d lados afectos
+		public function registro_nueva_medicion($id_user,$fecha,$extremidad,$p1,$p2,$p3,$p4,$p5,$p6){
+			$res=0;
+			$abd = new TAccesbd ();
+			$lado="derecho";
+			switch($extremidad){
+				case "brazo_d":
+				case "pierna_d":
+					$lado = "derecho";
+				break;
+				case "brazo_i":
+				case "pierna_i":
+					$lado = "izquierdo";
+				break;
+			}
+			if($abd->conectado())
+			{
+				$p6 = ($p6==0) ? "null" : $p6;
+				//Comprobar si se repite la medición en la fecha dada o si se introduce una en una fecha anterior a la primera o a su anterior
+				$sql2="SELECT COUNT(*) FROM mediciones WHERE fecha='$fecha' AND id_user=2";
+				$stmt2 = $abd->consultar_dato($sql2);
+				if( $stmt2 === false ) {//error sql
+					$res=-1;
+				}
+				else{
+					
+					if($stmt2>0){//se repite
+						$res=-2;
+					}
+					else{
+
+						if($extremidad=="brazo_i" || $extremidad=="brazo_d"){//BRAZO
+					
+							$sql="insert into mediciones values ($id_user,'$fecha','brazo','$lado','no',$p1,$p2,$p3,$p4,$p5,$p6)";
+							$stmt = $abd->ejecuta_sql($sql);
+							if( $stmt === false ) {
+								$res=-1;
+							die( print_r( sqlsrv_errors(), true));
+							}
+						}
+						else if($extremidad=="pierna_i" || $extremidad=="pierna_d"){
+							$sql3="insert into mediciones values ($id_user,'$fecha','pierna','$lado','no',$p1,$p2,$p3,$p4,$p5,$p6)";
+							$stmt3 = $abd->ejecuta_sql($sql3);
+							if( $stmt3 === false ) {
+								$res=-1;
+							die( print_r( sqlsrv_errors(), true));
+							}
+						}
+
+					}
+				
+				}
+			
+
+			}
+			return $res;
+		}
 
 	//ESTA FUNCIÓN A PARTE DE REGISTRAR PACIENTE, DEVUELVE EL ID DESPUÉS DE REGISTRARLO
 	public function registro_paciente($correo,$pass,$pass2,$nombre,$apellido1,$apellido2,$id_especialista,&$id_user)

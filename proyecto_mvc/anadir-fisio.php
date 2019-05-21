@@ -35,6 +35,7 @@
         <!-- Hojas de estilo -->
         <link rel="stylesheet" type="text/css" href="css/global-style.css">
         <link rel="stylesheet" type="text/css" href="css/anadir-paciente-style.css">
+        <link rel="stylesheet" type="text/css" href="css/anadir-fisio.css">
         <!-- Gráficas -->
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/grafica1.css">
@@ -163,8 +164,8 @@
                      <!-- Cuerpo página (lado derecho)-->
                     <!-- FILA 1 | INPUTS -->
                     <div id="cuerpo-pagina-2" class="row"> 
-
-                    <div id="anadir-fisio">
+                    <div class="col-sm-12">
+                            <div id="anadir-fisio">
                                 <h3>Datos especialista</h3>
                                 <hr>
 
@@ -228,7 +229,7 @@
                                 </form>
                             </div>
 
-
+                        </div>
 
 
                     </div><!-- Fin cuerpo página-->

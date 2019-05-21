@@ -76,7 +76,7 @@ if(isset($_POST["opcion"]))
             $pass = $_POST["pass"];
             $pass2 = $_POST["pass2"]; 
             $nombre = $_POST["nombre"];
-            $apellido = $_POST["apellido"];
+            $apellido = $_POST["apellido1"];
             $apellido2 = $_POST["apellido2"];
             $tipo = $_POST["tipo"];
 
@@ -388,6 +388,31 @@ if(isset($_POST["opcion"]))
                 echo json_encode($error);
 
         break;
+        case "registro_nueva_medicion":
+            $id_user=$_POST["id_usuario"];
+            $fecha= $_POST["fecha"];
+            $extremidad = $_POST["extremidad"];//brazo_i/d, pierna_i/d lados afectos
+
+            $p1 = $_POST["p1"];
+            $p2 = $_POST["p2"];
+            $p3 = $_POST["p3"];
+            $p4 = $_POST["p4"];
+            $p5 = $_POST["p5"];
+            $p6 = $_POST["p6"];
+
+        
+            $error=$c->registro_nueva_medicion($id_user,$fecha,$extremidad,$p1,$p2,$p3,$p4,$p5,$p6);
+            if($error==0)
+            {
+                echo "true";
+            }
+            else if($error==-2){
+                echo "fecha";
+            }
+            else //-1
+                echo "false";
+
+        break;
 
 
     }
@@ -426,7 +451,31 @@ if(isset($_GET["opcion"]))
             
             echo json_encode(array($error,$error2));
 
-    break;
+        break;
+        //-3 brazo_i_afecto, -4 brazo_d_afecto, -5 pierna_i_afecto, -6 pierna_d_afecto
+        case "get_miembro_afecto":
+            $id_user=$_GET["id_usuario"];
+            $error=$c->get_miembro_afecto($id_user);
+            
+            if($error==-1){
+                echo "false";
+            }
+            else if($error==-2){
+                echo "no_tiene";
+            }
+            else if($error==-3){
+                echo "brazo_i";
+            }
+            else if($error==-4){
+                echo "brazo_d";
+            }
+            else if($error==-5){
+                echo "pierna_i";
+            }
+            else if($error==-6){
+                echo "pierna_d";
+            }
+                
     }
 }
 ?>

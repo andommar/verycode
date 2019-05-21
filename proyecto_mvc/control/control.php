@@ -7,7 +7,11 @@ include_once("../modelo/TGrafica.php");
 
 class TControl{
 
-
+    public function get_miembro_afecto($id_user){
+        $usr = new TUsuario();
+        $resultado = $usr->get_miembro_afecto($id_user);
+        return ($resultado);
+    }
     public function modificar_especialista($id_especialista_seleccionado, $nombre, $apellido1,
     $apellido2,$correo,$pass, $pass2, $tipo){
         
@@ -148,7 +152,11 @@ class TControl{
 
         return ($resultat);
     }
-   
+   public function registro_nueva_medicion($id_user,$fecha,$extremidad,$p1,$p2,$p3,$p4,$p5,$p6){
+        $usr = new TUsuario();
+        $resultat=$usr->registro_nueva_medicion($id_user,$fecha,$extremidad,$p1,$p2,$p3,$p4,$p5,$p6);
+    return ($resultat);
+   }
      
     //--------------------------- Mediciones/Gráficas -----------------------
 

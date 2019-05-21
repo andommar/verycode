@@ -184,7 +184,7 @@
                                     <tbody>
                                         <tr>
                                             <td><h3 class="texto-titulo">Listado de especialistas</h3></td>
-                                            <td id="btn-tabla"><a style="text-decoration: none;" href="anadir-especialista.php"><button id="btn-anadir-especialista" class="btn">Añadir especialista&nbsp;&nbsp;<i class="fas fa-user-plus"></i></button></a></td>
+                                            <td id="btn-tabla"><a style="text-decoration: none;" href="anadir-fisio.php"><button id="btn-anadir-especialista" class="btn">Añadir especialista&nbsp;&nbsp;<i class="fas fa-user-plus"></i></button></a></td>
                                         </tr>
                                     </tbody>
                                 </table>
