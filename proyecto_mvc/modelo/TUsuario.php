@@ -16,7 +16,7 @@ class TUsuario{
 		
   }
 
-	public function datos_especialista($id_especialista)
+	public function datos_especialista($id_especialista)	
 	{
 
 		$res=true;
@@ -196,7 +196,6 @@ class TUsuario{
 						$stmt = $abd->ejecuta_sql($sql);
 						if( $stmt === false ) {//Fallo consulta
 							$res=-1;
-							die( print_r( sqlsrv_errors(), true));
 						}
 						
 				}
@@ -233,7 +232,6 @@ class TUsuario{
 					$stmt = $abd->ejecuta_sql($sql);
 					if( $stmt === false ) {
 						$res=-1;
-						die( print_r( sqlsrv_errors(), true));
 					}
 				}
 			}
@@ -268,7 +266,6 @@ class TUsuario{
 						$stmt = $abd->ejecuta_sql($sql);
 						if( $stmt === false ) {
 							$res=-1;
-							die( print_r( sqlsrv_errors(), true));
 						}
 					}
 				}
@@ -298,7 +295,6 @@ class TUsuario{
 						$stmt = $abd->ejecuta_sql($sql);
 						if( $stmt === false ) {
 							$res=-1;
-							die( print_r( sqlsrv_errors(), true));
 						}
 				}
 			}
@@ -346,7 +342,6 @@ class TUsuario{
 						$stmt = $abd->ejecuta_sql($sql);
 						if( $stmt === false ) {
 							$res=-1;
-							die( print_r( sqlsrv_errors(), true));
 						}
 				}
 			}
@@ -378,7 +373,6 @@ class TUsuario{
 						$stmt = $abd->ejecuta_sql($sql);
 						if( $stmt === false ) {
 							$res=-1;
-							die( print_r( sqlsrv_errors(), true));
 						}
 				}
 			}
@@ -407,7 +401,6 @@ class TUsuario{
 					$stmt = $abd->ejecuta_sql($sql);
 					if( $stmt === false ) {
 						$res=-1;
-					die( print_r( sqlsrv_errors(), true));
 					}
 				}
 			}
@@ -415,7 +408,7 @@ class TUsuario{
 		return $res;
 		}
 
-		//**
+	
 
 		public function registro_mediciones($id_user,$fecha,$extremidad,$lado_sano,$p1_i,$p2_i,$p3_i,$p4_i,$p5_i,$p6_i,$p1_d,$p2_d,$p3_d,$p4_d,$p5_d,$p6_d){
 			$res=0;
@@ -446,7 +439,6 @@ class TUsuario{
 							$stmt = $abd->ejecuta_sql($sql);
 							if( $stmt === false ) {
 								$res=-1;
-							die( print_r( sqlsrv_errors(), true));
 							}
 							else{//BRAZO DERECHO
 								$lado_sano = ($lado_sano=="brazo_d") ? "si" : "no";
@@ -454,7 +446,6 @@ class TUsuario{
 								$stmt3 = $abd->ejecuta_sql($sql3);
 								if( $stmt3 === false ) {
 									$res=-1;
-								die( print_r( sqlsrv_errors(), true));
 								}
 							}
 						}
@@ -482,7 +473,7 @@ class TUsuario{
 							$stmt5 = $abd->ejecuta_sql($sql5);
 							if( $stmt5 === false ) {
 								$res=-1;
-							die( print_r( sqlsrv_errors(), true));
+							// die( print_r( sqlsrv_errors(), true));
 							}
 							else{//PIERNA IZQUIERDA
 								$lado_sano = ($lado_sano=="pierna_d") ? "si" : "no";
@@ -490,7 +481,6 @@ class TUsuario{
 								$stmt6 = $abd->ejecuta_sql($sql6);
 								if( $stmt6 === false ) {
 									$res=-1;
-								die( print_r( sqlsrv_errors(), true));
 								}
 							}
 						}
@@ -604,7 +594,6 @@ class TUsuario{
 							$stmt = $abd->ejecuta_sql($sql);
 							if( $stmt === false ) {
 								$res=-1;
-							die( print_r( sqlsrv_errors(), true));
 							}
 						}
 						else if($extremidad=="pierna_i" || $extremidad=="pierna_d"){
@@ -612,7 +601,6 @@ class TUsuario{
 							$stmt3 = $abd->ejecuta_sql($sql3);
 							if( $stmt3 === false ) {
 								$res=-1;
-							die( print_r( sqlsrv_errors(), true));
 							}
 						}
 
@@ -651,7 +639,6 @@ class TUsuario{
 					$stmt2 = $abd->ejecuta_sql($sql2);
 					if( $stmt2 === false ) {
 						$res=-1;
-						die( print_r( sqlsrv_errors(), true));
 					}
 					else{
 						sqlsrv_next_result($stmt2); //Va al siguiente resultado y lo muestra (es un boolean si devuelve true o false si encuentra resultado)
@@ -679,7 +666,6 @@ class TUsuario{
 		}
 		if( $stmt === false ) {
 			$res=-1;
-			die( print_r( sqlsrv_errors(), true));
 		}
 
 
@@ -756,10 +742,43 @@ class TUsuario{
 		}
 		if( $stmt === false ) {
 			$res=-1;
-			die( print_r( sqlsrv_errors(), true));
 		}
+		return $res;
 
+	}
 
+	//update usuario set id_especialista=$id_especialista where id_user=$id_user and id_especialista is null **
+
+	public function asignar_fisio($id_user, $id_especialista){
+		$res=0;
+		$abd = new TAccesbd ();
+		if($abd->conectado())
+		{
+			$sql="update usuario set id_especialista=$id_especialista where id_user=$id_user and id_especialista is null";
+			$stmt = $abd->ejecuta_sql($sql);	
+		}
+		if( $stmt === false ) {//error sql
+
+			$res=-1;
+
+		}
+		return $res;
+	}
+
+	public function get_paciente_no_asignado($id_user){	
+			$res=0;
+			$abd = new TAccesbd ();
+			if($abd->conectado())
+			{
+				$sql="select nombre,apellido1, apellido2, correo, pass from usuario	where id_user = $id_user";
+				$stmt = $abd->listado_asociativo($sql);
+			}
+			if( $stmt != false ) {//error sql
+
+				$res=$stmt;
+	
+			}
+			return $res;
 	}
 
 

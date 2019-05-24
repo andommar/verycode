@@ -7,7 +7,7 @@
 <html>
     <!-- ===============  HEAD ============= -->
     <head>
-        <title>Pacientes</title>
+        <title>Asignar paciente</title>
         <meta charset="utf-8">
         <!-- Mobile First -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +16,6 @@
         <link rel="icon" href="img/favicon.ico" type="image/x-icon">  
         <!-- Iconos --> 
         <link rel="stylesheet" href="css/themify-icons.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
         <!-- BOOTSTRAP 4 -->
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -29,15 +28,11 @@
         <!-- Hojas de estilo -->
         <link rel="stylesheet" type="text/css" href="css/global-style.css">
         <!-- <link rel="stylesheet" type="text/css" href="css/anadir-paciente-style.css"> -->
-        <link rel="stylesheet" type="text/css" href="css/pacientes.css">
-        <!--<link rel="stylesheet" type="text/css" href="css/mediciones.css">-->
-        <!-- Gráficas -->
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/grafica1.css">
+        <link rel="stylesheet" type="text/css" href="css/editar-paciente-noregistrado.css">
          <!-- NOTIFICACIONES OVERHANG.JS  1 -->
         <link rel="stylesheet" type="text/css" href="js/overhang/dist/overhang.min.css" />
         <link rel="stylesheet" href="js/jquery-ui/jquery-ui.min.css">
-        <script type="text/javascript" src="js/pacientes.js"></script>
+        <script type="text/javascript" src="js/editar-paciente-noregistrado.js"></script>
         
     </head>
      <!-- ===============  BODY ============= -->
@@ -129,7 +124,7 @@
                     <div class="row" id="grupo-titulo-pagina">
                         <!-- Título -->
                         <div class="col-md-6" id="titulo">
-                            <h3 class="block-title">Todos los pacientes</h3>
+                            <h3 class="block-title">Editar paciente por asignar</h3>
                         </div>
                         <!-- Breadcrumb -->
                         <div class="col-md-6">
@@ -149,6 +144,9 @@
                                         Todos los pacientes
                                     </a>
                                 </li>
+                                <li class="breadcrumb-item color-blanco">
+                                    Pacientes por asignar
+                                </li>
                                
                             </ol>
                         </div>
@@ -158,80 +156,76 @@
                     <!-- FILA 1 | INPUTS -->
                     
                     <div id="cuerpo-pagina-2" class="row"> 
-                        <div class="col-lg-12 text-center" id="apartado-botones-fisio">
-                            <div id="botones-fisio">
-                                    <button id="btn-mis-pacientes" type="button" class="button btn">Mis pacientes</button>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <button id="btn-pacientes-por-asignar" type="button" class="button btn ">Pacientes por asignar</button>
-                            </div> 
-                        </div>
+                        
                         <div class="col-lg-12">
-                            <!-- TABLA PACIENTES -->
-                            <div id="apartado-pacientes" class="">
-                                <div class="form-row">
-                                    <div class="form-group" id="id-usuario">
-                                        <label for="Select-id-usuario">id usuario:</label>
-                                        &nbsp;
-                                        <select class="form-control" id="Select-id-usuario" name="Select-id-usuario">
-                                        </select>
-                                    </div>
-                                </div>
-                                <h3>Mis pacientes</h3>
-                                <hr>
-                                <table class="table" id="pacientes-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Id usuario</th>
-                                            <th>Nombre</th>
-                                            <th>Apellido 1</th>
-                                            <th>Apellido 2</th>
-                                            <th>Correo</th>
-                                            <th>Contraseña</th>
-                                            <th>Opciones</th>
-                                        </tr>
-                                    </thead>
-                                        <!-- Se rellena con la consulta AJAX de JS a la BD -->
-                                    <tbody>     
+                            <div id="apartado-paciente">
+                                <h3>Datos personales&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
                                     
-                                    </tbody>
-                                </table>
-                            </div>
+                        <!-- =============================== USUARIO | vista, sql y validado ===========================================  -->
 
-                            <div id="apartado-pacientes-no-asignados" class="">
-                                <div class="form-row">
-                                    <div class="form-group" id="id-usuario-2">
-                                        <label for="Select-id-usuario-2">id usuario:</label>
-                                        &nbsp;
-                                        <select class="form-control" id="Select-id-usuario-2" name="Select-id-usuario-2">
-                                        </select>
-                                    </div>
-                                </div>
-                                <h3>Pacientes por asignar</h3>
-                                <hr>
-                                <table class="table" id="pacientes-no-asignados-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Id usuario</th>
-                                            <th>Nombre</th>
-                                            <th>Apellido 1</th>
-                                            <th>Apellido 2</th>
-                                            <th>Correo</th>
-                                            <th>Contraseña</th>
-                                            <th>Opciones</th>
-                                        </tr>
-                                    </thead>
-                                        <!-- Se rellena con la consulta AJAX de JS a la BD -->
-                                    <tbody>     
+                                <form id="form-1" class="margen-form">
+                                    <div class="form-row justify-content-center">
+                                        <div class="form-group ancho" id="input_nombre">
+                                            <label for="nombre">Nombre</label>
+                                            &nbsp;
+                                            <input type="text" class="form-control" id="nombre" name="nombre" disabled="disabled" required maxlength="30"><br>
+                                        </div>
                                     
-                                    </tbody>
-                                </table>
-                            </div>
+                                        &nbsp;&nbsp;
+                                        
+                                        <div class="form-group ancho" id="input_apellido1">
+                                            <label for="apellido1">Primer apellido</label>
+                                            &nbsp;
+                                            <input type="text" class="form-control" id="apellido1" required disabled="disabled" maxlength="50"><br>
+                                        </div>
+                                        &nbsp;&nbsp;
 
+                                        <div class="form-group ancho" id="input_apellido2">
+                                            <label for="apellido2">Segundo apellido</label>
+                                            &nbsp;
+                                            <input type="text" class="form-control" name="apellido1" id="apellido2" disabled="disabled" required maxlength="50"><br>
+                                        </div>
+                                    </div>  <!--Fin fila 1-->
+                                    &nbsp;&nbsp;
+                                    <div class="form-row espaciado-empty">
+                                        <div class="form-group ancho" id="input_correo">
+                                            <label for="correo">Correo</label>
+                                            &nbsp;
+                                            <input type="email" class="form-control" name="correo" id="correo" disabled="disabled" required maxlength="100"><br>
+                                        </div>
+                                            
+                                        &nbsp;&nbsp;
+                                        <div class="form-group ancho" id="input_pass">
+                                            <label for="pass">Contraseña</label>
+                                            &nbsp;
+                                            <input type="text" class="form-control" name="pass" id="pass" disabled="disabled" required maxlength="50"><br>
+                                        </div>
+                                        
+                                        &nbsp;&nbsp;
+                                        
+                                        <!-- <div class="form-group ancho" id="input_pass2">
+                                            <label for="pass2">Confirmar contraseña</label>
+                                            &nbsp;
+                                            <input type="password" class="form-control" name="pass2" id="pass2" required maxlength="50"><br>
+                                        </div> -->
+                                    </div>  <!--Fin fila 2-->
+                                    <div class="form-row espaciado-otro justify-content-center">
+                                        <div class="form-group col-sm-12" id="input_asignar-fisio">
+                                            <label class="mouse-pointer" for="asignar-fisio"><input type="checkbox" id="asignar-fisio">&nbsp;&nbsp;<strong>Asignarme como fisioterapeuta</strong> del paciente con id de usuario <?php echo($_GET["id_user"])?>. </label><br>
+                                        </div>
+                                    </div>
+                                    <div class="columna-btn">
+                                        <button class="btn estilo-boton-submit" type="submit" id="btn-submit-1">Guardar</button>
+                                        
+                                    </div>
+                                </form>
+                                <input type="hidden" id="id_usuario" value="<?php echo($_GET["id_user"]) ?>" />
+                                <input type="hidden" id="id_especialista" value="<?php echo($_SESSION["id_especialista"]) ?>" />
+                            </div>
                         </div>
                     </div><!-- Fin cuerpo página-->
                 </div> <!-- Fin columna derecha-->
             </div> <!-- ROW -->
-            <input type="hidden" id="id_especialista" value="<?php echo($_SESSION["id_especialista"]) ?>" />
         </div><!-- CONTAINER FLUID-->
 
         <!-- SCRIPTS -->
@@ -240,20 +234,8 @@
         <script src="js/jquery-ui/jquery-ui.min.js"></script>
         <script type="text/javascript" src="js/overhang/dist/overhang.min.js"></script> 
         <script type="text/javascript" src="js/notify/notify.min.js"></script>
-        <script type="text/javascript" src="js/pacientes.js"></script>
         <script>
            
-          
-
-                function verPaciente(id_usuario){
-                        
-                    
-                    //document.location.href="display-grafica.php?id_user="+id_usuario+" ";
-                    
-                }
-          
-                
-            
         </script>
       
     </body>

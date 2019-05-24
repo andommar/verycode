@@ -157,6 +157,11 @@ class TControl{
         $resultat=$usr->registro_nueva_medicion($id_user,$fecha,$extremidad,$p1,$p2,$p3,$p4,$p5,$p6);
     return ($resultat);
    }
+   public function asignar_fisio($id_user, $id_especialista){
+        $usr = new TUsuario();
+        $resultat=$usr->asignar_fisio($id_user, $id_especialista);
+    return ($resultat);
+   }
      
     //--------------------------- Mediciones/Gráficas -----------------------
 
@@ -171,6 +176,13 @@ class TControl{
         $graf = new TGrafica();
         $resultat=$graf->mostrar_fechas_graficas($id_user);
         return $resultat;
+    }
+    public function get_paciente_no_asignado($id_user){
+        
+        $usr = new TUsuario();
+        $resultat=$usr->get_paciente_no_asignado($id_user);
+
+        return ($resultat);
     }
 
 

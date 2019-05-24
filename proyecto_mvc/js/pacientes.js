@@ -24,7 +24,7 @@ var listado_pacientes="";
     //RELLENAMOS TABLA
     var filas_pacientes='';
     listado_pacientes.forEach(function(element) {
-        filas_pacientes+= '<tr id='+element.id_user+'><td>'+element.id_user+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn mt-1 rojo" value="verPaciente" onClick="verPaciente(' + element.id_user + ')"><span class="ti-eye"></span></button><button type="button" class="btn azul" value="editarPaciente" onClick="editarPaciente('+ element.id_user + ')"><span class="ti-pencil-alt"></span></button></td></tr>';
+        filas_pacientes+= '<tr id='+element.id_user+'><td>'+element.id_user+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn azul" value="editarPaciente" onClick="editarPaciente('+ element.id_user + ')"><span class="ti-pencil-alt"></span></button></td></tr>';
 
     });
     $('#pacientes-table tbody').html(filas_pacientes);
@@ -110,7 +110,7 @@ var listado_pacientes = datos;
 //RELLENAMOS TABLA
 var filas_pacientes='';
 listado_pacientes.forEach(function(element) {
-filas_pacientes+= '<tr id='+element.id_user+'><td>'+element.id_user+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn mt-1 rojo" value="verPaciente" onClick="verPaciente(' + element.id_user + ')"><span class="ti-eye"></span></button><button type="button" class="btn azul" value="editarPaciente" onClick="editarPaciente('+ element.id_user + ')"><span class="ti-pencil-alt"></span></button></td></tr>';
+filas_pacientes+= '<tr id='+element.id_user+'><td>'+element.id_user+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn azul" value="editarPacienteNoAsignado" onClick="editarPacienteNoAsignado('+ element.id_user + ')"><i class="fas fa-user-plus"></i></button></td></tr>';
 
 });
 $('#pacientes-no-asignados-table tbody').html(filas_pacientes);
@@ -154,3 +154,7 @@ else{
 
 
 });
+
+function editarPacienteNoAsignado(id_usuario){
+    document.location.href="editar-paciente-noregistrado.php?id_user="+id_usuario+" ";
+}

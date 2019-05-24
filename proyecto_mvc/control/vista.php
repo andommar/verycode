@@ -413,6 +413,19 @@ if(isset($_POST["opcion"]))
                 echo "false";
 
         break;
+        case "asignar_fisio":
+            $id_user = $_POST["id_usuario"];
+            $id_especialista = $_POST["id_especialista"];
+            $error=$c->asignar_fisio($id_user, $id_especialista);
+            if($error==0)
+            {
+                echo "true";
+            }
+            else //-1
+                echo "false";
+
+
+        break;
 
 
     }
@@ -475,7 +488,18 @@ if(isset($_GET["opcion"]))
             else if($error==-6){
                 echo "pierna_d";
             }
-                
+        break;
+        case "get_paciente_no_asignado":
+
+            $id_user=$_GET["id_usuario"];
+            $error=$c->get_paciente_no_asignado($id_user);
+            if($error==-1){
+                echo "false";
+            }
+            else{
+                echo json_encode($error);
+            }
+        break;     
     }
 }
 ?>
