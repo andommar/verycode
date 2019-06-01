@@ -388,7 +388,7 @@ if(isset($_POST["opcion"]))
                 echo json_encode($error);
 
         break;
-        case "registro_nueva_medicion":
+        case "registro_nueva_medicion": //**
             $id_user=$_POST["id_usuario"];
             $fecha= $_POST["fecha"];
             $extremidad = $_POST["extremidad"];//brazo_i/d, pierna_i/d lados afectos
@@ -465,6 +465,7 @@ if(isset($_GET["opcion"]))
             echo json_encode(array($error,$error2));
 
         break;
+        //Buscamos si el miembro afecto es brazo o pierna
         //-3 brazo_i_afecto, -4 brazo_d_afecto, -5 pierna_i_afecto, -6 pierna_d_afecto
         case "get_miembro_afecto":
             $id_user=$_GET["id_usuario"];

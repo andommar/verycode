@@ -68,80 +68,62 @@ var id_usuario= $("#id_usuario").val();
         // alert("ajax done");
         console.log("ajax done");
             if(msg=="no_tiene"){
-               
+                
                 document.location.href="mediciones.php"; 
                 alert("Este paciente no tiene mediciones todavía");
             }
-           else if(msg=="brazo_i"){//brazo d lado sano
-                // $('#subtipo_congenito_otro').prop('disabled', false);
-                extremidad="brazo_i";
-                jQuery("input[id=pierna]:radio").attr('disabled',true);
-                $("#panel-brazo").css("display","block");
-                $("#panel-pierna").css("display","none");
+            else if(msg=="brazo_i"){//brazo d lado sano
+                    // $('#subtipo_congenito_otro').prop('disabled', false);
+                    extremidad="brazo_i";
+                    jQuery("input[id=pierna]:radio").attr('disabled',true);
+                    $("#panel-brazo").css("display","block");
+                    $("#panel-pierna").css("display","none");
 
-                jQuery("input[id=miembro_sano_brazo_d]:radio").attr('checked',true);
-                jQuery("input[id=miembro_sano_brazo_i]:radio").attr('disabled',true);
+                    jQuery("input[id=miembro_sano_brazo_d]:radio").attr('checked',true);
+                    jQuery("input[id=miembro_sano_brazo_i]:radio").attr('disabled',true);
 
-                jQuery("input[id=brazo_d_p1]").attr('disabled',true);
-                jQuery("input[id=brazo_d_p2]").attr('disabled',true);
-                jQuery("input[id=brazo_d_p3]").attr('disabled',true);
-                jQuery("input[id=brazo_d_p4]").attr('disabled',true);
-                jQuery("input[id=brazo_d_p5]").attr('disabled',true);
-           }
-           else if(msg=="brazo_d"){//brazo i lado sano
-                
-                extremidad="brazo_d";
-                jQuery("input[id=pierna]:radio").attr('disabled',true);
-                $("#panel-brazo").css("display","block");
-                $("#panel-pierna").css("display","none");
-
-                jQuery("input[id=miembro_sano_brazo_i]:radio").attr('checked',true);
-                jQuery("input[id=miembro_sano_brazo_d]:radio").attr('disabled',true);
-
-                jQuery("input[id=brazo_i_p1]").attr('disabled',true);
-                jQuery("input[id=brazo_i_p2]").attr('disabled',true);
-                jQuery("input[id=brazo_i_p3]").attr('disabled',true);
-                jQuery("input[id=brazo_i_p4]").attr('disabled',true);
-                jQuery("input[id=brazo_i_p5]").attr('disabled',true);
-                
+                    // jQuery("input[id=brazo_d_p1]").attr('disabled',true);
             }
-            else if(msg=="pierna_d"){//pierna i lado sano
+            else if(msg=="brazo_d"){//brazo i lado sano
+                    
+                    extremidad="brazo_d";
+                    jQuery("input[id=pierna]:radio").attr('disabled',true);
+                    $("#panel-brazo").css("display","block");
+                    $("#panel-pierna").css("display","none");
 
-                extremidad="pierna_d";
-                jQuery("input[id=brazo]:radio").attr('disabled',true);
-                jQuery("input[id=pierna]:radio").attr('checked',true);
-                $("#panel-brazo").css("display","none");
-                $("#panel-pierna").css("display","block");
+                    jQuery("input[id=miembro_sano_brazo_i]:radio").attr('checked',true);
+                    jQuery("input[id=miembro_sano_brazo_d]:radio").attr('disabled',true);
 
-                jQuery("input[id=miembro_sano_pierna_i]:radio").attr('checked',true);
-                jQuery("input[id=miembro_sano_pierna_d]:radio").attr('disabled',true);
+                    // jQuery("input[id=brazo_i_p1]").attr('disabled',true);
+                    
+                }
+                else if(msg=="pierna_d"){//pierna i lado sano
 
-                jQuery("input[id=pierna_i_p1]").attr('disabled',true);
-                jQuery("input[id=pierna_i_p2]").attr('disabled',true);
-                jQuery("input[id=pierna_i_p3]").attr('disabled',true);
-                jQuery("input[id=pierna_i_p4]").attr('disabled',true);
-                jQuery("input[id=pierna_i_p5]").attr('disabled',true);
-                jQuery("input[id=pierna_i_p6]").attr('disabled',true);
-            }
-            else if(msg=="pierna_i"){//pierna d lado sano
+                    extremidad="pierna_d";
+                    jQuery("input[id=brazo]:radio").attr('disabled',true);
+                    jQuery("input[id=pierna]:radio").attr('checked',true);
+                    $("#panel-brazo").css("display","none");
+                    $("#panel-pierna").css("display","block");
 
-                extremidad="pierna_i";
-                jQuery("input[id=brazo]:radio").attr('disabled',true);
-                jQuery("input[id=pierna]:radio").attr('checked',true);
-                $("#panel-brazo").css("display","none");
-                $("#panel-pierna").css("display","block");
+                    jQuery("input[id=miembro_sano_pierna_i]:radio").attr('checked',true);
+                    jQuery("input[id=miembro_sano_pierna_d]:radio").attr('disabled',true);
 
-                jQuery("input[id=miembro_sano_pierna_d]:radio").attr('checked',true);
-                jQuery("input[id=miembro_sano_pierna_i]:radio").attr('disabled',true);
+                    // jQuery("input[id=pierna_i_p1]").attr('disabled',true);
+                }
+                else if(msg=="pierna_i"){//pierna d lado sano
 
-                jQuery("input[id=pierna_d_p1]").attr('disabled',true);
-                jQuery("input[id=pierna_d_p2]").attr('disabled',true);
-                jQuery("input[id=pierna_d_p3]").attr('disabled',true);
-                jQuery("input[id=pierna_d_p4]").attr('disabled',true);
-                jQuery("input[id=pierna_d_p5]").attr('disabled',true);
-                jQuery("input[id=pierna_d_p6]").attr('disabled',true);
-                
-            }
+                    extremidad="pierna_i";
+                    jQuery("input[id=brazo]:radio").attr('disabled',true);
+                    jQuery("input[id=pierna]:radio").attr('checked',true);
+                    $("#panel-brazo").css("display","none");
+                    $("#panel-pierna").css("display","block");
+
+                    jQuery("input[id=miembro_sano_pierna_d]:radio").attr('checked',true);
+                    jQuery("input[id=miembro_sano_pierna_i]:radio").attr('disabled',true);
+
+                    // jQuery("input[id=pierna_d_p1]").attr('disabled',true);
+                    
+                }
     })
     .fail(function( jqXHR, textStatus, errorThrown ) {
         console.log("ajax false");
