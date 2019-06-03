@@ -186,6 +186,11 @@
                                             &nbsp;
                                             <input type="date" class="form-control" name="fecha_brazo" id="fecha_brazo" required=""><br>
                                         </div>
+                                        <div class="form-row espaciado-otro justify-content-center">
+                                            <div class="form-group col-sm-12" id="input_mediciones_brazo_sano">
+                                                <label class="mouse-pointer" for="mediciones_brazo_sano"><input type="checkbox" id="mediciones_brazo_sano">&nbsp;&nbsp;Deseo introducir también las mediciones del miembro sano.</label><br>
+                                            </div>
+                                        </div>
                                         <div class="titulos color2 mt-3">
                                                 <label id="titulo-brazo-i">LADO IZQUIERDO</label>
                                                 <label id="titulo-brazo-d">LADO DERECHO</label>
@@ -264,6 +269,11 @@
                                             <label for="fecha_pierna">Fecha</label>
                                             &nbsp;
                                             <input type="date" class="form-control" name="fecha_pierna" id="fecha_pierna" required=""><br>
+                                        </div>
+                                        <div class="form-row espaciado-otro justify-content-center">
+                                            <div class="form-group col-sm-12" id="input_mediciones_pierna_sana">
+                                                <label class="mouse-pointer" for="mediciones_pierna_sana"><input type="checkbox" id="mediciones_pierna_sana">&nbsp;&nbsp;Deseo introducir también las mediciones del miembro sano.</label><br>
+                                            </div>
                                         </div>
                                         <div class="titulos color2 mt-3">
                                                 <label id="titulo-pierna-i">LADO IZQUIERDO</label>

@@ -389,27 +389,38 @@ if(isset($_POST["opcion"]))
 
         break;
         case "registro_nueva_medicion": //**
+
             $id_user=$_POST["id_usuario"];
             $fecha= $_POST["fecha"];
-            $extremidad = $_POST["extremidad"];//brazo_i/d, pierna_i/d lados afectos
+            $extremidad = $_POST["extremidad"];//pierna_d, pierna_i, brazo_i, brazo_d
+            $lado_sano = $_POST["lado_sano"]; //pierna_d, pierna_i, brazo_i, brazo_d
 
-            $p1 = $_POST["p1"];
-            $p2 = $_POST["p2"];
-            $p3 = $_POST["p3"];
-            $p4 = $_POST["p4"];
-            $p5 = $_POST["p5"];
-            $p6 = $_POST["p6"];
+            $p1_i = $_POST["p1_i"];
+            $p2_i = $_POST["p2_i"];
+            $p3_i = $_POST["p3_i"];
+            $p4_i = $_POST["p4_i"];
+            $p5_i = $_POST["p5_i"];
+            $p6_i = $_POST["p6_i"];
 
-        
-            $error=$c->registro_nueva_medicion($id_user,$fecha,$extremidad,$p1,$p2,$p3,$p4,$p5,$p6);
+            $p1_d = $_POST["p1_d"];
+            $p2_d = $_POST["p2_d"];
+            $p3_d = $_POST["p3_d"];
+            $p4_d = $_POST["p4_d"];
+            $p5_d = $_POST["p5_d"];
+            $p6_d = $_POST["p6_d"];
+                
+            $error=$c->registro_nueva_medicion($id_user,$fecha,$extremidad,$lado_sano,$p1_i,$p2_i,$p3_i,$p4_i,$p5_i,$p6_i,$p1_d,$p2_d,$p3_d,$p4_d,$p5_d,$p6_d);
             if($error==0)
             {
                 echo "true";
             }
-            else if($error==-2){
+            else if($error==-2){//no hay 1a medicion
+                echo "medicion";
+            }
+            else if($error==-3){//ya existen mediciones en ese día
                 echo "fecha";
             }
-            else //-1
+            else //-1 
                 echo "false";
 
         break;

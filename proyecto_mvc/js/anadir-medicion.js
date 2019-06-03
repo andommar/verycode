@@ -133,61 +133,123 @@ var id_usuario= $("#id_usuario").val();
                     
         event.preventDefault();
        
+        var tambien_brazo_sano = $('input[id=mediciones_brazo_sano]').prop('checked');
+        var tambien_pierna_sana = $('input[id=mediciones_pierna_sana]').prop('checked');
         var opcion= "registro_nueva_medicion";
         var datos_correctos=true;
         var datos_correctos_queries=true;
-        
-        var p1=0;
-        var p2=0;
-        var p3=0;
-        var p4=0;
-        var p5=0;
-        var p6=0;
+        var lado_sano="";
+        var p1_d=0;
+        var p2_d=0;
+        var p3_d=0;
+        var p4_d=0;
+        var p5_d=0;
+        var p6_d=0;
+
+        var p1_i=0;
+        var p2_i=0;
+        var p3_i=0;
+        var p4_i=0;
+        var p5_i=0;
+        var p6_i=0;
+
         var fecha = "";
 
-        if(extremidad=="brazo_i"){//lado afecto
-            p1=$("#brazo_i_p1").val();
-            p2=$("#brazo_i_p2").val();
-            p3=$("#brazo_i_p3").val();
-            p4=$("#brazo_i_p4").val();
-            p5=$("#brazo_i_p5").val();
+        if(extremidad=="brazo_i" || extremidad=="brazo_d"){//lado afecto
+
+            if(extremidad=="brazo_d"){//lado afecto es el d
+                lado_sano="brazo_i";
+            }
+            else{
+                lado_sano="brazo_d";
+            }
+            
+            p1_i=$("#brazo_i_p1").val();
+            p2_i=$("#brazo_i_p2").val();
+            p3_i=$("#brazo_i_p3").val();
+            p4_i=$("#brazo_i_p4").val();
+            p5_i=$("#brazo_i_p5").val();
+
+            p1_d=$("#brazo_d_p1").val();
+            p2_d=$("#brazo_d_p2").val();
+            p3_d=$("#brazo_d_p3").val();
+            p4_d=$("#brazo_d_p4").val();
+            p5_d=$("#brazo_d_p5").val(); 
+
+            if(!tambien_brazo_sano){
+                if(lado_sano=="brazo_d"){
+                    p1_d= 0;
+                    p2_d= 0;
+                    p3_d= 0;
+                    p4_d= 0;
+                    p5_d= 0;
+                }
+                else{//brazo_i
+                    p1_i= 0;
+                    p2_i= 0;
+                    p3_i= 0;
+                    p4_i= 0;
+                    p5_i= 0;
+                }
+            }
+
             fecha=$('#fecha_brazo').val();
-            datos_correctos=validarMedicionesBrazo(fecha,p1,p2,p3,p4,p5);
+            datos_correctos=validarMedicionesBrazo(fecha,p1_i,p2_i,p3_i,p4_i,p5_i,p1_d,p2_d,p3_d,p4_d,p5_d);
         }
-        else if(extremidad=="brazo_d"){
-            p1=$("#brazo_d_p1").val();
-            p2=$("#brazo_d_p2").val();
-            p3=$("#brazo_d_p3").val();
-            p4=$("#brazo_d_p4").val();
-            p5=$("#brazo_d_p5").val(); 
-            fecha=$('#fecha_brazo').val();
-            datos_correctos=validarMedicionesBrazo(fecha,p1,p2,p3,p4,p5);
-        }
-        else if(extremidad=="pierna_d"){
-            p1=$("#pierna_d_p1").val();
-            p2=$("#pierna_d_p2").val();
-            p3=$("#pierna_d_p3").val();
-            p4=$("#pierna_d_p4").val();
-            p5=$("#pierna_d_p5").val();
-            p6=$("#pierna_d_p6").val();
+       
+        else if(extremidad=="pierna_d" || extremidad=="pierna_i"){
+           
+            if(extremidad=="pierna_d"){//lado afecto es el d
+                lado_sano="pierna_i";
+            }
+            else{
+                lado_sano="pierna_d";
+            }
+
+
+            p1_i=$("#pierna_i_p1").val();
+            p2_i=$("#pierna_i_p2").val();
+            p3_i=$("#pierna_i_p3").val();
+            p4_i=$("#pierna_i_p4").val();
+            p5_i=$("#pierna_i_p5").val();
+            p6_i=$("#pierna_i_p6").val();
+
+            p1_d=$("#pierna_d_p1").val();
+            p2_d=$("#pierna_d_p2").val();
+            p3_d=$("#pierna_d_p3").val();
+            p4_d=$("#pierna_d_p4").val();
+            p5_d=$("#pierna_d_p5").val();
+            p6_d=$("#pierna_d_p6").val();
+
+            if(!tambien_pierna_sana){
+                if(lado_sano=="pierna_d"){
+                    p1_d= 0;
+                    p2_d= 0;
+                    p3_d= 0;
+                    p4_d= 0;
+                    p5_d= 0;
+                    p6_d= 0;
+                }
+                else{//pierna_i
+                    p1_i= 0;
+                    p2_i= 0;
+                    p3_i= 0;
+                    p4_i= 0;
+                    p5_i= 0;
+                    p6_i= 0;
+                }
+            }
+
+
             fecha=$('#fecha_pierna').val();
-            datos_correctos=validarMedicionesPierna(fecha,p1,p2,p3,p4,p5,p6);
+            datos_correctos=validarMedicionesPierna(fecha,p1_i,p2_i,p3_i,p4_i,p5_i,p6_i,p1_d,p2_d,p3_d,p4_d,p5_d,p6_d);
         }
-        else if(extremidad=="pierna_i"){
-            p1=$("#pierna_i_p1").val();
-            p2=$("#pierna_i_p2").val();
-            p3=$("#pierna_i_p3").val();
-            p4=$("#pierna_i_p4").val();
-            p5=$("#pierna_i_p5").val();
-            p6=$("#pierna_i_p6").val();
-            fecha=$('#fecha_pierna').val();
-            datos_correctos=validarMedicionesPierna(fecha,p1,p2,p3,p4,p5,p6);
-        }
-        if(datos_correctos){//brazo_i/d, pierna_i/d
+       
+        if(datos_correctos){
             $.ajax({
                 type:'POST',
                 url: 'control/vista.php',
-                data: {id_usuario:id_usuario,fecha:fecha,extremidad:extremidad,p1:p1,p2:p2,p3:p3,p4:p4,p5:p5,p6:p6,opcion:opcion},
+                data: {id_usuario:id_usuario,fecha:fecha,extremidad:extremidad,lado_sano:lado_sano,p1_i:p1_i, p2_i:p2_i,p3_i:p3_i,p4_i:p4_i,p5_i:p5_i,p6_i:p6_i,p1_d:p1_d,p2_d:p2_d,p3_d:p3_d,p4_d:p4_d,p5_d:p5_d,p6_d:p6_d,opcion: opcion},
                 })
                 .done(function( msg ) {                           	
                     console.log("ajax done"); 
@@ -201,6 +263,16 @@ var id_usuario= $("#id_usuario").val();
                         });
                         datos_correctos_queries = false;
                     } 
+                    else if(msg=="medicion"){
+                        $("body").overhang({
+                            type: "error",
+                            message: "Error, este usuario aún no tiene una 1a medición registrada",
+                            duration: 3,
+                            overlay: true,
+                            closeConfirm: true
+                        });
+                        datos_correctos_queries = false;
+                    }
                     else if(msg=="fecha"){
                         $("body").overhang({
                             type: "error",
@@ -233,15 +305,23 @@ var id_usuario= $("#id_usuario").val();
 function isEmptyOrSpaces(str){
     return str === null || str.match(/^ *$/) !== null;
 }
-function validarMedicionesBrazo(fecha,p1,p2,p3,p4,p5){ //**
+function validarMedicionesBrazo(fecha,p1_i,p2_i,p3_i,p4_i,p5_i,p1_d,p2_d,p3_d,p4_d,p5_d){ //**
     var datos_correctos=true;
     var mensaje_error="";
-
-    if(isEmptyOrSpaces(p1) || isEmptyOrSpaces(p2) || isEmptyOrSpaces(p3) || isEmptyOrSpaces(p4) || isEmptyOrSpaces(p5) ){
-        mensaje_error="ERROR. Introduce todas las mediciones del brazo";
-        datos_correctos = false;
-    } 
+    if(p1_d!==0 && p2_d!==0 && p3_d!==0 && p4_d!==0 && p5_d!==0){
+        if(isEmptyOrSpaces(p1_d) || isEmptyOrSpaces(p2_d) || isEmptyOrSpaces(p3_d) || isEmptyOrSpaces(p4_d) || isEmptyOrSpaces(p5_d) ){
+                mensaje_error="ERROR. Introduce todas las mediciones del brazo derecho";
+                datos_correctos = false;
+            } 
+    }
    
+    if(p1_i!==0 && p2_i!==0 && p3_i!==0 && p4_i!==0 && p5_i!==0){
+        if(isEmptyOrSpaces(p1_i) || isEmptyOrSpaces(p2_i) || isEmptyOrSpaces(p3_i) || isEmptyOrSpaces(p4_i) || isEmptyOrSpaces(p5_i) ){
+                mensaje_error="ERROR. Introduce todas las mediciones del brazo izquierdo";
+                datos_correctos = false;
+            } 
+    }
+    
     if(isEmptyOrSpaces(fecha)){
         mensaje_error="ERROR. Introduce una fecha";
         datos_correctos = false;
@@ -258,15 +338,22 @@ function validarMedicionesBrazo(fecha,p1,p2,p3,p4,p5){ //**
     return datos_correctos;
     
 }
-function validarMedicionesPierna(fecha,p1,p2,p3,p4,p5,p6){ //**
+function validarMedicionesPierna(fecha,p1_i,p2_i,p3_i,p4_i,p5_i,p6_i,p1_d,p2_d,p3_d,p4_d,p5_d,p6_d){
     var datos_correctos=true;
     var mensaje_error="";
 
-    if(isEmptyOrSpaces(p1) || isEmptyOrSpaces(p2) || isEmptyOrSpaces(p3) || isEmptyOrSpaces(p4) || isEmptyOrSpaces(p5) || isEmptyOrSpaces(p6)){
-        mensaje_error="ERROR. Introduce todas las mediciones de la pierna";
-        datos_correctos = false;
-    } 
-   
+    if(p1_d!==0 && p2_d!==0 && p3_d!==0 && p4_d!==0 && p5_d!==0 && p6_d!==0){
+        if(isEmptyOrSpaces(p1_d) || isEmptyOrSpaces(p2_d) || isEmptyOrSpaces(p3_d) || isEmptyOrSpaces(p4_d) || isEmptyOrSpaces(p5_d) || isEmptyOrSpaces(p6_d) ){
+                mensaje_error="ERROR. Introduce todas las mediciones de la pierna derecha";
+                datos_correctos = false;
+            } 
+    }
+    if(p1_i!==0 && p2_i!==0 && p3_i!==0 && p4_i!==0 && p5_i!==0 && p6_i!==0){
+        if(isEmptyOrSpaces(p1_i) || isEmptyOrSpaces(p2_i) || isEmptyOrSpaces(p3_i) || isEmptyOrSpaces(p4_i) || isEmptyOrSpaces(p5_i) || isEmptyOrSpaces(p6_i) ){
+                mensaje_error="ERROR. Introduce todas las mediciones de la pierna izquierda";
+                datos_correctos = false;
+            } 
+    }
     if(isEmptyOrSpaces(fecha)){
         mensaje_error="ERROR. Introduce una fecha";
         datos_correctos = false;
@@ -281,5 +368,4 @@ function validarMedicionesPierna(fecha,p1,p2,p3,p4,p5,p6){ //**
         });
     }
     return datos_correctos;
-    
 }
