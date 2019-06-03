@@ -511,8 +511,8 @@ class TUsuario{
 					else{
 						if($stmt2>0){//existe la 1a medicion
 
-							//Comprobamos antes si en esa fecha ya hay mediciones o no
-							$sql7="select count(*) from mediciones where id_user=$id_user and fecha='$fecha' and extremidad='brazo'";
+							//Comprobamos si coincide la fecha o es anterior a la última
+							$sql7="select count(*) from mediciones where id_user=$id_user and fecha>='$fecha' and extremidad='brazo'";
 							$stmt7 = $abd->consultar_dato($sql7);
 							if( $stmt7 === false ) {//error sql
 								$res=-1;
@@ -563,9 +563,8 @@ class TUsuario{
 					else{
 						if($stmt4>0){//existe la 1a medicion
 
-							//Comprobamos antes si en esa fecha ya hay mediciones o no
-
-							$sql8="select count(*) from mediciones where id_user=$id_user and fecha='$fecha' and extremidad='pierna'";
+							//Comprobamos si coincide la fecha o es anterior a la última
+							$sql8="select count(*) from mediciones where id_user=$id_user and fecha>='$fecha' and extremidad='pierna'";
 							$stmt8 = $abd->consultar_dato($sql8);
 							if( $stmt8 === false ) {//error sql
 								$res=-1;
@@ -575,7 +574,7 @@ class TUsuario{
 									$res=-3;
 								}
 								else{//no hay mediciones en esa fecha
-									
+
 									//PIERNA IZQUIERDA
 									if($p1_i!=0 && $p2_i!=0 && $p3_i!=0 && $p4_i!=0 && $p5_i!=0 && $p6_i!=0){
 										$lado_sano = ($lado_sano=="pierna_i") ? "si" : "no";

@@ -276,7 +276,7 @@ var id_usuario= $("#id_usuario").val();
                     else if(msg=="fecha"){
                         $("body").overhang({
                             type: "error",
-                            message: "ERROR, este usuario ya tiene una medición guardada en esta fecha.",
+                            message: "ERROR, debes introducir mediciones en fechas posteriores y diferentes a otras registradas.",
                             duration: 3,
                             overlay: true,
                             closeConfirm: true
@@ -354,6 +354,28 @@ function validarMedicionesPierna(fecha,p1_i,p2_i,p3_i,p4_i,p5_i,p6_i,p1_d,p2_d,p
                 datos_correctos = false;
             } 
     }
+
+    //calcular fecha actual
+    var fecha_seleccionada = fecha;
+    var f = new Date();
+    var dia= f.getDate();
+    var mes = f.getMonth() +1;
+    if(dia<10){
+        dia="0"+dia;
+    }
+    if(mes<10){
+        mes="0"+mes;
+    }
+
+    var fecha_actual = f.getFullYear() + "-" + mes + "-" + dia;
+    if(fecha_seleccionada>fecha_actual){
+        mensaje_error="ERROR. Introduce una fecha que sea anterior o igual a la de hoy.";
+        datos_correctos = false;
+    }
+    // document.write(fecha_actual.getFullYear() + "-" + (fecha_actual.getMonth() +1) + "-" + fecha_actual.getDate());
+
+
+
     if(isEmptyOrSpaces(fecha)){
         mensaje_error="ERROR. Introduce una fecha";
         datos_correctos = false;
