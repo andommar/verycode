@@ -5,16 +5,19 @@
     var fechas = "";
     var grafica_datos=document.getElementById("lineChart");
     var grafica_evolucion=document.getElementById("lineChartevolucion");
-
-
+    var filas_mediciones='';
+    var i=1;
 
 
     var mediciones =
     {
-        izquierdo: [],
+        lado_sano: [],
         derecho: [],
-        derecho_carga: [],
-        diferencia: []
+        lado_afecto: [],
+        diferencia: [],
+        p_lado_sano: [],
+        p_lado_afecto: [],
+        p_diferencia: []
     };
 
     var evolucion =
@@ -35,7 +38,7 @@
         datasets:[
             {
                 label: "Mediciones lado sano",
-                data: mediciones.izquierdo,
+                data: mediciones.lado_sano,
                 borderColor: 'blue',
                 fill:false,
                 lineTension:0,
@@ -44,7 +47,7 @@
             },
             {
                 label: "Mediciones lado afecto",
-                data: mediciones.derecho_carga,
+                data: mediciones.lado_afecto,
                 borderColor: 'red',
                 fill:false,
                 lineTension:0,
@@ -115,23 +118,21 @@ $(document).ready(function(){
 
             // console.log("Array cosas"+cosas[0]["p1"]);
             // console.log("Array fechas"+fechas);
-            //creamos un array de objetos con las mediciones de lado izquierdo, derecho y la diferencia entre los puntos
+            //creamos un array de objetos con las mediciones de lado lado_sano, derecho y la diferencia entre los puntos
             //var fechas=[];
 
             var len = cosas.length;
-            // console.log(data.fecha);
-            // console.log(datos);
-            // console.log("Array len"+len);
 
+            //Bucle for selecciona puntos de las mediciones
             for(var i = 0; i<len; i++)
             {
                 if(cosas[i].lado_sano=="si")
                 {
-                    mediciones.izquierdo.push(cosas[i].p1);
-                    mediciones.izquierdo.push(cosas[i].p2);
-                    mediciones.izquierdo.push(cosas[i].p3);
-                    mediciones.izquierdo.push(cosas[i].p4);
-                    mediciones.izquierdo.push(cosas[i].p5);
+                    mediciones.lado_sano.push(cosas[i].p1);
+                    mediciones.lado_sano.push(cosas[i].p2);
+                    mediciones.lado_sano.push(cosas[i].p3);
+                    mediciones.lado_sano.push(cosas[i].p4);
+                    mediciones.lado_sano.push(cosas[i].p5);
                     // console.log("holap");
                     // console.log(datos[i].p1);
                 }
@@ -144,11 +145,11 @@ $(document).ready(function(){
                     mediciones.derecho.push(cosas[i].p5);
 
                     //Primeras mediciones que coge del lado derecho
-                    mediciones.derecho_carga[0]=cosas[0].p1;
-                    mediciones.derecho_carga[1]=cosas[0].p2;
-                    mediciones.derecho_carga[2]=cosas[0].p3;
-                    mediciones.derecho_carga[3]=cosas[0].p4;
-                    mediciones.derecho_carga[4]=cosas[0].p5;
+                    mediciones.lado_afecto[0]=cosas[0].p1;
+                    mediciones.lado_afecto[1]=cosas[0].p2;
+                    mediciones.lado_afecto[2]=cosas[0].p3;
+                    mediciones.lado_afecto[3]=cosas[0].p4;
+                    mediciones.lado_afecto[4]=cosas[0].p5;
 
                     evolucion.p1.push(cosas[i].p1);
                     evolucion.p2.push(cosas[i].p2);
@@ -161,22 +162,16 @@ $(document).ready(function(){
 
             var resta=0;
 
-            for(i=0; i<mediciones.izquierdo.length;i++)
+            for(i=0; i<mediciones.lado_sano.length;i++)
             {
-                resta=mediciones.derecho_carga[i]-mediciones.izquierdo[i];
+                resta=mediciones.lado_afecto[i]-mediciones.lado_sano[i];
                 mediciones.diferencia[i]=resta;
                 //console.log(fechas[i]);
             }
 
-            //  console.log(mediciones.izquierdo);
+            //  console.log(mediciones.lado_sano);
             //  console.log(mediciones.derecho);
             //  console.log(mediciones.diferencia);
-
-
-
-           
-
-
                 var chart = new Chart( grafica_datos, {
                 type : "bar",
                 data : datos_graph,
@@ -184,12 +179,9 @@ $(document).ready(function(){
               }
               );
 
-            //   //===================== SEGUNDA GRÁFICA
-
-
-
-
-            // 
+            
+            
+            //===================== SEGUNDA GRÁFICA
 
               var datos_ultimas ={
                 labels:fechas,
@@ -239,6 +231,16 @@ $(document).ready(function(){
                         pointRadius: 5,
                         type: 'line'
                     },
+
+                    {
+                        label: "p1 sano",
+                        data: evolucion.p5,
+                        borderColor: 'yellow',
+                        fill:false,
+                        lineTension:0,
+                        pointRadius: 5,
+                        type: 'line'
+                    },
                     // {
                     //     label: "Diferencia mediciones",
                     //     data: mediciones.diferencia,
@@ -259,11 +261,7 @@ $(document).ready(function(){
 
 
 
-            // CARGAR TABLA
-
-            var filas_mediciones='';
-            var i=1;
-
+            //==================================== CARGAR TABLA BRAZOS
 
             cosas.forEach(function(element){
                     if(element.lado_sano=='si')
@@ -281,8 +279,15 @@ $(document).ready(function(){
                 }
             });
 
-
             $('#pacientes-table tbody').html(filas_mediciones);
+
+            //==================================== FIN CARGAR TABLA BRAZOS
+
+            //==================================== GRÁFICA Y TABLA PIERNAS
+            
+
+
+            //==================================== FIN GRÁFICA Y TABLA PIERNAS
 
 
         },
@@ -304,17 +309,17 @@ function fechaMedicion(p1,p2,p3,p4,p5){
 
     
 
-    mediciones.derecho_carga[0]=p1;
-    mediciones.derecho_carga[1]=p2;
-    mediciones.derecho_carga[2]=p3;
-    mediciones.derecho_carga[3]=p4;
-    mediciones.derecho_carga[4]=p5;
+    mediciones.lado_afecto[0]=p1;
+    mediciones.lado_afecto[1]=p2;
+    mediciones.lado_afecto[2]=p3;
+    mediciones.lado_afecto[3]=p4;
+    mediciones.lado_afecto[4]=p5;
 
     var resta=0;
 
-    for(i=0; i<mediciones.izquierdo.length;i++)
+    for(i=0; i<mediciones.lado_sano.length;i++)
     {
-        resta=mediciones.derecho_carga[i]-mediciones.izquierdo[i];
+        resta=mediciones.lado_afecto[i]-mediciones.lado_sano[i];
         mediciones.diferencia[i]=resta;
         //console.log(fechas[i]);
     }

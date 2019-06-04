@@ -212,6 +212,41 @@
                                     </div>
                                 </div>
                             </div>
+                            <div id="grafica-pierna">
+                                <div class="row">
+                                    <div class="sombra-cuadro col-md-6 mx-auto mt-4">
+                                        <div width=100%>
+                                            <canvas id ="lineChartPierna" height="300" width="400"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="sombra-cuadro col-md-10 mx-auto mt-4 mb-4">
+                                        <table class="table" id="pacientes-table-piernas">
+                                            <thead>
+                                                <tr>
+                                                <th>Fecha</th>
+                                                <th>Extremidad</th>
+                                                <th>Lado</th>
+                                                <th>Lado sano</th>
+                                                <th>P1</th>
+                                                <th>P2</th>
+                                                <th>P3</th>
+                                                <th>P4</th>
+                                                <th>P5</th>
+                                                <th>P6</th>
+                                                <th>Acción</th>
+                                                </tr>
+                                            </thead>
+                                                <!-- Se rellena con la consulta AJAX de JS a la BD -->
+                                            <tbody>     
+                                            
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                </div>
+                            </div>
 
                         </div>
                     </div><!-- Fin cuerpo página-->
