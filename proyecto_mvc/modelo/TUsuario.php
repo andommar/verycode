@@ -385,8 +385,8 @@ class TUsuario{
 		$abd = new TAccesbd ();
 		if($abd->conectado())
 		{
-			//Comprobar si se repite la valoracion
-			$sql2="select count(*) from valoracion_linfedema where id_user=$id_user";
+			//Comprobar si se repite la valoracion en esa fecha
+			$sql2="select count(*) from valoracion_linfedema where id_user=$id_user and fecha='$fecha'";
 			$stmt2 = $abd->consultar_dato($sql2);
 			if( $stmt2 === false ) {//error sql
 				$res=-1;

@@ -27,7 +27,6 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <!-- Hojas de estilo -->
         <link rel="stylesheet" type="text/css" href="css/global-style.css">
-        <!-- <link rel="stylesheet" type="text/css" href="css/anadir-paciente-style.css"> -->
         <link rel="stylesheet" type="text/css" href="css/editar-paciente-noregistrado.css">
          <!-- NOTIFICACIONES OVERHANG.JS  1 -->
         <link rel="stylesheet" type="text/css" href="js/overhang/dist/overhang.min.css" />

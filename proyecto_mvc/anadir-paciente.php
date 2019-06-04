@@ -139,7 +139,7 @@
                                 </li>
                                 
                                 <li class="breadcrumb-item color-blanco">
-                                        Paciente
+                                        Pacientes
                                 </li>
                                 <li class="breadcrumb-item color-blanco">
                                     <a href="anadir-paciente.php">
@@ -233,7 +233,7 @@
                                        
                                     </div>
                                     <div class="form-group margen-oblig">
-                                        <h5 class="rojo letra">* Campos obligatorios.</h5>
+                                        <h5 class="rojo letra">* Campos obligatorios</h5>
                                     </div>
             
                                 </form>
@@ -448,12 +448,12 @@
                                         </div>
                                     </div> <!--Fin fila 9-->
                                     <div class="columna-btn">
-                                        <button class="btn estilo-boton-submit" type="submit" id="btn-submit-2" value='<?php echo($_SESSION["id_especialista"])?>'>Guardar</button>
+                                        <button class="btn estilo-boton-submit" type="submit" id="btn-submit-2" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
                                        
                                     </div>
                                     <div class="form-group margen-oblig">
-                                        <h5 class="rojo letra">* Campos obligatorios.</h5>
-                                        <h5 class="naranja letra">* Campos obligatorios en ciertas ocasiones.</h5>
+                                        <h5 class="rojo letra">* Campos obligatorios</h5>
+                                        <h5 class="naranja letra">* Campos obligatorios en ciertas ocasiones</h5>
                                     </div>
                                 </form>
                             </div><!-- fin HISTORIAL CLINICO -->
@@ -488,7 +488,7 @@
                                         
                                     </div>
                                     <div class="form-group margen-oblig">
-                                        <h5 class="rojo letra">* Campos obligatorios.</h5>
+                                        <h5 class="rojo letra">* Campos obligatorios</h5>
                                     </div>
                                 </form>
                             </div> <!-- fin CIRUGIAS -->
@@ -516,7 +516,7 @@
                                         
                                     </div>
                                     <div class="form-group margen-oblig">
-                                        <h5 class="rojo letra">* Campos obligatorios.</h5>
+                                        <h5 class="rojo letra">* Campos obligatorios</h5>
                                     </div>
                                 </form>
                             </div><!-- fin MEDICAMENTOS -->
@@ -551,7 +551,7 @@
                                         
                                     </div>
                                     <div class="form-group margen-oblig">
-                                        <h5 class="rojo letra">* Campos obligatorios.</h5>
+                                        <h5 class="rojo letra">* Campos obligatorios</h5>
                                     </div>
                                 </form>
                             </div> <!-- fin INFECCIONES -->
@@ -786,8 +786,8 @@
                                         
                                     </div>
                                     <div class="form-group margen-oblig">
-                                        <h5 class="rojo letra">* Campos obligatorios.</h5>
-                                        <h5 class="naranja letra">* Campos obligatorios en ciertas ocasiones.</h5>
+                                        <h5 class="rojo letra">* Campos obligatorios</h5>
+                                        <h5 class="naranja letra">* Campos obligatorios en ciertas ocasiones</h5>
                                     </div>
                                 </form>
                             </div> <!-- fin HÁBITOS -->
@@ -961,8 +961,8 @@
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-submit-7" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
                                     </div>
                                     <div class="form-group margen-oblig">
-                                        <h5 class="rojo letra">* Campos obligatorios.</h5>
-                                        <h5 class="naranja letra">* Campos obligatorios en ciertas ocasiones.</h5>
+                                        <h5 class="rojo letra">* Campos obligatorios</h5>
+                                        <h5 class="naranja letra">* Campos obligatorios en ciertas ocasiones</h5>
                                     </div>
                                 </form>
                             </div> <!-- fin Hist Trat Linfedema -->
@@ -1089,7 +1089,7 @@
                                         <button class="btn estilo-boton-submit" type="button" id="btn-submit-8" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
                                     </div>
                                     <div class="form-group margen-oblig">
-                                        <h5 class="rojo letra">* Campos obligatorios.</h5>
+                                        <h5 class="rojo letra">* Campos obligatorios</h5>
                                     </div>
                                 </form>
                             </div> <!-- fin Valoracion Linfedema -->
@@ -1291,10 +1291,10 @@
                                     </div>
                                     <!-- ===============================================       fin pierna      =======================================-->
                                     <div class="columna-btn">
-                                        <button class="btn estilo-boton-submit" type="button" id="btn-submit-9"  value='<?php echo($_SESSION["id_especialista"])?>'>Guardar datos</button>
+                                        <button class="btn estilo-boton-submit" type="button" id="btn-submit-9"  value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
                                     </div>
                                     <div class="form-group margen-oblig">
-                                        <h5 class="rojo letra">* Campos obligatorios.</h5>
+                                        <h5 class="rojo letra">* Campos obligatorios</h5>
                                     </div>
                                 </form>
                             </div> <!-- fin Medición inicial -->

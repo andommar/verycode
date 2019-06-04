@@ -707,17 +707,6 @@
                                 if(datos_correctos_queries){
 
                                     form_3="si";
-                                    
-                                    $("#apartado-cirugias").css("display","none");
-                                    $("#apartado-medicamentos").css("display","block");
-
-                                    $("#btn-medicamentos").css("background-color","#dc3545");
-
-                                    $( "html,body" ).animate({
-                                        scrollTop: $("#grupo-titulo-pagina").offset().top
-                                      }, 500, function() {
-                                        // Animation complete.
-                                      });
 
                                 }
                             })
@@ -731,7 +720,33 @@
                         
                 });
 
+                //SIGUIENTE | CIRUGÍAS
 
+                $( "#btn-submit-3" ).click(function() {
+                    
+                    if(form_3=="si"){
+                        $("#apartado-cirugias").css("display","none");
+                        $("#apartado-medicamentos").css("display","block");
+
+                        $("#btn-medicamentos").css("background-color","#dc3545");
+
+                        $( "html,body" ).animate({
+                            scrollTop: $("#grupo-titulo-pagina").offset().top
+                          }, 500, function() {
+                            // Animation complete.
+                          });
+                    }
+                    else{//aún no ha registrado cirugías
+                        $("body").overhang({
+                            type: "error",
+                            message: "ERROR. Registra alguna cirugía para continuar.",
+                            duration: 3,
+                            overlay: true,
+                            closeConfirm: true
+                        });
+                    }
+
+                });
 
 
                 //  =============================== MEDICAMENTOS  ===========================================
@@ -779,17 +794,6 @@
                                 if(datos_correctos_queries){
 
                                     form_4="si";
-                                    
-                                    $("#apartado-medicamentos").css("display","none");
-                                    $("#apartado-infecciones").css("display","block");
-
-                                    $("#btn-infecciones").css("background-color","#fd7e14");
-
-                                    $( "html,body" ).animate({
-                                        scrollTop: $("#grupo-titulo-pagina").offset().top
-                                      }, 500, function() {
-                                        // Animation complete.
-                                      });
                                 }
 
                             })
@@ -802,6 +806,35 @@
                     }
                     
                     
+                });
+
+                //SIGUIENTE | MEDICAMENTOS
+
+                $( "#btn-submit-4" ).click(function() {
+                    
+                    if(form_4=="si"){
+                        
+                        $("#apartado-medicamentos").css("display","none");
+                        $("#apartado-infecciones").css("display","block");
+
+                        $("#btn-infecciones").css("background-color","#fd7e14");
+
+                        $( "html,body" ).animate({
+                            scrollTop: $("#grupo-titulo-pagina").offset().top
+                          }, 500, function() {
+                            // Animation complete.
+                          });
+                    }
+                    else{//aún no ha registrado cirugías
+                        $("body").overhang({
+                            type: "error",
+                            message: "ERROR. Registra algún medicamento para continuar.",
+                            duration: 3,
+                            overlay: true,
+                            closeConfirm: true
+                        });
+                    }
+
                 });
 
                 //  =============================== INFECCIÓN  ===========================================
@@ -851,17 +884,6 @@
                             if(datos_correctos_queries){
 
                                 form_5="si";
-
-                                $("#apartado-infecciones").css("display","none");
-                                $("#apartado-habitos").css("display","block");
-
-                                $("#btn-habitos").css("background-color","#ffc107");
-
-                                $( "html,body" ).animate({
-                                    scrollTop: $("#grupo-titulo-pagina").offset().top
-                                }, 500, function() {
-                                    // Animation complete.
-                                });
                             }
 
                         })
@@ -872,12 +894,36 @@
                             }
                         });
                     }
-                
-                       
-                    
                 });
 
+                //SIGUIENTE | INFECCION
 
+                $( "#btn-submit-5" ).click(function() {
+                    
+                    if(form_5=="si"){
+                        
+                        $("#apartado-infecciones").css("display","none");
+                        $("#apartado-habitos").css("display","block");
+
+                        $("#btn-habitos").css("background-color","#ffc107");
+
+                        $( "html,body" ).animate({
+                            scrollTop: $("#grupo-titulo-pagina").offset().top
+                        }, 500, function() {
+                            // Animation complete.
+                        });
+                    }
+                    else{//aún no ha registrado cirugías
+                        $("body").overhang({
+                            type: "error",
+                            message: "ERROR. Registra alguna infección para continuar.",
+                            duration: 3,
+                            overlay: true,
+                            closeConfirm: true
+                        });
+                    }
+
+                });
 
 
                 //  =============================== HÁBITOS  ===========================================
@@ -1160,7 +1206,7 @@
                         else if(msg=="valoracion"){
                             $("body").overhang({
                                 type: "error",
-                                message: "ERROR, este usuario ya tiene una valoración guardada.",
+                                message: "ERROR, este usuario ya tiene una valoración guardada en esta fecha.",
                                 duration: 3,
                                 overlay: true,
                                 closeConfirm: true
@@ -1174,17 +1220,6 @@
                         if(datos_correctos_queries){
 
                             form_8="si";
-
-                            $("#apartado-valoracion-linf").css("display","none");
-                            $("#apartado-medicion-inicial").css("display","block");
-
-                            $("#btn-medicion").css("background-color","#3da3bc");
-
-                            $( "html,body" ).animate({
-                                scrollTop: $("#grupo-titulo-pagina").offset().top
-                              }, 500, function() {
-                                // Animation complete.
-                              });
                         }	
 
                     })
@@ -1197,7 +1232,34 @@
                     
                 });
 
+                 //SIGUIENTE | VAL. LINFEDEMA
 
+                 $( "#btn-submit-8" ).click(function() {
+                    
+                    if(form_8=="si"){
+                        
+                        $("#apartado-valoracion-linf").css("display","none");
+                        $("#apartado-medicion-inicial").css("display","block");
+
+                        $("#btn-medicion").css("background-color","#3da3bc");
+
+                        $( "html,body" ).animate({
+                            scrollTop: $("#grupo-titulo-pagina").offset().top
+                            }, 500, function() {
+                            // Animation complete.
+                            });
+                    }
+                    else{//aún no ha registrado cirugías
+                        $("body").overhang({
+                            type: "error",
+                            message: "ERROR. Registra alguna valoración para continuar.",
+                            duration: 3,
+                            overlay: true,
+                            closeConfirm: true
+                        });
+                    }
+
+                });
 
                 //  =============================== MEDICIONES  ===========================================//**
 
@@ -1314,7 +1376,7 @@
                                     function() 
                                     {
                                         document.location.href="pagina-principal.php"; 
-                                    }, 1100);
+                                    }, 1200);
                                
                             } 
                         })
