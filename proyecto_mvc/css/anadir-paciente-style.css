@@ -1,5 +1,18 @@
 
-
+.rojo{
+    color: #dc3545;
+}
+.naranja{
+    color:#fda414;
+}
+.margen-oblig{
+    margin-left: 2.3em;
+    margin-bottom: 3em;
+}
+.letra{
+    font-size: 10px;
+    font-weight: bold;
+}
 #panel-pierna{
     display: none;
 }
@@ -42,8 +55,8 @@
 .margen-emoji{
     margin-right: 2em;
 }
-#apartado-historial, #apartado-cirugias, #apartado-medicamentos,#apartado-infecciones, #apartado-habitos,#apartado-hist-trat-linf, #apartado-valoracion-linf, #apartado-medicion-inicial{
-    /* display: none;  */
+#apartado-historial, #apartado-cirugias, #apartado-medicamentos,#apartado-infecciones, #apartado-habitos,#apartado-hist-trat-linf,#apartado-valoracion-linf, #apartado-medicion-inicial{
+    display: none; 
 }
 #apartado-formulario, #apartado-usuario, #apartado-historial, #apartado-cirugias, #apartado-medicamentos, #apartado-infecciones, #apartado-habitos,#apartado-hist-trat-linf, #apartado-valoracion-linf, #apartado-medicion-inicial{
     background: #fff;
@@ -120,6 +133,7 @@
     font-weight: bold;
     color: white;
     background-color: rgb(109, 109, 109);
+    cursor: default !important;
 }
 .estilo-botones:hover{
     color: white;
@@ -150,16 +164,16 @@
     color:#28a745;
 }
 .color8{
-    color: #3da3bc;
+    color: #20c997;
 }
 
 
 
 
-#apartado-usuario h3{
+#apartado-usuario h3, #apartado-medicion-inicial h3{
     color: #3da3bc;
 }
-#apartado-historial h3, #apartado-medicion-inicial h3{
+#apartado-historial h3{
     color:#6610f2;
 }
 #apartado-cirugias h3{
@@ -178,7 +192,7 @@
     color:#28a745;
 }
 #apartado-valoracion-linf h3{
-    color:#3da3bc; 
+    color: #20c997;
 }
 
 /* #btn-medicamentos{
@@ -209,16 +223,16 @@
 .estilo-boton-submit:hover{
     color: white;
 }
-#btn-submit-1{
+#btn-submit-1,#btn-submit-9{
     background-color:#3da3bc;
 }
-#btn-submit-1:hover{
+#btn-submit-1:hover, #btn-submit-9:hover{
     background-color:#3897af;
 }
-#btn-submit-2, #btn-submit-9{
+#btn-submit-2{
     background-color:#6610f2;
 }
-#btn-submit-2:hover, #btn-submit-9:hover{
+#btn-submit-2:hover{
     background-color:#6211e4;
 }
 #btn-submit-3, #btn-anadir-1{
@@ -246,19 +260,19 @@
     background-color:#f5b907;
 }
 #btn-submit-7{
-    background-color:#28a745;
+    background-color:#28a745; 
 }
 #btn-submit-7:hover{
     background-color:#24a041;
 }
 
 #btn-submit-8, #btn-anadir-4{
-    background-color:#3da3bc;
+    background-color:#20c997;
 }
 #btn-submit-8:hover, #btn-anadir-4:hover{
-    background-color:#3897af;
+    background-color:#1dbe8e;
 }
-/* background-color:#fd7e14; */
+
 .columna-btn{
     text-align: right;
     margin: 0em 6em 2em 0em;

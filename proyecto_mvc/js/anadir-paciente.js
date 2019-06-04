@@ -1,84 +1,205 @@
 
             var id_user =0;
             var id_especialista = "";
-            
+            var form_1="no";
+            var form_2="no";
+            var form_3="no";
+            var form_4="no";
+            var form_5="no";
+            var form_6="no";
+            var form_7="no";
+            var form_8="no";
+            var form_9="no";
 
  //  =============================== MOSTRAR Y ESCONDER FORMULARIOS  =========================================== 
 
-            function mostrarFormulario(boton){
+            // function mostrarFormulario(boton){
             
-                $(document).ready(function(){
+            //     $(document).ready(function(){
 
-                    //Ha registrado al usuario
-                    if(id_user!=""){
+            //         //Ha registrado al usuario
+            //         if(id_user!=""){
 
-                        if(boton=='datos-personales'){
-                            $("body").overhang({
-                                        type: "error",
-                                        message: "ERROR, ya has registrado los datos personales del paciente.",
-                                        duration: 6,
-                                        overlay: true,
-                                        closeConfirm: true
-                            });
-                        }
-                        else{
-                                 //Escondemos todos los formularios y marcamos en gris los botones
-                            $("#apartado-usuario").css("display","none");
-                            $("#btn-datos-personales").css("background-color","rgb(109, 109, 109)");
-                            $("#apartado-historial").css("display","none");
-                            $("#btn-historial-clinico").css("background-color","rgb(109, 109, 109)");
-                            $("#apartado-cirugias").css("display","none");
-                            $("#btn-cirugias").css("background-color","rgb(109, 109, 109)");
-                            $("#apartado-medicamentos").css("display","none");
-                            $("#btn-medicamentos").css("background-color","rgb(109, 109, 109)");
+            //             if(boton=='datos-personales'){
+            //                 $("body").overhang({
+            //                             type: "error",
+            //                             message: "ERROR, ya has registrado los datos personales del paciente.",
+            //                             duration: 6,
+            //                             overlay: true,
+            //                             closeConfirm: true
+            //                 });
+                           
+            //             }
+            //             else{
+            //                      //Escondemos todos los formularios y marcamos en gris los botones
+                            
+            //                 // $("#btn-datos-personales").css("background-color","rgb(109, 109, 109)");
+            //                 // $("#btn-historial-clinico").css("background-color","rgb(109, 109, 109)");
+            //                 // $("#btn-cirugias").css("background-color","rgb(109, 109, 109)");
+            //                 // $("#btn-medicamentos").css("background-color","rgb(109, 109, 109)");
+            //                 // $("#btn-infecciones").css("background-color","rgb(109, 109, 109)");
+            //                 // $("#btn-habitos").css("background-color","rgb(109, 109, 109)");
+            //                 // $("#btn-historial-trat-linf").css("background-color","rgb(109, 109, 109)");
+            //                 // $("#btn-valoracion-linfedema").css("background-color","rgb(109, 109, 109)");
+            //                 // $("#btn-medicion").css("background-color","rgb(109, 109, 109)");
 
-                            //mostramos el formulario clicado
-                            switch(boton){
-                                            case 'historial-clinico':
+            //                 //mostramos el formulario clicado
+            //                 switch(boton){
+            //                                 case 'historial-clinico':
 
-                                                $("#apartado-historial").css("display","block");
-                                                $("#btn-historial-clinico").css("background-color","#7037f4");
+                                               
 
-                                            break;
-                                            case 'cirugias':
-
-                                                $("#apartado-cirugias").css("display","block");
-                                                $("#btn-cirugias").css("background-color","#e83e8c");
+            //                                 break;
+            //                                 case 'cirugias':
+            //                                     if(form_2=="si"){
+                                                    
+            //                                     }
+            //                                     else{
+            //                                         // mensaje popup de error
+            //                                         $("body").overhang({
+            //                                             type: "error",
+            //                                             message: "ERROR, para rellenar más formularios debes registrar primero los anteriores.",
+            //                                             duration: 6,
+            //                                             overlay: true,
+            //                                             closeConfirm: true
+            //                                         });
+            //                                     }
                                             
 
-                                            break;
-                                            case 'medicamentos':
-                                                $("#apartado-medicamentos").css("display","block");
-                                                $("#btn-medicamentos").css("background-color","#dc3545");
+            //                                 break;
+            //                                 case 'medicamentos':
+                                                
+            //                                 if(form_2=="si" && form_3=="si"){
+                                               
+            //                                 }
+            //                                 else{
+            //                                     // mensaje popup de error
+            //                                     $("body").overhang({
+            //                                         type: "error",
+            //                                         message: "ERROR, para rellenar más formularios debes registrar primero los anteriores.",
+            //                                         duration: 6,
+            //                                         overlay: true,
+            //                                         closeConfirm: true
+            //                                     });
+            //                                 }
+                                               
                                             
-                                                break;
-                                            case 'infecciones':
-                                            break;
-                                            case 'habitos':
-                                            break;
-                                            case 'historial-trat-linf':
-                                            break;
-                                            case 'valoracion-linfedema':
-                                            break;
-                                            case 'medicion':
-                                            break;
-                            }
-                        }
+            //                                     break;
+            //                                 case 'infecciones':
+                                                    
+            //                                     if(form_2=="si" && form_3=="si" && form_4=="si"){
+                                                  
+            //                                     }   
+            //                                     else{
+            //                                         // mensaje popup de error
+            //                                         $("body").overhang({
+            //                                             type: "error",
+            //                                             message: "ERROR, para rellenar más formularios debes registrar primero los anteriores.",
+            //                                             duration: 6,
+            //                                             overlay: true,
+            //                                             closeConfirm: true
+            //                                         });
+            //                                     }
+            //                                 break;
+            //                                 case 'habitos':
+
+            //                                         if(form_2=="si" && form_3=="si" && form_4=="si" && form_5=="si"){
+                                                       
+
+            //                                         }   
+            //                                         else{
+            //                                             // mensaje popup de error
+            //                                             $("body").overhang({
+            //                                                 type: "error",
+            //                                                 message: "ERROR, para rellenar más formularios debes registrar primero los anteriores.",
+            //                                                 duration: 6,
+            //                                                 overlay: true,
+            //                                                 closeConfirm: true
+            //                                             });
+            //                                         }
+                                                
+                                               
+            //                                 break;
+            //                                 case 'historial-trat-linf':
+                                                
+            //                                         if(form_2=="si" && form_3=="si" && form_4=="si" && form_5=="si" && form_6=="si"){
+                                                      
+            //                                             // $( "html,body" ).animate({
+            //                                             //     scrollTop: $("#apartado-hist-trat-linf").offset().top
+            //                                             //     }, 500, function() {
+            //                                             //     // Animation complete.
+            //                                             //     });
+        
+
+            //                                         }   
+            //                                         else{
+            //                                             // mensaje popup de error
+            //                                             $("body").overhang({
+            //                                                 type: "error",
+            //                                                 message: "ERROR, para rellenar más formularios debes registrar primero  los anteriores.",
+            //                                                 duration: 6,
+            //                                                 overlay: true,
+            //                                                 closeConfirm: true
+            //                                             });
+            //                                         }
+
+                                               
+            //                                 break;
+            //                                 case 'valoracion-linfedema':
+                                                
+
+            //                                     if(form_2=="si" && form_3=="si" && form_4=="si" && form_5=="si" && form_6=="si" && form_7=="si"){
+                                                    
+                                                   
+            //                                     }   
+            //                                     else{
+            //                                         // mensaje popup de error
+            //                                         $("body").overhang({
+            //                                             type: "error",
+            //                                             message: "ERROR, para rellenar más formularios debes registrar primero  los anteriores.",
+            //                                             duration: 6,
+            //                                             overlay: true,
+            //                                             closeConfirm: true
+            //                                         });
+            //                                     }
+
+                                              
+
+            //                                 break;
+            //                                 case 'medicion':
+                                                
+            //                                     if(form_2=="si" && form_3=="si" && form_4=="si" && form_5=="si" && form_6=="si" && form_7=="si" && form_8=="si"){
+                                                
+
+            //                                     }   
+            //                                     else{
+            //                                         // mensaje popup de error
+            //                                         $("body").overhang({
+            //                                             type: "error",
+            //                                             message: "ERROR, para rellenar más formularios debes registrar primero  los anteriores.",
+            //                                             duration: 6,
+            //                                             overlay: true,
+            //                                             closeConfirm: true
+            //                                         });
+            //                                     }
+            //                                 break;
+            //                 }
+            //             }
                        
-                    }
-                    //No ha registrado al usuario
-                    else{
-                        //mensaje popup de error
-                        $("body").overhang({
-                                        type: "error",
-                                        message: "ERROR, para rellenar más formularios debes registrar los datos personales del paciente primero.",
-                                        duration: 6,
-                                        overlay: true,
-                                        closeConfirm: true
-                        });
-                    }
-                });
-            }
+            //         }
+            //         //No ha registrado al usuario
+            //         else{
+            //             // mensaje popup de error
+            //             $("body").overhang({
+            //                             type: "error",
+            //                             message: "ERROR, para rellenar más formularios debes registrar los datos personales del paciente primero.",
+            //                             duration: 6,
+            //                             overlay: true,
+            //                             closeConfirm: true
+            //             });
+            //         }
+            //     });
+            // }
 
 
             $(document).ready(function(){
@@ -372,11 +493,18 @@
                                 }
 
                                 if(datos_correctos_queries){
-                                    //Pasamos al siguiente formulario (HISTORIAL CLÍNICO)
+                                    form_1="si";
+                                   
+                                    $("#apartado-usuario").css("display","none");
                                     $("#apartado-historial").css("display","block");
-                                    //$("#apartado-usuario").css("display","none");
-                                    $("#btn-datos-personales").css("background-color","rgb(109, 109, 109)");
+
                                     $("#btn-historial-clinico").css("background-color","#7037f4");
+                                   
+                                    $( "html,body" ).animate({
+                                        scrollTop: $("#grupo-titulo-pagina").offset().top
+                                      }, 500, function() {
+                                        // Animation complete.
+                                      });
                                 }
                                 
                             })
@@ -400,6 +528,7 @@
                     $('#motivo_secundario_otro').css("border","1px solid #ced4da");
 
                     var datos_correctos = true; 
+                    var datos_correctos_queries = true;
 
                     var doc_identificacion=$('#doc_identificacion').val();
                     var nacionalidad = $('#nacionalidad').val();
@@ -507,9 +636,21 @@
                             else{
                                 $.notify("Historial clínico guardado correctamente", "success");
                             }
-                            // if(datos_correctos_queries){
+                            if(datos_correctos_queries){
 
-                            // }
+                                form_2="si";
+                                   
+                                $("#apartado-historial").css("display","none");
+                                $("#apartado-cirugias").css("display","block");
+
+                                $("#btn-cirugias").css("background-color","#e83e8c");
+
+                                $( "html,body" ).animate({
+                                    scrollTop: $("#grupo-titulo-pagina").offset().top
+                                  }, 500, function() {
+                                    // Animation complete.
+                                  });
+                            }
                         })
                         .fail(function( jqXHR, textStatus, errorThrown ) {
                             if ( console && console.log ) {
@@ -562,9 +703,23 @@
                                 else{
                                     $.notify("Cirugía guardada correctamente.", "success");
                                 }
-                                 // if(datos_correctos_queries){
+                                
+                                if(datos_correctos_queries){
 
-                            // }
+                                    form_3="si";
+                                    
+                                    $("#apartado-cirugias").css("display","none");
+                                    $("#apartado-medicamentos").css("display","block");
+
+                                    $("#btn-medicamentos").css("background-color","#dc3545");
+
+                                    $( "html,body" ).animate({
+                                        scrollTop: $("#grupo-titulo-pagina").offset().top
+                                      }, 500, function() {
+                                        // Animation complete.
+                                      });
+
+                                }
                             })
                             .fail(function( jqXHR, textStatus, errorThrown ) {
                                 if ( console && console.log ) {
@@ -621,9 +776,21 @@
                                 else{
                                     $.notify("Medicamento guardado correctamente.", "success");
                                 }
-                                 // if(datos_correctos_queries){
+                                if(datos_correctos_queries){
 
-                            // }
+                                    form_4="si";
+                                    
+                                    $("#apartado-medicamentos").css("display","none");
+                                    $("#apartado-infecciones").css("display","block");
+
+                                    $("#btn-infecciones").css("background-color","#fd7e14");
+
+                                    $( "html,body" ).animate({
+                                        scrollTop: $("#grupo-titulo-pagina").offset().top
+                                      }, 500, function() {
+                                        // Animation complete.
+                                      });
+                                }
 
                             })
                             .fail(function( jqXHR, textStatus, errorThrown ) {
@@ -681,9 +848,21 @@
                             else{
                                 $.notify("Infección guardada correctamente.", "success");
                             }
-                             // if(datos_correctos_queries){
+                            if(datos_correctos_queries){
 
-                            // }
+                                form_5="si";
+
+                                $("#apartado-infecciones").css("display","none");
+                                $("#apartado-habitos").css("display","block");
+
+                                $("#btn-habitos").css("background-color","#ffc107");
+
+                                $( "html,body" ).animate({
+                                    scrollTop: $("#grupo-titulo-pagina").offset().top
+                                }, 500, function() {
+                                    // Animation complete.
+                                });
+                            }
 
                         })
                         .fail(function( jqXHR, textStatus, errorThrown ) {
@@ -789,9 +968,22 @@
                             else{
                                 $.notify("Hábitos guardados correctamente.", "success");
                             }
-                            // if(datos_correctos_queries){
+                            if(datos_correctos_queries){
 
-                            // }
+                                form_6="si";
+
+                                $("#apartado-habitos").css("display","none");
+                                $("#apartado-hist-trat-linf").css("display","block");
+
+                                $("#btn-historial-trat-linf").css("background-color","#28a745");
+
+                                $( "html,body" ).animate({
+                                    scrollTop: $("#grupo-titulo-pagina").offset().top
+                                }, 500, function() {
+                                    // Animation complete.
+                                });
+
+                            }
 
                         })
                         .fail(function( jqXHR, textStatus, errorThrown ) {
@@ -801,15 +993,7 @@
                             }
                         });
                     }
-                    
-                          
-                    
-                   
-                    
                 });
-
-
-
 
                 //  =============================== HISTORIAL TRATAMIENTO LINFEDEMA  ===========================================
 
@@ -891,6 +1075,22 @@
 
                             } 	
                             
+                            if(datos_correctos_queries){
+
+                                form_7="si";
+
+                                $("#apartado-hist-trat-linf").css("display","none");
+                                $("#apartado-valoracion-linf").css("display","block");
+
+                                $("#btn-valoracion-linfedema").css("background-color","#20c997");
+
+                                $( "html,body" ).animate({
+                                    scrollTop: $("#grupo-titulo-pagina").offset().top
+                                  }, 500, function() {
+                                    // Animation complete.
+                                  });
+
+                            }
 
                         })
                         .fail(function( jqXHR, textStatus, errorThrown ) {
@@ -971,9 +1171,21 @@
                             $.notify("Valoración guardada correctamente.", "success");
                         }    
                         
-                        // if(datos_correctos_queries){
+                        if(datos_correctos_queries){
 
-                        // } 	
+                            form_8="si";
+
+                            $("#apartado-valoracion-linf").css("display","none");
+                            $("#apartado-medicion-inicial").css("display","block");
+
+                            $("#btn-medicion").css("background-color","#3da3bc");
+
+                            $( "html,body" ).animate({
+                                scrollTop: $("#grupo-titulo-pagina").offset().top
+                              }, 500, function() {
+                                // Animation complete.
+                              });
+                        }	
 
                     })
                     .fail(function( jqXHR, textStatus, errorThrown ) {
@@ -1093,8 +1305,18 @@
                                 datos_correctos_queries = false;
                             }
                             else{
-                                $.notify("Medición guardada correctamente.", "success");
-                            }    
+                                $.notify("Paciente registrado con éxito", "success");
+                            }   
+                            if(datos_correctos_queries){
+                                
+                                form_9="si";
+                                setTimeout(
+                                    function() 
+                                    {
+                                        document.location.href="pagina-principal.php"; 
+                                    }, 1100);
+                               
+                            } 
                         })
                         .fail(function( jqXHR, textStatus, errorThrown ) {
                             if ( console && console.log ) {
@@ -1131,8 +1353,8 @@
                         mensaje_error="ERROR. El formato de correo no es correcto, introduce una extensión como '.com', por ejemplo.";
                         datos_correctos = false;
                     } 
-                    if(isEmptyOrSpaces(apellido1) || isEmptyOrSpaces(apellido2)){
-                        mensaje_error="ERROR. Los apellidos no pueden estar vacíos.";
+                    if(isEmptyOrSpaces(apellido1)){
+                        mensaje_error="ERROR. El primer apellido no puede estar vacío.";
                         datos_correctos = false;
                     } 
                     if(isEmptyOrSpaces(nombre)){
@@ -1447,4 +1669,9 @@
                 }
 
             });//document ready
-    
+            
+            // function comprobarFormsRellenados(formulario_actual){
+            //     for(var i=1;i<=;){
+
+            //     }
+            // }

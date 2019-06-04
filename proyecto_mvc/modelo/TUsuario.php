@@ -102,7 +102,7 @@ class TUsuario{
 		if($abd->conectado())
 		{ 	
 			$res=true;
-			$sql = "SELECT id_user, nombre, apellido1, apellido2, correo, pass FROM usuario where id_especialista is null";
+			$sql = "SELECT id_user, nombre, apellido1, apellido2, correo, pass FROM usuario where id_especialista is null or id_especialista=95";
 			$stmt = $abd->listado_asociativo($sql);
 		}
 		if( $stmt === false ) {
@@ -822,7 +822,7 @@ class TUsuario{
 		$abd = new TAccesbd ();
 		if($abd->conectado())
 		{
-			$sql="update usuario set id_especialista=$id_especialista where id_user=$id_user and id_especialista is null";
+			$sql="update usuario set id_especialista=$id_especialista where id_user=$id_user and (id_especialista is null or id_especialista=95)";
 			$stmt = $abd->ejecuta_sql($sql);	
 		}
 		if( $stmt === false ) {//error sql
