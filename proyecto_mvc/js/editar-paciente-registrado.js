@@ -158,6 +158,16 @@ function mostrarFormulario(boton){
                     });
                     datos_correctos_queries = false;
                 }
+                else if(msg=="correo"){
+                    $("body").overhang({
+                        type: "error",
+                        message: "Error, este correo ya está en uso.",
+                        duration: 3,
+                        overlay: true,
+                        closeConfirm: true
+                    });
+                    datos_correctos_queries = false;
+                }
                 else{
                     $.notify("Datos personales actualizados con éxito", "success");
                     datos_correctos_queries=true;

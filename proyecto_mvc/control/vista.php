@@ -136,6 +136,9 @@ if(isset($_POST["opcion"]))
             {
                echo "true";
             }
+            else if($error==-2){
+                echo "correo";
+            }
             else
                 echo "false";
         break;

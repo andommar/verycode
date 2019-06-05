@@ -200,7 +200,7 @@
                                         <div class="form-group ancho" id="input_correo">
                                             <label for="correo">Correo <span class="rojo">*</span></label>
                                             &nbsp;
-                                            <input type="email" class="form-control" name="correo" id="correo" required maxlength="100" disabled="disabled"><br>
+                                            <input type="email" class="form-control" name="correo" id="correo" required maxlength="100" ><br>
                                         </div>
                                             
                                         &nbsp;&nbsp;

@@ -721,34 +721,30 @@ class TUsuario{
 	}
 
 	public function editar_datos_personales($correo,$pass,$nombre,$apellido1,$apellido2,$id_especialista,$id_usuario){
-			// //Comprobar si se repite el correo antes
-			// $sql="select count(*) from usuario where correo='$correo'";
-			// $stmt = $abd->consultar_dato($sql);
-			// if( $stmt === false ) {//error consulta sql
-			// 	$res=-1;
-			// }
-			// else{
-
-			// }
-			// if($stmt>0){//Ya existe el correo
-			// 	$res=-2;
-			// }
-			// else{
-
-			// }
-			$res=0;
-			$abd = new TAccesbd ();
-
-		
-			if($abd->conectado())
-			{
-				//Modificamos el usuario
-				$sql2="update usuario set pass='$pass', nombre='$nombre', apellido1='$apellido1', apellido2='$apellido2' where id_user=$id_usuario";
-				$stmt2 = $abd->ejecuta_sql($sql2);
-				if( $stmt2 === false ) {
-					$res=-1;
-				}
+		$res=0;
+		$abd = new TAccesbd ();
+		if($abd->conectado())
+		{
+			//Comprobar si se repite el correo antes (en el caso de que decida cambiarlo)
+			$sql="select count(*) from usuario WHERE correo='$correo' and id_user!=$id_usuario";
+			$stmt = $abd->consultar_dato($sql);
+			if( $stmt === false ) {//error consulta sql
+				$res=-1;
 			}
+			else{
+					if($stmt>0){//Ya existe el correo, error
+						$res=-2;
+					}
+					else{
+							//Modificamos el usuario
+							$sql2="update usuario set pass='$pass', nombre='$nombre', correo='$correo', apellido1='$apellido1', apellido2='$apellido2' where id_user=$id_usuario";
+							$stmt2 = $abd->ejecuta_sql($sql2);
+							if( $stmt2 === false ) {
+								$res=-1;
+							}
+					}
+			}
+		} 
 		return $res;
 	}
 
