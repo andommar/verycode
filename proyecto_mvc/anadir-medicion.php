@@ -158,9 +158,9 @@
                        <div class="col -ls-12">
                             <!-- =============================== Medición  ** ===========================================  -->
 
-                            <div id="apartado-medicion-inicial">
+                            <div id="apartado-medicion">
                                 <h3>Nueva medición&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
-                                <!--  TABLA medición inicial  -->
+                                <!--  TABLA medición -->
                                 <form id="form-9" class="margen-form">
                                     <div class="titulos color2">
                                         <label>MIEMBRO/S A MEDIR</label>
