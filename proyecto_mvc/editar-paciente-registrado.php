@@ -36,7 +36,8 @@
     </head>
   
     <!-- ===============  BODY ============= -->
-    <body>  
+    <body> 
+        <input id="usuario" type="hidden" value="<?php echo $_GET["id_user"]?>"> 
         <!-- Cuadrícula con el máximo ancho de la página -->
         <div class="container-fluid" id="body-container">
             <div class="row">
@@ -124,7 +125,7 @@
                     <div class="row" id="grupo-titulo-pagina">
                         <!-- Título -->
                         <div class="col-md-6" id="titulo">
-                            <h3 class="block-title">Editar paciente</h3>
+                            <h3 id="titulo-paciente">Editar paciente</h3>
                         </div>
                         <!-- Breadcrumb -->
                         <div class="col-md-6">
@@ -137,7 +138,9 @@
                                 </li>
                                 
                                 <li class="breadcrumb-item color-blanco">
+                                    <a href="pacientes.php"> 
                                         Pacientes
+                                    </a>
                                 </li>
                                 <li class="breadcrumb-item color-blanco">
                                     Editar paciente

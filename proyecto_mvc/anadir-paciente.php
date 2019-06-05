@@ -139,7 +139,9 @@
                                 </li>
                                 
                                 <li class="breadcrumb-item color-blanco">
+                                    <a href="pacientes.php">
                                         Pacientes
+                                    </a>
                                 </li>
                                 <li class="breadcrumb-item color-blanco">
                                     <a href="anadir-paciente.php">

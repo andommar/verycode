@@ -1,5 +1,6 @@
 
-
+    var id_usuario = $("#usuario").val();
+    $("#titulo-paciente").html("Editar paciente · Paciente "+id_usuario);
     //   =============================== MOSTRAR Y ESCONDER FORMULARIOS  =========================================== 
 
     function mostrarFormulario(boton){
