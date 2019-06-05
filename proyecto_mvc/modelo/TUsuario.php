@@ -720,6 +720,37 @@ class TUsuario{
 		return $res;
 	}
 
+	public function editar_datos_personales($correo,$pass,$nombre,$apellido1,$apellido2,$id_especialista,$id_usuario){
+			// //Comprobar si se repite el correo antes
+			// $sql="select count(*) from usuario where correo='$correo'";
+			// $stmt = $abd->consultar_dato($sql);
+			// if( $stmt === false ) {//error consulta sql
+			// 	$res=-1;
+			// }
+			// else{
+
+			// }
+			// if($stmt>0){//Ya existe el correo
+			// 	$res=-2;
+			// }
+			// else{
+
+			// }
+			$res=0;
+			$abd = new TAccesbd ();
+
+		
+			if($abd->conectado())
+			{
+				//Modificamos el usuario
+				$sql2="update usuario set pass='$pass', nombre='$nombre', apellido1='$apellido1', apellido2='$apellido2' where id_user=$id_usuario";
+				$stmt2 = $abd->ejecuta_sql($sql2);
+				if( $stmt2 === false ) {
+					$res=-1;
+				}
+			}
+		return $res;
+	}
 
 	public function registro_admin($correo,$pass,$pass2,$nombre,$apellido,$apellido2,$tipo)
 	{
@@ -848,6 +879,22 @@ class TUsuario{
 			}
 			return $res;
 	}
+	//MOSTRAR DATOS PACIENTE
+	public function get_datos_personales($id_user){	
+		$res=0;
+		$abd = new TAccesbd ();
+		if($abd->conectado())
+		{
+			$sql="select nombre,apellido1, apellido2, correo, pass from usuario	where id_user = $id_user";
+			$stmt = $abd->listado_asociativo($sql);
+		}
+		if( $stmt != false ) {//error sql
+
+			$res=$stmt;
+
+		}
+		return $res;
+}
 
 
 }

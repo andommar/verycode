@@ -79,6 +79,7 @@ class TControl{
         $resultat = $usr->registro_paciente($correo,$pass,$pass2,$nombre,$apellido1,$apellido2,$id_especialista,$id_user);
         return ($resultat);
     }
+    
    
     //
     public function registro_historial_clinico($id_user,$doc_identificacion,$nacionalidad, $raza, $fecha_nacimiento,$sexo, $altura, $peso, $tipo_congenito, $subtipo_congenito,
@@ -182,6 +183,20 @@ class TControl{
         $usr = new TUsuario();
         $resultat=$usr->get_paciente_no_asignado($id_user);
 
+        return ($resultat);
+    }
+    //MOSTRAR DATOS PACIENTE
+    public function get_datos_personales($id_user){
+        
+        $usr = new TUsuario();
+        $resultat=$usr->get_datos_personales($id_user);
+
+        return ($resultat);
+    }
+    //EDITAR DATOS PERSONALES PACIENTE
+    public function editar_datos_personales($correo,$pass,$nombre,$apellido1,$apellido2,$id_especialista,$id_usuario){
+        $usr = new TUsuario();
+        $resultat = $usr->editar_datos_personales($correo,$pass,$nombre,$apellido1,$apellido2,$id_especialista,$id_usuario);
         return ($resultat);
     }
 

@@ -143,7 +143,9 @@
                                 </li>
                                 
                                 <li class="breadcrumb-item color-blanco">
+                                    <a href="mediciones.php">        
                                         Mediciones
+                                    </a>
                                 </li>
                                 <li class="breadcrumb-item color-blanco">
                                     Ver mediciones

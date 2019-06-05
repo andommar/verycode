@@ -119,6 +119,26 @@ if(isset($_POST["opcion"]))
            echo json_encode($resultado);
 
         break;
+        //EDITAR DATOS PERSONALES
+        case 'editar_datos_personales':
+            
+            $id_usuario=$_POST["id_usuario"];
+            $correo = $_POST["correo"];
+            $pass = $_POST["pass"]; 
+            $nombre = $_POST["nombre"];
+            $apellido1 = $_POST["apellido1"];
+            $apellido2 = $_POST["apellido2"];
+            $id_especialista = $_POST["id_especialista"];
+            
+            
+            $error=$c->editar_datos_personales($correo,$pass,$nombre,$apellido1,$apellido2,$id_especialista,$id_usuario);
+            if($error==0)
+            {
+               echo "true";
+            }
+            else
+                echo "false";
+        break;
 
         case "registro_historial_clinico": 
             
@@ -511,7 +531,20 @@ if(isset($_GET["opcion"]))
             else{
                 echo json_encode($error);
             }
-        break;     
+        break; 
+        //MOSTRAR DATOS PACIENTE   
+        case "get_datos_personales":
+
+        $id_user=$_GET["id_usuario"];
+        $error=$c->get_datos_personales($id_user);
+        if($error==-1){
+            echo "false";
+        }
+        else{
+            echo json_encode($error);
+        }
+    break;      
+
     }
 }
 ?>

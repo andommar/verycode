@@ -451,6 +451,7 @@
                         id_especialista=$('#btn-submit-1').val(); 
                         var opcion="registro_paciente";
 
+                        
                         if(validarDatosPersonales(nombre,apellido1,apellido2,correo,pass,pass2)){
                             $.ajax({
                             type:'POST',

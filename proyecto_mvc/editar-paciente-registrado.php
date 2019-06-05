@@ -37,7 +37,8 @@
   
     <!-- ===============  BODY ============= -->
     <body> 
-        <input id="usuario" type="hidden" value="<?php echo $_GET["id_user"]?>"> 
+        <input id="id_usuario" type="hidden" value="<?php echo $_GET["id_user"]?>">
+        <input type="hidden" id="id_especialista" value="<?php echo($_SESSION["id_especialista"]) ?>" /> 
         <!-- Cuadrícula con el máximo ancho de la página -->
         <div class="container-fluid" id="body-container">
             <div class="row">
@@ -195,27 +196,21 @@
                                         </div>
                                     </div>  <!--Fin fila 1-->
                                     &nbsp;&nbsp;
-                                    <div class="form-row justify-content-center">
+                                    <div class="form-row espaciado-empty">
                                         <div class="form-group ancho" id="input_correo">
                                             <label for="correo">Correo <span class="rojo">*</span></label>
                                             &nbsp;
-                                            <input type="email" class="form-control" name="correo" id="correo" required maxlength="100"><br>
+                                            <input type="email" class="form-control" name="correo" id="correo" required maxlength="100" disabled="disabled"><br>
                                         </div>
                                             
                                         &nbsp;&nbsp;
                                         <div class="form-group ancho" id="input_pass">
                                             <label for="pass">Contraseña <span class="rojo">*</span></label>
                                             &nbsp;
-                                            <input type="password" class="form-control" name="pass" id="pass" required maxlength="50"><br>
+                                            <input type="text" class="form-control" name="pass" id="pass" required maxlength="50"><br>
                                         </div>
                                         
                                         &nbsp;&nbsp;
-                                        
-                                        <div class="form-group ancho" id="input_pass2">
-                                            <label for="pass2">Confirmar contraseña <span class="rojo">*</span></label>
-                                            &nbsp;
-                                            <input type="password" class="form-control" name="pass2" id="pass2" required maxlength="50"><br>
-                                        </div>
                                     </div>  <!--Fin fila 2-->
                                     <div class="columna-btn">
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-submit-1" value='<?php echo($_SESSION["id_especialista"])?>'>Modificar</button>
