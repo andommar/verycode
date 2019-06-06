@@ -1,18 +1,20 @@
-<?php session_start();
+<?php 
+    session_start();
+
     if(!(isset($_SESSION["tipo_usuario"]))){
         header("Location: index.php");
     }
-    // if((isset($_POST["id_usuario"]))){
-    //     $_SESSION["id_usuario"]= $_POST["id_usuario"];
-    //     echo json_encode ('todo bien');
-    // }
-
+    else{
+        if($_SESSION["tipo_usuario"]=='fisioterapeuta'){
+            header("Location: pagina-principal.php");
+        }
+    }
 ?> 
 <!DOCTYPE html>
 <html>
     <!-- ===============  HEAD ============= -->
     <head>
-        <title>Añadir medición</title>
+        <title>Añadir especialista</title>
         <meta charset="utf-8">
         <!-- Mobile First -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,22 +34,24 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <!-- Hojas de estilo -->
         <link rel="stylesheet" type="text/css" href="css/global-style.css">
+        <link rel="stylesheet" type="text/css" href="css/anadir-paciente-style.css">
+        <link rel="stylesheet" type="text/css" href="css/anadir-fisio.css">
         <!-- Gráficas -->
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/grafica1.css">
-        <link rel="stylesheet" href="css/display-grafica.css">
          <!-- NOTIFICACIONES OVERHANG.JS  1 -->
         <link rel="stylesheet" type="text/css" href="js/overhang/dist/overhang.min.css" />
         <link rel="stylesheet" href="js/jquery-ui/jquery-ui.min.css">
         
     </head>
-     <!-- ===============  BODY ============= -->
-     <body>  
+  
+    <!-- ===============  BODY ============= -->
+    <body>  
         <!-- Cuadrícula con el máximo ancho de la página -->
         <div class="container-fluid" id="body-container">
             <div class="row">
-               <!-- COLUMNA IZQUIERDA -->
-               <div class="col-lg-2" id="nav-left-col">
+                <!-- COLUMNA IZQUIERDA -->
+                <div class="col-lg-2" id="nav-left-col">
                     <!-- BARRA DE NAVEGACIÓN LATERAL-->
                     <nav id="nav-left">
                         <!-- Logo -->
@@ -58,14 +62,14 @@
                         <ul class="list-unstyled components">
 
                             <!-- Apartado "PÁGINA PRINCIPAL"-->
-                            <li class="espaciado-desplegable">
+                            <li class="active espaciado-desplegable">
                                 <a href="pagina-principal.php">
                                     <span class="ti-home"></span> Página Principal
                                 </a>
                             </li>
                             <?php if($_SESSION["tipo_usuario"]=='fisioterapeuta'){?>
                              <!-- Apartado "PACIENTES"-->
-                             <li class="espaciado-desplegable apartados">
+                             <li class=" espaciado-desplegable apartados">
                                 <a href="#nav-pacientes" data-toggle="collapse" aria-expanded="false">
                                     <span class="ti-wheelchair"></span> Pacientes
                                 </a>
@@ -79,11 +83,14 @@
                                 </ul>
                             </li>
                             <!-- Apartado "mediciones"-->
-                            <li class="active espaciado-desplegable apartados">
+                            <li class="espaciado-desplegable apartados">
                                 <a href="#nav-mediciones" data-toggle="collapse" aria-expanded="false" class="collapsed">
                                 <span class="ti-ruler-alt"></span> Mediciones
                                 </a>
                                 <ul class="list-unstyled collapse tamano-letra" id="nav-mediciones" style="">
+                                        <li>
+                                                <a href="anadir-medicion.php">Añadir medición</a>
+                                        </li>
                                         <li>
                                             <a href="mediciones.php">Todas las mediciones</a>
                                         </li>
@@ -130,7 +137,7 @@
                     <div class="row" id="grupo-titulo-pagina">
                         <!-- Título -->
                         <div class="col-md-6" id="titulo">
-                            <h3 id="titulo-paciente" class="block-title"></h3>
+                            <h3 class="block-title">Añadir Especialista</h3>
                         </div>
                         <!-- Breadcrumb -->
                         <div class="col-md-6">
@@ -141,15 +148,6 @@
                                         &nbsp;&nbsp;Página principal
                                     </a>
                                 </li>
-                                
-                                <li class="breadcrumb-item color-blanco">
-                                    <a href="mediciones.php">        
-                                        Mediciones
-                                    </a>
-                                </li>
-                                <li class="breadcrumb-item color-blanco">
-                                    Ver mediciones
-                                </li>
                                
                             </ol>
                         </div>
@@ -157,115 +155,90 @@
 
                      <!-- Cuerpo página (lado derecho)-->
                     <!-- FILA 1 | INPUTS -->
-                    
                     <div id="cuerpo-pagina-2" class="row"> 
-                        
-                       
-                    <!-- =============================== USUARIO | vista, sql y validado ===========================================  -->
-                        <div class="col-lg-12">
-                            
-                            <div class="col-lg-12 text-center" id="apartado-botones-graficas">
-                                <div id="botones-graficas">
-                                    <button id="btn-sano-afecto" type="button" class="button btn">Sano-afecto</button>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <button id="btn-evolucion" type="button" class="button btn ">Evolución puntos</button>
-                                </div> 
-                            </div>
-                            <div id="grafica-sano-afecto">
-                                <div class="row">
-                                    <div class="sombra-cuadro col-md-6 mx-auto mt-4">
-                                        <div id="grafica1" width=100%>
-                                            <canvas id ="lineChart" height="300" width="400"></canvas>
+                    <div class="col-sm-12">
+                            <div id="anadir-fisio">
+                                <h3>Datos especialista</h3>
+                                <hr>
+
+                                <form id="form-1" class="margen-form">
+                                    <div class="form-row justify-content-center">
+                                        <div class="form-group ancho" id="input_nombre">
+                                            <label for="nombre">Nombre</label>
+                                            &nbsp;
+                                            <input type="text" class="form-control" id="nombre" name="nombre" required maxlength="30" value=><br>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="sombra-cuadro col-md-10 mx-auto mt-4 mb-4">
-                                        <table class="table" id="pacientes-table">
-                                            <thead>
-                                                <tr>
-                                                <th>Fecha</th>
-                                                <th>Extremidad</th>
-                                                <th>Lado</th>
-                                                <th>Lado sano</th>
-                                                <th>P1</th>
-                                                <th>P2</th>
-                                                <th>P3</th>
-                                                <th>P4</th>
-                                                <th>P5</th>
-                                                <th>Acción</th>
-                                                </tr>
-                                            </thead>
-                                                <!-- Se rellena con la consulta AJAX de JS a la BD -->
-                                            <tbody>     
-                                            
-                                            </tbody>
-                                        </table>
-                                    </div>
                                     
-                                </div>
-                            </div>
-                            <div id="grafica-evolucion" class="row">
-                                <div class="sombra-cuadro col-md-6 mx-auto mt-4">
-                                    <div width=100%>
-                                        <canvas id ="lineChartevolucion" height="300" width="400"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="grafica-pierna">
-                                <div class="row">
-                                    <div class="sombra-cuadro col-md-6 mx-auto mt-4">
-                                        <div width=100%>
-                                            <canvas id ="lineChartPierna" height="300" width="400"></canvas>
+                                        &nbsp;&nbsp;
+                                        
+                                        <div class="form-group ancho" id="input_apellido1">
+                                            <label for="apellido1">Primer apellido</label>
+                                            &nbsp;
+                                            <input type="text" class="form-control" id="apellido1" required maxlength="50"><br>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="sombra-cuadro col-md-10 mx-auto mt-4 mb-4">
-                                        <table class="table" id="pacientes-table-piernas">
-                                            <thead>
-                                                <tr>
-                                                <th>Fecha</th>
-                                                <th>Extremidad</th>
-                                                <th>Lado</th>
-                                                <th>Lado sano</th>
-                                                <th>P1</th>
-                                                <th>P2</th>
-                                                <th>P3</th>
-                                                <th>P4</th>
-                                                <th>P5</th>
-                                                <th>P6</th>
-                                                <th>Acción</th>
-                                                </tr>
-                                            </thead>
-                                                <!-- Se rellena con la consulta AJAX de JS a la BD -->
-                                            <tbody>     
+                                        &nbsp;&nbsp;
+
+                                        <div class="form-group ancho" id="input_apellido2">
+                                            <label for="apellido2">Segundo apellido</label>
+                                            &nbsp;
+                                            <input type="text" class="form-control" name="apellido1" id="apellido2" required maxlength="50"><br>
+                                        </div>
+                                    </div>  <!--Fin fila 1-->
+                                    &nbsp;&nbsp;
+                                    <div class="form-row justify-content-center">
+                                        <div class="form-group ancho" id="input_correo">
+                                            <label for="correo">Correo</label>
+                                            &nbsp;
+                                            <input type="email" class="form-control" name="correo" id="correo" required maxlength="100"><br>
+                                        </div>
                                             
-                                            </tbody>
-                                        </table>
+                                        &nbsp;&nbsp;
+                                        <div class="form-group ancho" id="input_pass">
+                                            <label for="pass">Contraseña</label>
+                                            &nbsp;
+                                            <input type="password" class="form-control" name="pass" id="pass" required maxlength="50"><br>
+                                        </div>
+                                        
+                                        &nbsp;&nbsp;
+                                        
+                                        <div class="form-group ancho" id="input_pass2">
+                                            <label for="pass2">Confirmar contraseña</label>
+                                            &nbsp;
+                                            <input type="password" class="form-control" name="pass2" id="pass2" required maxlength="50"><br>
+                                        </div>
+
+                                        &nbsp;&nbsp;
+                                        
+                                        <div class="form-group ancho" id="input_pass2">
+                                            <label for="pass2">Tipo</label>
+                                            &nbsp;
+                                            <input type="text" class="form-control" name="tipo" id="tipo" required maxlength="50"><br>
+                                        </div>
+                                    </div>  <!--Fin fila 2-->
+                                    <div class="columna-btn">
+                                        <button class="btn estilo-boton-submit" type="submit" id="btn-submit-1" value='<?php echo($_SESSION["id_especialista"])?>'>Registrar</button>
                                     </div>
-                                    
-                                </div>
+                                </form>
                             </div>
 
                         </div>
+
+
                     </div><!-- Fin cuerpo página-->
                 </div> <!-- Fin columna derecha-->
             </div> <!-- ROW -->
 
-            <input id="usuario" type="hidden" value="<?php echo $_GET["id_user"]?>"> 
+
         </div><!-- CONTAINER FLUID-->
 
         <!-- SCRIPTS -->
-        <script src ="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
-        <script src="js/graficas_datos.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="js/jquery-ui/external/jquery/jquery.js"></script>
         <script src="js/jquery-ui/jquery-ui.min.js"></script>
         <script type="text/javascript" src="js/overhang/dist/overhang.min.js"></script> 
         <script type="text/javascript" src="js/notify/notify.min.js"></script>
-        <script>
-            var id_especialista= <?php echo($_SESSION["id_especialista"]) ?>;
-        </script>
-      
-           
+        <script type="text/javascript" src="js/anadir-fisio.js"></script>
+        
+
+    </body>
+</html>

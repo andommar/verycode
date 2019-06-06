@@ -1,0 +1,18 @@
+#btn-sano-afecto{
+    background-color: #3da3bc;
+    margin-top: 1em;
+    margin-bottom: 0.4em;
+    color: white;
+}
+#btn-evolucion{
+    margin-top: 1em;
+    margin-bottom: 0.4em;
+    color: white;
+    background-color: rgb(109, 109, 109);
+}
+#btn-sano-afecto:hover,#btn-evolucion:hover{
+    background-color: #3899b0;
+}
+#grafica-evolucion{
+    display:none;
+}

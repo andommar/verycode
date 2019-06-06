@@ -139,9 +139,7 @@
                                 </li>
                                 
                                 <li class="breadcrumb-item color-blanco">
-                                    <a href="pacientes.php">
-                                        Pacientes
-                                    </a>
+                                        Paciente
                                 </li>
                                 <li class="breadcrumb-item color-blanco">
                                     <a href="anadir-paciente.php">
@@ -157,8 +155,7 @@
                     <!-- FILA 1 | INPUTS -->
                     <div id="cuerpo-pagina-2" class="row"> 
                     <div class="col-lg-12" id="col-botones">
-
-                        <!-- <button class="btn estilo-botones margen" type="button" id="btn-datos-personales" value="" onclick="mostrarFormulario('datos-personales')">Datos personales</button>
+                        <!-- <button class="btn estilo-botones margen" type="button" id="btn-datos-personales" value="" onclick="mostrarFormulario('datos-personales')">Datos personales</button> -->
                         <button class="btn estilo-botones margen" type="button" id="btn-historial-clinico" value="" onclick="mostrarFormulario('historial-clinico')">Historial Clínico</button>
                         <button class="btn estilo-botones margen" type="button" id="btn-cirugias" value="" onclick="mostrarFormulario('cirugias')">Cirugías</button>
                         <button class="btn estilo-botones margen" type="button" id="btn-medicamentos" value="" onclick="mostrarFormulario('medicamentos')">Medicamentos</button>
@@ -166,80 +163,14 @@
                         <button class="btn estilo-botones margen" type="button" id="btn-habitos" value="" onclick="mostrarFormulario('habitos')">Hábitos</button>
                         <button class="btn estilo-botones margen" type="button" id="btn-historial-trat-linf" value="" onclick="mostrarFormulario('historial-trat-linf')">Historial Tratamiento Linfedema</button>
                         <button class="btn estilo-botones margen" type="button" id="btn-valoracion-linfedema" value="" onclick="mostrarFormulario('valoracion-linfedema')">Valoración Linfedema</button>
-                        <button class="btn estilo-botones" type="button" id="btn-medicion" value="" onclick="mostrarFormulario('medicion')">Medición inicial</button> -->
-
-                        <button class="btn estilo-botones margen" type="button" id="btn-datos-personales" value="" >Datos personales</button>
-                        <button class="btn estilo-botones margen" type="button" id="btn-historial-clinico" value="" >Historial Clínico</button>
-                        <button class="btn estilo-botones margen" type="button" id="btn-cirugias" value="" >Cirugías</button>
-                        <button class="btn estilo-botones margen" type="button" id="btn-medicamentos" value="">Medicamentos</button>
-                        <button class="btn estilo-botones margen" type="button" id="btn-infecciones" value="" >Infecciones</button>
-                        <button class="btn estilo-botones margen" type="button" id="btn-habitos" value="" >Hábitos</button>
-                        <button class="btn estilo-botones margen" type="button" id="btn-historial-trat-linf" value="" >Historial Tratamiento Linfedema</button>
-                        <button class="btn estilo-botones margen" type="button" id="btn-valoracion-linfedema" value="" >Valoración Linfedema</button>
-                        <button class="btn estilo-botones" type="button" id="btn-medicion" value="">Medición inicial</button>
+                        <button class="btn estilo-botones" type="button" id="btn-medicion" value="" onclick="mostrarFormulario('medicion')">Medición inicial</button>
                     </div>
                         <div class="col-lg-12">
-                            <div id="apartado-usuario">
-                                <h3>Datos personales&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
+                            
                                 
                     <!-- =============================== USUARIO | vista, sql y validado ===========================================  -->
-
-                                <form id="form-1" class="margen-form">
-                                    <div class="form-row justify-content-center">
-                                        <div class="form-group ancho" id="input_nombre">
-                                            <label for="nombre">Nombre <span class="rojo">*</span></label>
-                                            &nbsp;
-                                            <input type="text" class="form-control" id="nombre" name="nombre" required maxlength="30"><br>
-                                        </div>
-                                    
-                                        &nbsp;&nbsp;
-                                        
-                                        <div class="form-group ancho" id="input_apellido1">
-                                            <label for="apellido1">Primer apellido <span class="rojo">*</span></label>
-                                            &nbsp;
-                                            <input type="text" class="form-control" id="apellido1" required maxlength="50"><br>
-                                        </div>
-                                        &nbsp;&nbsp;
-
-                                        <div class="form-group ancho" id="input_apellido2">
-                                            <label for="apellido2">Segundo apellido</label>
-                                            &nbsp;
-                                            <input type="text" class="form-control" name="apellido1" id="apellido2" maxlength="50"><br>
-                                        </div>
-                                    </div>  <!--Fin fila 1-->
-                                    &nbsp;&nbsp;
-                                    <div class="form-row justify-content-center">
-                                        <div class="form-group ancho" id="input_correo">
-                                            <label for="correo">Correo <span class="rojo">*</span></label>
-                                            &nbsp;
-                                            <input type="email" class="form-control" name="correo" id="correo" required maxlength="100"><br>
-                                        </div>
-                                            
-                                        &nbsp;&nbsp;
-                                        <div class="form-group ancho" id="input_pass">
-                                            <label for="pass">Contraseña <span class="rojo">*</span></label>
-                                            &nbsp;
-                                            <input type="password" class="form-control" name="pass" id="pass" required maxlength="50"><br>
-                                        </div>
-                                        
-                                        &nbsp;&nbsp;
-                                        
-                                        <div class="form-group ancho" id="input_pass2">
-                                            <label for="pass2">Confirmar contraseña <span class="rojo">*</span></label>
-                                            &nbsp;
-                                            <input type="password" class="form-control" name="pass2" id="pass2" required maxlength="50"><br>
-                                        </div>
-                                    </div>  <!--Fin fila 2-->
-                                    <div class="columna-btn">
-                                        <button class="btn estilo-boton-submit" type="submit" id="btn-submit-1" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
-                                       
-                                    </div>
-                                    <div class="form-group margen-oblig">
-                                        <h5 class="rojo letra">* Campos obligatorios</h5>
-                                    </div>
-            
-                                </form>
-                            </div>
+                    <!-- Obtenemos el id desde la tabla de los pacientes sin fisio -->
+                    <input id="usuario" type="hidden" value="<?php echo $_GET["id_user"]?>">
             <!-- =============================== HISTORIAL CLINICO | vista, sql y validado ===========================================  -->
 
                             <div id="apartado-historial">
@@ -251,31 +182,31 @@
                                     </div>
                                     <div class="form-row justify-content-center">
                                         <div class="form-group ancho" id="input_doc_identificacion">
-                                            <label for="doc_identificacion">Documento de identificación <span class="rojo">*</span></label>
+                                            <label for="doc_identificacion">Documento de identificación</label>
                                             &nbsp;
                                             <input class="form-control" id="doc_identificacion" required maxlength="30"><br>
                                         </div>
                                         
                                         <div class="form-group ancho" id="input_nacionalidad">
-                                            <label for="nacionalidad">Nacionalidad <span class="rojo">*</span></label>
+                                            <label for="nacionalidad">Nacionalidad</label>
                                             &nbsp;
                                             <input type="text" class="form-control" name="nacionalidad" id="nacionalidad" required maxlength="150"><br>
                                         </div>
 
                                         <div class="form-group ancho" id="input_raza">
-                                            <label for="raza">Raza <span class="rojo">*</span></label>
+                                            <label for="raza">Raza</label>
                                             &nbsp;
                                             <input type="text" class="form-control" name="raza" id="raza" required maxlength="150"><br>
                                         </div>
                                     </div> <!--Fin fila 1-->
                                     <div class="form-row justify-content-center">
                                         <div class="form-group ancho" id="input_fecha_nacimiento">
-                                            <label for="fecha_nacimiento">Fecha de nacimiento <span class="rojo">*</span></label>
+                                            <label for="fecha_nacimiento">Fecha de nacimiento</label>
                                             &nbsp;
                                             <input type="date" min="1919-01-01" class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" required><br>
                                         </div>
                                         <div class="form-group ancho" id="select_sexo">
-                                            <label for="sexo">Sexo <span class="rojo">*</span></label>
+                                            <label for="sexo">Sexo</label>
                                             &nbsp;
                                             <div>
                                                 <select id="sexo" class="form-control form-control-md">
@@ -285,14 +216,14 @@
                                             </div>
                                         </div>
                                         <div class="form-group ancho" id="input_altura">
-                                            <label for="altura">Altura (cm) <span class="rojo">*</span></label>
+                                            <label for="altura">Altura (cm)</label>
                                             &nbsp;
                                             <input size="3" type="number" step=".01" class="form-control" id="altura" min="1" max="250" required>
                                         </div>
                                     </div> <!--Fin fila 2-->
                                     <div class="form-row espaciado-empty">
                                         <div class="form-group ancho" id="input_peso">
-                                            <label for="peso">Peso (kg) <span class="rojo">*</span></label>
+                                            <label for="peso">Peso (kg)</label>
                                             &nbsp;
                                             <input type="number" step=".01" min="5" max="500" class="form-control" id="peso" required><br>
                                         </div>
@@ -303,7 +234,7 @@
                                     </div>
                                     <div class="form-row espaciado-empty">
                                         <div class="form-group ancho" id="select_tipo_congenito">
-                                            <label for="tipo_congenito">Tipo <span class="rojo">*</span></label>
+                                            <label for="tipo_congenito">Tipo</label>
                                             &nbsp;
                                             <div>
                                                 <select id="tipo_congenito" class="form-control form-control-md">
@@ -314,7 +245,7 @@
                                         </div>
 
                                         <div class="form-group ancho" id="select_subtipo_congenito">
-                                            <label for="subtipo_congenito">Subtipo <span class="rojo">*</span></label>
+                                            <label for="subtipo_congenito">Subtipo</label>
                                             &nbsp;
                                             <div>
                                                 <select id="subtipo_congenito" class="form-control form-control-md">
@@ -327,18 +258,18 @@
                                     </div>  <!-- Fin fila 3 -->
                                     <div class="form-row justify-content-center espaciado-otro">
                                         <div class="form-group col-sm-12" id="input_subtipo_congenito_otro">
-                                            <label class="col-form-label" for="subtipo_congenito_otro">Si seleccionaste "Otro" o "Accidente" en el campo anterior, especifica tu respuesta <span class="naranja">*</span></label>
+                                            <label class="col-form-label" for="subtipo_congenito_otro">Si seleccionaste "Otro" o "Accidente" en el campo anterior, especifica tu respuesta</label>
                                             <input type="text" class="form-control" name="subtipo_congenito_otro" id="subtipo_congenito_otro" disabled="disabled" maxlength="50">
                                         </div>
                                     </div><!-- Fin fila 4 -->
                                     <div class="form-row justify-content-center">
                                         <div class="form-group ancho" id="input_fecha_debut">
-                                            <label for="fecha_debut">Fecha de debut <span class="rojo">*</span></label>
+                                            <label for="fecha_debut">Fecha de debut</label>
                                             &nbsp;
                                             <input type="date" class="form-control" name="fecha_debut" id="fecha_debut" required><br>
                                         </div>
                                         <div class="form-group ancho" id="select_familiar_linfedema">
-                                            <label for="familiar_linfedema">Familiar con linfedema <span class="rojo">*</span></label>
+                                            <label for="familiar_linfedema">Familiar con linfedema</label>
                                             &nbsp;
                                             <div>
                                                 <select id="familiar_linfedema" class="form-control form-control-md">
@@ -348,7 +279,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group ancho" id="select_motivo_secundario">
-                                            <label for="motivo_secundario">Motivo secundario <span class="rojo">*</span></label>
+                                            <label for="motivo_secundario">Motivo secundario</label>
                                             &nbsp;
                                             <div>
                                                 <select id="motivo_secundario" class="form-control form-control-md">
@@ -372,7 +303,7 @@
                                     </div> <!-- Fin fila 5 -->                 
                                     <div class="form-row justify-content-center espaciado-otro">
                                         <div class="form-group col-sm-12" id="input_motivo_secundario_otro">
-                                            <label class="col-form-label" for="motivo_secundario_otro">Si seleccionaste "Otro" en el campo anterior, especifica tu respuesta <span class="naranja">*</span></label>
+                                            <label class="col-form-label" for="motivo_secundario_otro">Si seleccionaste "Otro" en el campo anterior, especifica tu respuesta</label>
                                             <input type="text" class="form-control" name="motivo_secundario_otro" id="motivo_secundario_otro" disabled="disabled" maxlength="50">
                                         </div>
                                     </div><!-- Fin fila 6 -->
@@ -423,7 +354,7 @@
 
                                     <div class="form-row justify-content-center espaciado-otro">
                                         <div class="form-group col-sm-12 mt-2" id="input_ant_sindromes">
-                                            <label class="col-form-label" for="ant_sindromes">Síndromes <span class="rojo">*</span></label>
+                                            <label class="col-form-label" for="ant_sindromes">Síndromes</label>
                                             <input type="text" class="form-control" name="ant_sindromes" id="ant_sindromes" required maxlength="150">
                                         </div>
                                     </div><!-- Fin fila 8 -->
@@ -432,30 +363,26 @@
                                     </div>
                                     <div class="form-row justify-content-center">
                                         <div class="form-group ancho" id="input_profesion">
-                                            <label for="profesion">Profesión <span class="rojo">*</span></label>
+                                            <label for="profesion">Profesión</label>
                                             &nbsp;
                                             <input type="text" class="form-control" id="profesion" required maxlength="50"><br>
                                         </div>
                                         
                                         <div class="form-group ancho" id="input_grado_resp_profesion">
-                                            <label for="grado_resp_profesion">Grado de Responsabilidad <span class="rojo">*</span></label>
+                                            <label for="grado_resp_profesion">Grado de Responsabilidad</label>
                                             &nbsp;
                                             <input type="number" min="1" max="10" class="form-control" name="grado_resp_profesion" id="grado_resp_profesion" required><br>
                                         </div>
 
                                         <div class="form-group ancho" id="input_grado_stress_profesion">
-                                            <label for="grado_stress_profesion">Grado de Estrés <span class="rojo">*</span></label>
+                                            <label for="grado_stress_profesion">Grado de Estrés</label>
                                             &nbsp;
                                             <input type="number" min="1" max="10" class="form-control" name="grado_stress_profesion" id="grado_stress_profesion" required><br>
                                         </div>
                                     </div> <!--Fin fila 9-->
                                     <div class="columna-btn">
-                                        <button class="btn estilo-boton-submit" type="submit" id="btn-submit-2" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
+                                        <button class="btn estilo-boton-submit" type="submit" id="btn-submit-2" value='<?php echo($_SESSION["id_especialista"])?>'>Guardar</button>
                                        
-                                    </div>
-                                    <div class="form-group margen-oblig">
-                                        <h5 class="rojo letra">* Campos obligatorios</h5>
-                                        <h5 class="naranja letra">* Campos obligatorios en ciertas ocasiones</h5>
                                     </div>
                                 </form>
                             </div><!-- fin HISTORIAL CLINICO -->
@@ -468,12 +395,12 @@
                                 <form id="form-3" class="margen-form">
                                     <div class="form-row espaciado-empty">
                                         <div class="form-group ancho" id="input_nombre_cirugia">
-                                            <label for="nombre_cirugia">Nombre <span class="rojo">*</span></label>
+                                            <label for="nombre_cirugia">Nombre</label>
                                             &nbsp;
                                             <input type="text" maxlength="50" class="form-control" id="nombre_cirugia" name="nombre_cirugia" required><br>
                                         </div>
                                         <div class="form-group ancho" id="input_fecha_cirugias">
-                                            <label for="fecha">Fecha <span class="rojo">*</span></label>
+                                            <label for="fecha">Fecha</label>
                                             &nbsp;
                                             <input type="date" class="form-control" name="fecha" id="fecha_cirugia" required><br>
                                         </div>
@@ -489,9 +416,6 @@
                                         <button class="btn estilo-boton-submit" type="button" id="btn-submit-3" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
                                         
                                     </div>
-                                    <div class="form-group margen-oblig">
-                                        <h5 class="rojo letra">* Campos obligatorios</h5>
-                                    </div>
                                 </form>
                             </div> <!-- fin CIRUGIAS -->
 
@@ -502,12 +426,12 @@
                                 <form id="form-4" class="margen-form">
                                     <div class="form-row espaciado-empty">
                                         <div class="form-group ancho" id="input_medicamento">
-                                            <label for="medicamento">Nombre del medicamento <span class="rojo">*</span></label>
+                                            <label for="medicamento">Nombre del medicamento</label>
                                             &nbsp;
                                             <input type="text" maxlength="50" class="form-control" id="medicamento" name="medicamento" required><br>
                                         </div>
                                         <div class="form-group ancho" id="input_patologias">
-                                            <label for="patologias">Patología/s <span class="rojo">*</span> (separar por comas en caso de haber más de una)</label>
+                                            <label for="patologias">Patología/s (separar por comas en caso de haber más de una)</label>
                                             &nbsp;
                                             <input type="text" maxlength="50" class="form-control" id="patologias" name="patologias" required><br>
                                         </div>
@@ -516,9 +440,6 @@
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-anadir-2" value='<?php echo($_SESSION["id_especialista"])?>'>Añadir medicamento</button>
                                         <button class="btn estilo-boton-submit" type="button" id="btn-submit-4" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
                                         
-                                    </div>
-                                    <div class="form-group margen-oblig">
-                                        <h5 class="rojo letra">* Campos obligatorios</h5>
                                     </div>
                                 </form>
                             </div><!-- fin MEDICAMENTOS -->
@@ -531,19 +452,19 @@
                                 <form id="form-5" class="margen-form">
                                     <div class="form-row espaciado-empty">
                                         <div class="form-group ancho" id="input_tipo_inf">
-                                            <label for="tipo_inf">Tipo de infección <span class="rojo">*</span></label>
+                                            <label for="tipo_inf">Tipo de infección</label>
                                             &nbsp;
                                             <input type="text" maxlength="50" class="form-control" id="tipo_inf" name="tipo_inf" required><br>
                                         </div>
                                         <div class="form-group ancho" id="input_fecha_inf">
-                                            <label for="fecha_inf">Fecha <span class="rojo">*</span></label>
+                                            <label for="fecha_inf">Fecha</label>
                                             &nbsp;
                                             <input type="date" class="form-control" name="fecha_inf" id="fecha_inf" required><br>
                                         </div>
                                     </div><!-- Fin fila 1 -->
                                     <div class="form-row justify-content-center espaciado-otro">
                                         <div class="form-group col-sm-12 mt-2" id="input_medicamentos_inf">
-                                            <label class="col-form-label" for="medicamentos_inf">Medicamento/s <span class="rojo">*</span></label>
+                                            <label class="col-form-label" for="medicamentos_inf">Medicamento/s</label>
                                             <textarea type="text" rows="3" maxlength="200" class="form-control" name="medicamentos_inf" id="medicamentos_inf"></textarea>
                                         </div>
                                     </div><!-- Fin fila 2 -->
@@ -551,9 +472,6 @@
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-anadir-3" value='<?php echo($_SESSION["id_especialista"])?>'>Añadir infección</button>
                                         <button class="btn estilo-boton-submit" type="button" id="btn-submit-5" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
                                         
-                                    </div>
-                                    <div class="form-group margen-oblig">
-                                        <h5 class="rojo letra">* Campos obligatorios</h5>
                                     </div>
                                 </form>
                             </div> <!-- fin INFECCIONES -->
@@ -569,7 +487,7 @@
                                     </div>
                                     <div class="form-row espaciado-empty">
                                         <div class="form-group ancho col-sm-2" id="select_fumador">
-                                            <label for="fumador">Fumador <span class="rojo">*</span></label>
+                                            <label for="fumador">Fumador</label>
                                             &nbsp;
                                             <div>
                                                 <select id="fumador" class="form-control form-control-md">
@@ -579,7 +497,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group ancho col-sm-2" id="select_frec_cigarros">
-                                            <label for="frec_cigarros">Frecuencia <span class="naranja">*</span></label>
+                                            <label for="frec_cigarros">Frecuencia</label>
                                             &nbsp;
                                             <div>
                                                 <select id="frec_cigarros" class="form-control form-control-md">
@@ -590,13 +508,13 @@
                                             </div>
                                         </div>
                                         <div class="form-group ancho col-sm-2" id="input_cigarros">
-                                            <label for="cigarros">Cantidad <span class="naranja">*</span></label>
+                                            <label for="cigarros">Cantidad</label>
                                             &nbsp;
                                             <input type="number" class="form-control" name="cigarros" id="cigarros"><br>
                                         </div>
                                         
                                         <div class="form-group ancho col-sm-2" id="select_fumador_social">
-                                            <label for="fumador_social">Fumador social <span class="naranja">*</span></label>
+                                            <label for="fumador_social">Fumador social</label>
                                             &nbsp;
                                             <div>
                                                 <select id="fumador_social" class="form-control form-control-md">
@@ -611,7 +529,7 @@
                                     </div>
                                     <div class="form-row espaciado-empty">
                                         <div class="form-group ancho col-sm-2" id="select_toma_alcohol">
-                                            <label for="toma_alcohol">Toma alcohol <span class="rojo">*</span></label>
+                                            <label for="toma_alcohol">Toma alcohol</label>
                                             &nbsp;
                                             <div>
                                                 <select id="toma_alcohol" class="form-control form-control-md">
@@ -621,7 +539,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group ancho col-sm-2" id="select_frec_alcohol">
-                                            <label for="frec_alcohol">Frecuencia <span class="naranja">*</span></label>
+                                            <label for="frec_alcohol">Frecuencia</label>
                                             &nbsp;
                                             <div>
                                                 <select id="frec_alcohol" class="form-control form-control-md">
@@ -632,12 +550,12 @@
                                             </div>
                                         </div>
                                         <div class="form-group ancho col-sm-2" id="input_alcohol">
-                                            <label for="alcohol">Cantidad <span class="naranja">*</span></label>
+                                            <label for="alcohol">Cantidad</label>
                                             &nbsp;
                                             <input type="number" min="1" class="form-control" name="alcohol" id="alcohol"><br>
                                         </div>
                                         <div class="form-group ancho col-sm-2" id="input_tipo_alcohol">
-                                            <label for="tipo_alcohol">Tipo de alcohol <span class="naranja">*</span></label>
+                                            <label for="tipo_alcohol">Tipo de alcohol</label>
                                             <input type="text" maxlength="50" class="form-control" name="tipo_alcohol" id="tipo_alcohol"><br>
                                         </div>
                                     </div><!-- Fin fila 2 -->
@@ -646,7 +564,7 @@
                                     </div>
                                     <div class="form-row espaciado-empty mb-2">
                                         <div class="form-group ancho col-sm-2" id="select_hace_deporte">
-                                            <label for="hace_deporte">Practica deporte <span class="rojo">*</span></label>
+                                            <label for="hace_deporte">Practica deporte</label>
                                             &nbsp;
                                             <div>
                                                 <select id="hace_deporte" class="form-control form-control-md">
@@ -656,7 +574,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group ancho col-sm-2" id="select_frec_deporte">
-                                            <label for="frec_deporte">Frecuencia <span class="naranja">*</span></label>
+                                            <label for="frec_deporte">Frecuencia</label>
                                             &nbsp;
                                             <div>
                                                 <select id="frec_deporte" class="form-control form-control-md">
@@ -670,7 +588,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group ancho col-sm-2" id="select_tipo_deporte">
-                                            <label for="tipo_deporte">Tipo de deporte <span class="naranja">*</span></label>
+                                            <label for="tipo_deporte">Tipo de deporte</label>
                                             &nbsp;
                                             <div>
                                                 <select id="tipo_deporte" class="form-control form-control-md">
@@ -685,13 +603,13 @@
                                     </div><!-- Fin fila 3 -->
                                     <div class="form-row espaciado-empty">
                                         <div class="form-group ancho col-sm-2" id="input_t_sesion">
-                                            <label for="t_sesion">Tiempo sesión <span class="naranja">*</span></label>
+                                            <label for="t_sesion">Tiempo sesión</label>
                                             &nbsp;
                                             <input type="number" min="1" class="form-control" name="t_sesion" id="t_sesion"><br>
                                         </div>
                                        
                                         <div class="form-group ancho col-sm-2" id="select_t_sesion_medidas">
-                                            <label for="t_sesion_medidas">Medida de tiempo <span class="naranja">*</span></label>
+                                            <label for="t_sesion_medidas">Medida de tiempo</label>
                                             &nbsp;
                                             <div>
                                                 <select id="t_sesion_medidas" class="form-control form-control-md">
@@ -706,7 +624,7 @@
                                     </div>
                                     <div class="form-row espaciado-empty">
                                         <div class="form-group ancho col-sm-3" id="select_alimentacion">
-                                            <label for="alimentacion">Tipo de alimentación <span class="rojo">*</span></label>
+                                            <label for="alimentacion">Tipo de alimentación</label>
                                             &nbsp;
                                             <div>
                                                 <select id="alimentacion" class="form-control form-control-md">
@@ -723,7 +641,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group ancho col-sm-5" id="input_alimentacion_otro">
-                                            <label for="alimentacion_otro">Si seleccionaste "Otras" <span class="naranja">*</span></label>
+                                            <label for="alimentacion_otro">Si seleccionaste "Otras"</label>
                                             &nbsp;
                                             <input type="text" maxlength="50" class="form-control" name="alimentacion_otro" id="alimentacion_otro" disabled="disabled"><br>
                                         </div>
@@ -733,7 +651,7 @@
                                     </div>
                                     <div class="form-row espaciado-empty">
                                         <div class="form-group ancho col-sm-2" id="select_suenyo_reparador">
-                                            <label for="suenyo_reparador">Sueño reparador <span class="rojo">*</span></label>
+                                            <label for="suenyo_reparador">Sueño reparador</label>
                                             &nbsp;
                                             <div>
                                                 <select id="suenyo_reparador" class="form-control form-control-md">
@@ -743,12 +661,12 @@
                                             </div>
                                         </div>
                                         <div class="form-group ancho col-sm-2" id="input_h_suenyo">
-                                            <label for="h_suenyo">Horas de sueño <span class="rojo">*</span></label>
+                                            <label for="h_suenyo">Horas de sueño</label>
                                             &nbsp;
                                             <input type="number" min="1" max="15" class="form-control" name="h_suenyo" id="h_suenyo" required><br>
                                         </div>
                                         <div class="form-group ancho col-sm-2" id="select_astenico">
-                                            <label for="astenico">Asténico de día <span class="rojo">*</span></label>
+                                            <label for="astenico">Asténico de día</label>
                                             &nbsp;
                                             <div>
                                                 <select id="astenico" class="form-control form-control-md">
@@ -787,10 +705,6 @@
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-submit-6" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
                                         
                                     </div>
-                                    <div class="form-group margen-oblig">
-                                        <h5 class="rojo letra">* Campos obligatorios</h5>
-                                        <h5 class="naranja letra">* Campos obligatorios en ciertas ocasiones</h5>
-                                    </div>
                                 </form>
                             </div> <!-- fin HÁBITOS -->
 
@@ -805,12 +719,12 @@
                                     </div>
                                     <div class="form-row espaciado-empty">
                                         <div class="form-group ancho" id="input_fecha_ult_tratamiento">
-                                            <label for="fecha_ult_tratamiento">Fecha <span class="rojo">*</span></label>
+                                            <label for="fecha_ult_tratamiento">Fecha</label>
                                             &nbsp;
                                             <input type="date" class="form-control" name="fecha_ult_tratamiento" id="fecha_ult_tratamiento" required><br>
                                         </div>
                                         <div class="form-group ancho col-sm-3" id="select_satisfecho_result">
-                                            <label for="satisfecho_result">Satisfecho <span class="rojo">*</span></label>
+                                            <label for="satisfecho_result">Satisfecho</label>
                                                 &nbsp;
                                             <div>
                                                 <select id="satisfecho_result" class="form-control form-control-md">
@@ -820,7 +734,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group ancho col-sm-4" id="select_fallo_terapia">
-                                        <label for="fallo_terapia">Fallo de la terapia <span class="naranja">*</span></label>
+                                        <label for="fallo_terapia">Fallo de la terapia</label>
                                             &nbsp;
                                             <div>
                                                 <select disabled="disabled"  id="fallo_terapia" class="form-control form-control-md">
@@ -837,7 +751,7 @@
                                     </div><!-- Fin fila 1 -->
                                     <div class="form-row justify-content-center espaciado-otro">
                                         <div class="form-group col-sm-12" id="input_fallo_terapia_otro">
-                                            <label class="col-form-label" for="fallo_terapia_otro">Si seleccionaste "Otros" en el campo anterior, especifica tu respuesta <span class="naranja">*</span></label>
+                                            <label class="col-form-label" for="fallo_terapia_otro">Si seleccionaste "Otros" en el campo anterior, especifica tu respuesta</label>
                                             <input type="text" class="form-control" name="fallo_terapia_otro" id="fallo_terapia_otro" disabled="disabled" maxlength="50">
                                         </div>
                                     </div><!-- Fin fila 2 -->
@@ -846,7 +760,7 @@
                                     </div>
                                     <div class="form-row espaciado-empty">
                                         <div class="form-group ancho" id="select_tipo_drenaje_linfa">
-                                            <label for="tipo_drenaje_linfa">Tipo de drenaje linfático <span class="rojo">*</span></label>
+                                            <label for="tipo_drenaje_linfa">Tipo de drenaje linfático</label>
                                                 &nbsp;
                                             <div>
                                                 <select id="tipo_drenaje_linfa" class="form-control form-control-md">
@@ -858,12 +772,12 @@
                                             </div>
                                         </div>
                                         <div class="form-group ancho" id="input_tipo_drenaje_linfa_otro">
-                                            <label for="tipo_drenaje_linfa_otro">Si seleccionaste "Otros" <span class="naranja">*</span></label>
+                                            <label for="tipo_drenaje_linfa_otro">Si seleccionaste "Otros"</label>
                                             &nbsp;
                                             <input disabled="disabled" type="text" maxlength="50" class="form-control" name="tipo_drenaje_linfa_otro" id="tipo_drenaje_linfa_otro" disabled="disabled"><br>
                                         </div>
                                         <div class="form-group ancho" id="select_vendaje">
-                                            <label for="vendaje">Vendaje <span class="rojo">*</span></label>
+                                            <label for="vendaje">Vendaje</label>
                                                 &nbsp;
                                             <div>
                                                 <select id="vendaje" class="form-control form-control-md">
@@ -884,7 +798,7 @@
                                     </div>
                                     <div class="form-row espaciado-empty">
                                         <div class="form-group ancho" id="select_contencion_dia">
-                                            <label for="contencion_dia">Contención de día <span class="rojo">*</span></label>
+                                            <label for="contencion_dia">Contención de día</label>
                                                 &nbsp;
                                             <div>
                                                 <select id="contencion_dia" class="form-control form-control-md">
@@ -894,7 +808,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group ancho" id="select_contencion_tipo">
-                                            <label for="contencion_tipo">Tipo de contención <span class="rojo">*</span></label>
+                                            <label for="contencion_tipo">Tipo de contención</label>
                                                 &nbsp;
                                             <div>
                                                 <select id="contencion_tipo" class="form-control form-control-md">
@@ -906,14 +820,14 @@
                                             </div>
                                         </div>
                                         <div class="form-group ancho col-sm-3" id="input_contencion_tipo_otro">
-                                            <label for="contencion_tipo_otro">Si seleccionaste "Otro" <span class="naranja">*</span></label>
+                                            <label for="contencion_tipo_otro">Si seleccionaste "Otro"</label>
                                             &nbsp;
                                             <input disabled="disabled" type="text" maxlength="50" class="form-control" name="contencion_tipo_otro" id="contencion_tipo_otro" disabled="disabled"><br>
                                         </div>
                                     </div><!-- Fin fila 5  -->
                                     <div class="form-row espaciado-empty">
                                         <div class="form-group" id="radiobuttons_contencion_sensacion">
-                                            <label for="contencion_sensacion">¿Qué le supone emocionalmente la contención? <span class="rojo">*</span></label>
+                                            <label for="contencion_sensacion">¿Qué le supone emocionalmente la contención?</label>
                                                 &nbsp;
                                             <div class="mt-3 mb-3"> <!--  d-flex justify-content-center -->
                                                 <input checked type="radio" name="contencion_sensacion" value="1"> <img class="tamano-emoji margen-emoji" src="img/1_GENIAL.png" alt="Emoji Genial">  
@@ -934,7 +848,7 @@
                                     </div><!-- Fin fila 6  -->
                                     <div class="form-row espaciado-empty">
                                         <div class="form-group ancho" id="select_contencion_dolor">
-                                            <label for="contencion_dolor">Dolor <span class="rojo">*</span></label>
+                                            <label for="contencion_dolor">Dolor</label>
                                                 &nbsp;
                                             <div>
                                                 <select id="contencion_dolor" class="form-control form-control-md">
@@ -944,12 +858,12 @@
                                             </div>
                                         </div>
                                         <div class="form-group ancho col-sm-3" id="input_contencion_escala">
-                                            <label for="contencion_escala">Escala de dolor <span class="rojo">*</span></label>
+                                            <label for="contencion_escala">Escala de dolor</label>
                                             &nbsp;
                                             <input type="number" min="1" max="10" class="form-control" name="contencion_escala" id="contencion_escala" required><br>
                                         </div>
                                         <div class="form-group ancho" id="select_contencion_pesadez">
-                                            <label for="contencion_pesadez">Pesadez <span class="rojo">*</span></label>
+                                            <label for="contencion_pesadez">Pesadez</label>
                                                 &nbsp;
                                             <div>
                                                 <select id="contencion_pesadez" class="form-control form-control-md">
@@ -961,10 +875,7 @@
                                     </div><!-- Fin fila 7  -->
                                     <div class="columna-btn">
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-submit-7" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
-                                    </div>
-                                    <div class="form-group margen-oblig">
-                                        <h5 class="rojo letra">* Campos obligatorios</h5>
-                                        <h5 class="naranja letra">* Campos obligatorios en ciertas ocasiones</h5>
+                                        
                                     </div>
                                 </form>
                             </div> <!-- fin Hist Trat Linfedema -->
@@ -981,12 +892,12 @@
                                     </div> -->
                                     <div class="form-row espaciado-empty">
                                         <div class="form-group ancho" id="input_fecha_val_linfedema">
-                                            <label for="fecha_val_linfedema">Fecha <span class="rojo">*</span></label>
+                                            <label for="fecha_val_linfedema">Fecha</label>
                                             &nbsp;
                                             <input type="date" class="form-control" name="fecha_val_linfedema" id="fecha_val_linfedema" required><br>
                                         </div>
                                         <div class="form-group ancho col-sm-3" id="select_localizacion_linf">
-                                            <label for="localizacion_linf">Localización <span class="rojo">*</span></label>
+                                            <label for="localizacion_linf">Localización</label>
                                                 &nbsp;
                                             <div>
                                                 <select id="localizacion_linf" class="form-control form-control-md">
@@ -1003,14 +914,14 @@
                                             </div>
                                         </div>
                                         <div class="form-group ancho col-sm-3" id="input_consistencia_edema">
-                                            <label for="consistencia_edema">Consistencia del edema <span class="rojo">*</span></label>
+                                            <label for="consistencia_edema">Consistencia del edema</label>
                                             &nbsp;
                                             <input type="number" min="1" max="5" class="form-control" name="consistencia_edema" id="consistencia_edema" required><br>
                                         </div>
                                     </div><!-- Fin fila 1 -->
                                     <div class="form-row espaciado-empty">
                                         <div class="form-group ancho" id="select_color">
-                                            <label for="color">Color <span class="rojo">*</span></label>
+                                            <label for="color">Color</label>
                                                 &nbsp;
                                             <div>
                                                 <select id="color" class="form-control form-control-md">
@@ -1023,7 +934,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group ancho col-sm-3" id="select_valoracion_piel">
-                                            <label for="valoracion_piel">Valoración de la piel <span class="rojo">*</span></label>
+                                            <label for="valoracion_piel">Valoración de la piel</label>
                                                 &nbsp;
                                             <div>
                                                 <select id="valoracion_piel" class="form-control form-control-md">
@@ -1042,7 +953,7 @@
                                     </div><!-- Fin fila 2 -->
                                     <div class="form-row espaciado-empty mt-4 mb-4">
                                         <div class="form-group ancho col-sm-2" id="select_stemmer">
-                                            <label for="stemmer">Stemmer <span class="rojo">*</span></label>
+                                            <label for="stemmer">Stemmer</label>
                                                 &nbsp;
                                             <div>
                                                 <select id="stemmer" class="form-control form-control-md">
@@ -1053,7 +964,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group ancho col-sm-2" id="select_fovea">
-                                            <label for="fovea">Fóvea <span class="rojo">*</span></label>
+                                            <label for="fovea">Fóvea</label>
                                                 &nbsp;
                                             <div>
                                                 <select id="fovea" class="form-control form-control-md">
@@ -1064,7 +975,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group ancho col-sm-2" id="select_pesadez">
-                                            <label for="pesadez">Pesadez <span class="rojo">*</span></label>
+                                            <label for="pesadez">Pesadez</label>
                                                 &nbsp;
                                             <div>
                                                 <select id="pesadez" class="form-control form-control-md">
@@ -1075,7 +986,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group ancho col-sm-2" id="select_rubor">
-                                            <label for="rubor">Rubor <span class="rojo">*</span></label>
+                                            <label for="rubor">Rubor</label>
                                                 &nbsp;
                                             <div>
                                                 <select id="rubor" class="form-control form-control-md">
@@ -1089,9 +1000,6 @@
                                     <div class="columna-btn">
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-anadir-4" value='<?php echo($_SESSION["id_especialista"])?>'>Añadir valoración</button>
                                         <button class="btn estilo-boton-submit" type="button" id="btn-submit-8" value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
-                                    </div>
-                                    <div class="form-group margen-oblig">
-                                        <h5 class="rojo letra">* Campos obligatorios</h5>
                                     </div>
                                 </form>
                             </div> <!-- fin Valoracion Linfedema -->
@@ -1122,13 +1030,13 @@
                                                 <img id="imagen-brazo" class="img-fluid" src="img/brazo/e.png" class="logo" alt="logo">
                                         </div><!-- Fin fila 2 -->
                                         <div class="titulos form-group ancho" id="input_fecha_brazo">
-                                            <label for="fecha_brazo">Fecha <span class="rojo">*</span></label>
+                                            <label for="fecha_brazo">Fecha</label>
                                             &nbsp;
                                             <input type="date" class="form-control" name="fecha_brazo" id="fecha_brazo" required=""><br>
                                         </div>
                                         <div class="titulos color2 mt-3">
-                                                <label id="titulo-brazo-i">LADO IZQUIERDO <span class="rojo">*</span></label>
-                                                <label id="titulo-brazo-d">LADO DERECHO <span class="rojo">*</span></label>
+                                                <label id="titulo-brazo-i">LADO IZQUIERDO</label>
+                                                <label id="titulo-brazo-d">LADO DERECHO</label>
                                         </div>
                                         <div class="titulos form-group" id="miembro_sano_brazo">
                                                 <input type="radio" value="brazo_i" id="miembro_sano_brazo_i" name="miembro_sano_brazo" checked>
@@ -1201,13 +1109,13 @@
                                             <img id="imagen-pierna" class="img-fluid" src="img/pierna/f.png" class="logo" alt="logo">
                                         </div><!-- Fin fila 4 -->
                                         <div class="titulos form-group ancho" id="input_fecha_pierna">
-                                            <label for="fecha_pierna">Fecha <span class="rojo">*</span></label>
+                                            <label for="fecha_pierna">Fecha</label>
                                             &nbsp;
                                             <input type="date" class="form-control" name="fecha_pierna" id="fecha_pierna" required=""><br>
                                         </div>
                                         <div class="titulos color2 mt-3">
-                                                <label id="titulo-pierna-i">LADO IZQUIERDO <span class="rojo">*</span></label>
-                                                <label id="titulo-pierna-d">LADO DERECHO <span class="rojo">*</span></label>
+                                                <label id="titulo-pierna-i">LADO IZQUIERDO</label>
+                                                <label id="titulo-pierna-d">LADO DERECHO</label>
                                         </div>
                                         <div class="titulos form-group" id="miembro_sano_pierna">
                                                 <input type="radio" value="pierna_i" id="miembro_sano_pierna_i" name="miembro_sano_pierna" checked>
@@ -1293,10 +1201,7 @@
                                     </div>
                                     <!-- ===============================================       fin pierna      =======================================-->
                                     <div class="columna-btn">
-                                        <button class="btn estilo-boton-submit" type="button" id="btn-submit-9"  value='<?php echo($_SESSION["id_especialista"])?>'>Siguiente</button>
-                                    </div>
-                                    <div class="form-group margen-oblig">
-                                        <h5 class="rojo letra">* Campos obligatorios</h5>
+                                        <button class="btn estilo-boton-submit" type="button" id="btn-submit-9"  value='<?php echo($_SESSION["id_especialista"])?>'>Guardar datos</button>
                                     </div>
                                 </form>
                             </div> <!-- fin Medición inicial -->
@@ -1320,7 +1225,7 @@
         <script src="js/jquery-ui/jquery-ui.min.js"></script>
         <script type="text/javascript" src="js/overhang/dist/overhang.min.js"></script> 
         <script type="text/javascript" src="js/notify/notify.min.js"></script>
-        <script type="text/javascript" src="js/anadir-paciente.js"></script>
+        <script type="text/javascript" src="js/paciente-noregistrado.js"></script>
         
 
     </body>

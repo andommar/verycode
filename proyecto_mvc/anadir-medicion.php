@@ -7,7 +7,7 @@
 <html>
     <!-- ===============  HEAD ============= -->
     <head>
-        <title>Añadir medición</title>
+        <title>Nueva medición</title>
         <meta charset="utf-8">
         <!-- Mobile First -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,7 +28,7 @@
         <!-- Hojas de estilo -->
         <link rel="stylesheet" type="text/css" href="css/global-style.css">
         <link rel="stylesheet" type="text/css" href="css/anadir-paciente-style.css">
-        <link rel="stylesheet" type="text/css" href="css/todas-mediciones.css">
+        <link rel="stylesheet" type="text/css" href="css/anadir-medicion.css">
         <!-- Gráficas -->
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/grafica1.css">
@@ -59,7 +59,7 @@
                                     <span class="ti-home"></span> Página Principal
                                 </a>
                             </li>
-
+                            <?php if($_SESSION["tipo_usuario"]=='fisioterapeuta'){?>
                              <!-- Apartado "PACIENTES"-->
                              <li class="espaciado-desplegable apartados">
                                 <a href="#nav-pacientes" data-toggle="collapse" aria-expanded="false">
@@ -81,9 +81,6 @@
                                 </a>
                                 <ul class="list-unstyled collapse tamano-letra" id="nav-mediciones" style="">
                                         <li>
-                                                <a href="anadir-medicion.php">Añadir medición</a>
-                                        </li>
-                                        <li>
                                             <a href="mediciones.php">Todas las mediciones</a>
                                         </li>
                                 </ul>
@@ -96,10 +93,11 @@
                                 </a>
                                 <ul class="list-unstyled collapse tamano-letra" id="nav-graficas" style="">
                                     <li>
-                                        <a href="graficas-mediciones.php">mediciones</a>
+                                        <a href="mediciones.php">mediciones</a>
                                     </li>
                                 </ul>
                             </li>
+                            <?php } ?>
                         </ul>
                         <!-- FIN Lista desplegable -->
                     </nav>
@@ -128,7 +126,7 @@
                     <div class="row" id="grupo-titulo-pagina">
                         <!-- Título -->
                         <div class="col-md-6" id="titulo">
-                            <h3 class="block-title">Añadir Paciente</h3>
+                            <h3 class="block-title">Nueva medición</h3>
                         </div>
                         <!-- Breadcrumb -->
                         <div class="col-md-6">
@@ -141,13 +139,15 @@
                                 </li>
                                 
                                 <li class="breadcrumb-item color-blanco">
-                                        Paciente
-                                </li>
-                                <li class="breadcrumb-item color-blanco">
-                                    <a href="anadir-paciente.php">
-                                        Añadir Paciente
+                                    <a href="mediciones.php">
+                                        Mediciones
                                     </a>
                                 </li>
+
+                                <li class="breadcrumb-item color-blanco">
+                                        Nueva Medición
+                                </li>
+                               
                                
                             </ol>
                         </div>
@@ -157,89 +157,221 @@
                     <!-- FILA 1 | INPUTS -->
                     
                     <div id="cuerpo-pagina-2" class="row"> 
-                        
-                       
-                            <div id="apartado-usuario">
-                                <h3>Mediciones&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
-                                
-                    <!-- =============================== USUARIO | vista, sql y validado ===========================================  -->
+                       <div class="col -ls-12">
+                            <!-- =============================== Medición  ** ===========================================  -->
 
-                                <form id="form-1" class="margen-form">
-                                   
-                                    <div class="form-row">
-                                        
-                                        <div class="form-group col-md-4">
-                                            <img id="imagen-brazo" class="img-fluid" src="img/brazo/e.png" class="logo" alt="logo">
-                                        </div>
-                                        
-                                        <div class="form-group col-md-1">
-                                            <label for="brazo-a">A</label>
-                                            <input type="number" class="form-control" placeholder="" id="brazo-a">
-                                        </div>
-                                        <div class="form-group col-md-1">
-                                            <label for="brazo-b">B</label>
-                                            <input type="number" class="form-control" placeholder="" id="brazo-b">
-                                        </div>
-                                        <div class="form-group col-md-1">
-                                            <label for="brazo-c">C</label>
-                                            <input type="number" class="form-control" placeholder="" id="brazo-c">
-                                        </div>
-                                        <div class="form-group col-md-1">
-                                            <label for="brazo-d">D</label>
-                                            <input type="number" class="form-control" placeholder="" id="brazo-d">
-                                        </div>
-                                        <div class="form-group col-md-1">
-                                            <label for="brazo-e">E</label>
-                                            <input type="number" class="form-control" placeholder="" id="brazo-e">
-                                        </div>
-                                        <div class="form-group col-md-1">
-                                            <!--<label for="patient-name">F</label>
-                                            <input type="number" class="form-control" placeholder="" id="patient-name">-->
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <!--<label for="patient-name">Hola</label>
-                                            <input type="number" class="form-control" placeholder="" id="patient-name">-->
-                                        </div>
+                            <div id="apartado-medicion">
+                                <h3>Nueva medición&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
+                                <!--  TABLA medición -->
+                                <form id="form-9" class="margen-form">
+                                    <div class="titulos color2">
+                                        <label>MIEMBRO/S A MEDIR</label>
+                                    </div> 
+                                    <div class="form-row espaciado-empty">
+                                        <div class="form-group" id="radiobuttons_escoger_miembro">
+                                            <!-- <label class="mr-2">Deseo insertar mediciones de:</label>
+                                                &nbsp; -->
+                                            <input type="radio" id="brazo" name="extremidad" value="brazo" checked>
+                                            <label class="mr-4" for="brazo">Brazo</label>
 
-                                        <div class="form-group col-md-4">
+                                            <input type="radio" id="pierna" name="extremidad" value="pierna">
+                                            <label for="pierna" class="mr-4">Pierna</label>
+                                        </div>
+                                    </div><!-- Fin fila 1 -->
+                                    <!-- ===============================================      brazo       =======================================-->
+                                    <div id="panel-brazo" >
+                                        <div class="text-center">
+                                                <img id="imagen-brazo" class="img-fluid" src="img/brazo/e.png" class="logo" alt="logo">
+                                        </div><!-- Fin fila 2 -->
+                                        <div class="titulos form-group ancho" id="input_fecha_brazo">
+                                            <label for="fecha_brazo">Fecha</label>
+                                            &nbsp;
+                                            <input type="date" class="form-control" name="fecha_brazo" id="fecha_brazo" required=""><br>
+                                        </div>
+                                        <div class="form-row espaciado-otro justify-content-center">
+                                            <div class="form-group col-sm-12" id="input_mediciones_brazo_sano">
+                                                <label class="mouse-pointer" for="mediciones_brazo_sano"><input type="checkbox" id="mediciones_brazo_sano">&nbsp;&nbsp;Deseo introducir también las mediciones del miembro sano.</label><br>
+                                            </div>
+                                        </div>
+                                        <div class="titulos color2 mt-3">
+                                                <label id="titulo-brazo-i">LADO IZQUIERDO</label>
+                                                <label id="titulo-brazo-d">LADO DERECHO</label>
+                                        </div>
+                                        <div class="titulos form-group" id="miembro_sano_brazo">
+                                                <input type="radio" value="brazo_i" id="miembro_sano_brazo_i" name="miembro_sano_brazo" checked>
+                                                <label class="mr-4" for="miembro_sano_brazo_i">Miembro sano</label>
+
+                                                <input class="margen-radio" value="brazo_d" type="radio" id="miembro_sano_brazo_d" name="miembro_sano_brazo" >
+                                                <label class="mr-4" for="miembro_sano_brazo_d">Miembro sano</label>
+                                        </div>
+                                        <div class="form-row espaciado-empty">
+
+                                            <!-- BRAZO IZQUIERDO -->
+                                            <div class="form-group col-sm-1" id="input_brazo_i_p1">
+                                                <label for="brazo_i_p1">A</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="brazo_i_p1" id="brazo_i_p1" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1" id="input_brazo_i_p2">
+                                                <label for="brazo_i_p2">B</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="brazo_i_p2" id="brazo_i_p2" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1" id="input_brazo_i_p3">
+                                                <label for="brazo_i_p3">C</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="brazo_i_p3" id="brazo_i_p3" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1" id="input_brazo_i_p4">
+                                                <label for="brazo_i_p4">D</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="brazo_i_p4" id="brazo_i_p4" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1 ancho" id="input_brazo_i_p5">
+                                                <label for="brazo_i_p5">E</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="brazo_i_p5" id="brazo_i_p5" required><br>
+                                            </div>
+
+                                            <!-- BRAZO DERECHO -->
+                                            <div class="form-group col-sm-1" id="input_brazo_d_p1">
+                                                <label for="brazo_d_p1">A</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="brazo_d_p1" id="brazo_d_p1" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1" id="input_brazo_d_p2">
+                                                <label for="brazo_d_p2">B</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="brazo_d_p2" id="brazo_d_p2" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1" id="input_brazo_d_p3">
+                                                <label for="brazo_d_p3">C</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="brazo_d_p3" id="brazo_d_p3" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1" id="input_brazo_d_p4">
+                                                <label for="brazo_d_p4">D</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="brazo_d_p4" id="brazo_d_p4" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1" id="input_brazo_d_p5">
+                                                <label for="brazo_d_p5">E</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="brazo_d_p5" id="brazo_d_p5" required><br>
+                                            </div>
+                                        </div><!-- Fin fila 3 -->
+                                    </div>
+                                     <!-- ===============================================       fin brazo       =======================================-->
+                                      <!-- ===============================================       pierna         =======================================-->
+                                    <div id="panel-pierna">
+                                        <div class="text-center">
                                             <img id="imagen-pierna" class="img-fluid" src="img/pierna/f.png" class="logo" alt="logo">
+                                        </div><!-- Fin fila 4 -->
+                                        <div class="titulos form-group ancho" id="input_fecha_pierna">
+                                            <label for="fecha_pierna">Fecha</label>
+                                            &nbsp;
+                                            <input type="date" class="form-control" name="fecha_pierna" id="fecha_pierna" required=""><br>
                                         </div>
-                                        <div class="form-group col-md-1">
-                                            <label for="pierna-a">A</label>
-                                            <input type="number" class="form-control" placeholder="" id="pierna-a">
+                                        <div class="form-row espaciado-otro justify-content-center">
+                                            <div class="form-group col-sm-12" id="input_mediciones_pierna_sana">
+                                                <label class="mouse-pointer" for="mediciones_pierna_sana"><input type="checkbox" id="mediciones_pierna_sana">&nbsp;&nbsp;Deseo introducir también las mediciones del miembro sano.</label><br>
+                                            </div>
                                         </div>
-                                        <div class="form-group col-md-1">
-                                            <label for="pierna-b">B</label>
-                                            <input type="number" class="form-control" placeholder="" id="pierna-b">
+                                        <div class="titulos color2 mt-3">
+                                                <label id="titulo-pierna-i">LADO IZQUIERDO</label>
+                                                <label id="titulo-pierna-d">LADO DERECHO</label>
                                         </div>
-                                        <div class="form-group col-md-1">
-                                            <label for="pierna-c">C</label>
-                                            <input type="number" class="form-control" placeholder="" id="pierna-c">
+                                        <div class="titulos form-group" id="miembro_sano_pierna">
+                                                <input type="radio" value="pierna_i" id="miembro_sano_pierna_i" name="miembro_sano_pierna" checked>
+                                                <label class="mr-4"  for="miembro_sano_pierna_i">Miembro sano</label>
+
+                                                <input class="margen-radio" value="pierna_d" type="radio" id="miembro_sano_pierna_d" name="miembro_sano_pierna" >
+                                                <label class="mr-4" for="miembro_sano_pierna_d">Miembro sano</label>
                                         </div>
-                                        <div class="form-group col-md-1">
-                                            <label for="pierna-d">D</label>
-                                            <input type="number" class="form-control" placeholder="" id="pierna-d">
-                                        </div>
-                                        <div class="form-group col-md-1">
-                                            <label for="pierna-e">E</label>
-                                            <input type="number" class="form-control" placeholder="" id="pierna-e">
-                                        </div>
-                                        <div class="form-group col-md-1">
-                                            <label for="pierna-f">F</label>
-                                            <input type="number" class="form-control" placeholder="" id="pierna-f">
-                                        </div>
-                                        <div class="form-group col-md-2">
-                                            <!--<label for="patient-name">Hola</label>
-                                            <input type="number" class="form-control" placeholder="" id="patient-name">-->
-                                        </div>
+                                        <div class="form-row espaciado-empty">
+                                            <!-- PIERNA IZQUIERDA -->
+                                            <div class="form-group margen-inferior col-sm-1" id="input_pierna_i_p1">
+                                                <label for="pierna_i_p1">A</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_i_p1" id="pierna_i_p1" required><br>
+                                            </div>
+                                            <div class="form-group margen-inferior col-sm-1" id="input_pierna_i_p2">
+                                                <label for="pierna_i_p2">B</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_i_p2" id="pierna_i_p2" required><br>
+                                            </div>
+                                            <div class="form-group margen-inferior col-sm-1" id="input_pierna_i_p3">
+                                                <label for="pierna_i_p3">C</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_i_p3" id="pierna_i_p3" required><br>
+                                            </div>
+                                        
+
+                                            <!-- PIERNA DERECHA -->
+                                            <div class="form-group margen-inferior col-sm-1" id="input_pierna_d_p1">
+                                                <label for="pierna_d_p1">A</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_d_p1" id="pierna_d_p1" required><br>
+                                            </div>
+                                            <div class="form-group margen-inferior col-sm-1" id="input_pierna_d_p2">
+                                                <label for="pierna_d_p2">B</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_d_p2" id="pierna_d_p2" required><br>
+                                            </div>
+                                            <div class="form-group margen-inferior col-sm-1" id="input_pierna_d_p3">
+                                                <label for="pierna_d_p3">C</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_d_p3" id="pierna_d_p3" required><br>
+                                            </div>
+                                            
+
+                                        </div><!-- Fin fila 5 -->
+                                        <div class="form-row espaciado-empty">
+                                            <!-- PIERNA IZQUIERDA -->
+                                            <div class="form-group col-sm-1" id="input_pierna_i_p4">
+                                                <label for="pierna_i_p4">D</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_i_p4" id="pierna_i_p4" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1" id="input_pierna_i_p5">
+                                                <label for="pierna_i_p5">E</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_i_p5" id="pierna_i_p5" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1" id="input_pierna_i_p6">
+                                                <label for="pierna_i_p6">F</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_i_p6" id="pierna_i_p6" required><br>
+                                            </div>
+                                            <!-- PIERNA DERECHA -->
+                                             <div class="form-group col-sm-1" id="input_pierna_d_p4">
+                                                <label for="pierna_d_p4">D</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_d_p4" id="pierna_d_p4" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1" id="input_pierna_d_p5">
+                                                <label for="pierna_d_p5">E</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_d_p5" id="pierna_d_p5" required><br>
+                                            </div>
+                                            <div class="form-group col-sm-1" id="input_pierna_d_p6">
+                                                <label for="pierna_d_p6">F</label>
+                                                &nbsp;
+                                                <input type="number" min="1" step=".01" class="form-control" name="pierna_d_p6" id="pierna_d_p6" required><br>
+                                            </div>
+                                           
+                                            <input type="hidden" id="id_usuario" value="<?php echo($_GET["id_user"]) ?>" />
+                                        </div><!-- Fin fila 6 -->
+                                    </div>
+                                    <!-- ===============================================       fin pierna      =======================================-->
+                                    <div class="columna-btn">
+                                        <button class="btn estilo-boton-submit" type="button" id="btn-submit-9"  value='<?php echo($_SESSION["id_especialista"])?>'>Guardar datos</button>
                                     </div>
                                 </form>
-                                    
-
-
-
+                            </div> <!-- fin Medición inicial -->
 
                         </div>
+                    
                     </div><!-- Fin cuerpo página-->
                 </div> <!-- Fin columna derecha-->
             </div> <!-- ROW -->
@@ -247,18 +379,19 @@
 
         </div><!-- CONTAINER FLUID-->
 
-        <!-- SCRIPTS -->
+        <!-- SCRIPTS -->  
+        <script>
+            var id_especialista= <?php echo($_SESSION["id_especialista"]) ?>;
+        </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="js/jquery-ui/external/jquery/jquery.js"></script>
         <script src="js/jquery-ui/jquery-ui.min.js"></script>
         <script type="text/javascript" src="js/overhang/dist/overhang.min.js"></script> 
         <script type="text/javascript" src="js/notify/notify.min.js"></script>
-        <script>
-            var id_especialista= <?php echo($_SESSION["id_especialista"]) ?>;
+        <script type="text/javascript" src="js/anadir-medicion.js"></script>
+        
+      
+        
 
-               
-        
-        
-        </script>
       
            

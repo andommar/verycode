@@ -16,7 +16,7 @@ class TUsuario{
 		
   }
 
-	public function datos_especialista($id_especialista)
+	public function datos_especialista($id_especialista)	
 	{
 
 		$res=true;
@@ -95,6 +95,25 @@ class TUsuario{
 			}
 			return $res;
 	}
+	public function listado_usuarios_no_asignados($id_especialista){
+		$res=false;
+		$abd = new TAccesbd ();
+	
+		if($abd->conectado())
+		{ 	
+			$res=true;
+			$sql = "SELECT id_user, nombre, apellido1, apellido2, correo, pass FROM usuario where id_especialista is null or id_especialista=95";
+			$stmt = $abd->listado_asociativo($sql);
+		}
+		if( $stmt === false ) {
+
+			$res=false;
+		}
+		else{
+			$res = $stmt;
+		}
+		return $res;
+}
 	//Rellena el home del admin con la lista de fisios (tabla)
 	
 	public function listado_especialistas(){
@@ -177,7 +196,6 @@ class TUsuario{
 						$stmt = $abd->ejecuta_sql($sql);
 						if( $stmt === false ) {//Fallo consulta
 							$res=-1;
-							die( print_r( sqlsrv_errors(), true));
 						}
 						
 				}
@@ -214,7 +232,6 @@ class TUsuario{
 					$stmt = $abd->ejecuta_sql($sql);
 					if( $stmt === false ) {
 						$res=-1;
-						die( print_r( sqlsrv_errors(), true));
 					}
 				}
 			}
@@ -249,7 +266,6 @@ class TUsuario{
 						$stmt = $abd->ejecuta_sql($sql);
 						if( $stmt === false ) {
 							$res=-1;
-							die( print_r( sqlsrv_errors(), true));
 						}
 					}
 				}
@@ -279,7 +295,6 @@ class TUsuario{
 						$stmt = $abd->ejecuta_sql($sql);
 						if( $stmt === false ) {
 							$res=-1;
-							die( print_r( sqlsrv_errors(), true));
 						}
 				}
 			}
@@ -327,7 +342,6 @@ class TUsuario{
 						$stmt = $abd->ejecuta_sql($sql);
 						if( $stmt === false ) {
 							$res=-1;
-							die( print_r( sqlsrv_errors(), true));
 						}
 				}
 			}
@@ -359,21 +373,20 @@ class TUsuario{
 						$stmt = $abd->ejecuta_sql($sql);
 						if( $stmt === false ) {
 							$res=-1;
-							die( print_r( sqlsrv_errors(), true));
 						}
 				}
 			}
 		}
 		return $res;
 	}
-	//** 
+
 	public function registro_valoracion_linfedema($id_user,$fecha,$localizacion,$consistencia_edema,$color,$valoracion_piel,$stemmer,$fovea,$pesadez,$rubor){
 		$res=0;
 		$abd = new TAccesbd ();
 		if($abd->conectado())
 		{
-			//Comprobar si se repite la valoracion
-			$sql2="select count(*) from valoracion_linfedema where id_user=$id_user";
+			//Comprobar si se repite la valoracion en esa fecha
+			$sql2="select count(*) from valoracion_linfedema where id_user=$id_user and fecha='$fecha'";
 			$stmt2 = $abd->consultar_dato($sql2);
 			if( $stmt2 === false ) {//error sql
 				$res=-1;
@@ -388,7 +401,6 @@ class TUsuario{
 					$stmt = $abd->ejecuta_sql($sql);
 					if( $stmt === false ) {
 						$res=-1;
-					die( print_r( sqlsrv_errors(), true));
 					}
 				}
 			}
@@ -396,6 +408,278 @@ class TUsuario{
 		return $res;
 		}
 
+	
+
+		public function registro_mediciones($id_user,$fecha,$extremidad,$lado_sano,$p1_i,$p2_i,$p3_i,$p4_i,$p5_i,$p6_i,$p1_d,$p2_d,$p3_d,$p4_d,$p5_d,$p6_d){
+			$res=0;
+			$abd = new TAccesbd ();
+			if($abd->conectado())
+			{
+				$p6_i = ($p6_i==0) ? "null" : $p6_i;
+				$p6_d = ($p6_d==0) ? "null" : $p6_d;
+
+				if($extremidad=="brazo"){
+					
+					//Comprobar si se repite la 1a medicion (si o si se insertarán lado d y lado i)
+					$sql2="select count(*) from mediciones where id_user=$id_user and fecha='$fecha' and extremidad='brazo'";
+					$stmt2 = $abd->consultar_dato($sql2);
+					if( $stmt2 === false ) {//error sql
+						$res=-1;
+					}
+					else{
+						if($stmt2>0){//se repite la 1a medicion brazo (derecho e izquierdo)
+							$res=-2;
+						}
+						else{//no hay primera medición
+							
+							//BRAZO IZQUIERDO
+							//$lado_sano: brazo_i, brazo_d
+							$lado_sano = ($lado_sano=="brazo_i") ? "si" : "no";
+							$sql="insert into mediciones values ($id_user,'$fecha','brazo','izquierdo','$lado_sano',$p1_i,$p2_i,$p3_i,$p4_i,$p5_i,$p6_i)";
+							$stmt = $abd->ejecuta_sql($sql);
+							if( $stmt === false ) {
+								$res=-1;
+							}
+							else{//BRAZO DERECHO
+								$lado_sano = ($lado_sano=="brazo_d") ? "si" : "no";
+								$sql3="insert into mediciones values ($id_user,'$fecha','brazo','derecho','$lado_sano',$p1_d,$p2_d,$p3_d,$p4_d,$p5_d,$p6_d)";
+								$stmt3 = $abd->ejecuta_sql($sql3);
+								if( $stmt3 === false ) {
+									$res=-1;
+								}
+							}
+						}
+					}
+
+				}//fin brazo
+				else if($extremidad="pierna"){
+
+					//Comprobar si se repite la 1a medicion (si o si se insertarán lado d y lado i)
+					$sql4="select count(*) from mediciones where id_user=$id_user and fecha='$fecha' and extremidad='pierna'";
+					$stmt4 = $abd->consultar_dato($sql4);
+					if( $stmt4 === false ) {//error sql
+						$res=-1;
+					}
+					else{
+						if($stmt4>0){//se repite la 1a medicion pierna (derecho e izquierdo)
+							$res=-2;
+						}
+						else{//no hay primera medición
+							
+							//PIERNA IZQUIERDA
+							//$lado_sano: pierna_d, pierna_i, 
+							$lado_sano = ($lado_sano=="pierna_i") ? "si" : "no";
+							$sql5="insert into mediciones values ($id_user,'$fecha','pierna','izquierdo','$lado_sano',$p1_i,$p2_i,$p3_i,$p4_i,$p5_i,$p6_i)";
+							$stmt5 = $abd->ejecuta_sql($sql5);
+							if( $stmt5 === false ) {
+								$res=-1;
+							// die( print_r( sqlsrv_errors(), true));
+							}
+							else{//PIERNA IZQUIERDA
+								$lado_sano = ($lado_sano=="pierna_d") ? "si" : "no";
+								$sql6="insert into mediciones values ($id_user,'$fecha','pierna','derecho','$lado_sano',$p1_d,$p2_d,$p3_d,$p4_d,$p5_d,$p6_d)";
+								$stmt6 = $abd->ejecuta_sql($sql6);
+								if( $stmt6 === false ) {
+									$res=-1;
+								}
+							}
+						}
+					}
+
+				}//fin pierna
+			}
+			return $res;
+		 }
+		
+		 
+		public function registro_nueva_medicion($id_user,$fecha,$extremidad,$lado_sano,$p1_i,$p2_i,$p3_i,$p4_i,$p5_i,$p6_i,$p1_d,$p2_d,$p3_d,$p4_d,$p5_d,$p6_d){
+			$res=0;
+			$abd = new TAccesbd ();
+			if($abd->conectado())
+			{
+				$p6_i = ($p6_i==0) ? "null" : $p6_i;
+				$p6_d = ($p6_d==0) ? "null" : $p6_d;
+
+				if($extremidad=="brazo_d" || $extremidad=="brazo_i"){
+					
+					//Comprobar si existe una 1a medicion de brazo
+					$sql2="select count(*) from mediciones where id_user=$id_user and extremidad='brazo'";
+					$stmt2 = $abd->consultar_dato($sql2);
+					if( $stmt2 === false ) {//error sql
+						$res=-1;
+					}
+					else{
+						if($stmt2>0){//existe la 1a medicion
+
+							//Comprobamos si coincide la fecha o es anterior a la última
+							$sql7="select count(*) from mediciones where id_user=$id_user and fecha>='$fecha' and extremidad='brazo'";
+							$stmt7 = $abd->consultar_dato($sql7);
+							if( $stmt7 === false ) {//error sql
+								$res=-1;
+							}
+							else{
+								if($stmt7>0){//coincide con otra medición
+									$res=-3;
+								}
+								else{//no hay mediciones en esa fecha
+
+									//BRAZO IZQUIERDO
+									if($p1_i!=0 && $p2_i!=0 && $p3_i!=0 && $p4_i!=0 && $p5_i!=0){
+
+										$lado_sano = ($lado_sano=="brazo_i") ? "si" : "no";
+										$sql="insert into mediciones values ($id_user,'$fecha','brazo','izquierdo','$lado_sano',$p1_i,$p2_i,$p3_i,$p4_i,$p5_i,$p6_i)";
+										$stmt = $abd->ejecuta_sql($sql);
+										if( $stmt === false ) {
+											$res=-1;
+										}
+									}
+									
+									//BRAZO DERECHO
+									if($p1_d!=0 && $p2_d!=0 && $p3_d!=0 && $p4_d!=0 && $p5_d!=0){
+										
+										$lado_sano = ($lado_sano=="brazo_d") ? "si" : "no";
+										$sql3="insert into mediciones values ($id_user,'$fecha','brazo','derecho','$lado_sano',$p1_d,$p2_d,$p3_d,$p4_d,$p5_d,$p6_d)";
+										$stmt3 = $abd->ejecuta_sql($sql3);
+										if( $stmt3 === false ) {
+											$res=-1;
+										}
+									}
+								}
+							}
+						}
+						else{//no hay primera medición
+							$res=-2;
+						}
+					}
+				}//fin brazo
+				else if($extremidad=="pierna_d" || $extremidad=="pierna_i"){
+
+					//Comprobar si existe una 1a medicion de pierna
+					$sql4="select count(*) from mediciones where id_user=$id_user and extremidad='pierna'";
+					$stmt4 = $abd->consultar_dato($sql4);
+					if( $stmt4 === false ) {//error sql
+						$res=-1;
+					}
+					else{
+						if($stmt4>0){//existe la 1a medicion
+
+							//Comprobamos si coincide la fecha o es anterior a la última
+							$sql8="select count(*) from mediciones where id_user=$id_user and fecha>='$fecha' and extremidad='pierna'";
+							$stmt8 = $abd->consultar_dato($sql8);
+							if( $stmt8 === false ) {//error sql
+								$res=-1;
+							}
+							else{
+								if($stmt8>0){//coincide con otra medición
+									$res=-3;
+								}
+								else{//no hay mediciones en esa fecha
+
+									//PIERNA IZQUIERDA
+									if($p1_i!=0 && $p2_i!=0 && $p3_i!=0 && $p4_i!=0 && $p5_i!=0 && $p6_i!=0){
+										$lado_sano = ($lado_sano=="pierna_i") ? "si" : "no";
+										$sql5="insert into mediciones values ($id_user,'$fecha','pierna','izquierdo','$lado_sano',$p1_i,$p2_i,$p3_i,$p4_i,$p5_i,$p6_i)";
+										$stmt5 = $abd->ejecuta_sql($sql5);
+										if( $stmt5 === false ) {
+											$res=-1;
+										// die( print_r( sqlsrv_errors(), true));
+										}
+									}
+									//PIERNA DERECHA
+									if($p1_d!=0 && $p2_d!=0 && $p3_d!=0 && $p4_d!=0 && $p5_d!=0 && $p6_d!=0){
+										$lado_sano = ($lado_sano=="pierna_d") ? "si" : "no";
+										$sql6="insert into mediciones values ($id_user,'$fecha','pierna','derecho','$lado_sano',$p1_d,$p2_d,$p3_d,$p4_d,$p5_d,$p6_d)";
+										$stmt6 = $abd->ejecuta_sql($sql6);
+										if( $stmt6 === false ) {
+											$res=-1;
+										}
+									}
+								
+									
+								
+								}
+							}
+						}
+						else{//no hay primera medición
+							$res=-3;
+						}
+					}
+				}//fin pierna
+
+			}
+
+			return $res;
+		}
+
+
+
+		public function get_miembro_afecto($id_user){
+			$res=-3;
+			$abd = new TAccesbd ();
+
+			if($abd->conectado())
+			{
+				//-3 brazo_i_afecto, -4 brazo_d_afecto, -5 pierna_i_afecto, -6 pierna_d_afecto
+				//Comprobar si tiene medición inicial
+				$sql="select count(*) from mediciones where id_user=$id_user";
+				$stmt = $abd->consultar_dato($sql);
+				if( $stmt === false ) {//error consulta sql
+					$res=-1;
+				}
+				else{
+					if($stmt<2){//no tiene medicion inicial
+						$res=-2;
+					}
+					else{//tiene medicion inicial, buscamos si es brazo o pierna, primero
+						$sql2="SELECT TOP 1 extremidad FROM mediciones WHERE id_user = $id_user ORDER BY fecha";
+						$stmt2 = $abd->consultar_dato($sql2);
+						if( $stmt2 === false ) {//error consulta sql
+							$res=-1;
+						}
+						else{
+							if($stmt2=="brazo"){
+								$sql3="SELECT TOP 1 lado FROM mediciones WHERE id_user = $id_user and lado_sano='no' and extremidad='brazo' ORDER BY fecha";
+								$stmt3 = $abd->consultar_dato($sql3);
+								if( $stmt3 === false ) {//error consulta sql
+									$res=-1;
+								}
+								else{//lado izquierdo es el afecto
+									if($stmt3=="izquierdo"){
+										$res=-3;
+									}
+									else{//lado derecho es el afecto
+										$res=-4;
+									}
+								}
+							}
+							else{//"pierna"
+								$sql4="SELECT TOP 1 lado FROM mediciones WHERE id_user = $id_user and lado_sano='no' and extremidad='pierna' ORDER BY fecha";
+								$stmt4 = $abd->consultar_dato($sql4);
+								if( $stmt4 === false ) {//error consulta sql
+									$res=-1;
+								}
+								else{//lado izquierdo es el afecto
+									if($stmt4=="izquierdo"){
+										$res=-5;
+									}
+									else{//lado derecho es el afecto
+										$res=-6;
+									}
+								}
+
+							}
+						}
+						
+
+					}
+				}
+
+
+			}
+			return $res;
+		}
+
+	
 
 	//ESTA FUNCIÓN A PARTE DE REGISTRAR PACIENTE, DEVUELVE EL ID DESPUÉS DE REGISTRARLO
 	public function registro_paciente($correo,$pass,$pass2,$nombre,$apellido1,$apellido2,$id_especialista,&$id_user)
@@ -423,7 +707,6 @@ class TUsuario{
 					$stmt2 = $abd->ejecuta_sql($sql2);
 					if( $stmt2 === false ) {
 						$res=-1;
-						die( print_r( sqlsrv_errors(), true));
 					}
 					else{
 						sqlsrv_next_result($stmt2); //Va al siguiente resultado y lo muestra (es un boolean si devuelve true o false si encuentra resultado)
@@ -437,6 +720,33 @@ class TUsuario{
 		return $res;
 	}
 
+	public function editar_datos_personales($correo,$pass,$nombre,$apellido1,$apellido2,$id_especialista,$id_usuario){
+		$res=0;
+		$abd = new TAccesbd ();
+		if($abd->conectado())
+		{
+			//Comprobar si se repite el correo antes (en el caso de que decida cambiarlo)
+			$sql="select count(*) from usuario WHERE correo='$correo' and id_user!=$id_usuario";
+			$stmt = $abd->consultar_dato($sql);
+			if( $stmt === false ) {//error consulta sql
+				$res=-1;
+			}
+			else{
+					if($stmt>0){//Ya existe el correo, error
+						$res=-2;
+					}
+					else{
+							//Modificamos el usuario
+							$sql2="update usuario set pass='$pass', nombre='$nombre', correo='$correo', apellido1='$apellido1', apellido2='$apellido2' where id_user=$id_usuario";
+							$stmt2 = $abd->ejecuta_sql($sql2);
+							if( $stmt2 === false ) {
+								$res=-1;
+							}
+					}
+			}
+		} 
+		return $res;
+	}
 
 	public function registro_admin($correo,$pass,$pass2,$nombre,$apellido,$apellido2,$tipo)
 	{
@@ -451,7 +761,6 @@ class TUsuario{
 		}
 		if( $stmt === false ) {
 			$res=-1;
-			die( print_r( sqlsrv_errors(), true));
 		}
 
 
@@ -514,6 +823,92 @@ class TUsuario{
 
 	}
 
+
+	public function modificar_especialista($id_especialista_seleccionado, $nombre, $apellido1,
+	$apellido2,$correo,$pass, $pass2, $tipo)
+	{
+		
+		$res=0;
+		$abd = new TAccesbd ();
+		if($abd->conectado())
+		{
+			$sql="update especialista set correo='$correo', pass='$pass', pass2='$pass2', nombre='$nombre', apellido1='$apellido1', apellido2='$apellido2', tipo='$tipo'  where id_especialista = $id_especialista_seleccionado";
+			$stmt = $abd->ejecuta_sql($sql);
+		}
+		if( $stmt === false ) {
+			$res=-1;
+		}
+		return $res;
+
+	}
+
+	//update usuario set id_especialista=$id_especialista where id_user=$id_user and id_especialista is null **
+
+	public function asignar_fisio($id_user, $id_especialista){
+		$res=0;
+		$abd = new TAccesbd ();
+		if($abd->conectado())
+		{
+			$sql="update usuario set id_especialista=$id_especialista where id_user=$id_user and (id_especialista is null or id_especialista=95)";
+			$stmt = $abd->ejecuta_sql($sql);	
+		}
+		if( $stmt === false ) {//error sql
+
+			$res=-1;
+
+		}
+		return $res;
+	}
+
+	public function get_paciente_no_asignado($id_user){	
+			$res=0;
+			$abd = new TAccesbd ();
+			if($abd->conectado())
+			{
+				$sql="select nombre,apellido1, apellido2, correo, pass from usuario	where id_user = $id_user";
+				$stmt = $abd->listado_asociativo($sql);
+			}
+			if( $stmt != false ) {//error sql
+
+				$res=$stmt;
+	
+			}
+			return $res;
+	}
+	//**
+	//DATOS PACIENTE
+	// 1) Datos personales
+	public function get_datos_personales($id_user){	
+		$res=0;
+		$abd = new TAccesbd ();
+		if($abd->conectado())
+		{
+			$sql="select nombre,apellido1, apellido2, correo, pass from usuario	where id_user = $id_user";
+			$stmt = $abd->listado_asociativo($sql);
+		}
+		if( $stmt != false ) {//error sql
+
+			$res=$stmt;
+
+		}
+		return $res;
+	}
+	// 2) Historial clínico
+	public function get_historial_clinico($id_user){	
+		$res=0;
+		$abd = new TAccesbd ();
+		if($abd->conectado())
+		{
+			$sql="select * from historial_clinico	where id_user = $id_user";
+			$stmt = $abd->listado_asociativo($sql);
+		}
+		if( $stmt != false ) {//error sql
+
+			$res=$stmt;
+
+		}
+		return $res;
+	}
 
 }
 

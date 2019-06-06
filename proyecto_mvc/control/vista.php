@@ -15,6 +15,30 @@ if(isset($_POST["opcion"]))
 
     switch($opcion)
     {
+        case "modificar_especialista":
+
+            $id_especialista_seleccionado = $_POST["id_especialista_seleccionado"];
+            $nombre = $_POST["nombre"];
+            $apellido1 = $_POST["apellido1"];
+            $apellido2 = $_POST["apellido2"];
+            $correo = $_POST["correo"];
+            $pass = $_POST["pass"];
+            $pass2 = $_POST["pass2"];
+            $tipo = $_POST["tipo"];
+
+            $error=$c->modificar_especialista($id_especialista_seleccionado, $nombre, $apellido1,
+            $apellido2,$correo,$pass, $pass2, $tipo);
+            if($error==0)
+            {
+                echo "true";
+            }
+            else
+                echo "false";
+
+
+        break;
+
+
         case "borrar_especialista":
 
             $id_especialista = $_POST["id_especialista"];
@@ -45,25 +69,24 @@ if(isset($_POST["opcion"]))
             // ->delete from especialista where id_especialista = 7
         
         break;
-        case "registro_admin":
 
-            
+        case "registro_admin":           
 
             $correo = $_POST["correo"];
             $pass = $_POST["pass"];
             $pass2 = $_POST["pass2"]; 
             $nombre = $_POST["nombre"];
-            $apellido = $_POST["apellido"];
+            $apellido = $_POST["apellido1"];
             $apellido2 = $_POST["apellido2"];
             $tipo = $_POST["tipo"];
 
             $error=$c->registro_admin($correo, $pass, $pass2, $nombre, $apellido, $apellido2, $tipo);
-            // if($error==0)
-            // {
-            //     //echo "Usuario registrado correctamente";
-            // }
-            // else
-            //     //echo "Fallo registro";
+            if($error==0)
+            {
+                echo "true";
+            }
+            else
+                echo "false";
 
         break;
 
@@ -95,6 +118,31 @@ if(isset($_POST["opcion"]))
             
            echo json_encode($resultado);
 
+        break;
+        //**
+        //EDITAR PACIENTE
+        // 1)Datos personales
+        case 'editar_datos_personales':
+            
+            $id_usuario=$_POST["id_usuario"];
+            $correo = $_POST["correo"];
+            $pass = $_POST["pass"]; 
+            $nombre = $_POST["nombre"];
+            $apellido1 = $_POST["apellido1"];
+            $apellido2 = $_POST["apellido2"];
+            $id_especialista = $_POST["id_especialista"];
+            
+            
+            $error=$c->editar_datos_personales($correo,$pass,$nombre,$apellido1,$apellido2,$id_especialista,$id_usuario);
+            if($error==0)
+            {
+               echo "true";
+            }
+            else if($error==-2){
+                echo "correo";
+            }
+            else
+                echo "false";
         break;
 
         case "registro_historial_clinico": 
@@ -279,7 +327,7 @@ if(isset($_POST["opcion"]))
 
         break;
 
-        case "registro_valoracion_linfedema"://**
+        case "registro_valoracion_linfedema":
 
             $id_user=$_POST["id_user"];
             $fecha = $_POST["fecha"];
@@ -320,28 +368,36 @@ if(isset($_POST["opcion"]))
         break;
 
         case "registro_mediciones":
-
-            $id_user=$_POST["id_user"];
-            $fecha_val_mediciones = $_POST["fecha_val_mediciones"];
-            $extremidad = $_POST["extremidad"];
-            $lado = $_POST["lado"];
-            $p1 = $_POST["p1"];
-            $p2 = $_POST["p2"];
-            $p3 = $_POST["p3"];
-            $p4 = $_POST["p4"];
-            $p5 = $_POST["p5"];
-            $p6 = $_POST["p6"];
-
-            $fecha = $_POST["fecha"];   
-            $descripcion = $_POST["descripcion"];       
             
-            $error=$c->registro_mediciones($id_user,$fecha_val_mediciones,$extremidad,$lado,$p1,$p2,$p3,$p4,$p5,$p6);
+            $id_user=$_POST["id_user"];
+            $fecha= $_POST["fecha"];
+            $extremidad = $_POST["extremidad"];//brazo, pierna
+            $lado_sano = $_POST["lado_sano"]; //pierna_d, pierna_i, brazo_i, brazo_d
+
+            $p1_i = $_POST["p1_i"];
+            $p2_i = $_POST["p2_i"];
+            $p3_i = $_POST["p3_i"];
+            $p4_i = $_POST["p4_i"];
+            $p5_i = $_POST["p5_i"];
+            $p6_i = $_POST["p6_i"];
+
+            $p1_d = $_POST["p1_d"];
+            $p2_d = $_POST["p2_d"];
+            $p3_d = $_POST["p3_d"];
+            $p4_d = $_POST["p4_d"];
+            $p5_d = $_POST["p5_d"];
+            $p6_d = $_POST["p6_d"];
+                  
+            $error=$c->registro_mediciones($id_user,$fecha,$extremidad,$lado_sano,$p1_i,$p2_i,$p3_i,$p4_i,$p5_i,$p6_i,$p1_d,$p2_d,$p3_d,$p4_d,$p5_d,$p6_d);
             if($error==0)
             {
-                echo "Mediciones registrada";
+                echo "true";
             }
-            else
-                echo "Fallo registro";
+            else if($error==-2){
+                echo "medicion";
+            }
+            else 
+                echo "false";
 
         break;
 
@@ -355,6 +411,55 @@ if(isset($_POST["opcion"]))
             }
             else
                 echo json_encode($error);
+
+        break;
+        case "registro_nueva_medicion": 
+
+            $id_user=$_POST["id_usuario"];
+            $fecha= $_POST["fecha"];
+            $extremidad = $_POST["extremidad"];//pierna_d, pierna_i, brazo_i, brazo_d
+            $lado_sano = $_POST["lado_sano"]; //pierna_d, pierna_i, brazo_i, brazo_d
+
+            $p1_i = $_POST["p1_i"];
+            $p2_i = $_POST["p2_i"];
+            $p3_i = $_POST["p3_i"];
+            $p4_i = $_POST["p4_i"];
+            $p5_i = $_POST["p5_i"];
+            $p6_i = $_POST["p6_i"];
+
+            $p1_d = $_POST["p1_d"];
+            $p2_d = $_POST["p2_d"];
+            $p3_d = $_POST["p3_d"];
+            $p4_d = $_POST["p4_d"];
+            $p5_d = $_POST["p5_d"];
+            $p6_d = $_POST["p6_d"];
+                
+            $error=$c->registro_nueva_medicion($id_user,$fecha,$extremidad,$lado_sano,$p1_i,$p2_i,$p3_i,$p4_i,$p5_i,$p6_i,$p1_d,$p2_d,$p3_d,$p4_d,$p5_d,$p6_d);
+            if($error==0)
+            {
+                echo "true";
+            }
+            else if($error==-2){//no hay 1a medicion
+                echo "medicion";
+            }
+            else if($error==-3){//ya existen mediciones en ese día
+                echo "fecha";
+            }
+            else //-1 
+                echo "false";
+
+        break;
+        case "asignar_fisio":
+            $id_user = $_POST["id_usuario"];
+            $id_especialista = $_POST["id_especialista"];
+            $error=$c->asignar_fisio($id_user, $id_especialista);
+            if($error==0)
+            {
+                echo "true";
+            }
+            else //-1
+                echo "false";
+
 
         break;
 
@@ -375,20 +480,92 @@ if(isset($_GET["opcion"]))
             $id_especialista = $_GET["id_especialista"];
             $error=$c->listado_usuarios($id_especialista);
             if($error!=false){
-                //$res = array($res1, $res2);
                 echo json_encode($error);
-               // $datos = array("usuario_correcto"=>$res,"tipo_usuario"=>$tipo_usuario);
             }
         
+        break;
+        case "listado_usuarios_no_asignados":
+            $id_especialista = $_GET["id_especialista"];
+            $error=$c->listado_usuarios_no_asignados($id_especialista);
+            if($error!=false){
+                echo json_encode($error);
+            }
         break;
 
         case "mostrar_graficas":
             $id_user=$_GET["id_usuario"];
 
             $error=$c->mostrar_graficas($id_user);
-            echo json_encode ($error);
+            $error2=$c->mostrar_fechas_graficas($id_user);
+            
+            echo json_encode(array($error,$error2));
 
-    break;
+        break;
+        //Buscamos si el miembro afecto es brazo o pierna
+        //-3 brazo_i_afecto, -4 brazo_d_afecto, -5 pierna_i_afecto, -6 pierna_d_afecto
+        case "get_miembro_afecto":
+            $id_user=$_GET["id_usuario"];
+            $error=$c->get_miembro_afecto($id_user);
+            
+            if($error==-1){
+                echo "false";
+            }
+            else if($error==-2){
+                echo "no_tiene";
+            }
+            else if($error==-3){
+                echo "brazo_i";
+            }
+            else if($error==-4){
+                echo "brazo_d";
+            }
+            else if($error==-5){
+                echo "pierna_i";
+            }
+            else if($error==-6){
+                echo "pierna_d";
+            }
+        break;
+        case "get_paciente_no_asignado":
+
+            $id_user=$_GET["id_usuario"];
+            $error=$c->get_paciente_no_asignado($id_user);
+            if($error==-1){
+                echo "false";
+            }
+            else{
+                echo json_encode($error);
+            }
+        break; 
+        
+        //OBTENER DATOS PACIENTE
+        // 1)Datos personales
+        case "get_datos_personales":
+
+            $id_user=$_GET["id_usuario"];
+            $error=$c->get_datos_personales($id_user);
+            if($error==-1){
+                echo "false";
+            }
+            else{
+                echo json_encode($error);
+            }
+
+        break; 
+//**
+        case "get_historial_clinico":
+
+            $id_user=$_GET["id_usuario"];
+            $error=$c->get_historial_clinico($id_user);
+            if($error==-1){
+                echo "false";
+            }
+            else{
+                echo json_encode($error);
+            }
+
+        break;  
+
     }
 }
 ?>
