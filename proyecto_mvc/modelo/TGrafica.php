@@ -17,7 +17,7 @@ class TGrafica
         $abd = new TAccesbd ();
         if($abd->conectado())
         {
-            $sql="select id_user,extremidad,lado,lado_sano,p1,p2,p3,p4,p5 from mediciones where id_user= $id_user order by fecha";
+            $sql="select id_user,extremidad,lado,lado_sano,p1,p2,p3,p4,p5,p6 from mediciones where id_user= $id_user order by fecha";
             $res=$abd->mostrar_graficas($sql);
         }
         else

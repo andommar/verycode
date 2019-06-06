@@ -8,7 +8,7 @@ if( $conn ) {
 
 
 
-    $sql = "select id_user,fecha,extremidad,lado,p1,p2,p3,p4,p5 from mediciones";
+    $sql = "select id_user,fecha,extremidad,lado,p1,p2,p3,p4,p5,p6 from mediciones";
 
     $stmt = sqlsrv_query( $conn, $sql);
     if( $stmt === false ) {
