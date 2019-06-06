@@ -252,7 +252,7 @@
                                     </div> <!--Fin fila 1-->
                                     <div class="form-row justify-content-center">
                                         <div class="form-group ancho" id="input_fecha_nacimiento">
-                                            <label for="fecha_nacimiento">Fecha de nacimiento <span class="rojo">*</span></label>
+                                            <label for="fecha_nacimiento">Fecha de nacimiento (dd/mm/aaaa) <span class="rojo">*</span></label>
                                             &nbsp;
                                             <input type="date" min="1919-01-01" class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" required><br>
                                         </div>

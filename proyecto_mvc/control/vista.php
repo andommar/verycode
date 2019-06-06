@@ -119,7 +119,9 @@ if(isset($_POST["opcion"]))
            echo json_encode($resultado);
 
         break;
-        //EDITAR DATOS PERSONALES
+        //**
+        //EDITAR PACIENTE
+        // 1)Datos personales
         case 'editar_datos_personales':
             
             $id_usuario=$_POST["id_usuario"];
@@ -364,7 +366,7 @@ if(isset($_POST["opcion"]))
                 echo "false";
 
         break;
-//**
+
         case "registro_mediciones":
             
             $id_user=$_POST["id_user"];
@@ -411,7 +413,7 @@ if(isset($_POST["opcion"]))
                 echo json_encode($error);
 
         break;
-        case "registro_nueva_medicion": //**
+        case "registro_nueva_medicion": 
 
             $id_user=$_POST["id_usuario"];
             $fecha= $_POST["fecha"];
@@ -535,18 +537,34 @@ if(isset($_GET["opcion"]))
                 echo json_encode($error);
             }
         break; 
-        //MOSTRAR DATOS PACIENTE   
+        
+        //OBTENER DATOS PACIENTE
+        // 1)Datos personales
         case "get_datos_personales":
 
-        $id_user=$_GET["id_usuario"];
-        $error=$c->get_datos_personales($id_user);
-        if($error==-1){
-            echo "false";
-        }
-        else{
-            echo json_encode($error);
-        }
-    break;      
+            $id_user=$_GET["id_usuario"];
+            $error=$c->get_datos_personales($id_user);
+            if($error==-1){
+                echo "false";
+            }
+            else{
+                echo json_encode($error);
+            }
+
+        break; 
+//**
+        case "get_historial_clinico":
+
+            $id_user=$_GET["id_usuario"];
+            $error=$c->get_historial_clinico($id_user);
+            if($error==-1){
+                echo "false";
+            }
+            else{
+                echo json_encode($error);
+            }
+
+        break;  
 
     }
 }

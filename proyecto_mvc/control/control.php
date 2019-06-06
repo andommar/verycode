@@ -81,7 +81,7 @@ class TControl{
     }
     
    
-    //
+ 
     public function registro_historial_clinico($id_user,$doc_identificacion,$nacionalidad, $raza, $fecha_nacimiento,$sexo, $altura, $peso, $tipo_congenito, $subtipo_congenito,
     $fecha_debut, $familiar_linfedema,$motivo_secundario, $ant_vasculares, $ant_infeccion_venosa, $ant_sobrepeso, $ant_lipedema, $ant_permeabilidad_cap, $ant_ansiedad,
 	$ant_diabetes, $ant_triquiasis, $ant_sindromes, $profesion, $grado_resp_profesion, $grado_stress_profesion)
@@ -185,11 +185,20 @@ class TControl{
 
         return ($resultat);
     }
-    //MOSTRAR DATOS PACIENTE
+    //** 
+    // 1) Datos personales
     public function get_datos_personales($id_user){
         
         $usr = new TUsuario();
         $resultat=$usr->get_datos_personales($id_user);
+
+        return ($resultat);
+    }
+    // 2) Historial clínico
+    public function get_historial_clinico($id_user){
+        
+        $usr = new TUsuario();
+        $resultat=$usr->get_historial_clinico($id_user);
 
         return ($resultat);
     }

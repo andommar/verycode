@@ -4,10 +4,80 @@
     $(document).ready(function(){
         id_usuario= $("#id_usuario").val();
         $("#titulo-paciente").html("Editar paciente · Paciente "+id_usuario);
+
+        $("#tipo_congenito").change(function(){
+                    
+            var tipo_congenito = this.value; //valor option del select
+            
+            if(tipo_congenito=="Secundario"){
+                
+                $("#subtipo_congenito").html("");
+
+                var $cancer = $("<optgroup label='Cáncer'>");
+                $('#subtipo_congenito').append($cancer);
+
+                $cancer.append($('<option>', { 
+                        //value:"bla",
+                        text :  "Mama"
+                }));
+                $cancer.append($('<option>', { 
+                        text :  "Ginecológico"
+                }));
+
+                $cancer.append($('<option>', { 
+                        text :  "Próstata"
+                }));
+
+                $cancer.append($('<option>', { 
+                        text :  "Cara"
+                }));
+
+                $cancer.append($('<option>', {
+                        text :  "Linfoma"
+                }));
+
+                $cancer.append($('<option>', {
+                        text :  "Otro"
+                }));
+
+                var $accidente = $("<optgroup label='Accidente'>");
+                $('#subtipo_congenito').append($accidente);
+
+                $accidente.append($('<option>', {
+                        text :  "Accidente"
+                }));
+
+            }
+            else{//Secundario
+                $("#subtipo_congenito").html("");
+
+                $('#subtipo_congenito').append($('<option>', { 
+                        text :  "Precoz"
+                }));
+
+                $('#subtipo_congenito').append($('<option>', { 
+                        text :  "Tardío"
+                }));
+               
+            }
+        });
+
+
+        $("#subtipo_congenito").change(function(){
+            var subtipo_congenito = this.value; //valor option del select
+            if(subtipo_congenito=="Otro" || subtipo_congenito=="Accidente"){
+                $('#subtipo_congenito_otro').prop('disabled', false);
+            }
+            else{
+                 $('#subtipo_congenito_otro').prop('disabled', true);
+            }
+        });
+       
     });
 
     $(document).ready(function(){
 
+        // 1) DATOS PERSONALES
         $.ajax({
             type: "GET",
             url: 'control/vista.php',
@@ -20,17 +90,87 @@
         .done(function(msg) {
             console.log("ajax done");
             var resultado = $.parseJSON(msg);
-            
-            $("#nombre").val(resultado[0].nombre);
-            $("#apellido1").val(resultado[0].apellido1);
-            $("#apellido2").val(resultado[0].apellido2);
-            $("#correo").val(resultado[0].correo);
-            $("#pass").val(resultado[0].pass);
-                
+            if(resultado!="false"){
+                $("#nombre").val(resultado[0].nombre);
+                $("#apellido1").val(resultado[0].apellido1);
+                $("#apellido2").val(resultado[0].apellido2);
+                $("#correo").val(resultado[0].correo);
+                $("#pass").val(resultado[0].pass);
+            }    
         })
         .fail(function( jqXHR, textStatus, errorThrown ) {
             console.log("ajax false");
         });
+
+        //=============================================================================
+
+        // 2) HISTORIAL CLÍNICO
+         $.ajax({
+            type: "GET",
+            url: 'control/vista.php',
+            data: { 
+                opcion: "get_historial_clinico",
+                id_usuario: id_usuario
+            }
+        
+        })        
+        .done(function(msg) {
+            console.log("ajax done");
+            var resultado = $.parseJSON(msg);
+            
+            if(resultado!="false"){
+                
+                //FECHAS (hay que coger del array sólo la fecha)
+                //$("#fecha_nacimiento").val("2014-06-20"); //aaaa-mm-dd
+
+                var fecha_debut = resultado[0].fecha_debut.date; //2019-05-16 00:00:00.000000
+                var fecha_debut_corta = fecha_debut.substr(0,fecha_debut.indexOf(' ')); //2019-05-16
+                console.log(fecha_debut);
+                console.log(fecha_debut_corta);
+
+                var fecha_nacimiento = resultado[0].fecha_nacimiento.date; //2019-05-16 00:00:00.000000
+                var fecha_nacimiento_corta = fecha_nacimiento.substr(0,fecha_nacimiento.indexOf(' ')); //2019-05-16
+            
+                $("#fecha_debut").val(fecha_debut_corta); 
+                $("#fecha_nacimiento").val(fecha_nacimiento_corta);
+
+                $('#doc_identificacion').val(resultado[0].doc_identificacion);
+                $('#nacionalidad').val(resultado[0].nacionalidad);
+                $('#raza').val(resultado[0].raza);
+                $('#sexo').val(resultado[0].sexo);
+                $('#altura').val(resultado[0].altura); 
+                $('#peso').val(resultado[0].peso);
+                $('#tipo_congenito').val(resultado[0].tipo_congenito);
+
+                $('#tipo_congenito').trigger('change');//forzar al "on change" del select
+
+                var subtipo_congenito = resultado[0].subtipo_congenito;
+
+                if(resultado[0].tipo_congenito=="Primario"){
+                    $('#subtipo_congenito').val(resultado[0].subtipo_congenito);
+                }
+                else{//Secundario
+                    if(subtipo_congenito!="Mama" && subtipo_congenito!="Ginecológico" && subtipo_congenito!="Próstata" && subtipo_congenito!="Cara" && subtipo_congenito!="Linfoma"){
+                        $('#subtipo_congenito').val("Otro");
+                        $('#subtipo_congenito_otro').val(resultado[0].subtipo_congenito);
+                    }
+                    else{
+                        $('#subtipo_congenito').val(resultado[0].subtipo_congenito);
+                    }
+                }
+                $('#subtipo_congenito').trigger('change');
+
+            }
+
+           
+        })
+        .fail(function( jqXHR, textStatus, errorThrown ) {
+            console.log("ajax false");
+        });
+
+        //=============================================================================
+
+
     });
 
 //   =============================== MOSTRAR Y ESCONDER FORMULARIOS  =========================================== 

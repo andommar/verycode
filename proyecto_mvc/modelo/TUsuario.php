@@ -875,7 +875,9 @@ class TUsuario{
 			}
 			return $res;
 	}
-	//MOSTRAR DATOS PACIENTE
+	//**
+	//DATOS PACIENTE
+	// 1) Datos personales
 	public function get_datos_personales($id_user){	
 		$res=0;
 		$abd = new TAccesbd ();
@@ -890,8 +892,23 @@ class TUsuario{
 
 		}
 		return $res;
-}
+	}
+	// 2) Historial clínico
+	public function get_historial_clinico($id_user){	
+		$res=0;
+		$abd = new TAccesbd ();
+		if($abd->conectado())
+		{
+			$sql="select * from historial_clinico	where id_user = $id_user";
+			$stmt = $abd->listado_asociativo($sql);
+		}
+		if( $stmt != false ) {//error sql
 
+			$res=$stmt;
+
+		}
+		return $res;
+	}
 
 }
 

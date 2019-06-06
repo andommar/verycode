@@ -392,7 +392,7 @@
                     }
                     
                 });
-                //**
+                
                 //Focus brazo y pierna
                 //FOCUS BRAZO
                 $( "input[id='brazo_i_p1'], input[id='brazo_d_p1']" ).focus(function() {
@@ -519,7 +519,7 @@
                        
                 });
 
-                //  =============================== HISTORIAL CLÍNICO  ===========================================  
+                //  =============================== HISTORIAL CLÍNICO  ===========================================  **
 
                 $("#form-2").submit(function(event){    
 
@@ -1262,7 +1262,7 @@
 
                 });
 
-                //  =============================== MEDICIONES  ===========================================//**
+                //  =============================== MEDICIONES  ==========================================
 
                 $("#btn-submit-9").click(function(event){
                     
@@ -1674,7 +1674,7 @@
                     }
                     return datos_correctos;
                 }
-                function validarMedicionesBrazo(fecha,p1_i,p2_i,p3_i,p4_i,p5_i,p1_d,p2_d,p3_d,p4_d,p5_d){ //**
+                function validarMedicionesBrazo(fecha,p1_i,p2_i,p3_i,p4_i,p5_i,p1_d,p2_d,p3_d,p4_d,p5_d){ 
                     var datos_correctos=true;
                     var mensaje_error="";
 
