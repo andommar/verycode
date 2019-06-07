@@ -10,9 +10,37 @@
     color: white;
     background-color: rgb(109, 109, 109);
 }
-#btn-sano-afecto:hover,#btn-evolucion:hover{
+
+#btn-brazo{
+    margin-top: 1em;
+    margin-bottom: 0.4em;
+    color: white;
+    background-color: #3da3bc;
+}
+
+#btn-pierna{
+    margin-top: 1em;
+    margin-bottom: 0.4em;
+    color: white;
+    background-color: rgb(109, 109, 109);
+}
+#btn-sano-afecto:hover,#btn-evolucion:hover,#btn-brazo:hover,#btn-pierna:hover{
     background-color: #3899b0;
 }
 #grafica-evolucion{
     display:none;
+}
+
+#grafica-sano-afecto{
+    display:none;
+}
+
+#grafica-pierna{
+    display: none;
+}
+#btn-brazo{
+    display: none;
+}
+#btn-pierna{
+    display: none;
 }

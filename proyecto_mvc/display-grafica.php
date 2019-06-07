@@ -166,9 +166,20 @@
                             
                             <div class="col-lg-12 text-center" id="apartado-botones-graficas">
                                 <div id="botones-graficas">
-                                    <button id="btn-sano-afecto" type="button" class="button btn">Sano-afecto</button>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <button id="btn-evolucion" type="button" class="button btn ">Evolución puntos</button>
+                                    <div class="row">
+                                        <div class="col-lg-12 text-center">
+                                            <button id="btn-sano-afecto" type="button" class="button btn">Sano-afecto</button>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <button id="btn-evolucion" type="button" class="button btn ">Evolución puntos</button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 text-center">
+                                            <button id="btn-brazo" type="button" class="button btn">Brazo</button>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <button id="btn-pierna" type="button" class="button btn ">Pierna</button>
+                                        </div>
+                                    </div>
                                 </div> 
                             </div>
                             <div id="grafica-sano-afecto">
@@ -215,7 +226,7 @@
                             <div id="grafica-pierna">
                                 <div class="row">
                                     <div class="sombra-cuadro col-md-6 mx-auto mt-4">
-                                        <div width=100%>
+                                        <div id="grafica_piernas" width=100%>
                                             <canvas id ="lineChartPierna" height="300" width="400"></canvas>
                                         </div>
                                     </div>
