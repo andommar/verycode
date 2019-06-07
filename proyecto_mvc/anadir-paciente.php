@@ -243,7 +243,7 @@
             <!-- =============================== HISTORIAL CLINICO | vista, sql y validado ===========================================  -->
 
                             <div id="apartado-historial">
-                                <h3>Historial clínico</h3><hr>
+                                <h3>Historial clínico&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
                                 <!--  TABLA historial_clinico -->
                                 <form id="form-2" class="margen-form">
                                     <div class="titulos color2">
@@ -1102,7 +1102,7 @@
                                 <h3>Medición inicial&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
                                 <!--  TABLA medición inicial  -->
                                 <form id="form-9" class="margen-form">
-                                    <div class="titulos color2">
+                                    <div class="titulos color1">
                                         <label>MIEMBRO/S A MEDIR</label>
                                     </div> 
                                     <div class="form-row espaciado-empty">
@@ -1126,7 +1126,7 @@
                                             &nbsp;
                                             <input type="date" class="form-control" name="fecha_brazo" id="fecha_brazo" required=""><br>
                                         </div>
-                                        <div class="titulos color2 mt-3">
+                                        <div class="titulos color1 mt-3">
                                                 <label id="titulo-brazo-i">LADO IZQUIERDO <span class="rojo">*</span></label>
                                                 <label id="titulo-brazo-d">LADO DERECHO <span class="rojo">*</span></label>
                                         </div>
@@ -1205,7 +1205,7 @@
                                             &nbsp;
                                             <input type="date" class="form-control" name="fecha_pierna" id="fecha_pierna" required=""><br>
                                         </div>
-                                        <div class="titulos color2 mt-3">
+                                        <div class="titulos color1 mt-3">
                                                 <label id="titulo-pierna-i">LADO IZQUIERDO <span class="rojo">*</span></label>
                                                 <label id="titulo-pierna-d">LADO DERECHO <span class="rojo">*</span></label>
                                         </div>

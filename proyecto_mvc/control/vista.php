@@ -144,6 +144,51 @@ if(isset($_POST["opcion"]))
             else
                 echo "false";
         break;
+         // 2)Historial Clínico
+         case 'editar_historial_clinico':
+            
+         $id_user=$_POST["id_user"];
+         $doc_identificacion =$_POST["doc_identificacion"];
+         $nacionalidad=$_POST["nacionalidad"];
+         $raza =$_POST["raza"];
+         $fecha_nacimiento =$_POST["fecha_nacimiento"];
+         $sexo =$_POST["sexo"];
+         $altura =$_POST["altura"];
+         $peso =$_POST["peso"];
+         $tipo_congenito =$_POST["tipo_congenito"];
+         $subtipo_congenito =$_POST["subtipo_congenito"];
+         $fecha_debut =$_POST["fecha_debut"];
+         $familiar_linfedema =$_POST["familiar_linfedema"];
+         $motivo_secundario =$_POST["motivo_secundario"];
+         $ant_vasculares =$_POST["ant_vasculares"];
+         $ant_infeccion_venosa =$_POST["ant_infeccion_venosa"];
+         $ant_sobrepeso =$_POST["ant_sobrepeso"];
+         $ant_lipedema =$_POST["ant_lipedema"];
+         $ant_permeabilidad_cap =$_POST["ant_permeabilidad_cap"];
+         $ant_ansiedad =$_POST["ant_ansiedad"];
+         $ant_diabetes =$_POST["ant_diabetes"];
+         $ant_triquiasis =$_POST["ant_triquiasis"];
+         $ant_sindromes =$_POST["ant_sindromes"];
+         $profesion =$_POST["profesion"];
+         $grado_resp_profesion =$_POST["grado_resp_profesion"];
+         $grado_stress_profesion =$_POST["grado_stress_profesion"];      
+
+         $error=$c->editar_historial_clinico($id_user,$doc_identificacion,
+         $nacionalidad, $raza, $fecha_nacimiento,
+         $sexo, $altura, $peso, $tipo_congenito, $subtipo_congenito,
+         $fecha_debut, $familiar_linfedema,
+         $motivo_secundario, $ant_vasculares, $ant_infeccion_venosa, $ant_sobrepeso, $ant_lipedema, $ant_permeabilidad_cap, $ant_ansiedad,
+         $ant_diabetes, $ant_triquiasis, $ant_sindromes, $profesion, $grado_resp_profesion, $grado_stress_profesion); 
+
+         if($error==0)//Todo bien
+         {
+             $resultado = "true";
+         }
+         else{//error sql por variables, conflicto bd...
+             $resultado = "false";
+         }
+         echo ($resultado);
+     break;
 
         case "registro_historial_clinico": 
             
@@ -214,6 +259,95 @@ if(isset($_POST["opcion"]))
                 echo "false";
 
         break;
+        case "editar_cirugia":
+
+            $id_user=$_POST["id_user"];
+            $nombre = $_POST["nombre_cirugia"];
+            $fecha = $_POST["fecha"];
+            $comentarios = $_POST["comentarios"];    
+            $ref_cirugia = $_POST["ref_cirugia"];       
+            
+            $error=$c->editar_cirugia($id_user,$nombre,$fecha,$comentarios,$ref_cirugia);
+            if($error==0)
+            {
+                echo "true";
+            }
+            else if($error==-2){
+                echo "cirugia";
+            }
+            else
+                echo "false";
+
+        break;
+        
+        case "editar_medicamento":
+
+            $id_user=$_POST["id_user"];
+            $medicamento = $_POST["medicamento"];
+            $patologias = $_POST["patologias"];
+            $id_medicamento = $_POST["id_medicamento"];        
+            
+            $error=$c->editar_medicamento($id_user,$medicamento,$patologias,$id_medicamento);
+            if($error==0)
+            {
+                echo "true";
+            }
+            else if($error==-2){
+                echo "medicamento";
+            }
+            else
+                echo "false";
+
+        break;
+
+        case "editar_infeccion":
+
+            $id_user=$_POST["id_user"];
+            $tipo = $_POST["tipo"];
+            $medicamento = $_POST["medicamento"];
+            $fecha = $_POST["fecha"];
+            $id_infeccion = $_POST["id_infeccion"];        
+            
+            $error=$c->editar_infeccion($id_user,$tipo,$medicamento,$fecha,$id_infeccion);
+            if($error==0)
+            {
+                echo "true";
+            }
+            else if($error==-2){
+                echo "infeccion";
+            }
+            else
+                echo "false";
+
+        break;
+
+        case "editar_val_linf":
+
+            $id_user=$_POST["id_user"];
+            $fecha = $_POST["fecha"];
+            $localizacion = $_POST["localizacion"];
+            $consistencia_edema = $_POST["consistencia_edema"];
+            $color = $_POST["color"];
+            $valoracion_piel = $_POST["valoracion_piel"];
+            $stemmer = $_POST["stemmer"];
+            $fovea = $_POST["fovea"];
+            $pesadez = $_POST["pesadez"];
+            $rubor = $_POST["rubor"];
+            $ref_valoracion = $_POST["ref_valoracion"];        
+            
+            $error=$c->editar_val_linf($id_user,$fecha,$localizacion,$consistencia_edema,$color,
+            $valoracion_piel,$stemmer,$fovea,$pesadez,$rubor,$ref_valoracion);
+            if($error==0)
+            {
+                echo "true";
+            }
+            else if($error==-2){
+                echo "valoracion";
+            }
+            else
+                echo "false";
+
+        break;
 
         case "registro_medicamento":
 
@@ -254,7 +388,44 @@ if(isset($_POST["opcion"]))
                 echo "false";
 
         break;
+        // 6) HABITOS
+        case "editar_habitos": 
 
+        $id_user=$_POST["id_user"];
+        $fumador = $_POST["fumador"];
+        $cigarros = $_POST["cigarros"];
+        $frec_cigarros = $_POST["frec_cigarros"];
+        $fumador_social = $_POST["fumador_social"];
+        $toma_alcohol = $_POST["toma_alcohol"];
+        $frec_alcohol = $_POST["frec_alcohol"];
+        $alcohol = $_POST["alcohol"];
+        $tipo_alcohol = $_POST["tipo_alcohol"];
+        $hace_deporte = $_POST["hace_deporte"];
+        $frec_deporte = $_POST["frec_deporte"];
+        $tipo_deporte = $_POST["tipo_deporte"];
+        $t_sesion = $_POST["t_sesion"];
+        $t_sesion_medidas = $_POST["t_sesion_medidas"];
+        $alimentacion = $_POST["alimentacion"];   
+        $suenyo_reparador = $_POST["suenyo_reparador"];
+        $h_suenyo = $_POST["h_suenyo"];
+        $astenico = $_POST["astenico"];  
+        $erg_sentado = $_POST["erg_sentado"];
+        $erg_bidepes_pasiva = $_POST["erg_bidepes_pasiva"];
+        $erg_bidepes_activa = $_POST["erg_bidepes_activa"];
+        $erg_otro = $_POST["erg_otro"];
+
+        $error=$c->editar_habitos($id_user,$fumador,$cigarros,$frec_cigarros,$fumador_social,$toma_alcohol,$alcohol,$frec_alcohol,$tipo_alcohol,
+                    $hace_deporte,$frec_deporte,$tipo_deporte,$t_sesion,$t_sesion_medidas,$alimentacion,$suenyo_reparador,$h_suenyo,$astenico,$erg_sentado,
+                    $erg_bidepes_pasiva,$erg_bidepes_activa,$erg_otro);
+
+        if($error==0)
+        {
+            echo "true";
+        }
+        else
+            echo "false";
+
+    break;
         case "registro_habitos": 
 
             $id_user=$_POST["id_user"];
@@ -294,6 +465,35 @@ if(isset($_POST["opcion"]))
             else
                 echo "false";
 
+        break;
+
+        // 7) Editar HIST TRAT LINF
+        
+        case "editar_hist_trat_linf":
+
+            $id_user=$_POST["id_user"];
+            $fecha_ult_tratamiento = $_POST["fecha_ult_tratamiento"];
+            $satisfecho_result = $_POST["satisfecho_result"];
+            $fallo_terapia = $_POST["fallo_terapia"];
+            $tipo_drenaje_linfa = $_POST["tipo_drenaje_linfa"];
+            $vendaje = $_POST["vendaje"];
+            $nota = $_POST["nota"];
+            $contencion_dia = $_POST["contencion_dia"];
+            $contencion_tipo = $_POST["contencion_tipo"];
+            $contencion_sensacion = $_POST["contencion_sensacion"];
+            $contencion_dolor = $_POST["contencion_dolor"];
+            $contencion_escala = $_POST["contencion_escala"];
+            $contencion_pesadez = $_POST["contencion_pesadez"];
+
+            $error=$c->editar_hist_trat_linf($id_user,$fecha_ult_tratamiento,$satisfecho_result,$fallo_terapia,$tipo_drenaje_linfa,
+            $vendaje,$nota,$contencion_dia,$contencion_tipo,$contencion_sensacion,$contencion_dolor,$contencion_escala,$contencion_pesadez);
+        
+            if($error==0)
+            {
+                echo "true";
+            }
+            else
+                echo "false";
         break;
 
         case "registro_tratamiento_linfedema":
@@ -400,6 +600,40 @@ if(isset($_POST["opcion"]))
                 echo "false";
 
         break;
+        //editar_medicion_inicial
+        case "editar_medicion_inicial":
+            
+            $id_user=$_POST["id_user"];
+            $fecha= $_POST["fecha"];
+            $extremidad = $_POST["extremidad"];//brazo, pierna
+            $lado_sano = $_POST["lado_sano"]; //pierna_d, pierna_i, brazo_i, brazo_d
+
+            $p1_i = $_POST["p1_i"];
+            $p2_i = $_POST["p2_i"];
+            $p3_i = $_POST["p3_i"];
+            $p4_i = $_POST["p4_i"];
+            $p5_i = $_POST["p5_i"];
+            $p6_i = $_POST["p6_i"];
+
+            $p1_d = $_POST["p1_d"];
+            $p2_d = $_POST["p2_d"];
+            $p3_d = $_POST["p3_d"];
+            $p4_d = $_POST["p4_d"];
+            $p5_d = $_POST["p5_d"];
+            $p6_d = $_POST["p6_d"];
+                  
+            $error=$c->editar_medicion_inicial($id_user,$fecha,$extremidad,$lado_sano,$p1_i,$p2_i,$p3_i,$p4_i,$p5_i,$p6_i,$p1_d,$p2_d,$p3_d,$p4_d,$p5_d,$p6_d);
+            if($error==0)
+            {
+                echo "true";
+            }
+            else if($error==-2){
+                echo "medicion";
+            }
+            else 
+                echo "false";
+
+        break;
 
         case "datos_especialista":
 
@@ -484,6 +718,54 @@ if(isset($_GET["opcion"]))
             }
         
         break;
+        case "listado_cirugias":
+
+            $id_user = $_GET["id_user"];
+            $error=$c->listado_cirugias($id_user);
+            if($error==-1){
+                echo "vacio";
+            }
+            else if($error!=false && $error!=-1){
+                echo json_encode($error);
+            }
+        
+        break;
+        case "listado_medicamentos":
+
+            $id_user = $_GET["id_user"];
+            $error=$c->listado_medicamentos($id_user);
+            if($error==-1){
+                echo "vacio";
+            }
+            else if($error!=false && $error!=-1){
+                echo json_encode($error);
+            }
+    
+        break;
+        case "listado_infecciones":
+
+            $id_user = $_GET["id_user"];
+            $error=$c->listado_infecciones($id_user);
+            if($error==-1){
+                echo "vacio";
+            }
+            else if($error!=false && $error!=-1){
+                echo json_encode($error);
+            }
+    
+        break;
+        case "listado_val_linf":
+
+        $id_user = $_GET["id_user"];
+        $error=$c->listado_val_linf($id_user);
+        if($error==-1){
+            echo "vacio";
+        }
+        else if($error!=false && $error!=-1){
+            echo json_encode($error);
+        }
+
+    break;
         case "listado_usuarios_no_asignados":
             $id_especialista = $_GET["id_especialista"];
             $error=$c->listado_usuarios_no_asignados($id_especialista);
@@ -544,7 +826,7 @@ if(isset($_GET["opcion"]))
 
             $id_user=$_GET["id_usuario"];
             $error=$c->get_datos_personales($id_user);
-            if($error==-1){
+            if($error==0){
                 echo "false";
             }
             else{
@@ -552,13 +834,113 @@ if(isset($_GET["opcion"]))
             }
 
         break; 
-//**
+        
+        case "get_datos_cirugia":
+
+        $ref_cirugia=$_GET["ref_cirugia"];
+        $error=$c->get_datos_cirugia($ref_cirugia);
+        if($error==0){
+            echo "false";
+        }
+        else{
+            echo json_encode($error);
+        }
+
+        break; 
+        case "get_datos_medicamento":
+
+            $id_medicamento=$_GET["id_medicamento"];
+            $error=$c->get_datos_medicamento($id_medicamento);
+            if($error==0){
+                echo "false";
+            }
+            else{
+                echo json_encode($error);
+            }
+
+        break; 
+        case "get_datos_infeccion":
+
+            $id_infeccion=$_GET["id_infeccion"];
+            $error=$c->get_datos_infeccion($id_infeccion);
+            if($error==0){
+                echo "false";
+            }
+            else{
+                echo json_encode($error);
+            }
+
+        break; 
+        
+        case "get_datos_val_linf":
+
+            $ref_valoracion=$_GET["ref_valoracion"];
+            $error=$c->get_datos_val_linf($ref_valoracion);
+            if($error==0){
+                echo "false";
+            }
+            else{
+                echo json_encode($error);
+            }
+
+        break; 
         case "get_historial_clinico":
 
             $id_user=$_GET["id_usuario"];
             $error=$c->get_historial_clinico($id_user);
             if($error==-1){
                 echo "false";
+            }
+            else if($error==-2){
+                echo "vacio";
+            }
+            else{
+                echo json_encode($error);
+            }
+
+        break; 
+    //** 
+        case "get_habitos":
+
+            $id_user=$_GET["id_usuario"];
+            $error=$c->get_habitos($id_user);
+            if($error==-1){
+                echo "false";
+            }
+            else if($error==-2){
+                echo "vacio";
+            }
+            else{
+                echo json_encode($error);
+            }
+
+        break; 
+        
+        case "get_medicion_inicial":
+
+            $id_user=$_GET["id_usuario"];
+            $error=$c->get_medicion_inicial($id_user);
+            if($error==-1){
+                echo "false";
+            }
+            else if($error==-2){
+                echo "vacio";
+            }
+            else{
+                echo json_encode($error);
+            }
+
+        break; 
+        //** 
+        case "get_hist_trat_linf":
+
+            $id_user=$_GET["id_usuario"];
+            $error=$c->get_hist_trat_linf($id_user);
+            if($error==-1){
+                echo "false";
+            }
+            else if($error==-2){
+                echo "vacio";
             }
             else{
                 echo json_encode($error);

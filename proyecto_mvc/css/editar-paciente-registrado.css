@@ -1,4 +1,36 @@
 
+#aux-hist-clin, #aux-habitos, #aux-hist-trat-linf, #aux-medicion, #aux-val-linf,#aux-cirugias, #aux-medicamentos, #aux-infecciones{
+    font-size: 11px
+}
+.titulo-secundario{
+    margin-top: 1em;
+    text-align: center;
+}
+#cirugias-table, #medicamentos-table, #infecciones-table, #val-linf-table{
+    width: 70%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3em;
+}
+#cirugias-table thead tr th, #medicamentos-table thead tr th, #infecciones-table thead tr th, #val-linf-table thead tr th{
+    color: #3e5569;
+    border: 0px;
+}
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+#cirugias-table tbody tr td, #medicamentos-table tbody tr td, #infecciones-table tbody tr td, #val-linf-table tbody tr td{
+    vertical-align: middle;
+    color: #3e5569;
+    border: 1px solid #dee2e6;
+}
+.table td, .table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
 .rojo{
     color: #dc3545;
 }

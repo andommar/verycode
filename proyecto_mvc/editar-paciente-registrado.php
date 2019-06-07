@@ -213,7 +213,7 @@
                                         &nbsp;&nbsp;
                                     </div>  <!--Fin fila 2-->
                                     <div class="columna-btn">
-                                        <button class="btn estilo-boton-submit" type="submit" id="btn-submit-1" value='<?php echo($_SESSION["id_especialista"])?>'>Modificar</button>
+                                        <button class="btn estilo-boton-submit" type="submit" id="btn-submit-1" value='<?php echo($_SESSION["id_especialista"])?>'>Guardar</button>
                                        
                                     </div>
                                     <div class="form-group margen-oblig">
@@ -225,7 +225,7 @@
             <!-- =============================== HISTORIAL CLINICO | vista, sql y validado ===========================================  -->
 
                             <div id="apartado-historial">
-                                <h3>Historial clínico</h3><hr>
+                                <h3>Historial clínico &nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO: <?php echo($_SESSION["id_especialista"])?></span> <span id="aux-hist-clin"></span></h3><hr>
                                 <!--  TABLA historial_clinico -->
                                 <form id="form-2" class="margen-form">
                                     <div class="titulos color2">
@@ -315,7 +315,7 @@
                                     </div><!-- Fin fila 4 -->
                                     <div class="form-row justify-content-center">
                                         <div class="form-group ancho" id="input_fecha_debut">
-                                            <label for="fecha_debut">Fecha de debut <span class="rojo">*</span></label>
+                                            <label for="fecha_debut">Fecha de debut (dd/mm/aaaa) <span class="rojo">*</span></label>
                                             &nbsp;
                                             <input type="date" class="form-control" name="fecha_debut" id="fecha_debut" required><br>
                                         </div>
@@ -432,7 +432,7 @@
                                         </div>
                                     </div> <!--Fin fila 9-->
                                     <div class="columna-btn">
-                                        <button class="btn estilo-boton-submit" type="submit" id="btn-submit-2" value='<?php echo($_SESSION["id_especialista"])?>'>Modificar</button>
+                                        <button class="btn estilo-boton-submit" type="submit" id="btn-submit-2" value='<?php echo($_SESSION["id_especialista"])?>'>Guardar</button>
                                        
                                     </div>
                                     <div class="form-group margen-oblig">
@@ -445,7 +445,22 @@
  <!-- =============================== CIRUGIAS  ===========================================  -->
 
                             <div id="apartado-cirugias">
-                                <h3>Cirugías&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
+                                <h3 class="titulo-secundario" >Escoge la <u>cirugía a editar</u> o añade <u>una nueva</u><span id="aux-cirugias"></span></h3>
+                                <table class="table" id="cirugias-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Referencia</th>
+                                            <th>Nombre</th>
+                                            <th>Fecha (aaaa/mm/dd)</th>
+                                            <th>Opciones</th>
+                                        </tr>
+                                    </thead>
+                                        <!-- Se rellena con la consulta AJAX de JS a la BD -->
+                                    <tbody>     
+                                    
+                                    </tbody>
+                                </table>
+                                <h3 id="titulo-form-3">Cirugías&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
                                 <!--  TABLA cirugias  -->
                                 <form id="form-3" class="margen-form">
                                     <div class="form-row espaciado-empty">
@@ -467,9 +482,7 @@
                                         </div>
                                     </div><!-- Fin fila 2 -->
                                     <div class="columna-btn">
-                                        <button class="btn estilo-boton-submit" type="submit" id="btn-anadir-1" value='<?php echo($_SESSION["id_especialista"])?>'>Añadir cirugía</button>
-                                        <button class="btn estilo-boton-submit" type="button" id="btn-submit-3" value='<?php echo($_SESSION["id_especialista"])?>'>Modificar</button>
-                                        
+                                        <button class="btn estilo-boton-submit" type="submit" id="btn-anadir-1" value='<?php echo($_SESSION["id_especialista"])?>'>Guardar</button>
                                     </div>
                                     <div class="form-group margen-oblig">
                                         <h5 class="rojo letra">* Campos obligatorios</h5>
@@ -480,7 +493,22 @@
                             <!-- =============================== MEDICAMENTOS ===========================================  -->
 
                             <div id="apartado-medicamentos">
-                                <h3>Medicamentos&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
+                                <h3 class="titulo-secundario" >Escoge el <u>medicamento a editar</u> o añade <u>uno nuevo</u><span id="aux-medicamentos"></span></h3>
+                                <table class="table" id="medicamentos-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Id medicamento</th>
+                                            <th>Nombre</th>
+                                            <th>Patologías</th>
+                                            <th>Opciones</th>
+                                        </tr>
+                                    </thead>
+                                        <!-- Se rellena con la consulta AJAX de JS a la BD -->
+                                    <tbody>     
+                                    
+                                    </tbody>
+                                </table>
+                                <h3 id="titulo-form-4">Medicamentos&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
                                 <form id="form-4" class="margen-form">
                                     <div class="form-row espaciado-empty">
                                         <div class="form-group ancho" id="input_medicamento">
@@ -495,9 +523,7 @@
                                         </div>
                                     </div><!-- Fin fila 1 -->
                                     <div class="columna-btn">
-                                        <button class="btn estilo-boton-submit" type="submit" id="btn-anadir-2" value='<?php echo($_SESSION["id_especialista"])?>'>Añadir medicamento</button>
-                                        <button class="btn estilo-boton-submit" type="button" id="btn-submit-4" value='<?php echo($_SESSION["id_especialista"])?>'>Modificar</button>
-                                        
+                                        <button class="btn estilo-boton-submit" type="submit" id="btn-anadir-2" value='<?php echo($_SESSION["id_especialista"])?>'>Guardar</button>
                                     </div>
                                     <div class="form-group margen-oblig">
                                         <h5 class="rojo letra">* Campos obligatorios</h5>
@@ -508,7 +534,23 @@
                              <!-- =============================== INFECCIONES ===========================================  -->
 
                              <div id="apartado-infecciones">
-                                <h3>Infecciones&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
+                                <h3 class="titulo-secundario" >Escoge la <u>infección a editar</u> o añade <u>una nueva</u><span id="aux-infecciones"></span></h3>
+                                <table class="table" id="infecciones-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Id infección</th>
+                                            <th>Tipo</th>
+                                            <th>Medicamento</th>
+                                            <th>Fecha (aaaa/mm/dd)</th>
+                                            <th>Opciones</th>
+                                        </tr>
+                                    </thead>
+                                        <!-- Se rellena con la consulta AJAX de JS a la BD -->
+                                    <tbody>     
+                                    
+                                    </tbody>
+                                </table>
+                                <h3 id="titulo-form-5">Infecciones&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
                                 <!--  TABLA infecciones  -->
                                 <form id="form-5" class="margen-form">
                                     <div class="form-row espaciado-empty">
@@ -530,9 +572,7 @@
                                         </div>
                                     </div><!-- Fin fila 2 -->
                                     <div class="columna-btn">
-                                        <button class="btn estilo-boton-submit" type="submit" id="btn-anadir-3" value='<?php echo($_SESSION["id_especialista"])?>'>Añadir infección</button>
-                                        <button class="btn estilo-boton-submit" type="button" id="btn-submit-5" value='<?php echo($_SESSION["id_especialista"])?>'>Modificar</button>
-                                        
+                                        <button class="btn estilo-boton-submit" type="submit" id="btn-anadir-3" value='<?php echo($_SESSION["id_especialista"])?>'>Guardar</button>
                                     </div>
                                     <div class="form-group margen-oblig">
                                         <h5 class="rojo letra">* Campos obligatorios</h5>
@@ -543,7 +583,7 @@
                              <!-- =============================== HÁBITOS ===========================================  -->
 
                              <div id="apartado-habitos">
-                                <h3>Hábitos&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
+                                <h3 id="titulo-form-6">Hábitos&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span> <span id="aux-habitos"></span></h3><hr>
                                 <!--  TABLA hábitos  -->
                                 <form id="form-6" class="margen-form">
                                     <div class="titulos color6">
@@ -779,7 +819,7 @@
                         <!-- =============================== HISTORIAL TRATAMIENTO LINFEDEMA  ===========================================  -->
 
                             <div id="apartado-hist-trat-linf">
-                                <h3>Historial de Tratamiento del Linfedema&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
+                                <h3>Historial de Tratamiento del Linfedema&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span> <span id="aux-hist-trat-linf"></span></h3><hr>
                                 <!--  TABLA hábitos  -->
                                 <form id="form-7" class="margen-form">
                                     <div class="titulos color7">
@@ -787,7 +827,7 @@
                                     </div>
                                     <div class="form-row espaciado-empty">
                                         <div class="form-group ancho" id="input_fecha_ult_tratamiento">
-                                            <label for="fecha_ult_tratamiento">Fecha <span class="rojo">*</span></label>
+                                            <label for="fecha_ult_tratamiento">Fecha (dd/mm/aaaa) <span class="rojo">*</span></label>
                                             &nbsp;
                                             <input type="date" class="form-control" name="fecha_ult_tratamiento" id="fecha_ult_tratamiento" required><br>
                                         </div>
@@ -955,7 +995,22 @@
                              <!-- =============================== VALORACION LINFEDEMA  ===========================================  -->
 
                              <div id="apartado-valoracion-linf">
-                                <h3>Valoración del linfedema&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
+                                <h3 class="titulo-secundario" >Escoge la <u>valoración a editar</u> o añade <u>una nueva</u><span id="aux-val-linf"></span></h3>
+                                <table class="table" id="val-linf-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Referencia</th>
+                                            <th>Fecha (aaaa/mm/dd)</th>
+                                            <th>Localización</th>
+                                            <th>Opciones</th>
+                                        </tr>
+                                    </thead>
+                                        <!-- Se rellena con la consulta AJAX de JS a la BD -->
+                                    <tbody>     
+                                    
+                                    </tbody>
+                                </table>
+                                <h3 id="titulo-form-8">Valoración del linfedema&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
                                 <!--  TABLA valoracion linfedema  -->
                                 <form id="form-8" class="margen-form">
                                     <!-- <div class="titulos color8">
@@ -1069,8 +1124,7 @@
                                         </div>
                                     </div><!-- Fin fila 3 -->
                                     <div class="columna-btn">
-                                        <button class="btn estilo-boton-submit" type="submit" id="btn-anadir-4" value='<?php echo($_SESSION["id_especialista"])?>'>Añadir valoración</button>
-                                        <button class="btn estilo-boton-submit" type="button" id="btn-submit-8" value='<?php echo($_SESSION["id_especialista"])?>'>Modificar</button>
+                                        <button class="btn estilo-boton-submit" type="submit" id="btn-anadir-4" value='<?php echo($_SESSION["id_especialista"])?>'>Guardar</button>
                                     </div>
                                     <div class="form-group margen-oblig">
                                         <h5 class="rojo letra">* Campos obligatorios</h5>
@@ -1081,10 +1135,10 @@
                              <!-- =============================== Medición inicial  ** ===========================================  -->
 
                              <div id="apartado-medicion-inicial">
-                                <h3>Medición inicial&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span></h3><hr>
+                                <h3 id="titulo-form-9">Medición inicial&nbsp;·&nbsp;<span style="color: #6d6d6d; font-size: 15px;">ID de FISIO/ADMIN: <?php echo($_SESSION["id_especialista"])?></span> <span id="aux-medicion"></span></h3><hr>
                                 <!--  TABLA medición inicial  -->
                                 <form id="form-9" class="margen-form">
-                                    <div class="titulos color2">
+                                    <div class="titulos color1">
                                         <label>MIEMBRO/S A MEDIR</label>
                                     </div> 
                                     <div class="form-row espaciado-empty">
@@ -1104,11 +1158,11 @@
                                                 <img id="imagen-brazo" class="img-fluid" src="img/brazo/e.png" class="logo" alt="logo">
                                         </div><!-- Fin fila 2 -->
                                         <div class="titulos form-group ancho" id="input_fecha_brazo">
-                                            <label for="fecha_brazo">Fecha <span class="rojo">*</span></label>
+                                            <label for="fecha_brazo">Fecha (dd/mm/aaaa) <span class="rojo">*</span></label>
                                             &nbsp;
                                             <input type="date" class="form-control" name="fecha_brazo" id="fecha_brazo" required=""><br>
                                         </div>
-                                        <div class="titulos color2 mt-3">
+                                        <div class="titulos color1 mt-3">
                                                 <label id="titulo-brazo-i">LADO IZQUIERDO <span class="rojo">*</span></label>
                                                 <label id="titulo-brazo-d">LADO DERECHO <span class="rojo">*</span></label>
                                         </div>
@@ -1183,11 +1237,11 @@
                                             <img id="imagen-pierna" class="img-fluid" src="img/pierna/f.png" class="logo" alt="logo">
                                         </div><!-- Fin fila 4 -->
                                         <div class="titulos form-group ancho" id="input_fecha_pierna">
-                                            <label for="fecha_pierna">Fecha <span class="rojo">*</span></label>
+                                            <label for="fecha_pierna">Fecha (dd/mm/aaaa) <span class="rojo">*</span></label>
                                             &nbsp;
                                             <input type="date" class="form-control" name="fecha_pierna" id="fecha_pierna" required=""><br>
                                         </div>
-                                        <div class="titulos color2 mt-3">
+                                        <div class="titulos color1 mt-3">
                                                 <label id="titulo-pierna-i">LADO IZQUIERDO <span class="rojo">*</span></label>
                                                 <label id="titulo-pierna-d">LADO DERECHO <span class="rojo">*</span></label>
                                         </div>
@@ -1275,7 +1329,7 @@
                                     </div>
                                     <!-- ===============================================       fin pierna      =======================================-->
                                     <div class="columna-btn">
-                                        <button class="btn estilo-boton-submit" type="button" id="btn-submit-9"  value='<?php echo($_SESSION["id_especialista"])?>'>Modificar</button>
+                                        <button class="btn estilo-boton-submit" type="button" id="btn-submit-9"  value='<?php echo($_SESSION["id_especialista"])?>'>Guardar</button>
                                     </div>
                                     <div class="form-group margen-oblig">
                                         <h5 class="rojo letra">* Campos obligatorios</h5>
