@@ -118,12 +118,15 @@
                                 </div>
                            
                         </ul>
+                        <div class="text-right" style="margin-right: 4em;color: #555555;font-size: 12px;/* font-weight: 600; */">
+                            <span><i>Bienvenid@, <?php echo($_SESSION["nre_especialista"]);?></i></span>
+                        </div>
                     </nav>
                     <!-- Fila título página + Breadcrumb -->
                     <div class="row" id="grupo-titulo-pagina">
                         <!-- Título -->
                         <div class="col-md-6" id="titulo">
-                            <h3 class="block-title">Editar paciente por asignar</h3>
+                            <h3 class="block-title">Asignar paciente · Paciente <?php echo($_GET["id_user"]); ?></h3>
                         </div>
                         <!-- Breadcrumb -->
                         <div class="col-md-6">
@@ -136,11 +139,8 @@
                                 </li>
                                 
                                 <li class="breadcrumb-item color-blanco">
-                                        Pacientes
-                                </li>
-                                <li class="breadcrumb-item color-blanco">
                                     <a href="pacientes.php">
-                                        Todos los pacientes
+                                        Pacientes
                                     </a>
                                 </li>
                                 <li class="breadcrumb-item color-blanco">

@@ -72,6 +72,11 @@ class TControl{
         
         return ($resultado);
     }
+    public function obtener_nre_especialista($id_especialista, &$nre_especialista){
+        $usr = new TUsuario();
+        $resultado = $usr->obtener_nre_especialista($id_especialista, $nre_especialista);
+        return ($resultado);
+    }
 
     public function registro_admin($correo,$pass,$pass2,$nombre,$apellido,$apellido2,$tipo)
     {

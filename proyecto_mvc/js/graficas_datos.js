@@ -146,7 +146,7 @@ $(document).ready(function(){
         data:{opcion:opcion, id_usuario:id_usuario},
         success:function(data){
 
-            $("#titulo-paciente").html("Mediciones · Paciente "+id_usuario);
+            // $("#titulo-paciente").html("Mediciones · Paciente "+id_usuario);
             
             var datos = $.parseJSON(data); //hace falta parsear al devolver los datos del php (aunque hayamos hecho json encode en php)
             //datos[0]; --> todo menos fechas

@@ -125,12 +125,15 @@
                                 </div>
                            
                         </ul>
+                        <div class="text-right" style="margin-right: 4em;color: #555555;font-size: 12px;/* font-weight: 600; */">
+                            <span><i>Bienvenid@, <?php echo($_SESSION["nre_especialista"]);?></i></span>
+                        </div>
                     </nav>
                     <!-- Fila título página + Breadcrumb -->
                     <div class="row" id="grupo-titulo-pagina">
                         <!-- Título -->
                         <div class="col-md-6" id="titulo">
-                            <h3 id="titulo-paciente" class="block-title"></h3>
+                            <h3 id="titulo-paciente" class="block-title">Mediciones · Paciente <?php echo($_GET["id_user"]); ?></h3>
                         </div>
                         <!-- Breadcrumb -->
                         <div class="col-md-6">

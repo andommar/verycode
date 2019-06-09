@@ -47,6 +47,7 @@
   
     <!-- ===============  BODY ============= -->
     <body>  
+        
         <!-- Cuadrícula con el máximo ancho de la página -->
         <div class="container-fluid" id="body-container">
             <div class="row">
@@ -118,11 +119,14 @@
                     <!-- Barra de navegación superior =============================================================================== -->
                     <nav id="espaciado-logout">
                         <ul>
-                            <a  href="logout.php" role="button">
+                            <a href="logout.php" role="button">
                                 <span id="logout-admin" class="ti-user"></span>
                             </a>
                            
-                        </ul>
+                        <span style="margin-right: 4em;color: #555555;font-size: 12px;/* font-weight: 600; */"><i>Bienvenid@, <?php echo($_SESSION["nre_especialista"]);?></i></span></ul>
+                        <div class="text-right" style="margin-right: 4em;color: #555555;font-size: 12px;/* font-weight: 600; */">
+                            
+                        </div>
                     </nav>
 
                     <!-- <nav id="nav-top" class="navbar navbar-default">

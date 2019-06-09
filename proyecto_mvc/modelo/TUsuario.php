@@ -54,6 +54,24 @@ class TUsuario{
 			$id_especialista = $stmt;
 		}
 	}
+	public function obtener_nre_especialista($id_especialista, &$nre_especialista){
+		$res=false;
+		$abd = new TAccesbd ();
+  
+		if($abd->conectado())
+		{ 	
+			$res=true;
+			$sql="SELECT nombre FROM especialista WHERE id_especialista=$id_especialista ";
+			$stmt = $abd->consultar_dato($sql);
+		}
+		if( $stmt === false ) {
+			$res=false;
+		}
+		else{
+			$nre_especialista = $stmt;
+		}
+		return $res;
+	}
 	public function comprobar_usuario($correo, $contrasenya,&$tipo_usuario){
     
 		$res=false;

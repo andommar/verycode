@@ -132,6 +132,9 @@
                                 </div>
                            
                         </ul>
+                        <div class="text-right" style="margin-right: 4em;color: #555555;font-size: 12px;/* font-weight: 600; */">
+                            <span><i>Bienvenid@, <?php echo($_SESSION["nre_especialista"]);?></i></span>
+                        </div>
                     </nav>
                     <!-- Fila título página + Breadcrumb -->
                     <div class="row" id="grupo-titulo-pagina">
