@@ -448,12 +448,20 @@ $.ajax({
             var filas_especialistas='';
             var filas_pacientes='';
             datos[0].forEach(function(element) {
-                filas_especialistas+= '<tr><td>'+element.id_especialista+'</td><td>'+element.tipo+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn azul" value="editarEspecialista" onclick="editarEspecialista(\'' + element.id_especialista + '\')"><span class="ti-pencil-alt"></span></button><button type="button" class="btn mt-1 rojo" value="borrarEspecialista" onclick="borrarEspecialista(\'' + element.id_especialista + '\',\'' + element.tipo + '\')"><span class="ti-trash"></span></button></td></tr>';
+                var apellido2="";
+                if(!isEmptyOrSpaces(element.apellido2)){
+                    apellido2 = element.apellido2;
+                }
+                filas_especialistas+= '<tr><td>'+element.id_especialista+'</td><td>'+element.tipo+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn azul" value="editarEspecialista" onclick="editarEspecialista(\'' + element.id_especialista + '\')"><span class="ti-pencil-alt"></span></button><button type="button" class="btn mt-1 rojo" value="borrarEspecialista" onclick="borrarEspecialista(\'' + element.id_especialista + '\',\'' + element.tipo + '\')"><span class="ti-trash"></span></button></td></tr>';
 
             });
             $('#fisios-table tbody').html(filas_especialistas);
             datos[1].forEach(function(element) {
-                filas_pacientes+= '<tr><td>'+element.id_user+'</td><td>'+element.id_especialista+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn azul" value="editarPaciente" onclick="editarPaciente(\'' + element.id_user + '\')"><span class="ti-pencil-alt"></span></button></td></tr>';
+                var apellido2_paciente="";
+                if(!isEmptyOrSpaces(element.apellido2)){
+                    apellido2_paciente = element.apellido2;
+                }
+                filas_pacientes+= '<tr><td>'+element.id_user+'</td><td>'+element.id_especialista+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+apellido2_paciente+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn azul" value="editarPaciente" onclick="editarPaciente(\'' + element.id_user + '\')"><span class="ti-pencil-alt"></span></button></td></tr>';
 
             });
             $('#pacientes-table tbody').html(filas_pacientes);
