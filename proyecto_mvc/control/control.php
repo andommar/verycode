@@ -21,6 +21,19 @@ class TControl{
         return ($resultado);
     }
 
+    public function modificar_paciente($id_user, $nombre, $apellido1,$apellido2,$correo,$pass, $pass2){
+        
+        $usr = new TUsuario();
+        $resultado = $usr->modificar_paciente($id_user, $nombre, $apellido1,$apellido2,$correo,$pass, $pass2);
+        return ($resultado);
+    }
+
+    public function datos_paciente($id_user){
+        $usr = new TUsuario();
+        $resultado = $usr->datos_paciente($id_user);
+        return ($resultado);
+    }
+
     public function datos_especialista($id_especialista){
         $usr = new TUsuario();
         $resultado = $usr->datos_especialista($id_especialista);
