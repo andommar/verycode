@@ -575,7 +575,7 @@ function editarPaciente(id_user){
             })
             .done(function( msg ) {
                 var datos = $.parseJSON(msg);
-                
+                console.log(datos[0].nombre);
                 $( "#nombre_paciente" ).val(datos[0].nombre);
                 $( "#apellido1_paciente" ).val(datos[0].apellido1);
                 $( "#apellido2_paciente" ).val(datos[0].apellido2);
