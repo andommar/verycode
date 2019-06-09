@@ -172,8 +172,6 @@ $(document).ready(function(){
             {
                 if(cosas[i].extremidad=="brazo")
                 {
-                    separacion_fechas.fechas_brazo[j]=fechas[i];
-                    j++;
 
                     if(cosas[i].lado_sano=="si")
                     {
@@ -182,8 +180,7 @@ $(document).ready(function(){
                         mediciones.lado_sano[2]=cosas[i].p3;
                         mediciones.lado_sano[3]=cosas[i].p4;
                         mediciones.lado_sano[4]=cosas[i].p5;
-                        // console.log("holap");
-                        // console.log(datos[i].p1);
+
                     }
                     else if(cosas[i].lado_sano=="no")
                     {
@@ -205,6 +202,11 @@ $(document).ready(function(){
                         evolucion.p3.push(cosas[i].p3);
                         evolucion.p4.push(cosas[i].p4);
                         evolucion.p5.push(cosas[i].p5);
+
+                        //Guardamos las fechas de cada medición del brazo afecto. El indice del array de fechas coincide con el indice de los datos del array de objetos cosas
+
+                        separacion_fechas.fechas_brazo[j]=fechas[i];
+                        j++;
 
                     }
                 }
@@ -287,15 +289,6 @@ $(document).ready(function(){
                         type: 'line'
                     },
 
-                    {
-                        label: "p1 sano",
-                        data: evolucion.p5,
-                        borderColor: 'yellow',
-                        fill:false,
-                        lineTension:0,
-                        pointRadius: 5,
-                        type: 'line'
-                    },
 
                 ]
             };
@@ -439,20 +432,20 @@ $(document).ready(function(){
                 }
             }
 
-            if(bandera_brazo==true)
-            {
-                $( "#grafica-sano-afecto" ).css("display","block");
-                if(bandera_pierna==true)
-                {
-                    $( "#btn-brazo" ).css("display","inline");
-                    $( "#btn-pierna" ).css("display","inline");
-                }
-            }
-            else if (bandera_pierna==true)
-            {
-                $( "#grafica-sano-afecto" ).css("display","none");
-                $( "#grafica-pierna" ).css("display","block");
-            }
+            // if(bandera_brazo==true)
+            // {
+            //     $( "#grafica-sano-afecto" ).css("display","block");
+            //     if(bandera_pierna==true)
+            //     {
+            //         $( "#btn-brazo" ).css("display","inline");
+            //         $( "#btn-pierna" ).css("display","inline");
+            //     }
+            // }
+            // else if (bandera_pierna==true)
+            // {
+            //     $( "#grafica-sano-afecto" ).css("display","none");
+            //     $( "#grafica-pierna" ).css("display","block");
+            // }
 
         },
         error : function(data) {
@@ -560,14 +553,8 @@ $(document).ready(function(){
     $( "#btn-sano-afecto" ).click(function() {
         $( "#grafica-evolucion" ).css("display","none");
         $( "#btn-evolucion" ).css("background-color","rgb(109, 109, 109)");
-            if(bt_brazo==true)
-            {
-                $( "#grafica-sano-afecto" ).css("display","block");
-            }
-            else if( bt_pierna==false)
-            {
-                $( "#grafica-pierna" ).css("display","block");
-            }
+        $( "#grafica-sano-afecto" ).css("display","block");
+//        $( "#grafica-pierna" ).css("display","block");
         $( "#btn-sano-afecto" ).css("background-color","#3da3bc"); 
 
 
@@ -577,14 +564,8 @@ $(document).ready(function(){
     $( "#btn-evolucion" ).click(function() {
         $( "#grafica-sano-afecto" ).css("display","none");
         $( "#btn-sano-afecto" ).css("background-color","rgb(109, 109, 109)");
-        if(bandera_brazo==true)
-        {
-            $( "#grafica-evolucion" ).css("display","block");
-        }
-        else if(bandera_pierna==true)
-        {
-            //$( "#grafica-pierna" ).css("display","block");
-        }
+        $( "#grafica-evolucion" ).css("display","block");
+        //$( "#grafica-pierna" ).css("display","block");
         $( "#btn-evolucion" ).css("background-color","#3da3bc"); 
         
     });
