@@ -1,3 +1,4 @@
+
 .rojo{
     color: rgb(172, 23, 23);
 }
@@ -75,4 +76,7 @@
 #pacientes-table tbody tr:hover, #pacientes-no-asignados-table tbody tr:hover {
     background: #31313113;
     transition: all 0.3s;
+}
+#apartado-pacientes-no-asignados{
+    margin-top: -10em;
 }

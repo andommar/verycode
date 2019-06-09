@@ -12,9 +12,9 @@ var listado_pacientes="";
 })        
 .done(function(msg) {
     
-    if ( console && console.log ) {
-        console.log( "La solicitud de acceso se ha completado correctamente." );
-    }
+    // if ( console && console.log ) {
+    //     console.log( "La solicitud de acceso se ha completado correctamente." );
+    // }
    
     var datos = $.parseJSON(msg); //
     // var listado_pacientes = datos;
@@ -29,21 +29,6 @@ var listado_pacientes="";
     });
     $('#pacientes-table tbody').html(filas_pacientes);
 
-    //RELLENAMOS SELECT
-    $("#Select-id-usuario").html("");
-    $('#Select-id-usuario').append($('<option>', { 
-            value: "Todos",
-            text :  "Todos"
-    }));
-    listado_pacientes.forEach(function(element) {
-        //console.log(element);
-        $('#Select-id-usuario').append($('<option>', { 
-            value: element.id_user,
-            text : element.id_user
-        }));
-    });
-
-
 })
 .fail(function( jqXHR, textStatus, errorThrown ) {
     if ( console && console.log ) {
@@ -52,22 +37,9 @@ var listado_pacientes="";
 });
 
 $( document ).ready(function() {
-    $("#Select-id-usuario").change(function(){
-        var id_usuario = this.value; //valor option del select
-        if(id_usuario=="Todos"){
-            $("tbody tr").show();
-        }
-        else{
-            $("tbody tr").show();
-            $("tbody tr:not(#"+id_usuario+")").hide();
-        }
-       
-
-    });
-
+    
     $("#btn-pacientes-por-asignar").click(function(){
         $("#apartado-pacientes-no-asignados").css("display","block");
-        $("#apartado-pacientes").css("display","none");
         $("#apartado-pacientes").css("display","none");
         $("#btn-pacientes-por-asignar").css("background-color","#3899b0");
         $("#btn-mis-pacientes").css("background-color","rgb(109, 109, 109)");
@@ -79,8 +51,6 @@ $( document ).ready(function() {
         $("#btn-mis-pacientes").css("background-color","#3899b0");
         $("#btn-pacientes-por-asignar").css("background-color","rgb(109, 109, 109)");
     });
-    //btn-pacientes-por-asignar
-    //btn-mis-pacientes
     
 });
 
@@ -98,9 +68,9 @@ $.ajax({
 })        
 .done(function(msg) {
 
-if ( console && console.log ) {
-console.log( "La solicitud de acceso se ha completado correctamente." );
-}
+// if ( console && console.log ) {
+// console.log( "La solicitud de acceso se ha completado correctamente." );
+// }
 
 var datos = $.parseJSON(msg); //
 // var listado_pacientes = datos;
@@ -115,19 +85,7 @@ filas_pacientes+= '<tr id='+element.id_user+'><td>'+element.id_user+'</td><td>'+
 });
 $('#pacientes-no-asignados-table tbody').html(filas_pacientes);
 
-//RELLENAMOS SELECT
-$("#Select-id-usuario-2").html("");
-$('#Select-id-usuario-2').append($('<option>', { 
-    value: "Todos",
-    text :  "Todos"
-}));
-listado_pacientes.forEach(function(element) {
-//console.log(element);
-$('#Select-id-usuario-2').append($('<option>', { 
-    value: element.id_user,
-    text : element.id_user
-}));
-});
+
 
 
 })
