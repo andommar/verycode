@@ -124,12 +124,15 @@
                                 </div>
                            
                         </ul>
+                        <div class="text-right" style="margin-right: 4em;color: #555555;font-size: 12px;/* font-weight: 600; */">
+                            <span><i>Bienvenid@, <?php echo($_SESSION["nre_especialista"]);?></i></span>
+                        </div>
                     </nav>
                     <!-- Fila título página + Breadcrumb -->
                     <div class="row" id="grupo-titulo-pagina">
                         <!-- Título -->
                         <div class="col-md-6" id="titulo">
-                            <h3 class="block-title">Todos los pacientes</h3>
+                            <h3 class="block-title">Todos los pacientes · Especialista <?php echo($_SESSION["id_especialista"])?> </h3>
                         </div>
                         <!-- Breadcrumb -->
                         <div class="col-md-6">
@@ -168,14 +171,7 @@
                         <div class="col-lg-12">
                             <!-- TABLA PACIENTES -->
                             <div id="apartado-pacientes" class="">
-                                <div class="form-row">
-                                    <div class="form-group" id="id-usuario">
-                                        <label for="Select-id-usuario">id usuario:</label>
-                                        &nbsp;
-                                        <select class="form-control" id="Select-id-usuario" name="Select-id-usuario">
-                                        </select>
-                                    </div>
-                                </div>
+                                
                                 <h3>Mis pacientes</h3>
                                 <hr>
                                 <table class="table" id="pacientes-table">
@@ -198,14 +194,6 @@
                             </div>
 
                             <div id="apartado-pacientes-no-asignados" class="">
-                                <div class="form-row">
-                                    <div class="form-group" id="id-usuario-2">
-                                        <label for="Select-id-usuario-2">id usuario:</label>
-                                        &nbsp;
-                                        <select class="form-control" id="Select-id-usuario-2" name="Select-id-usuario-2">
-                                        </select>
-                                    </div>
-                                </div>
                                 <h3>Pacientes por asignar</h3>
                                 <hr>
                                 <table class="table" id="pacientes-no-asignados-table">

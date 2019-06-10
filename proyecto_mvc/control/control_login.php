@@ -17,6 +17,12 @@
         if($tipo_usuario=='fisioterapeuta' ||  $tipo_usuario=='administrador'){
             $_SESSION["tipo_usuario"]= $tipo_usuario; 
             $_SESSION["id_especialista"]= $id_especialista;
+            $nre_especialista="";
+            $res2 = $Ctrl->obtener_nre_especialista($id_especialista, $nre_especialista);
+            if($res2){
+                $_SESSION["nre_especialista"]= $nre_especialista;
+            } 
+            
         }
     }
     $datos = array("usuario_correcto"=>$res,"tipo_usuario"=>$tipo_usuario);

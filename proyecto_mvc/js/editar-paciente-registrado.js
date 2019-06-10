@@ -7,7 +7,7 @@
 
     $(document).ready(function(){
         
-        $("#titulo-paciente").html("Editar paciente · Paciente "+id_usuario);
+        // $("#titulo-paciente").html("Editar paciente · Paciente "+id_usuario);
 
         $("#tipo_congenito").change(function(){
                     

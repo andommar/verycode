@@ -32,9 +32,38 @@ if(isset($_POST["opcion"]))
             {
                 echo "true";
             }
-            else
+            else if($error==-2){
+                echo "correo";
+            }
+            else{
                 echo "false";
+            }
 
+
+        break;
+
+        case "modificar_paciente":
+
+            $id_user = $_POST["id_user"];
+            $nombre = $_POST["nombre"];
+            $apellido1 = $_POST["apellido1"];
+            $apellido2 = $_POST["apellido2"];
+            $correo = $_POST["correo"];
+            $pass = $_POST["pass"];
+            $pass2 = $_POST["pass2"];
+
+            $error=$c->modificar_paciente($id_user, $nombre, $apellido1,
+            $apellido2,$correo,$pass, $pass2);
+            if($error==0)
+            {
+                echo "true";
+            }
+            else if($error==-2){
+                echo "correo";
+            }
+            else{
+                echo "false";
+            }
 
         break;
 
@@ -634,19 +663,6 @@ if(isset($_POST["opcion"]))
                 echo "false";
 
         break;
-
-        case "datos_especialista":
-
-            $id_especialista = $_POST["id_especialista"];
-            $error=$c->datos_especialista($id_especialista);
-            if($error==-1)
-            {
-                echo "Error carga datos especialista";
-            }
-            else
-                echo json_encode($error);
-
-        break;
         case "registro_nueva_medicion": 
 
             $id_user=$_POST["id_usuario"];
@@ -709,6 +725,30 @@ if(isset($_GET["opcion"]))
 
     switch($opcion)
     {
+        case "datos_paciente":
+
+            $id_user = $_GET["id_user"];
+            $error=$c->datos_paciente($id_user);
+            if($error==-1)
+            {
+                echo "Error carga datos paciente";
+            }
+            else
+                echo json_encode($error);
+
+        break;
+        case "datos_especialista":
+
+            $id_especialista = $_GET["id_especialista"];
+            $error=$c->datos_especialista($id_especialista);
+            if($error==-1)
+            {
+                echo "Error carga datos especialista";
+            }
+            else
+                echo json_encode($error);
+
+        break;
         case "listado_usuarios":
 
             $id_especialista = $_GET["id_especialista"];

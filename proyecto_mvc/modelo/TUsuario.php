@@ -15,7 +15,25 @@ class TUsuario{
 	{
 		
   }
+	  
+	public function datos_paciente($id_user){
+		$res=true;
+		$abd = new TAccesbd ();
+  
+		if($abd->conectado())
+		{ 	
+		
+			$sql = "SELECT * FROM usuario where id_user=$id_user";
+			$stmt = $abd->listado_asociativo($sql);
+		}
+		if( $stmt != false ) {
 
+			$res=-1;
+
+		}
+
+		return $stmt;
+	}
 	public function datos_especialista($id_especialista)	
 	{
 
@@ -53,6 +71,24 @@ class TUsuario{
 
 			$id_especialista = $stmt;
 		}
+	}
+	public function obtener_nre_especialista($id_especialista, &$nre_especialista){
+		$res=false;
+		$abd = new TAccesbd ();
+  
+		if($abd->conectado())
+		{ 	
+			$res=true;
+			$sql="SELECT nombre FROM especialista WHERE id_especialista=$id_especialista ";
+			$stmt = $abd->consultar_dato($sql);
+		}
+		if( $stmt === false ) {
+			$res=false;
+		}
+		else{
+			$nre_especialista = $stmt;
+		}
+		return $res;
 	}
 	public function comprobar_usuario($correo, $contrasenya,&$tipo_usuario){
     
@@ -1501,14 +1537,60 @@ class TUsuario{
 		$abd = new TAccesbd ();
 		if($abd->conectado())
 		{
-			$sql="update especialista set correo='$correo', pass='$pass', pass2='$pass2', nombre='$nombre', apellido1='$apellido1', apellido2='$apellido2', tipo='$tipo'  where id_especialista = $id_especialista_seleccionado";
-			$stmt = $abd->ejecuta_sql($sql);
+
+			//Comprobar si se repite el correo antes (en el caso de que decida cambiarlo)
+			$sql2="select count(*) from especialista WHERE correo='$correo' and id_especialista!=$id_especialista_seleccionado";
+			$stmt2 = $abd->consultar_dato($sql2);
+			if( $stmt2 === false ) {//error consulta sql
+				$res=-1;
+			}
+			else{
+				if($stmt2>0){//Ya existe el correo, error
+					$res=-2;
+				}
+				else{
+					$apellido2 = empty($apellido2) ? "null" : "'$apellido2'";
+					$sql="update especialista set correo='$correo', pass='$pass', pass2='$pass2', nombre='$nombre', apellido1='$apellido1', apellido2=$apellido2, tipo='$tipo'  where id_especialista = $id_especialista_seleccionado";
+					$stmt = $abd->ejecuta_sql($sql);
+					if( $stmt === false ) {
+						$res=-1;
+					}
+				}
+			}
 		}
-		if( $stmt === false ) {
-			$res=-1;
-		}
+		
 		return $res;
 
+	}
+	public function modificar_paciente($id_user, $nombre, $apellido1,$apellido2,$correo,$pass, $pass2){
+		$res=0;
+		$abd = new TAccesbd ();
+		if($abd->conectado())
+		{
+
+			//Comprobar si se repite el correo antes (en el caso de que decida cambiarlo)
+			$sql2="select count(*) from usuario WHERE correo='$correo' and id_user!=$id_user";
+			$stmt2 = $abd->consultar_dato($sql2);
+			if( $stmt2 === false ) {//error consulta sql
+				$res=-1;
+			}
+			else{
+					if($stmt2>0){//Ya existe el correo, error
+						$res=-2;
+					}
+					else{
+							//Modificamos el usuario
+							$apellido2 = empty($apellido2) ? "null" : "'$apellido2'";
+							$sql="update usuario set correo='$correo', pass='$pass', pass2='$pass2', nombre='$nombre', apellido1='$apellido1', apellido2=$apellido2 where id_user = $id_user";
+							$stmt = $abd->ejecuta_sql($sql);	
+							if( $stmt === false ) {
+								$res=-1;
+							}
+						}
+			}
+		}
+	
+		return $res;
 	}
 
 	//update usuario set id_especialista=$id_especialista where id_user=$id_user and id_especialista is null **

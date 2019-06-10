@@ -47,6 +47,7 @@
   
     <!-- ===============  BODY ============= -->
     <body>  
+        
         <!-- Cuadrícula con el máximo ancho de la página -->
         <div class="container-fluid" id="body-container">
             <div class="row">
@@ -118,11 +119,14 @@
                     <!-- Barra de navegación superior =============================================================================== -->
                     <nav id="espaciado-logout">
                         <ul>
-                            <a  href="logout.php" role="button">
+                            <a href="logout.php" role="button">
                                 <span id="logout-admin" class="ti-user"></span>
                             </a>
                            
-                        </ul>
+                        <span style="margin-right: 4em;color: #555555;font-size: 12px;/* font-weight: 600; */"><i>Bienvenid@, <?php echo($_SESSION["nre_especialista"]);?></i></span></ul>
+                        <div class="text-right" style="margin-right: 4em;color: #555555;font-size: 12px;/* font-weight: 600; */">
+                            
+                        </div>
                     </nav>
 
                     <!-- <nav id="nav-top" class="navbar navbar-default">
@@ -271,7 +275,7 @@
                                         <div class="form-group ancho" id="input_apellido2">
                                             <label for="apellido2">Segundo apellido</label>
                                             &nbsp;
-                                            <input type="text" class="form-control" name="apellido1" id="apellido2" required maxlength="50"><br>
+                                            <input type="text" class="form-control" name="apellido2" id="apellido2" maxlength="50"><br>
                                         </div>
                                     </div>  <!--Fin fila 1-->
                                     &nbsp;&nbsp;
@@ -312,9 +316,66 @@
                             </div> 
 
                             <input id="id_especialista" type="hidden" value="<?php echo $_SESSION["id_especialista"]?>"> 
-                        
-                        
-                        
+
+                              <!-- DATOS PACIENTE -->
+                              <div id="apartado-datos-paciente">
+                                <h3>Datos paciente</h3>
+                                <hr>
+
+                                <form id="form-1-paciente" class="margen-form">
+                                    <div class="form-row justify-content-center">
+                                        <div class="form-group ancho" id="input_nombre">
+                                            <label for="nombre_paciente">Nombre</label>
+                                            &nbsp;
+                                            <input type="text" class="form-control" id="nombre_paciente" name="nombre_paciente" required maxlength="30" value=><br>
+                                        </div>
+                                    
+                                        &nbsp;&nbsp;
+                                        
+                                        <div class="form-group ancho" id="input_apellido1">
+                                            <label for="apellido1_paciente">Primer apellido</label>
+                                            &nbsp;
+                                            <input type="text" class="form-control" id="apellido1_paciente" required maxlength="50"><br>
+                                        </div>
+                                        &nbsp;&nbsp;
+
+                                        <div class="form-group ancho" id="input_apellido2">
+                                            <label for="apellido2_paciente">Segundo apellido</label>
+                                            &nbsp;
+                                            <input type="text" class="form-control" name="apellido2_paciente" id="apellido2_paciente" maxlength="50"><br>
+                                        </div>
+                                    </div>  <!--Fin fila 1-->
+                                    &nbsp;&nbsp;
+                                    <div class="form-row justify-content-center">
+                                        <div class="form-group ancho" id="input_correo">
+                                            <label for="correo_paciente">Correo</label>
+                                            &nbsp;
+                                            <input type="email" class="form-control" name="correo_paciente" id="correo_paciente" required maxlength="100"><br>
+                                        </div>
+                                            
+                                        &nbsp;&nbsp;
+                                        <div class="form-group ancho" id="input_pass">
+                                            <label for="pass_paciente">Contraseña</label>
+                                            &nbsp;
+                                            <input type="password" class="form-control" name="pass_paciente" id="pass_paciente" required maxlength="50"><br>
+                                        </div>
+                                        
+                                        &nbsp;&nbsp;
+                                        
+                                        <div class="form-group ancho" id="input_pass2">
+                                            <label for="pass2_paciente">Confirmar contraseña</label>
+                                            &nbsp;
+                                            <input type="password" class="form-control" name="pass2_paciente" id="pass2_paciente" required maxlength="50"><br>
+                                        </div>
+
+                                        &nbsp;&nbsp;
+                                        
+                                    </div>  
+                                    <div class="columna-btn">
+                                        <button class="btn estilo-boton-submit" type="submit" id="btn-modificar-paciente" value='<?php echo($_SESSION["id_especialista"])?>'>Modificar</button>
+                                    </div>
+                                </form>
+                            </div>
                     </div>
                 </div> <!-- Fin columna derecha-->
             </div> <!-- ROW -->
@@ -378,7 +439,7 @@ $.ajax({
         .done(function( data, textStatus, jqXHR ) {
             
             if ( console && console.log ) {
-                console.log( "La solicitud de acceso se ha completado correctamente." );
+                // console.log( "La solicitud de acceso se ha completado correctamente." );
             }
             var datos = $.parseJSON(data);
             // console.log(datos);
@@ -387,12 +448,20 @@ $.ajax({
             var filas_especialistas='';
             var filas_pacientes='';
             datos[0].forEach(function(element) {
-                filas_especialistas+= '<tr><td>'+element.id_especialista+'</td><td>'+element.tipo+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn azul" value="editarEspecialista" onclick="editarEspecialista(\'' + element.id_especialista + '\')"><span class="ti-pencil-alt"></span></button><button type="button" class="btn mt-1 rojo" value="borrarEspecialista" onclick="borrarEspecialista(\'' + element.id_especialista + '\',\'' + element.tipo + '\')"><span class="ti-trash"></span></button></td></tr>';
+                var apellido2="";
+                if(!isEmptyOrSpaces(element.apellido2)){
+                    apellido2 = element.apellido2;
+                }
+                filas_especialistas+= '<tr><td>'+element.id_especialista+'</td><td>'+element.tipo+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn azul" value="editarEspecialista" onclick="editarEspecialista(\'' + element.id_especialista + '\')"><span class="ti-pencil-alt"></span></button><button type="button" class="btn mt-1 rojo" value="borrarEspecialista" onclick="borrarEspecialista(\'' + element.id_especialista + '\',\'' + element.tipo + '\')"><span class="ti-trash"></span></button></td></tr>';
 
             });
             $('#fisios-table tbody').html(filas_especialistas);
             datos[1].forEach(function(element) {
-                filas_pacientes+= '<tr><td>'+element.id_user+'</td><td>'+element.id_especialista+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn azul" value="editarPaciente" onclick="editarPaciente(\'' + element.id_user + '\')"><span class="ti-pencil-alt"></span></button><button type="button" class="btn mt-1 rojo" value="borrarPaciente" onclick="borrarPaciente(\'' + element.id_user + '\')"><span class="ti-trash"></span></button></td></tr>';
+                var apellido2_paciente="";
+                if(!isEmptyOrSpaces(element.apellido2)){
+                    apellido2_paciente = element.apellido2;
+                }
+                filas_pacientes+= '<tr><td>'+element.id_user+'</td><td>'+element.id_especialista+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+apellido2_paciente+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn azul" value="editarPaciente" onclick="editarPaciente(\'' + element.id_user + '\')"><span class="ti-pencil-alt"></span></button></td></tr>';
 
             });
             $('#pacientes-table tbody').html(filas_pacientes);
@@ -457,7 +526,7 @@ $( document ).ready(function() {
 
         })
         .done(function( msg ) {                             	
-            console.log("ajax done");
+            // console.log("ajax done");
 
             if(msg=="true"){
                 $("body").overhang({
@@ -488,85 +557,271 @@ $( document ).ready(function() {
         // console.log("tipo especialista: "+tipo_especialista);
     });
 });
+
+function editarPaciente(id_user){
+    event.preventDefault();
+    $( "#apartado-especialistas" ).css("display","none");
+    $( "#apartado-pacientes" ).css("display","none");
+    $( "#apartado-datos-especialista" ).css("display","none");
+    $( "#apartado-datos-paciente" ).css("display","block");
+    $( "#apartado-botones-admin" ).css("display","none");
+    var opcion= "datos_paciente";
+    id_usuario = id_user;
+
+    $.ajax({
+            method:'GET',
+            url: 'control/vista.php',
+            data: {id_user:id_usuario, opcion:opcion},
+            })
+            .done(function( msg ) {
+                var datos = $.parseJSON(msg);
+                
+                $( "#nombre_paciente" ).val(datos[0].nombre);
+                $( "#apellido1_paciente" ).val(datos[0].apellido1);
+                $( "#apellido2_paciente" ).val(datos[0].apellido2);
+                $( "#pass_paciente" ).val(datos[0].pass);
+                $( "#pass2_paciente" ).val(datos[0].pass2);
+                $( "#correo_paciente" ).val(datos[0].correo);
+
+
+            })
+            .fail(function( jqXHR, textStatus, errorThrown ) {
+                if ( console && console.log ) {
+                    console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                    // console.log("ajax fail");
+                }
+            });
+
+}
+
 function editarEspecialista(id_especialista){
 
-event.preventDefault();
-$( "#apartado-especialistas" ).css("display","none");
-$( "#apartado-pacientes" ).css("display","none");
-$( "#apartado-datos-especialista" ).css("display","block");
-$( "#apartado-botones-admin" ).css("display","none");
-var opcion= "datos_especialista";
-id_especialista_seleccionado=id_especialista;
+    event.preventDefault();
+    $( "#apartado-especialistas" ).css("display","none");
+    $( "#apartado-pacientes" ).css("display","none");
+    $( "#apartado-datos-especialista" ).css("display","block");
+    $( "#apartado-botones-admin" ).css("display","none");
+    var opcion= "datos_especialista";
+    id_especialista_seleccionado=id_especialista;
 
-$.ajax({
-        method:'POST',
-        url: 'control/vista.php',
-        data: {id_especialista: id_especialista, opcion:opcion},
-        })
-        .done(function( msg ) {
-            var datos = $.parseJSON(msg);
-            console.log(datos[0].nombre);
-            $( "#nombre" ).val(datos[0].nombre);
-            $( "#apellido1" ).val(datos[0].apellido1);
-            $( "#apellido2" ).val(datos[0].apellido2);
-            $( "#pass" ).val(datos[0].pass);
-            $( "#pass2" ).val(datos[0].pass2);
-            $( "#correo" ).val(datos[0].correo);
-            $( "#tipo" ).val(datos[0].tipo);
+    $.ajax({
+            method:'GET',
+            url: 'control/vista.php',
+            data: {id_especialista: id_especialista, opcion:opcion},
+            })
+            .done(function( msg ) {
+                var datos = $.parseJSON(msg);
+                console.log(datos[0].nombre);
+                $( "#nombre" ).val(datos[0].nombre);
+                $( "#apellido1" ).val(datos[0].apellido1);
+                $( "#apellido2" ).val(datos[0].apellido2);
+                $( "#pass" ).val(datos[0].pass);
+                $( "#pass2" ).val(datos[0].pass2);
+                $( "#correo" ).val(datos[0].correo);
+                $( "#tipo" ).val(datos[0].tipo);
 
 
-        })
-        .fail(function( jqXHR, textStatus, errorThrown ) {
-            if ( console && console.log ) {
-                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                console.log("ajax fail");
-            }
-        });
+            })
+            .fail(function( jqXHR, textStatus, errorThrown ) {
+                if ( console && console.log ) {
+                    console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                    // console.log("ajax fail");
+                }
+            });
 
 };
-$( document ).ready(function() {
-    $("#btn-modificar").click(function(){
 
+function validarEspecialista(nombre,apellido1,correo,pass, pass2,tipo){
+    var datos_correctos = true;
+    var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+    var mensaje_error="";
+
+    if(isEmptyOrSpaces(pass) || isEmptyOrSpaces(pass2)){
+        mensaje_error="ERROR. Las contraseñas no pueden estar vacías.";
+        datos_correctos = false;
+    }
+    //validar contraseñas (deben ser idénticas)
+    if(pass!=pass2){
+        mensaje_error="ERROR. Las contraseñas deben ser idénticas";
+        datos_correctos = false;
+    } 
+    //Validar CORREO
+    if(!pattern.test(correo)){
+        mensaje_error="ERROR. El formato de correo no es correcto, introduce una extensión como '.com', por ejemplo.";
+        datos_correctos = false;
+    } 
+    if(isEmptyOrSpaces(apellido1)){
+        mensaje_error="ERROR. El primer apellido no puede estar vacío.";
+        datos_correctos = false;
+    } 
+    if(isEmptyOrSpaces(nombre)){
+        mensaje_error="ERROR. El nombre no puede estar vacío.";
+        datos_correctos = false;
+    }
+    if(!datos_correctos){
+        $("body").overhang({
+            type: "error",
+            message: mensaje_error,
+            duration: 3,
+            overlay: true,
+            closeConfirm: true
+        });
+    }
+    return datos_correctos;
+                    
+}
+function validarPaciente(nombre,apellido1,correo,pass, pass2){
+    var datos_correctos = true;
+    var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+    var mensaje_error="";
+
+    if(isEmptyOrSpaces(pass) || isEmptyOrSpaces(pass2)){
+        mensaje_error="ERROR. Las contraseñas no pueden estar vacías.";
+        datos_correctos = false;
+    }
+    //validar contraseñas (deben ser idénticas)
+    if(pass!=pass2){
+        mensaje_error="ERROR. Las contraseñas deben ser idénticas";
+        datos_correctos = false;
+    } 
+    //Validar CORREO
+    if(!pattern.test(correo)){
+        mensaje_error="ERROR. El formato de correo no es correcto, introduce una extensión como '.com', por ejemplo.";
+        datos_correctos = false;
+    } 
+    if(isEmptyOrSpaces(apellido1)){
+        mensaje_error="ERROR. El primer apellido no puede estar vacío.";
+        datos_correctos = false;
+    } 
+    if(isEmptyOrSpaces(nombre)){
+        mensaje_error="ERROR. El nombre no puede estar vacío.";
+        datos_correctos = false;
+    }
+    if(!datos_correctos){
+        $("body").overhang({
+            type: "error",
+            message: mensaje_error,
+            duration: 3,
+            overlay: true,
+            closeConfirm: true
+        });
+    }
+    return datos_correctos;
+}
+
+function isEmptyOrSpaces(str){
+    return str === null || str.match(/^ *$/) !== null;
+}
+$( document ).ready(function() {
+    $("#btn-modificar").click(function(e){
+        e.preventDefault();
         var opcion = "modificar_especialista";
 
         var nombre =$('#nombre').val();
         var apellido1=$('#apellido1').val();
         var apellido2=$('#apellido2').val();
+        if(isEmptyOrSpaces(apellido2)){
+            apellido2="";
+        }
         var correo =$('#correo').val();
         var pass =$('#pass').val();
         var pass2=$('#pass2').val();
         var tipo= $( "#tipo" ).val();
 
-        $.ajax({
+        if( validarEspecialista(nombre,apellido1,correo,pass, pass2,tipo) ){
+
+            $.ajax({
             method:"POST",
             url: 'control/vista.php',
             data: {opcion: opcion, id_especialista_seleccionado:id_especialista_seleccionado, nombre:nombre,
                 apellido1:apellido1, apellido2:apellido2, correo:correo, pass:pass, pass2:pass2, tipo:tipo}
-        })
-        .done(function( msg ) {                             	
-            console.log("ajax done");
-        
+            })
+            .done(function( msg ) {                             	
+                // console.log("ajax done");
+                    if(msg=="correo"){
+                        $("body").overhang({
+                                    type: "error",
+                                    message: "ERROR, No puede usar un correo que ya existe",
+                                    duration: 6,
+                                    overlay: true,
+                                    closeConfirm: true
+                        });
+                    }
+                    else if(msg=="true"){
+                        $.notify("Especialista modificado correctamente", "success");
+                    }
+                    
+                
+            })
+            .fail(function( jqXHR, textStatus, errorThrown ) {
+                if ( console && console.log ) {
+                    console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                }
                 $("body").overhang({
-                            type: "success",
-                            message: "Especialista modificado correctamente",
-                            duration: 6,
-                            overlay: true,
-                            closeConfirm: true
-                });
-            
-        })
-        .fail(function( jqXHR, textStatus, errorThrown ) {
-            if ( console && console.log ) {
-                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-            }
-            $("body").overhang({
-                            type: "error",
-                            message: "ERROR, modificación ha fallado",
-                            duration: 6,
-                            overlay: true,
-                            closeConfirm: true
-                });
-        });
+                                type: "error",
+                                message: "ERROR, modificación ha fallado",
+                                duration: 6,
+                                overlay: true,
+                                closeConfirm: true
+                    });
+            });
+        }
+
+    });
+
+    $("#btn-modificar-paciente").click(function(e){
+
+        e.preventDefault();
+        var opcion = "modificar_paciente";
+
+        var nombre =$('#nombre_paciente').val();
+        var apellido1=$('#apellido1_paciente').val();
+        var apellido2=$('#apellido2_paciente').val();
+        if(isEmptyOrSpaces(apellido2)){
+            apellido2="";
+        }
+        var correo =$('#correo_paciente').val();
+        var pass =$('#pass_paciente').val();
+        var pass2=$('#pass2_paciente').val();
+
+        if( validarPaciente(nombre,apellido1,correo,pass,pass2) ){
+
+            $.ajax({
+            method:"POST",
+            url: 'control/vista.php',
+            data: {opcion: opcion, id_user:id_usuario, nombre:nombre,
+                apellido1:apellido1, apellido2:apellido2, correo:correo, pass:pass, pass2:pass2}
+            })
+            .done(function( msg ) {                         	
+                // console.log("ajax done");
+
+                if(msg=="correo"){
+                        $("body").overhang({
+                                    type: "error",
+                                    message: "ERROR, No puede usar un correo que ya existe",
+                                    duration: 6,
+                                    overlay: true,
+                                    closeConfirm: true
+                        });
+                    }
+                    else if(msg=="true"){
+                        $.notify("Paciente modificado correctamente", "success");
+                    }
+                
+            })
+            .fail(function( jqXHR, textStatus, errorThrown ) {
+                if ( console && console.log ) {
+                    // console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                }
+                $("body").overhang({
+                                type: "error",
+                                message: "ERROR, modificación ha fallado",
+                                duration: 6,
+                                overlay: true,
+                                closeConfirm: true
+                    });
+            });
+        }
 
     });
 });
