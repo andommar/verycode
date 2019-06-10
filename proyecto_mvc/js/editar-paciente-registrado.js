@@ -1025,8 +1025,8 @@ function mostrarFormulario(boton){
             })
             .fail(function( jqXHR, textStatus, errorThrown ) {
                 if ( console && console.log ) {
-                    // console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                    console.log("ajax fail");
+                    console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                    // console.log("ajax fail");
                 }
             });
             return false;
@@ -1205,8 +1205,8 @@ function mostrarFormulario(boton){
             })
             .fail(function( jqXHR, textStatus, errorThrown ) {
                 if ( console && console.log ) {
-                    // console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                    console.log("ajax fail");
+                    console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                    // console.log("ajax fail");
                 }
             });
         }
@@ -1263,8 +1263,8 @@ function mostrarFormulario(boton){
                 })
                 .fail(function( jqXHR, textStatus, errorThrown ) {
                     if ( console && console.log ) {
-                        // console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                        console.log("ajax fail");
+                        console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                        // console.log("ajax fail");
                     }
             });
         }
@@ -1324,8 +1324,8 @@ function mostrarFormulario(boton){
             })
             .fail(function( jqXHR, textStatus, errorThrown ) {
                 if ( console && console.log ) {
-                    // console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                    console.log("ajax fail");
+                    console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                    // console.log("ajax fail");
                 }
             });
         }
@@ -1416,8 +1416,8 @@ function mostrarFormulario(boton){
             })
             .fail(function( jqXHR, textStatus, errorThrown ) {
                 if ( console && console.log ) {
-                    // console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                    console.log("ajax fail");
+                    console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                    // console.log("ajax fail");
                 }
             });
         }
@@ -1499,8 +1499,8 @@ function mostrarFormulario(boton){
             })
             .fail(function( jqXHR, textStatus, errorThrown ) {
                 if ( console && console.log ) {
-                    // console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                    console.log("ajax fail");
+                    console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                    // console.log("ajax fail");
                 }
             });
         }
@@ -1568,8 +1568,8 @@ function mostrarFormulario(boton){
         })
         .fail(function( jqXHR, textStatus, errorThrown ) {
             if ( console && console.log ) {
-                // console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                console.log("ajax fail");
+                console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
+                // console.log("ajax fail");
             }
         });
         
@@ -1687,7 +1687,7 @@ function mostrarFormulario(boton){
             .fail(function( jqXHR, textStatus, errorThrown ) {
                 if ( console && console.log ) {
                     console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                    console.log("ajax fail");
+                    // console.log("ajax fail");
                 }
             });
         }

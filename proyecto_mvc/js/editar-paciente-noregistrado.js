@@ -15,7 +15,7 @@ $(document).ready(function(){
     })        
     .done(function(msg) {
         // alert("ajax done");
-        console.log("ajax done");
+        // console.log("ajax done");
         var resultado = $.parseJSON(msg);
         
         $("#nombre").val(resultado[0].nombre);
@@ -48,7 +48,7 @@ $(document).ready(function(){
             .done(function( msg ) {
                 // var resultado = $.parseJSON(msg);
                 // console.log(msg);                             	
-                console.log("ajax done"); 
+                // console.log("ajax done"); 
                 if(msg){
                     document.location.href="pacientes.php";
                 }
@@ -60,7 +60,7 @@ $(document).ready(function(){
             .fail(function( jqXHR, textStatus, errorThrown ) {
                 if ( console && console.log ) {
                     console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                    console.log("ajax fail");
+                    // console.log("ajax fail");
                 }
             });
         }

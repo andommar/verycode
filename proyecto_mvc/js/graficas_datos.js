@@ -493,7 +493,7 @@ $(document).ready(function(){
 
             i=1;
             cosas.forEach(function(element){
-                console.log(element.p6);
+                // console.log(element.p6);
                 if(element.lado_sano=='no' && element.extremidad=="pierna")
                 {
                     filas_mediciones_pierna+= '<tr><td>'+separacion_fechas.fechas_pierna[i]+'</td><td>'+element.extremidad+'</td><td>'+element.lado+'</td><td>'+element.lado_sano+'</td><td>'+element.p1+'</td><td>'+element.p2+'</td><td>'+element.p3+'</td><td>'+element.p4+'</td><td>'+element.p5+'</td><td>'+element.p6+'</td><td><button type="button" class="btn azul" value="fechaMedicion_pierna" onClick="fechaMedicion_pierna('+element.p1+','+element.p2+','+element.p3+','+element.p4+','+element.p5+', '+element.p6+')"><span class="ti-bar-chart-alt"></span></button></td></tr>';
@@ -523,12 +523,12 @@ $(document).ready(function(){
             }
 
 
-            console.log("bandera_brazo "+bandera_brazo);
-            console.log("bandera_pierna "+bandera_pierna);
+            // console.log("bandera_brazo "+bandera_brazo);
+            // console.log("bandera_pierna "+bandera_pierna);
         
             if(bandera_brazo==true)
             {
-                console.log("entra en esta meirda");
+               
                 $( "#grafica-sano-afecto" ).css("display","block");
                 if(bandera_pierna==true)
                 {
@@ -539,7 +539,7 @@ $(document).ready(function(){
             }
             else if (bandera_pierna==true)
             {
-                console.log("entra en bandera pierna");
+                
                 $( "#grafica-sano-afecto" ).css("display","none");
                 $( "#grafica-pierna" ).css("display","block");
             }
@@ -645,8 +645,8 @@ $(document).ready(function(){
     $( "#btn-sano-afecto" ).click(function(e) {
 
         e.preventDefault();
-        console.log("bandera_brazo "+bandera_brazo);
-        console.log("bandera_pierna "+bandera_pierna);
+        // console.log("bandera_brazo "+bandera_brazo);
+        // console.log("bandera_pierna "+bandera_pierna);
 
 
 
@@ -738,62 +738,3 @@ $(document).ready(function(){
 
 
 });
-
-
-
-
-
-
-
-
-
-
-// //GRÁFICA SIMPLE
-// const grafica_datos= document.getElementById("lineChart");
-// console.log(grafica_datos);
-
-
-
-// var grafica_mediciones = new Chart(grafica_datos,{
-//     type:'line',
-//     data: {
-//                 //Xs
-//                 labels: ["Enero", "Febrero", "Marzo"],
-//                 datasets: [
-//                     {
-//                         //Ys
-//                         label: 'Linfedema', //TITULO SERIE DATOS
-//                         data: [2, 3, 1], //DATOS 
-//                         lineTension: 0, //tension de las curvas 0 = lineas rectas
-//                         fill: false,
-//                         borderColor: 'blue',
-//                         backgroundColor: 'transparent',
-//                         borderDash: [], //linea punteada
-//                         pointBorderColor: 'blue',
-//                         pointBackgroundColor: 'rgba(48,75,0,0.5)',
-//                         pointRadius: 5,
-//                         pointHoverRadius: 10,
-//                         pointHitRadius: 30,
-//                         pointBorderWidth: 2,
-//                         pointStyle: 'rectRounded'
-//                     },
-//                     {
-//                         //Ys
-//                         label: 'Infartos',
-//                         data: [8, 12, 30],
-//                         lineTension: 0, //tension de las curvas 0 = lineas rectas
-//                         fill: false,
-//                         borderColor: 'red',
-//                         backgroundColor: 'transparent',
-//                         borderDash: [], //linea punteada
-//                         pointBorderColor: 'blue',
-//                         pointBackgroundColor: 'rgba(85,15,0,0.5)',
-//                         pointRadius: 5,
-//                         pointHoverRadius: 10,
-//                         pointHitRadius: 30,
-//                         pointBorderWidth: 2,
-//                         pointStyle: 'rectRounded'
-//                     },
-//             ]
-//         },
-// });

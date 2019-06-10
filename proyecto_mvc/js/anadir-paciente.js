@@ -467,7 +467,7 @@
                                 // console.log(resultado[1]);
                                
                                 // console.log(msg);                             	
-                                console.log("ajax done"); 
+                                // console.log("ajax done"); 
                                 if(resultado[1]=="false"){
                                     $("body").overhang({
                                         type: "error",
@@ -512,7 +512,7 @@
                             .fail(function( jqXHR, textStatus, errorThrown ) {
                                 if ( console && console.log ) {
                                     console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                                    console.log("ajax fail");
+                                    // console.log("ajax fail");
                                 }
                             });
                         }
@@ -613,7 +613,7 @@
                         })
                         .done(function( msg ) {   
                                                  	
-                            console.log("ajax done");
+                            // console.log("ajax done");
                             if(msg=="false"){
                                 $("body").overhang({
                                     type: "error",
@@ -686,7 +686,7 @@
                             data: {id_user:id_user, nombre_cirugia:nombre_cirugia, fecha: fecha, comentarios: comentarios, opcion:opcion},
                             })
                             .done(function( msg ) {
-                                console.log("ajax done");
+                                // console.log("ajax done");
                                 if(msg=="false"){
                                     $.notify("Error en la consulta SQL", "error");
                                     datos_correctos_queries = false;
@@ -714,7 +714,7 @@
                             .fail(function( jqXHR, textStatus, errorThrown ) {
                                 if ( console && console.log ) {
                                     console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                                    console.log("ajax fail");
+                                    // console.log("ajax fail");
                                 }
                             });
                         }
@@ -768,7 +768,7 @@
                             data: {id_user:id_user, medicamento:medicamento, patologias:patologias, opcion:opcion},
                             })
                             .done(function( msg ) {                           	
-                                console.log("Ajax done"); 
+                                // console.log("Ajax done"); 
                                 if(msg=="false"){
                                     $("body").overhang({
                                         type: "error",
@@ -801,7 +801,7 @@
                             .fail(function( jqXHR, textStatus, errorThrown ) {
                                 if ( console && console.log ) {
                                     console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                                    console.log("ajax fail");
+                                    // console.log("ajax fail");
                                 }
                         });
                     }
@@ -858,7 +858,7 @@
                         })
                         .done(function( msg ) {
                             // console.log(msg);                             	
-                            console.log("ajax done");
+                            // console.log("ajax done");
                             if(msg=="false"){
                                 $("body").overhang({
                                     type: "error",
@@ -891,7 +891,7 @@
                         .fail(function( jqXHR, textStatus, errorThrown ) {
                             if ( console && console.log ) {
                                 console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                                console.log("ajax fail");
+                                // console.log("ajax fail");
                             }
                         });
                     }
@@ -991,7 +991,7 @@
                         })
                         .done(function( msg ) {
 
-                            console.log("ajax done "); 
+                            // console.log("ajax done "); 
                             if(msg=="false"){
                                 $("body").overhang({
                                     type: "error",
@@ -1036,7 +1036,7 @@
                         .fail(function( jqXHR, textStatus, errorThrown ) {
                             if ( console && console.log ) {
                                 console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                                console.log("ajax fail");
+                                // console.log("ajax fail");
                             }
                         });
                     }
@@ -1094,7 +1094,7 @@
                         contencion_escala: contencion_escala, contencion_pesadez: contencion_pesadez, opcion: opcion},
                         })
                         .done(function( msg ) {
-                           console.log("ajax done"); 
+                        //    console.log("ajax done"); 
                                 if(msg=="false"){
                                     $("body").overhang({
                                         type: "error",
@@ -1143,7 +1143,7 @@
                         .fail(function( jqXHR, textStatus, errorThrown ) {
                             if ( console && console.log ) {
                                 console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                                console.log("ajax fail");
+                                // console.log("ajax fail");
                             }
                         });
                     }
@@ -1193,7 +1193,7 @@
                     valoracion_piel:valoracion_piel,stemmer:stemmer,fovea:fovea,pesadez:pesadez,rubor:rubor, opcion:opcion},
                     })
                     .done(function( msg ) {                             	
-                        console.log("ajax done"); 
+                        // console.log("ajax done"); 
                         if(msg=="false"){
                             $("body").overhang({
                                 type: "error",
@@ -1227,7 +1227,7 @@
                     .fail(function( jqXHR, textStatus, errorThrown ) {
                         if ( console && console.log ) {
                             console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                            console.log("ajax fail");
+                            // console.log("ajax fail");
                         }
                     });
                     
@@ -1346,7 +1346,7 @@
                         data: {id_user:id_user,fecha:fecha,extremidad:extremidad,lado_sano:lado_sano,p1_i:p1_i, p2_i:p2_i,p3_i:p3_i,p4_i:p4_i,p5_i:p5_i,p6_i:p6_i,p1_d:p1_d,p2_d:p2_d,p3_d:p3_d,p4_d:p4_d,p5_d:p5_d,p6_d:p6_d,opcion: opcion},
                         })
                         .done(function( msg ) {                           	
-                            console.log("ajax done"); 
+                            // console.log("ajax done"); 
                             if(msg=="false"){
                                 $("body").overhang({
                                     type: "error",
@@ -1384,7 +1384,7 @@
                         .fail(function( jqXHR, textStatus, errorThrown ) {
                             if ( console && console.log ) {
                                 console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                                console.log("ajax fail");
+                                // console.log("ajax fail");
                             }
                         });
                     }

@@ -66,7 +66,7 @@ var id_usuario= $("#id_usuario").val();
     })        
     .done(function(msg) {
         // alert("ajax done");
-        console.log("ajax done");
+        // console.log("ajax done");
             if(msg=="no_tiene"){
                 
                 document.location.href="mediciones.php"; 
@@ -252,7 +252,7 @@ var id_usuario= $("#id_usuario").val();
                 data: {id_usuario:id_usuario,fecha:fecha,extremidad:extremidad,lado_sano:lado_sano,p1_i:p1_i, p2_i:p2_i,p3_i:p3_i,p4_i:p4_i,p5_i:p5_i,p6_i:p6_i,p1_d:p1_d,p2_d:p2_d,p3_d:p3_d,p4_d:p4_d,p5_d:p5_d,p6_d:p6_d,opcion: opcion},
                 })
                 .done(function( msg ) {                           	
-                    console.log("ajax done"); 
+                    // console.log("ajax done"); 
                     if(msg=="false"){
                         $("body").overhang({
                             type: "error",
@@ -294,7 +294,7 @@ var id_usuario= $("#id_usuario").val();
                 .fail(function( jqXHR, textStatus, errorThrown ) {
                     if ( console && console.log ) {
                         console.log( "La solicitud ajax de acceso ha fallado: " +  textStatus);
-                        console.log("ajax fail");
+                        // console.log("ajax fail");
                     }
                 });
         }

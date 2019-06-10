@@ -64,7 +64,7 @@ $(document).ready(function(){
             data: {opcion: opcion, nombre:nombre, apellido1:apellido1, apellido2:apellido2, correo:correo, pass:pass, pass2:pass2, tipo:tipo}
         })
         .done(function( msg ) {                             	
-            console.log("ajax done");
+            // console.log("ajax done");
 
             if(msg=="true"){
                 $.notify("Especialista modificado correctamente", "success");

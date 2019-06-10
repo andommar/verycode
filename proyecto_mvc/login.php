@@ -75,10 +75,6 @@
                     var correo= $("#correo").val().trim();
                     var contrasenya= $("#contrasenya").val().trim();
 
-                    // console.log("correo: "+correo);
-                    // console.log("contraseña: "+contrasenya);
-
-                    //action="control/control_login.php"
 
                     $.ajax({
                         method: "POST",

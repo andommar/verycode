@@ -83,8 +83,13 @@ $( document ).ready(function() {
     //console.log(datos);
     //RELLENAMOS TABLA
     var filas_pacientes='';
+    
     listado_pacientes.forEach(function(element) {
-    filas_pacientes+= '<tr id='+element.id_user+'><td>'+element.id_user+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+element.apellido2+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn azul" value="editarPacienteNoAsignado" onClick="editarPacienteNoAsignado('+ element.id_user + ')"><i class="fas fa-user-plus"></i></button></td></tr>';
+        var apellido2_paciente="";
+        if(!isEmptyOrSpaces(element.apellido2)){
+            apellido2_paciente = element.apellido2;
+        }
+        filas_pacientes+= '<tr id='+element.id_user+'><td>'+element.id_user+'</td><td>'+element.nombre+'</td><td>'+element.apellido1+'</td><td>'+apellido2_paciente+'</td><td>'+element.correo+'</td><td>'+element.pass+'</td><td><button type="button" class="btn azul" value="editarPacienteNoAsignado" onClick="editarPacienteNoAsignado('+ element.id_user + ')"><i class="fas fa-user-plus"></i></button></td></tr>';
 
     });
     $('#pacientes-no-asignados-table tbody').html(filas_pacientes);
