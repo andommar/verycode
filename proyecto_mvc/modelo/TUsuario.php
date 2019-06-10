@@ -1481,14 +1481,27 @@ class TUsuario{
 		if($abd->conectado())
 		{
 			if($tipo_especialista=="administrador"){
-				//delete from especialista where id_especialista = 10
-				$sql="delete from especialista where id_especialista = $id_especialista";
-				$stmt = $abd->ejecuta_sql($sql);
 
-				if( $stmt === false ) {
+				//comprobamos cuantos admins quedan
+				$sql4="select count(*) from especialista where tipo='administrador'";
+				$stmt4= $abd->consultar_dato($sql4);
+				if( $stmt4=== false ) {//error sql
 					$res=-1;
 				}
+				else{
+					if($stmt4==1){//error, quiere borrar el único admin que queda
+						$res=-2;
+					}
+					else{//aún queda más de 1 admin
+							$sql="delete from especialista where id_especialista = $id_especialista";
+							$stmt = $abd->ejecuta_sql($sql);
 
+							if( $stmt === false ) {
+								$res=-1;
+							}
+					}
+				}
+				
 			}
 			else{//fisioterapeuta
 				$sql="select count(*) from usuario where id_especialista = $id_especialista";

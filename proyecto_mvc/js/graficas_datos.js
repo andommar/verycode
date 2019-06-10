@@ -5,14 +5,12 @@
     var fechas = "";
     var grafica_datos=document.getElementById("lineChart");
     var grafica_evolucion=document.getElementById("lineChartevolucion");
-    var grafica_evolucion_pierna=document.getElementById("lineChartevolucion_pierna");
     var grafica_piernas=document.getElementById("lineChartPierna");
     var filas_mediciones='';
     var filas_mediciones_pierna='';
-    var i=1, j=0,m=0,n=0,q=0;
-    var bandera_brazo=false;
-    var bandera_pierna=false;
-    var ambos=false;
+    var i=1, j=0,m=0;
+    var bandera_brazo= false;
+    var bandera_pierna= false;
 
 
     var mediciones =
@@ -35,22 +33,10 @@
         p5: []
     };
 
-    var evolucion_p =
-    {
-        p1: [],
-        p2: [],
-        p3: [],
-        p4: [],
-        p5: [],
-        p6:[]
-    };
-
     var separacion_fechas =
     {
         fechas_pierna: [],
-        fechas_evolucion_pierna: [],
-        fechas_brazo: [],
-        fechas_evolucion_brazo: []
+        fechas_brazo: []
     }
 
 
@@ -186,8 +172,6 @@ $(document).ready(function(){
             {
                 if(cosas[i].extremidad=="brazo")
                 {
-                    separacion_fechas.fechas_brazo[j]=fechas[i];
-                    j++;
 
                     if(cosas[i].lado_sano=="si")
                     {
@@ -219,12 +203,17 @@ $(document).ready(function(){
                         evolucion.p4.push(cosas[i].p4);
                         evolucion.p5.push(cosas[i].p5);
 
-
                         //Guardamos las fechas de cada medición del brazo afecto. El indice del array de fechas coincide con el indice de los datos del array de objetos cosas
-                        separacion_fechas.fechas_evolucion_brazo[n]=fechas[i];
-                        n++;
+
+                        separacion_fechas.fechas_brazo[j]=fechas[i];
+                        j++;
 
                     }
+                }
+                else
+                {
+                    separacion_fechas.fechas_pierna[m]=fechas[i];
+                    m++;
                 }
             }
 
@@ -247,80 +236,12 @@ $(document).ready(function(){
               }
               );
 
-            //==================================== GRÁFICA Y TABLA PIERNAS
-
-            j=0;
-            n=0;
-
-            for(var i = 0; i<len; i++)
-            {
-                if(cosas[i].extremidad=="pierna")
-                {
-                    separacion_fechas.fechas_pierna[j]=fechas[i];
-                    j++;
-                    if(cosas[i].lado_sano=="si")
-                    {
-                        mediciones.p_lado_sano[0]=cosas[i].p1;
-                        mediciones.p_lado_sano[1]=cosas[i].p2;
-                        mediciones.p_lado_sano[2]=cosas[i].p3;
-                        mediciones.p_lado_sano[3]=cosas[i].p4;
-                        mediciones.p_lado_sano[4]=cosas[i].p5;
-                        mediciones.p_lado_sano[5]=cosas[i].p6;
-
-                    }
-                    else if(cosas[i].lado_sano=="no")
-                    {
-
-                        //Primeras mediciones que coge del lado afecto
-                        mediciones.p_lado_afecto[0]=cosas[i].p1;
-                        mediciones.p_lado_afecto[1]=cosas[i].p2;
-                        mediciones.p_lado_afecto[2]=cosas[i].p3;
-                        mediciones.p_lado_afecto[3]=cosas[i].p4;
-                        mediciones.p_lado_afecto[4]=cosas[i].p5;
-                        mediciones.p_lado_afecto[5]=cosas[i].p6;
-
-                        evolucion_p.p1.push(cosas[i].p1);
-                        evolucion_p.p2.push(cosas[i].p2);
-                        evolucion_p.p3.push(cosas[i].p3);
-                        evolucion_p.p4.push(cosas[i].p4);
-                        evolucion_p.p5.push(cosas[i].p5);
-                        evolucion_p.p6.push(cosas[i].p6);
-
-                        separacion_fechas.fechas_evolucion_pierna[n]=fechas[i];
-                        n++;
-
-                    }
-
-                }
-                
-            }
-
-            var resta=0;
-
-            for(i=0; i<mediciones.p_lado_sano.length;i++)
-            {
-                resta=mediciones.p_lado_afecto[i]-mediciones.p_lado_sano[i];
-                mediciones.p_diferencia[i]=resta;
-                //console.log(fechas[i]);
-            }
-            
-
-            var chart_piernas = new Chart( grafica_piernas, {
-                type : "bar",
-                data :  datos_graph_piernas,
-                options : opciones
-              }
-              );
-
-
-            //==================================== FIN GRÁFICA Y TABLA PIERNAS
-
             
             
             //===================== GRÁFICA PROGRESIÓN
 
               var datos_ultimas ={
-                labels:separacion_fechas.fechas_evolucion_brazo,
+                labels:separacion_fechas.fechas_brazo,
                 datasets:[
                     {
                         label: "p1",
@@ -381,79 +302,6 @@ $(document).ready(function(){
               }
               );
 
-              //===================== GRÁFICA PROGRESIÓN PIERNA
-
-              var datos_progresion_pierna ={
-                labels:separacion_fechas.fechas_evolucion_pierna,
-                datasets:[
-                    {
-                        label: "p1",
-                        data: evolucion_p.p1,
-                        borderColor: 'blue',
-                        fill:false,
-                        lineTension:0,
-                        pointRadius: 5,
-                        type: 'line'
-                    },
-                    {
-                        label: "p2",
-                        data: evolucion_p.p2,
-                        borderColor: 'red',
-                        fill:false,
-                        lineTension:0,
-                        pointRadius: 5,
-                        type: 'line'
-                    },
-                    {
-                        label: "p3",
-                        data: evolucion_p.p3,
-                        borderColor: 'green',
-                        fill:false,
-                        lineTension:0,
-                        pointRadius: 5,
-                        type: 'line'
-                    },
-                    {
-                        label: "p4",
-                        data: evolucion_p.p4,
-                        borderColor: 'purple',
-                        fill:false,
-                        lineTension:0,
-                        pointRadius: 5,
-                        type: 'line'
-                    },
-                    {
-                        label: "p5",
-                        data: evolucion_p.p5,
-                        borderColor: '#e8c3b9',
-                        fill:false,
-                        lineTension:0,
-                        pointRadius: 5,
-                        type: 'line'
-                    },
-                    {
-                        label: "p6",
-                        data: evolucion_p.p6,
-                        borderColor: 'black',
-                        fill:false,
-                        lineTension:0,
-                        pointRadius: 5,
-                        type: 'line'
-                    },
-
-
-                ]
-            };
-
-            opciones.title.text="Evolución puntos";
-
-            var chart_evolucion_pierna = new Chart( grafica_evolucion_pierna, {
-                type : "line",
-                data : datos_progresion_pierna,
-                options : opciones
-              }
-              );
-
 
 
             //==================================== CARGAR TABLA BRAZOS
@@ -480,7 +328,70 @@ $(document).ready(function(){
 
             //==================================== FIN CARGAR TABLA BRAZOS
 
+            //==================================== GRÁFICA Y TABLA PIERNAS
 
+
+            for(var i = 0; i<len; i++)
+            {
+                if(cosas[i].extremidad=="pierna")
+                {
+                    if(cosas[i].lado_sano=="si")
+                    {
+                        mediciones.p_lado_sano[0]=cosas[i].p1;
+                        mediciones.p_lado_sano[1]=cosas[i].p2;
+                        mediciones.p_lado_sano[2]=cosas[i].p3;
+                        mediciones.p_lado_sano[3]=cosas[i].p4;
+                        mediciones.p_lado_sano[4]=cosas[i].p5;
+                        mediciones.p_lado_sano[5]=cosas[i].p6;
+
+                    }
+                    else if(cosas[i].lado_sano=="no")
+                    {
+                        mediciones.derecho.push(cosas[i].p1);
+                        mediciones.derecho.push(cosas[i].p2);
+                        mediciones.derecho.push(cosas[i].p3);
+                        mediciones.derecho.push(cosas[i].p4);
+                        mediciones.derecho.push(cosas[i].p5);
+
+                        //Primeras mediciones que coge del lado derecho
+                        mediciones.p_lado_afecto[0]=cosas[i].p1;
+                        mediciones.p_lado_afecto[1]=cosas[i].p2;
+                        mediciones.p_lado_afecto[2]=cosas[i].p3;
+                        mediciones.p_lado_afecto[3]=cosas[i].p4;
+                        mediciones.p_lado_afecto[4]=cosas[i].p5;
+                        mediciones.p_lado_afecto[5]=cosas[i].p6;
+
+                        evolucion.p1.push(cosas[i].p1);
+                        evolucion.p2.push(cosas[i].p2);
+                        evolucion.p3.push(cosas[i].p3);
+                        evolucion.p4.push(cosas[i].p4);
+                        evolucion.p5.push(cosas[i].p5);
+
+                    }
+
+                }
+                
+            }
+
+            var resta=0;
+
+            for(i=0; i<mediciones.p_lado_sano.length;i++)
+            {
+                resta=mediciones.p_lado_afecto[i]-mediciones.p_lado_sano[i];
+                mediciones.p_diferencia[i]=resta;
+                //console.log(fechas[i]);
+            }
+            
+
+            var chart_piernas = new Chart( grafica_piernas, {
+                type : "bar",
+                data :  datos_graph_piernas,
+                options : opciones
+              }
+              );
+
+
+            //==================================== FIN GRÁFICA Y TABLA PIERNAS
 
             //==================================== CARGAR TABLA BRAZOS
 
@@ -512,37 +423,29 @@ $(document).ready(function(){
                 if(cosas[i].extremidad=="brazo")
                 {
                     bandera_brazo= true;
-                   
+                    
                 }    
                 if(cosas[i].extremidad=="pierna")
                 {
-                    bandera_pierna=true;
+                    bandera_pierna= true;
                    
                 }
-                
             }
 
-
-            console.log("bandera_brazo "+bandera_brazo);
-            console.log("bandera_pierna "+bandera_pierna);
-        
-            if(bandera_brazo==true)
-            {
-                console.log("entra en esta meirda");
-                $( "#grafica-sano-afecto" ).css("display","block");
-                if(bandera_pierna==true)
-                {
-                    $( "#btn-brazo" ).css("display","inline");
-                    $( "#btn-pierna" ).css("display","inline");
-                    ambos=true;
-                }
-            }
-            else if (bandera_pierna==true)
-            {
-                console.log("entra en bandera pierna");
-                $( "#grafica-sano-afecto" ).css("display","none");
-                $( "#grafica-pierna" ).css("display","block");
-            }
+            // if(bandera_brazo==true)
+            // {
+            //     $( "#grafica-sano-afecto" ).css("display","block");
+            //     if(bandera_pierna==true)
+            //     {
+            //         $( "#btn-brazo" ).css("display","inline");
+            //         $( "#btn-pierna" ).css("display","inline");
+            //     }
+            // }
+            // else if (bandera_pierna==true)
+            // {
+            //     $( "#grafica-sano-afecto" ).css("display","none");
+            //     $( "#grafica-pierna" ).css("display","block");
+            // }
 
         },
         error : function(data) {
@@ -557,8 +460,6 @@ $(document).ready(function(){
 
 
 });
-
-
 
 function fechaMedicion(p1,p2,p3,p4,p5){
     console.log(p1,p2,p3,p4,p5);
@@ -637,100 +538,48 @@ $(document).ready(function(){
     //grafica-sano-afecto
     //grafica-evolucion
 
-    var bt_brazo=true;
-    var bt_pierna=false;    
+    var bt_brazo=false;
+    var bt_pierna=false;
 
+    if(bandera_brazo==true)
+    {
+        bt_brazo=true;
+    }
+    else if(bandera_pierna==true)
+    {
+        bt_pierna=true;
+    }
 
-
-    $( "#btn-sano-afecto" ).click(function(e) {
-
-        e.preventDefault();
-        console.log("bandera_brazo "+bandera_brazo);
-        console.log("bandera_pierna "+bandera_pierna);
-
-
-
+    $( "#btn-sano-afecto" ).click(function() {
+        $( "#grafica-evolucion" ).css("display","none");
         $( "#btn-evolucion" ).css("background-color","rgb(109, 109, 109)");
-        if(ambos==true)
-        {
-            if(bt_brazo==true)
-            {
-                $( "#grafica-evolucion" ).css("display","none");
-                $( "#grafica-sano-afecto" ).css("display","block");
-            }
-            else if(bt_pierna==true)
-            {
-                $( "#grafica-pierna" ).css("display","block");
-                $( "#grafica-evolucion-pierna" ).css("display","none");
-            }
-        }
-        else if(bandera_brazo==true)
-        {
-            $( "#grafica-evolucion" ).css("display","none");
-            $( "#grafica-sano-afecto" ).css("display","block");
-        }
-        else if(bandera_pierna==true)
-        {
-            $( "#grafica-pierna" ).css("display","block");
-            $( "#grafica-evolucion-pierna" ).css("display","none");
-        }
+        $( "#grafica-sano-afecto" ).css("display","block");
+//        $( "#grafica-pierna" ).css("display","block");
         $( "#btn-sano-afecto" ).css("background-color","#3da3bc"); 
 
 
         
     });
 
-    $( "#btn-evolucion" ).click(function(e) {
-
-        e.preventDefault();
-
+    $( "#btn-evolucion" ).click(function() {
+        $( "#grafica-sano-afecto" ).css("display","none");
         $( "#btn-sano-afecto" ).css("background-color","rgb(109, 109, 109)");
-
-        if(ambos==true)
-        {
-            if(bt_brazo==true)
-            {
-                $( "#grafica-sano-afecto" ).css("display","none");
-                $( "#grafica-evolucion" ).css("display","block");
-            }
-            else if(bt_pierna==true)
-            {
-                $( "#grafica-pierna" ).css("display","none");
-                $( "#grafica-evolucion-pierna" ).css("display","block");
-            }
-        }
-        else if(bandera_brazo==true)
-        {
-            $( "#grafica-sano-afecto" ).css("display","none");
-            $( "#grafica-evolucion" ).css("display","block");
-        }
-        else if(bandera_pierna==true)
-        {
-            $( "#grafica-pierna" ).css("display","none");
-            $( "#grafica-evolucion-pierna" ).css("display","block");
-        }
-
-
+        $( "#grafica-evolucion" ).css("display","block");
+        //$( "#grafica-pierna" ).css("display","block");
         $( "#btn-evolucion" ).css("background-color","#3da3bc"); 
         
     });
 
-    $( "#btn-brazo" ).click(function(e) {
-        e.preventDefault();
+    $( "#btn-brazo" ).click(function() {
         bt_brazo=true;
         bt_pierna=false;
-        $( "#grafica-sano-afecto" ).css("display","block");
-        $( "#grafica-pierna" ).css("display","none");
         $( "#btn-pierna" ).css("background-color","rgb(109, 109, 109)");
         $( "#btn-brazo" ).css("background-color","#3da3bc");
     });
 
-    $( "#btn-pierna" ).click(function(e) {
-        e.preventDefault();
+    $( "#btn-pierna" ).click(function() {
         bt_brazo=false;
         bt_pierna=true;
-        $( "#grafica-sano-afecto" ).css("display","none");
-        $( "#grafica-pierna" ).css("display","block");
         $( "#btn-brazo" ).css("background-color","rgb(109, 109, 109)");
         $( "#btn-pierna" ).css("background-color","#3da3bc");
     });
@@ -738,6 +587,11 @@ $(document).ready(function(){
 
 
 });
+
+
+
+
+
 
 
 

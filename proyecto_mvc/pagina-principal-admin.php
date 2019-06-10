@@ -258,7 +258,7 @@
                                 <form id="form-1" class="margen-form">
                                     <div class="form-row justify-content-center">
                                         <div class="form-group ancho" id="input_nombre">
-                                            <label for="nombre">Nombre</label>
+                                            <label for="nombre">Nombre <span class="rojo"> *</span></label>
                                             &nbsp;
                                             <input type="text" class="form-control" id="nombre" name="nombre" required maxlength="30" value=><br>
                                         </div>
@@ -266,7 +266,7 @@
                                         &nbsp;&nbsp;
                                         
                                         <div class="form-group ancho" id="input_apellido1">
-                                            <label for="apellido1">Primer apellido</label>
+                                            <label for="apellido1">Primer apellido <span class="rojo"> *</span></label>
                                             &nbsp;
                                             <input type="text" class="form-control" id="apellido1" required maxlength="50"><br>
                                         </div>
@@ -281,14 +281,14 @@
                                     &nbsp;&nbsp;
                                     <div class="form-row justify-content-center">
                                         <div class="form-group ancho" id="input_correo">
-                                            <label for="correo">Correo</label>
+                                            <label for="correo">Correo <span class="rojo"> *</span></label>
                                             &nbsp;
                                             <input type="email" class="form-control" name="correo" id="correo" required maxlength="100"><br>
                                         </div>
                                             
                                         &nbsp;&nbsp;
                                         <div class="form-group ancho" id="input_pass">
-                                            <label for="pass">Contraseña</label>
+                                            <label for="pass">Contraseña <span class="rojo"> *</span></label>
                                             &nbsp;
                                             <input type="password" class="form-control" name="pass" id="pass" required maxlength="50"><br>
                                         </div>
@@ -296,7 +296,7 @@
                                         &nbsp;&nbsp;
                                         
                                         <div class="form-group ancho" id="input_pass2">
-                                            <label for="pass2">Confirmar contraseña</label>
+                                            <label for="pass2">Confirmar contraseña <span class="rojo"> *</span></label>
                                             &nbsp;
                                             <input type="password" class="form-control" name="pass2" id="pass2" required maxlength="50"><br>
                                         </div>
@@ -304,13 +304,21 @@
                                         &nbsp;&nbsp;
                                         
                                         <div class="form-group ancho" id="input_pass2">
-                                            <label for="pass2">Tipo</label>
+                                            <label for="tipo">Tipo<span class="rojo"> *</span></label>
                                             &nbsp;
-                                            <input type="text" class="form-control" name="tipo" id="tipo" required maxlength="50"><br>
+                                            <div>
+                                                <select id="tipo" class="form-control form-control-md">
+                                                    <option value="administrador">Administrador</option>
+                                                    <option value="fisioterapeuta">Fisioterapeuta</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>  
                                     <div class="columna-btn">
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-modificar" value='<?php echo($_SESSION["id_especialista"])?>'>Modificar</button>
+                                    </div>
+                                    <div class="form-group margen-oblig">
+                                        <h5 class="rojo letra">* Campos obligatorios</h5>
                                     </div>
                                 </form>
                             </div> 
@@ -325,7 +333,7 @@
                                 <form id="form-1-paciente" class="margen-form">
                                     <div class="form-row justify-content-center">
                                         <div class="form-group ancho" id="input_nombre">
-                                            <label for="nombre_paciente">Nombre</label>
+                                            <label for="nombre_paciente">Nombre <span class="rojo"> *</span></label>
                                             &nbsp;
                                             <input type="text" class="form-control" id="nombre_paciente" name="nombre_paciente" required maxlength="30" value=><br>
                                         </div>
@@ -333,7 +341,7 @@
                                         &nbsp;&nbsp;
                                         
                                         <div class="form-group ancho" id="input_apellido1">
-                                            <label for="apellido1_paciente">Primer apellido</label>
+                                            <label for="apellido1_paciente">Primer apellido <span class="rojo"> *</span></label>
                                             &nbsp;
                                             <input type="text" class="form-control" id="apellido1_paciente" required maxlength="50"><br>
                                         </div>
@@ -348,14 +356,14 @@
                                     &nbsp;&nbsp;
                                     <div class="form-row justify-content-center">
                                         <div class="form-group ancho" id="input_correo">
-                                            <label for="correo_paciente">Correo</label>
+                                            <label for="correo_paciente">Correo <span class="rojo"> *</span></label>
                                             &nbsp;
                                             <input type="email" class="form-control" name="correo_paciente" id="correo_paciente" required maxlength="100"><br>
                                         </div>
                                             
                                         &nbsp;&nbsp;
                                         <div class="form-group ancho" id="input_pass">
-                                            <label for="pass_paciente">Contraseña</label>
+                                            <label for="pass_paciente">Contraseña <span class="rojo"> *</span></label>
                                             &nbsp;
                                             <input type="password" class="form-control" name="pass_paciente" id="pass_paciente" required maxlength="50"><br>
                                         </div>
@@ -363,7 +371,7 @@
                                         &nbsp;&nbsp;
                                         
                                         <div class="form-group ancho" id="input_pass2">
-                                            <label for="pass2_paciente">Confirmar contraseña</label>
+                                            <label for="pass2_paciente">Confirmar contraseña <span class="rojo"> *</span></label>
                                             &nbsp;
                                             <input type="password" class="form-control" name="pass2_paciente" id="pass2_paciente" required maxlength="50"><br>
                                         </div>
@@ -373,6 +381,9 @@
                                     </div>  
                                     <div class="columna-btn">
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-modificar-paciente" value='<?php echo($_SESSION["id_especialista"])?>'>Modificar</button>
+                                    </div>
+                                    <div class="form-group margen-oblig">
+                                        <h5 class="rojo letra">* Campos obligatorios</h5>
                                     </div>
                                 </form>
                             </div>
@@ -537,6 +548,15 @@ $( document ).ready(function() {
                             closeConfirm: true
                 });
             }
+            else if(msg=="admin"){
+                $("body").overhang({
+                            type: "error",
+                            message: "No puede borrar el único administrador que queda",
+                            duration: 6,
+                            overlay: true,
+                            closeConfirm: true
+                });
+            }
             else if(msg=="false"){
                 $("body").overhang({
                             type: "error",
@@ -575,10 +595,13 @@ function editarPaciente(id_user){
             })
             .done(function( msg ) {
                 var datos = $.parseJSON(msg);
-                console.log(datos[0].nombre);
+                var apellido2="";
+                if(!isEmptyOrSpaces(datos[0].apellido2)){
+                    apellido2=datos[0].apellido2;
+                }
                 $( "#nombre_paciente" ).val(datos[0].nombre);
                 $( "#apellido1_paciente" ).val(datos[0].apellido1);
-                $( "#apellido2_paciente" ).val(datos[0].apellido2);
+                $( "#apellido2_paciente" ).val(apellido2);
                 $( "#pass_paciente" ).val(datos[0].pass);
                 $( "#pass2_paciente" ).val(datos[0].pass2);
                 $( "#correo_paciente" ).val(datos[0].correo);
@@ -611,10 +634,14 @@ function editarEspecialista(id_especialista){
             })
             .done(function( msg ) {
                 var datos = $.parseJSON(msg);
-                console.log(datos[0].nombre);
+
+                var apellido2_espec="";
+                if(!isEmptyOrSpaces(datos[0].apellido2)){
+                    apellido2_espec=datos[0].apellido2;
+                }
                 $( "#nombre" ).val(datos[0].nombre);
                 $( "#apellido1" ).val(datos[0].apellido1);
-                $( "#apellido2" ).val(datos[0].apellido2);
+                $( "#apellido2" ).val(apellido2_espec);
                 $( "#pass" ).val(datos[0].pass);
                 $( "#pass2" ).val(datos[0].pass2);
                 $( "#correo" ).val(datos[0].correo);

@@ -167,7 +167,7 @@
                                 <form id="form-1" class="margen-form">
                                     <div class="form-row justify-content-center">
                                         <div class="form-group ancho" id="input_nombre">
-                                            <label for="nombre">Nombre</label>
+                                            <label for="nombre">Nombre <span class="rojo"> *</span></label>
                                             &nbsp;
                                             <input type="text" class="form-control" id="nombre" name="nombre" required maxlength="30" value=><br>
                                         </div>
@@ -175,7 +175,7 @@
                                         &nbsp;&nbsp;
                                         
                                         <div class="form-group ancho" id="input_apellido1">
-                                            <label for="apellido1">Primer apellido</label>
+                                            <label for="apellido1">Primer apellido <span class="rojo"> *</span></label>
                                             &nbsp;
                                             <input type="text" class="form-control" id="apellido1" required maxlength="50"><br>
                                         </div>
@@ -190,14 +190,14 @@
                                     &nbsp;&nbsp;
                                     <div class="form-row justify-content-center">
                                         <div class="form-group ancho" id="input_correo">
-                                            <label for="correo">Correo</label>
+                                            <label for="correo">Correo <span class="rojo"> *</span></label>
                                             &nbsp;
                                             <input type="email" class="form-control" name="correo" id="correo" required maxlength="100"><br>
                                         </div>
                                             
                                         &nbsp;&nbsp;
                                         <div class="form-group ancho" id="input_pass">
-                                            <label for="pass">Contraseña</label>
+                                            <label for="pass">Contraseña <span class="rojo"> *</span></label>
                                             &nbsp;
                                             <input type="password" class="form-control" name="pass" id="pass" required maxlength="50"><br>
                                         </div>
@@ -205,7 +205,7 @@
                                         &nbsp;&nbsp;
                                         
                                         <div class="form-group ancho" id="input_pass2">
-                                            <label for="pass2">Confirmar contraseña</label>
+                                            <label for="pass2">Confirmar contraseña <span class="rojo"> *</span></label>
                                             &nbsp;
                                             <input type="password" class="form-control" name="pass2" id="pass2" required maxlength="50"><br>
                                         </div>
@@ -213,13 +213,21 @@
                                         &nbsp;&nbsp;
                                         
                                         <div class="form-group ancho" id="input_pass2">
-                                            <label for="pass2">Tipo</label>
+                                        <label for="tipo">Tipo<span class="rojo"> *</span></label>
                                             &nbsp;
-                                            <input type="text" class="form-control" name="tipo" id="tipo" required maxlength="50"><br>
+                                            <div>
+                                                <select id="tipo" class="form-control form-control-md">
+                                                    <option value="administrador">Administrador</option>
+                                                    <option value="fisioterapeuta">Fisioterapeuta</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>  <!--Fin fila 2-->
                                     <div class="columna-btn">
                                         <button class="btn estilo-boton-submit" type="submit" id="btn-submit-1" value='<?php echo($_SESSION["id_especialista"])?>'>Registrar</button>
+                                    </div>
+                                    <div class="form-group margen-oblig">
+                                        <h5 class="rojo letra">* Campos obligatorios</h5>
                                     </div>
                                 </form>
                             </div>

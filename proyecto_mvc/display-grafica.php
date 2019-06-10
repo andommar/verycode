@@ -261,13 +261,6 @@
                                     
                                 </div>
                             </div>
-                            <div id="grafica-evolucion-pierna" class="row">
-                                <div class="sombra-cuadro col-md-6 mx-auto mt-4">
-                                    <div width=100%>
-                                        <canvas id ="lineChartevolucion_pierna" height="300" width="400"></canvas>
-                                    </div>
-                                </div>
-                            </div>
 
                         </div>
                     </div><!-- Fin cuerpo página-->

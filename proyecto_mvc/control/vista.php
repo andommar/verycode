@@ -78,9 +78,12 @@ if(isset($_POST["opcion"]))
             {
                 echo "true";
             }
-            else
+            else if($error==-2){
+                echo "admin";
+            }
+            else{
                 echo "false";
-
+            }
             // BORRAR ESPECIALISTA
             // ____________________
             
