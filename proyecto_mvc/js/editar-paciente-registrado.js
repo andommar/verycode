@@ -6,8 +6,7 @@
     var ref_valoracion_editar=0;
 
     $(document).ready(function(){
-        
-        // $("#titulo-paciente").html("Editar paciente · Paciente "+id_usuario);
+
 
         $("#tipo_congenito").change(function(){
                     
@@ -372,7 +371,7 @@
         .fail(function( jqXHR, textStatus, errorThrown ) {
             console.log("ajax false");
         });
-        //=============================================================================//eee
+        //=============================================================================
         //3) CIRUGIAS (RELLENAR TABLA)
         $.ajax({
             type: "GET",
@@ -385,9 +384,9 @@
         })        
         .done(function(msg) {
             
-            if ( console && console.log ) {
+            // if ( console && console.log ) {
                 // console.log( "La solicitud de acceso se ha completado correctamente." );
-            }
+            // }
             var resultado="";
             if(msg=="vacio" || msg=="false"){
                 resultado = msg;
@@ -399,9 +398,7 @@
                 //RELLENAMOS TABLA
                 var filas_cirugias='';
 
-                // var fecha_ult_tratamiento = resultado[0].fecha_ult_tratamiento.date; //2019-05-16 00:00:00.000000
-                // var fecha_ult_tratamiento_corta = fecha_ult_tratamiento.substr(0,fecha_ult_tratamiento.indexOf(' ')); //2019-05-16
-
+              
                 listado_cirugias.forEach(function(element) {
                     filas_cirugias+= '<tr id='+element.ref_cirugia+'><td>'+element.ref_cirugia+'</td><td>'+element.nombre+'</td><td>'+element.fecha.date.substr(0,element.fecha.date.indexOf(' '))+'</td><td><button type="button" style="color: #28a745;" class="btn azul" value="editarCirugia" onClick="editarCirugia('+ element.ref_cirugia + ')"><span class="ti-pencil-alt"></span></button></td></tr>';
     
@@ -422,7 +419,7 @@
                 console.log( "La solicitud de acceso ha fallado: " +  textStatus);
             }
         });
-        //=============================================================================//eee
+        //=============================================================================
         //4) MEDICAMENTOS (RELLENAR TABLA)
         $.ajax({
             type: "GET",

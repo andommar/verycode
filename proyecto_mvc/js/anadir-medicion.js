@@ -2,7 +2,7 @@ $(document).ready(function(){
 var extremidad="";
 var id_usuario= $("#id_usuario").val();
     
-//**
+
                 
     $("#radiobuttons_escoger_miembro").change(function(){
         var valor_seleccionado = $("#radiobuttons_escoger_miembro input[type='radio']:checked").val(); //valor option del select
@@ -52,7 +52,7 @@ var id_usuario= $("#id_usuario").val();
     $( "input[id='pierna_i_p6'], input[id='pierna_d_p6']" ).focus(function() {
         $("#imagen-pierna").attr("src","img/pierna/f.png");
     });
-    //console.log($("#id_usuario").val());
+    
 
     
     $.ajax({
@@ -65,15 +65,14 @@ var id_usuario= $("#id_usuario").val();
     
     })        
     .done(function(msg) {
-        // alert("ajax done");
-        // console.log("ajax done");
+        
             if(msg=="no_tiene"){
                 
                 document.location.href="mediciones.php"; 
                 alert("Este paciente no tiene mediciones todavía");
             }
             else if(msg=="brazo_i"){//brazo d lado sano
-                    // $('#subtipo_congenito_otro').prop('disabled', false);
+                
                     extremidad="brazo_i";
                     jQuery("input[id=pierna]:radio").attr('disabled',true);
                     $("#panel-brazo").css("display","block");
@@ -81,8 +80,6 @@ var id_usuario= $("#id_usuario").val();
 
                     jQuery("input[id=miembro_sano_brazo_d]:radio").attr('checked',true);
                     jQuery("input[id=miembro_sano_brazo_i]:radio").attr('disabled',true);
-
-                    // jQuery("input[id=brazo_d_p1]").attr('disabled',true);
             }
             else if(msg=="brazo_d"){//brazo i lado sano
                     
@@ -93,8 +90,6 @@ var id_usuario= $("#id_usuario").val();
 
                     jQuery("input[id=miembro_sano_brazo_i]:radio").attr('checked',true);
                     jQuery("input[id=miembro_sano_brazo_d]:radio").attr('disabled',true);
-
-                    // jQuery("input[id=brazo_i_p1]").attr('disabled',true);
                     
                 }
                 else if(msg=="pierna_d"){//pierna i lado sano
@@ -107,8 +102,6 @@ var id_usuario= $("#id_usuario").val();
 
                     jQuery("input[id=miembro_sano_pierna_i]:radio").attr('checked',true);
                     jQuery("input[id=miembro_sano_pierna_d]:radio").attr('disabled',true);
-
-                    // jQuery("input[id=pierna_i_p1]").attr('disabled',true);
                 }
                 else if(msg=="pierna_i"){//pierna d lado sano
 
@@ -120,8 +113,6 @@ var id_usuario= $("#id_usuario").val();
 
                     jQuery("input[id=miembro_sano_pierna_d]:radio").attr('checked',true);
                     jQuery("input[id=miembro_sano_pierna_i]:radio").attr('disabled',true);
-
-                    // jQuery("input[id=pierna_d_p1]").attr('disabled',true);
                     
                 }
     })
@@ -286,10 +277,6 @@ var id_usuario= $("#id_usuario").val();
                     else{
                         $.notify("Medición guardada correctamente.", "success");
                     } 
-                    
-                    // if(datos_correctos_queries){
-
-                    // }
                 })
                 .fail(function( jqXHR, textStatus, errorThrown ) {
                     if ( console && console.log ) {

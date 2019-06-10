@@ -68,13 +68,7 @@ $(document).ready(function(){
 
             if(msg=="true"){
                 $.notify("Especialista modificado correctamente", "success");
-                // $("body").overhang({
-                //             type: "success",
-                //             message: "Especialista modificado correctamente",
-                //             duration: 6,
-                //             overlay: true,
-                //             closeConfirm: true
-                // });
+                
             }
             else if(msg=="false"){
                 $("body").overhang({

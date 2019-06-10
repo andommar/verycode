@@ -459,15 +459,9 @@
                             data: {nombre: nombre, apellido1: apellido1, apellido2: apellido2, correo: correo,id_especialista: id_especialista, pass: pass, pass2: pass2, opcion: opcion}
                             })
                             .done(function( msg ) {
-                                // console.log(msg);
-                                // console.log(msg[0]);
-                                // console.log(msg[1]);
+                                
                                 var resultado = $.parseJSON(msg);
-                                // console.log(resultado[0]);
-                                // console.log(resultado[1]);
-                               
-                                // console.log(msg);                             	
-                                // console.log("ajax done"); 
+                                
                                 if(resultado[1]=="false"){
                                     $("body").overhang({
                                         type: "error",
@@ -596,9 +590,7 @@
                                         ant_triquiasis, ant_sindromes, profesion,grado_resp_profesion,grado_stress_profesion);
                     
                     if(datos_correctos){
-                        //peso = num.toFixed(2);
-                        //altura = num.toFixed(2);
-
+                        
                         $.ajax({
                         method: "POST",
                         url: 'control/vista.php',
@@ -1732,9 +1724,3 @@
                 }
 
             });//document ready
-            
-            // function comprobarFormsRellenados(formulario_actual){
-            //     for(var i=1;i<=;){
-
-            //     }
-            // }

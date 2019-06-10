@@ -46,9 +46,7 @@ $(document).ready(function(){
             data: {opcion:opcion,id_usuario:id_usuario,id_especialista: id_especialista}
             })
             .done(function( msg ) {
-                // var resultado = $.parseJSON(msg);
-                // console.log(msg);                             	
-                // console.log("ajax done"); 
+                
                 if(msg){
                     document.location.href="pacientes.php";
                 }

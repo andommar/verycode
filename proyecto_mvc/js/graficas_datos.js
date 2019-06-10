@@ -561,7 +561,7 @@ $(document).ready(function(){
 
 
 function fechaMedicion(p1,p2,p3,p4,p5){
-    console.log(p1,p2,p3,p4,p5);
+    // console.log(p1,p2,p3,p4,p5);
 
     
 
